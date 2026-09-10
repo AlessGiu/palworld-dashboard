@@ -26,66 +26,66 @@ LOCAL_SNAPSHOT = os.path.join(HERE, "palworld_last_snapshot.json")
 
 IGNORED_PLAYER_NAMES = {"skP", "Ekinox"}
 
-# Recommandations "travail a la base" -- donnees REELLES d'aptitude au travail
+# Recommandations "travail a la base" -- données REELLES d'aptitude au travail
 # (les 13 champs WorkSuitability du DataTable DT_PalMonsterParameter du jeu, valeurs 0-4),
 # pas une estimation basee sur la reputation. Sources :
 #   - blaynem/paldex (GitHub) : extraction des DataTables du jeu, baked-data/en/pals.json
-#     -> couvre 157 especes (+ formes Boss/Alpha), 314 entrees
-#   - paldb.cc : les 18 especes ajoutees apres la snapshot paldex (Feybreak/DLC, ex.
-#     Wispaw, Tarantriss, Skutlass...) ont ete verifiees individuellement sur leur fiche
+#     -> couvre 157 espèces (+ formes Boss/Alpha), 314 entrées
+#   - paldb.cc : les 18 espèces ajoutees après la snapshot paldex (Feybreak/DLC, ex.
+#     Wispaw, Tarantriss, Skutlass...) ont ete vérifiées individuellement sur leur fiche
 #     paldb.cc (section "Work Suitability" de chaque page), pas devinees
-# Chaque categorie liste jusqu'a 10 especes candidates classees par etoiles reelles
-# (toutes especes du jeu confondues, pas seulement celles possedees) : collect_data()
-# ci-dessous filtre en direct selon le roster reellement possede a chaque generation,
+# Chaque catégorie liste jusqu'a 10 espèces candidates classees par etoiles réelles
+# (toutes espèces du jeu confondues, pas seulement celles possédées) : collect_data()
+# ci-dessous filtre en direct selon le roster réellement possédé a chaque génération,
 # donc la liste reste a jour automatiquement si de nouveaux Pals sont captures.
-# codename interne -> nom affiche en jeu (verifie via paldex + paldb.cc + palmods.gg)
+# codename interne -> nom affiche en jeu (vérifié via paldex + paldb.cc + palmods.gg)
 WORK_RECOMMENDATIONS = {
     "Allumage": [("Umihebi_Fire", "Jormuntide Ignis"), ("GYM_Horus", "PIDF Officer Marcus & Faleris"), ("Horus", "Faleris"), ("KingBahamut", "Blazamut"), ("Manticore", "Blazehowl"), ("Manticore_Dark", "Blazehowl Noct"), ("RedArmorBird", "Ragnahawk"), ("Suzaku", "Suzaku"), ("VolcanicMonster", "Reptyro"), ("AmaterasuWolf", "Kitsun")],
     "Arrosage": [("SwordCutlassfish", "Skutlass"), ("Umihebi", "Jormuntide"), ("BlueDragon", "Azurobe"), ("FairyDragon_Water", "Elphidran Aqua"), ("SakuraSaurus_Water", "Broncherry Aqua"), ("Suzaku_Water", "Suzaku Aqua"), ("CaptainPenguin", "Penking"), ("JellyfishFairy", "Jelliette"), ("JellyfishGhost", "Jellroy"), ("LazyDragon", "Relaxaurus")],
     "Plantation": [("LilyQueen", "Lyleen"), ("FlowerDoll", "Petallia"), ("GYM_LilyQueen", "Free Pal Alliance Founder Lily & Lyleen"), ("GrassMinotaur", "Elgrove"), ("PandaGirl", "Leafan"), ("SakuraSaurus", "Broncherry"), ("BerryGoat", "Caprity"), ("BlueberryFairy", "Prunelia"), ("CuteButterfly", "Cinnamoth"), ("FlowerDinosaur", "Dinossom")],
-    "Electricite": [("ThunderDragonMan", "Orserk"), ("ElecPanda", "Grizzbolt"), ("GYM_ElecPanda", "Rayne Syndicate Officer Zoe & Grizzbolt"), ("GYM_ThunderDragonMan", "Brothers of the Eternal Pyre Soul Reader Axel & Orserk"), ("LazyDragon_Electric", "Relaxaurus Lux"), ("ElecPomeranian", "Puffolt"), ("FlowerDinosaur_Electric", "Dinossom Lux"), ("GrassPanda_Electric", "Mossanda Lux"), ("Kirin", "Univolt"), ("ThunderBird", "Beakon")],
+    "Électricité": [("ThunderDragonMan", "Orserk"), ("ElecPanda", "Grizzbolt"), ("GYM_ElecPanda", "Rayne Syndicate Officer Zoe & Grizzbolt"), ("GYM_ThunderDragonMan", "Brothers of the Eternal Pyre Soul Reader Axel & Orserk"), ("LazyDragon_Electric", "Relaxaurus Lux"), ("ElecPomeranian", "Puffolt"), ("FlowerDinosaur_Electric", "Dinossom Lux"), ("GrassPanda_Electric", "Mossanda Lux"), ("Kirin", "Univolt"), ("ThunderBird", "Beakon")],
     "Manutention": [("Anubis", "Anubis"), ("DarkMutant", "DarkMutant"), ("FoxMage", "Wixen"), ("GrassRabbitMan", "Verdash"), ("LilyQueen", "Lyleen"), ("LilyQueen_Dark", "Lyleen Noct"), ("Mutant", "Lunaris"), ("PandaGirl", "Leafan"), ("PurpleSpider", "Tarantriss"), ("SifuDog", "Dogen")],
     "Cueillette": [("IceHorse_Dark", "Frostallion Noct"), ("BadCatgirl", "Nyafia"), ("GrassRabbitMan", "Verdash"), ("JetDragon", "Jetragon"), ("PandaGirl", "Leafan"), ("PurpleSpider", "Tarantriss"), ("BlueberryFairy", "Prunelia"), ("BrownRabbit", "Lapiron"), ("CatBat", "Tombat"), ("Eagle", "Galeclaw")],
-    "Bucheronnage": [("SwordCutlassfish", "Skutlass"), ("DarkAlien", "Xenovader"), ("GrassMinotaur", "Elgrove"), ("HerculesBeetle", "Warsect"), ("Ronin", "Bushi"), ("ScorpionMan", "Prixter"), ("Yeti", "Wumpo"), ("Yeti_Grass", "Wumpo Botan"), ("BlackCentaur", "Necromus"), ("DarkScorpion", "Menasting")],
+    "Bûcheronnage": [("SwordCutlassfish", "Skutlass"), ("DarkAlien", "Xenovader"), ("GrassMinotaur", "Elgrove"), ("HerculesBeetle", "Warsect"), ("Ronin", "Bushi"), ("ScorpionMan", "Prixter"), ("Yeti", "Wumpo"), ("Yeti_Grass", "Wumpo Botan"), ("BlackCentaur", "Necromus"), ("DarkScorpion", "Menasting")],
     "Minage": [("BlackMetalDragon", "Astegon"), ("KingBahamut", "Blazamut"), ("Anubis", "Anubis"), ("DarkScorpion", "Menasting"), ("DrillGame", "Digtoise"), ("SmallYeti", "Snugloo"), ("VolcanicMonster", "Reptyro"), ("VolcanicMonster_Ice", "Ice Reptyro"), ("WingGolem", "Knocklem"), ("BlackCentaur", "Necromus")],
-    "Extraction de petrole": [("BlackMetalDragon", "Astegon"), ("GoldenHorse", "Gildane"), ("JetDragon", "Jetragon"), ("ScorpionMan", "Prixter"), ("BrownRabbit", "Lapiron"), ("LazyCatfish", "Dumud")],
-    "Medecine": [("BlueberryFairy", "Prunelia"), ("CatVampire", "Felbat"), ("DarkMutant", "DarkMutant"), ("GYM_LilyQueen", "Free Pal Alliance Founder Lily & Lyleen"), ("LilyQueen", "Lyleen"), ("LilyQueen_Dark", "Lyleen Noct"), ("VioletFairy", "Vaelet"), ("CatMage", "Katress"), ("FlowerDoll", "Petallia"), ("LittleBriarRose", "Bristla")],
+    "Extraction de pétrole": [("BlackMetalDragon", "Astegon"), ("GoldenHorse", "Gildane"), ("JetDragon", "Jetragon"), ("ScorpionMan", "Prixter"), ("BrownRabbit", "Lapiron"), ("LazyCatfish", "Dumud")],
+    "Médecine": [("BlueberryFairy", "Prunelia"), ("CatVampire", "Felbat"), ("DarkMutant", "DarkMutant"), ("GYM_LilyQueen", "Free Pal Alliance Founder Lily & Lyleen"), ("LilyQueen", "Lyleen"), ("LilyQueen_Dark", "Lyleen Noct"), ("VioletFairy", "Vaelet"), ("CatMage", "Katress"), ("FlowerDoll", "Petallia"), ("LittleBriarRose", "Bristla")],
     "Refroidissement": [("IceHorse", "Frostallion"), ("KingAlpaca_Ice", "Ice Kingpaca"), ("SmallYeti", "Snugloo"), ("VolcanicMonster_Ice", "Ice Reptyro"), ("WhiteTiger", "Cryolinx"), ("BirdDragon_Ice", "Vanwyrm Cryst"), ("CaptainPenguin", "Penking"), ("FluffyBird", "Muffly"), ("GrassMammoth_Ice", "Mammorest Cryst"), ("IceDeer", "Reindrix")],
     "Transport": [("WingGolem", "Knocklem"), ("Yeti", "Wumpo"), ("Yeti_Grass", "Wumpo Botan"), ("BirdDragon", "Vanwyrm"), ("BirdDragon_Ice", "Vanwyrm Cryst"), ("BlackFurDragon", "Dragostrophe"), ("ElecPanda", "Grizzbolt"), ("GYM_ElecPanda", "Rayne Syndicate Officer Zoe & Grizzbolt"), ("GYM_Horus", "PIDF Officer Marcus & Faleris"), ("GYM_ThunderDragonMan", "Brothers of the Eternal Pyre Soul Reader Axel & Orserk")],
-    "Elevage/Ferme": [("Alpaca", "Melpaca"), ("Bastet", "Mau"), ("Bastet_Ice", "Mau Cryst"), ("BerryGoat", "Caprity"), ("ChickenPal", "Chikipi"), ("CowPal", "Mozzarina"), ("CuteFox", "Vixy"), ("LavaGirl", "Flambelle"), ("SheepBall", "Lamball"), ("SoldierBee", "Beegarde")],
+    "Élevage/Ferme": [("Alpaca", "Melpaca"), ("Bastet", "Mau"), ("Bastet_Ice", "Mau Cryst"), ("BerryGoat", "Caprity"), ("ChickenPal", "Chikipi"), ("CowPal", "Mozzarina"), ("CuteFox", "Vixy"), ("LavaGirl", "Flambelle"), ("SheepBall", "Lamball"), ("SoldierBee", "Beegarde")],
 }
 
-# Categorie FR -> champ interne WorkSuitability (voir WORK_SUITABILITY_FULL ci-dessous)
+# Catégorie FR -> champ interne WorkSuitability (voir WORK_SUITABILITY_FULL ci-dessous)
 CATEGORY_FIELD = {
     "Allumage": "emit_flame",
     "Arrosage": "watering",
     "Plantation": "seeding",
-    "Electricite": "generate_electricity",
+    "Électricité": "generate_electricity",
     "Manutention": "handcraft",
     "Cueillette": "collection",
-    "Bucheronnage": "deforest",
+    "Bûcheronnage": "deforest",
     "Minage": "mining",
-    "Extraction de petrole": "oil_extraction",
-    "Medecine": "product_medicine",
+    "Extraction de pétrole": "oil_extraction",
+    "Médecine": "product_medicine",
     "Refroidissement": "cool",
     "Transport": "transport",
-    "Elevage/Ferme": "monster_farm",
+    "Élevage/Ferme": "monster_farm",
 }
 CATEGORY_FIELD_INV = {v: k for k, v in CATEGORY_FIELD.items()}
 
-# Profil complet (13 etoiles reelles) de chaque espece connue, baked localement
-# (build_full_species_profiles.py) pour ne jamais dependre d'un appel reseau a
-# chaque generation horaire du dashboard.
+# Profil complet (13 etoiles réelles) de chaque espèce connue, baked localement
+# (build_full_species_profiles.py) pour ne jamais dependre d'un appel réseau a
+# chaque génération horaire du dashboard.
 with open(os.path.join(HERE, "work_suitability_full.json"), "r", encoding="utf-8") as _f:
     WORK_SUITABILITY_FULL = json.load(_f)
 
-# Stats de combat (attaque/PV/defense/elements/vitesse monture) par espece, baked localement
+# Stats de combat (attaque/PV/defense/éléments/vitesse monture) par espèce, baked localement
 # (build_combat_stats.py) pour l'equipe de terrain recommandee.
 with open(os.path.join(HERE, "combat_stats_full.json"), "r", encoding="utf-8") as _f:
     COMBAT_STATS_FULL = json.load(_f)
 
-# Combi Rank (formule de reproduction) par espece, baked localement (build_combi_ranks.py),
-# entrees rank<=0/"en_text" deja exclues (donnees non remplies dans le DataTable source).
+# Combi Rank (formule de reproduction) par espèce, baked localement (build_combi_ranks.py),
+# entrées rank<=0/"en_text" déjà exclues (données non remplies dans le DataTable source).
 with open(os.path.join(HERE, "combi_ranks_full.json"), "r", encoding="utf-8") as _f:
     COMBI_RANKS_FULL = json.load(_f)
 
@@ -98,18 +98,18 @@ INGREDIENT_NAME_FR = _RECIPES_FR["ingredients"]
 
 VARIANT_SUFFIXES = ["_Fire", "_Dark", "_Electric", "_Water", "_Grass", "_Ice"]
 
-# Univers "Palpedia reelle" pour le suivi de completion : on exclut les PNJ uniques de
+# Univers "Palpedia reelle" pour le suivi de complétion : on exclut les PNJ uniques de
 # tour (prefixe GYM_, pal_index=-2 dans le DataTable -- pas des Pals capturables) et 4
-# especes confirmees non disponibles en jeu (is_available_ingame=False, aucun nom reel
+# espèces confirmees non disponibles en jeu (is_available_ingame=False, aucun nom réel
 # trouve via 2 sources independantes -- probablement du contenu coupe/de test).
 PALPEDIA_EXCLUDED = {"PinkKangaroo", "BeardedDragon", "WaterLizard", "GrassDragon"}
 PALPEDIA_UNIVERSE = sorted(
     cn for cn in WORK_SUITABILITY_FULL if not cn.startswith("GYM_") and cn not in PALPEDIA_EXCLUDED
 )
 
-# Icones officielles du jeu, servies par paldb.cc (verifie -- meme codename interne que
-# pal_dev_name, HTTP 200 confirme sur un echantillon couvrant especes de base, variantes
-# elementaires (suffixe _Fire/_Ice/...) et les 18 especes hors paldex/DLC).
+# Icones officielles du jeu, servies par paldb.cc (vérifié -- même codename interne que
+# pal_dev_name, HTTP 200 confirme sur un echantillon couvrant espèces de base, variantes
+# elementaires (suffixe _Fire/_Ice/...) et les 18 espèces hors paldex/DLC).
 def pal_icon_url(codename):
     return f"https://cdn.paldb.cc/image/Pal/Texture/PalIcon/Normal/T_{codename}_icon_normal.webp"
 
@@ -122,10 +122,10 @@ ELEMENT_EMOJI = {
 
 
 def _build_pal_card_data():
-    """Fiche complete par espece (icone + stats + aptitudes + rang combi) pour la modale
-    'carte du Pal' cliquable dans Palpedia/Elevage -- toutes donnees deja chargees
+    """Fiche complète par espèce (icone + stats + aptitudes + rang combi) pour la modale
+    'carte du Pal' cliquable dans Palpédia/Élevage -- toutes données déjà chargees
     localement (WORK_SUITABILITY_FULL/COMBAT_STATS_FULL/COMBI_RANKS_FULL), aucun appel
-    reseau supplementaire au runtime."""
+    réseau supplementaire au runtime."""
     codenames = set(PALPEDIA_UNIVERSE) | set(COMBI_RANKS_FULL) | set(COMBAT_STATS_FULL)
     out = {}
     for cn in codenames:
@@ -184,12 +184,12 @@ def _resolve_from(lookup, codename):
 
 
 def resolve_species_profile(codename):
-    """Work-suitability profile (13 categories) for a live CharacterID."""
+    """Work-suitability profile (13 catégories) for a live CharacterID."""
     return _resolve_from(WORK_SUITABILITY_FULL, codename)
 
 
 def resolve_combat_profile(codename):
-    """Combat stats (attack/hp/defense/elements/mount speed) for a live CharacterID."""
+    """Combat stats (attack/hp/defense/éléments/mount speed) for a live CharacterID."""
     return _resolve_from(COMBAT_STATS_FULL, codename)
 
 
@@ -344,8 +344,8 @@ def collect_data():
     invaders = wsd["InvaderSaveData"]["value"]
     active_raids = sum(1 for e in invaders if e["value"].get("bIsInvading", {}).get("value"))
     # bIsClear = etat TRANSITOIRE (ce camp precis est vide d'ennemis LA MAINTENANT) -- les
-    # camps repeuplent avec le temps, donc ce chiffre retombe a 0 meme si le joueur en a
-    # deja conquis plein. Le vrai compteur cumulatif est CampConqueredCount (par joueur,
+    # camps repeuplent avec le temps, donc ce chiffre retombe a 0 même si le joueur en a
+    # déjà conquis plein. Le vrai compteur cumulatif est CampConqueredCount (par joueur,
     # dans RecordData) -- voir plus bas.
     camps = wsd["EnemyCampSaveData"]["value"]["EnemyCampStatusMap"]["value"]
     camps_cleared = sum(1 for c in camps if c["value"].get("bIsClear", {}).get("value"))
@@ -427,7 +427,7 @@ def collect_data():
             species_best_level[cid] = lvl
         owner = unwrap(p.get("OwnerPlayerUId"), None)
         owner_key = str(owner) if owner else None
-        display = uid_to_name.get(owner_key, "Sans proprietaire")
+        display = uid_to_name.get(owner_key, "Sans propriétaire")
         owners[display] = owners.get(display, 0) + 1
 
     top_level = sorted(pals, key=lambda p: unwrap(p.get("Level"), 1), reverse=True)[:10]
@@ -467,9 +467,9 @@ def collect_data():
     }
 
     # --- PALPEDIA PAR JOUEUR ---
-    # Base sur la propriete ACTUELLE des Pals (OwnerPlayerUId), pas un historique de capture --
+    # Base sur la propriété ACTUELLE des Pals (OwnerPlayerUId), pas un historique de capture --
     # si un Pal a change de main ou dort dans un coffre partage, ca peut sous-compter le vrai
-    # nombre d'especes qu'un joueur a un jour capturees.
+    # nombre d'espèces qu'un joueur a un jour capturees.
     owned_species_by_player = {}
     for p in pals:
         owner = unwrap(p.get("OwnerPlayerUId"), None)
@@ -504,15 +504,15 @@ def collect_data():
     data["palpedia"] = {"joueurs": palpedia_out}
 
     # --- EQUIPE DE TERRAIN (combat/exploration, distincte du travail a la base) ---
-    # Meilleure instance possedee par espece (niveau + IV comme critere de choix),
-    # avec ses vrais passifs (specifiques a cet exemplaire, pas a l'espece).
+    # Meilleure instance possédée par espèce (niveau + IV comme critere de choix),
+    # avec ses vrais passifs (specifiques a cet exemplaire, pas a l'espèce).
     def interpret_passive(name):
         if name.startswith("ElementBoost_"):
             parts = name.split("_")
             if len(parts) >= 3:
-                return f"boost degats {parts[1]} (niv.{parts[2]})"
+                return f"boost dégâts {parts[1]} (niv.{parts[2]})"
         if "AutoHPRegeneRate" in name:
-            return "regeneration PV automatique"
+            return "régénération PV automatique"
         if "WorkSpeed" in name:
             return "vitesse de travail +"
         if "ReloadSpeedUp" in name:
@@ -564,7 +564,7 @@ def collect_data():
     used_codenames = set(e["codename"] for e in equipe)
     covered_elements = set()
 
-    # 1ere passe : privilegier la couverture elementaire (le plus puissant par element manquant)
+    # 1ere passe : privilegier la couverture elementaire (le plus puissant par élément manquant)
     for c in combat_candidates:
         if len(equipe) >= TEAM_SIZE:
             break
@@ -594,10 +594,10 @@ def collect_data():
     }
 
     # --- ELEVAGE / REPRODUCTION (formule Combi Rank reelle du jeu) ---
-    # child_rank = floor((rankA + rankB + 1) / 2), puis l'espece dont le combi_rank reel
-    # est le plus proche de cette valeur est le resultat (mecanique officielle, sourcee
+    # child_rank = floor((rankA + rankB + 1) / 2), puis l'espèce dont le combi_rank réel
+    # est le plus proche de cette valeur est le résultat (mecanique officielle, sourcee
     # palbreeding.com / xgamingserver.com) -- ~28 paires speciales outrepassent la regle
-    # generale et ne sont pas modelisees ici (a verifier en jeu avant un elevage long).
+    # generale et ne sont pas modelisees ici (a vérifier en jeu avant un élevage long).
     owned_ranked = []
     seen_rank_cn = set()
     for cn in species_count:
@@ -639,27 +639,27 @@ def collect_data():
         "nb_especes_possedees_avec_rang": len(owned_ranked),
     }
 
-    # --- TRAVAIL A LA BASE (recommandations, croisees avec le roster reel) ---
-    # Les formes Boss/Alpha (prefixe BOSS_) partagent les memes aptitudes de travail
-    # que leur forme normale (verifie sur les donnees paldex) -- on agrege donc les
-    # deux variantes pour ne pas rater un exemplaire possede uniquement sous forme boss.
+    # --- TRAVAIL A LA BASE (recommandations, croisees avec le roster réel) ---
+    # Les formes Boss/Alpha (prefixe BOSS_) partagent les mêmes aptitudes de travail
+    # que leur forme normale (vérifié sur les données paldex) -- on agrege donc les
+    # deux variantes pour ne pas rater un exemplaire possédé uniquement sous forme boss.
     data["travail_base"] = []
-    for categorie, candidats in WORK_RECOMMENDATIONS.items():
-        trouves = []
+    for catégorie, candidats in WORK_RECOMMENDATIONS.items():
+        trouvés = []
         for codename, nom_affiche in candidats:
             variants = [codename, "BOSS_" + codename] if not codename.startswith("BOSS_") else [codename]
             nombre = sum(species_count.get(v, 0) for v in variants)
             if nombre:
                 niveau_max = max(species_best_level.get(v, 0) for v in variants)
-                trouves.append({
+                trouvés.append({
                     "nom": nom_affiche,
                     "nombre": nombre,
                     "niveau_max": niveau_max,
                 })
-        if trouves:
-            data["travail_base"].append({"categorie": categorie, "pals": trouves})
+        if trouvés:
+            data["travail_base"].append({"categorie": catégorie, "pals": trouvés})
 
-    # --- ETAT ACTUEL DE LA BASE (pals reellement assignes au travail) + SWAPS ---
+    # --- ETAT ACTUEL DE LA BASE (pals réellement assignes au travail) + SWAPS ---
     # On retrouve le/les conteneurs "WorkerDirector" de chaque base (BaseCampSaveData),
     # on lit les Pals places dedans (CharacterContainerSaveData), et on compare leur
     # vrai profil d'aptitudes (WORK_SUITABILITY_FULL) a ce qui dort dans le roster.
@@ -712,7 +712,7 @@ def collect_data():
             })
             binfo["deployed_count"] += 1
 
-    # --- CONSTRUCTIONS DE LA BASE (pour savoir si une categorie a deja son batiment) ---
+    # --- CONSTRUCTIONS DE LA BASE (pour savoir si une catégorie a déjà son bâtiment) ---
     # Chaque objet construit porte un "base_camp_id_belong_to" (Model.RawData) qui le relie
     # a une base, et un nom de type exact via MapObjectId (ex. "ElectricGenerator", "CampFire").
     base_ids = set(b["base_id"] for b in bases_info)
@@ -735,48 +735,48 @@ def collect_data():
                 eggs_per_base[belong].append(species)
             building_counts[name] = building_counts.get(name, 0) + 1
 
-    # Correspondance batiment -> categorie, basee sur le nom exact du batiment trouve dans la
+    # Correspondance bâtiment -> catégorie, basee sur le nom exact du bâtiment trouve dans la
     # sauvegarde (pas une supposition) : ce sont des types de structures sans ambiguite dans le
     # jeu (four/cuisiniere = Allumage, parcelle de culture = Plantation+Arrosage, etc.)
     BUILDINGS_BY_CATEGORY = {
         "Allumage": ["CampFire", "BlastFurnace2", "ElectricKitchen", "Heater"],
         "Arrosage": [k for k in building_counts if k.startswith("FarmBlockV2")],
         "Plantation": [k for k in building_counts if k.startswith("FarmBlockV2")],
-        "Electricite": ["ElectricGenerator"],
-        "Medecine": ["MedicineFacility_01", "Clinic"],
-        "Elevage/Ferme": ["MonsterFarm", "BreedFarm"],
+        "Électricité": ["ElectricGenerator"],
+        "Médecine": ["MedicineFacility_01", "Clinic"],
+        "Élevage/Ferme": ["MonsterFarm", "BreedFarm"],
         "Manutention": ["WeaponFactory_Dirty_02", "RepairBench", "Crusher", "FlourMill"],
     }
-    # Categories ou le jeu exige un batiment placable specifique qui n'apparait pas du tout
+    # Catégories ou le jeu exige un bâtiment placable specifique qui n'apparait pas du tout
     # dans le recensement ci-dessus -- absence constatee, pas une supposition sur le nom exact
-    # (Cooler Box / Extracteur de petrole n'ont pas d'equivalent parmi les objets trouves).
-    CATEGORIES_SANS_BATIMENT_DEDIE = {"Refroidissement", "Extraction de petrole"}
-    # Categories qui exploitent des ressources naturelles du terrain (arbres, veines de
-    # minerai) plutot qu'un batiment pose par le joueur -- la presence/absence ne peut pas
-    # etre confirmee depuis les objets construits.
-    CATEGORIES_RESSOURCE_NATURELLE = {"Minage", "Bucheronnage", "Cueillette", "Transport"}
+    # (Cooler Box / Extracteur de pétrole n'ont pas d'equivalent parmi les objets trouvés).
+    CATEGORIES_SANS_BATIMENT_DEDIE = {"Refroidissement", "Extraction de pétrole"}
+    # Catégories qui exploitent des ressources naturelles du terrain (arbres, veines de
+    # minerai) plutot qu'un bâtiment pose par le joueur -- la presence/absence ne peut pas
+    # être confirmee depuis les objets construits.
+    CATEGORIES_RESSOURCE_NATURELLE = {"Minage", "Bûcheronnage", "Cueillette", "Transport"}
 
-    def batiment_dispo(categorie, counts=None):
-        noms = BUILDINGS_BY_CATEGORY.get(categorie)
+    def batiment_dispo(catégorie, counts=None):
+        noms = BUILDINGS_BY_CATEGORY.get(catégorie)
         if noms is None:
             return None  # pas verifiable depuis les constructions (ressource naturelle)
         source = counts if counts is not None else building_counts
         return any(source.get(n, 0) > 0 for n in noms)
 
-    # meilleure espece possedee par categorie (deployee ou non) -- 1er candidat de
-    # WORK_RECOMMENDATIONS (deja trie par etoiles desc) que le roster possede reellement
+    # meilleure espèce possédée par catégorie (deployee ou non) -- 1er candidat de
+    # WORK_RECOMMENDATIONS (déjà trie par etoiles desc) que le roster possédé réellement
     deployed_base_codenames = set(d["base_codename"] for d in deployed)
-    ecarts = []
-    for categorie, candidats in WORK_RECOMMENDATIONS.items():
+    écarts = []
+    for catégorie, candidats in WORK_RECOMMENDATIONS.items():
         for codename, nom_affiche in candidats:
             variants = [codename, "BOSS_" + codename]
             nombre = sum(species_count.get(v, 0) for v in variants)
             if nombre:
                 stars = WORK_SUITABILITY_FULL.get(codename, {}).get("work_suitability", {}).get(
-                    CATEGORY_FIELD[categorie], 0
+                    CATEGORY_FIELD[catégorie], 0
                 )
-                ecarts.append({
-                    "categorie": categorie,
+                écarts.append({
+                    "categorie": catégorie,
                     "nom": nom_affiche,
                     "codename": codename,
                     "etoiles": stars,
@@ -785,24 +785,24 @@ def collect_data():
                 })
                 break
 
-    # swaps : associer chaque manque (meilleure espece possedee mais pas deployee) au
+    # swaps : associer chaque manque (meilleure espèce possédée mais pas deployee) au
     # poste actuel le plus faible, avec garde-fous :
-    #  - jamais sortir un pal si ca fait tomber une categorie qu'il couvre a 0 fournisseur
-    #    (sauf si le remplacant couvre lui-meme cette categorie)
-    #  - jamais sortir un pal pour un remplacant qui n'est pas strictement meilleur (etoiles)
-    #  - jamais recommander plus d'exemplaires d'une espece que ce qui est reellement possede
-    #  - une categorie confirmee sans batiment dedie (Refroidissement, Petrole) n'est pas
+    #  - jamais sortir un pal si ca fait tomber une catégorie qu'il couvre a 0 fournisseur
+    #    (sauf si le remplaçant couvre lui-même cette catégorie)
+    #  - jamais sortir un pal pour un remplaçant qui n'est pas strictement meilleur (etoiles)
+    #  - jamais recommander plus d'exemplaires d'une espèce que ce qui est réellement possédé
+    #  - une catégorie confirmee sans bâtiment dédié (Refroidissement, Pétrole) n'est pas
     #    proposee en swap immediat -- le gain serait inutilisable tant que rien n'est construit
     manques = sorted(
-        [e for e in ecarts if not e["deja_deploye"] and e["categorie"] not in CATEGORIES_SANS_BATIMENT_DEDIE],
+        [e for e in écarts if not e["deja_deploye"] and e["categorie"] not in CATEGORIES_SANS_BATIMENT_DEDIE],
         key=lambda e: -e["etoiles"],
     )
-    manques_sans_batiment = [e for e in ecarts if not e["deja_deploye"] and e["categorie"] in CATEGORIES_SANS_BATIMENT_DEDIE]
+    manques_sans_batiment = [e for e in écarts if not e["deja_deploye"] and e["categorie"] in CATEGORIES_SANS_BATIMENT_DEDIE]
 
-    # etat simule de la base (copie mutable) pour verifier la couverture au fil des swaps.
-    # "protected" = vient d'etre ajoute pendant cette simulation -> jamais re-sorti dans
-    # le meme lot (sinon un pal fraichement swap-in pour un poste peut se faire recycler
-    # par erreur comme "doublon" pour un autre poste juste apres).
+    # etat simule de la base (copie mutable) pour vérifier la couverture au fil des swaps.
+    # "protected" = vient d'être ajoute pendant cette simulation -> jamais re-sorti dans
+    # le même lot (sinon un pal fraichement swap-in pour un poste peut se faire recycler
+    # par erreur comme "doublon" pour un autre poste juste après).
     sim = [dict(d, protected=False) for d in deployed]
 
     best_level_per_species = {}
@@ -810,8 +810,8 @@ def collect_data():
         cur = best_level_per_species.get(d["base_codename"])
         if cur is None or d["niveau"] > cur["niveau"]:
             best_level_per_species[d["base_codename"]] = d
-    pool_remaining = {}  # combien d'exemplaires d'une espece "manque" restent disponibles a proposer
-    swap_out_info = {}  # idx (poste d'origine) -> justification de sortie/entree
+    pool_remaining = {}  # combien d'exemplaires d'une espèce "manque" restent disponibles a proposer
+    swap_out_info = {}  # idx (poste d'origine) -> justification de sortie/entrée
 
     def coverage_count(pals, field):
         return sum(1 for p in pals if p["profil"].get(field, 0) > 0)
@@ -821,9 +821,9 @@ def collect_data():
         codename = manque["codename"]
         remaining = pool_remaining.get(codename, manque["nombre_possede"])
         if remaining <= 0:
-            continue  # espece deja entierement utilisee sur un autre swap
+            continue  # espèce déjà entierement utilisee sur un autre swap
 
-        # candidats a la sortie (jamais un pal protege), tries : doublons (espece deja en
+        # candidats a la sortie (jamais un pal protege), tries : doublons (espèce déjà en
         # poste ailleurs) d'abord, puis par etoile max croissante (le plus faible en premier)
         ranked = []
         for d in sim:
@@ -837,11 +837,11 @@ def collect_data():
         chosen = None
         for _, _, is_duplicate, best_star, d in ranked:
             if d["base_codename"] == codename:
-                continue  # ne pas sortir la meme espece qu'on veut faire entrer
+                continue  # ne pas sortir la même espèce qu'on veut faire entrer
             if best_star >= manque["etoiles"] and not is_duplicate:
                 continue  # pas un vrai gain -- on ne sacrifie pas un poste au moins aussi bon
             if not is_duplicate:
-                # verifier qu'aucune categorie couverte par d ne tombe a 0 fournisseur
+                # vérifier qu'aucune catégorie couverte par d ne tombe a 0 fournisseur
                 would_break_coverage = False
                 for field, stars in d["profil"].items():
                     if stars > 0 and field != CATEGORY_FIELD[manque["categorie"]] and coverage_count(sim, field) <= 1:
@@ -860,7 +860,7 @@ def collect_data():
         best_star_sortant = max(chosen["profil"].values()) if chosen["profil"] else 0
         swaps.append({
             "sortir": nom_sortant,
-            "sortir_raison": "doublon (meme espece deja en poste)" if is_dup else f"{best_star_sortant}★ max, aucune specialite forte",
+            "sortir_raison": "doublon (même espèce déjà en poste)" if is_dup else f"{best_star_sortant}★ max, aucune specialite forte",
             "entrer": manque["nom"],
             "entrer_etoiles": manque["etoiles"],
             "entrer_categorie": manque["categorie"],
@@ -890,9 +890,9 @@ def collect_data():
         })
         pool_remaining[codename] = remaining - 1
 
-    # meilleur(s) pick(s) possede(s) attribues a un pal DEJA deploye (pour justifier "garder")
+    # meilleur(s) pick(s) possédé(s) attribues a un pal DEJA déployé (pour justifier "garder")
     best_pick_by_codename = {}
-    for e in ecarts:
+    for e in écarts:
         if e["deja_deploye"]:
             best_pick_by_codename.setdefault(e["codename"], []).append((e["categorie"], e["etoiles"]))
 
@@ -912,8 +912,8 @@ def collect_data():
             gain = info["entrer_etoiles"] - info["best_star_sortant"]
             if info["is_dup"]:
                 raison = (
-                    f"{nom} fait doublon : un autre exemplaire identique occupe deja un poste "
-                    f"avec le meme profil ({info['best_star_sortant']}★ max) -- inutile d'en garder deux."
+                    f"{nom} fait doublon : un autre exemplaire identique occupe déjà un poste "
+                    f"avec le même profil ({info['best_star_sortant']}★ max) -- inutile d'en garder deux."
                 )
             else:
                 raison = (
@@ -933,7 +933,7 @@ def collect_data():
             justification = (
                 f"{raison} {info['entrer']} apporte {info['entrer_etoiles']}★ en {info['entrer_categorie']} "
                 f"(+{gain}★ sur ce poste par rapport a {nom}), et {info['entrer_nombre_possede']} exemplaire(s) "
-                f"dorment dans le roster sans etre deployes.{food_txt}"
+                f"dorment dans le roster sans être déployés.{food_txt}"
             )
             postes.append({
                 "nom": nom, "niveau": d["niveau"], "aptitudes": aptitudes, "food": food_sortant,
@@ -944,8 +944,8 @@ def collect_data():
             if picks:
                 cats_txt = ", ".join(f"{c} ({s}★)" for c, s in picks)
                 justification = (
-                    f"{nom} est deja le meilleur choix possede pour {cats_txt} -- aucune autre espece "
-                    f"du roster ne fait mieux sur ce(s) poste(s), donc aucun swap ne l'ameliore."
+                    f"{nom} est déjà le meilleur choix possédé pour {cats_txt} -- aucune autre espèce "
+                    f"du roster ne fait mieux sur ce(s) poste(s), donc aucun swap ne l'améliore."
                 )
             else:
                 best_star = max(d["profil"].values()) if d["profil"] else 0
@@ -953,8 +953,8 @@ def collect_data():
                     max(d["profil"], key=d["profil"].get) if d["profil"] else "", "?"
                 )
                 justification = (
-                    f"Profil generaliste ({best_star}★ max en {top_cat}) -- aucune espece disponible en "
-                    f"reserve ne depasse ce niveau sur ses points forts, il reste donc utile en poste."
+                    f"Profil generaliste ({best_star}★ max en {top_cat}) -- aucune espèce disponible en "
+                    f"réserve ne depasse ce niveau sur ses points forts, il reste donc utile en poste."
                 )
             postes.append({
                 "nom": nom, "niveau": d["niveau"], "aptitudes": aptitudes, "food": food_sortant,
@@ -962,27 +962,27 @@ def collect_data():
             })
 
     batiments_out = []
-    for categorie in CATEGORY_FIELD:
-        dispo = batiment_dispo(categorie)
+    for catégorie in CATEGORY_FIELD:
+        dispo = batiment_dispo(catégorie)
         if dispo is None:
             continue
         batiments_out.append({
-            "categorie": categorie,
+            "categorie": catégorie,
             "dispo": dispo,
-            "batiments": [f"{n} (x{building_counts[n]})" for n in BUILDINGS_BY_CATEGORY.get(categorie, []) if building_counts.get(n, 0) > 0],
+            "batiments": [f"{n} (x{building_counts[n]})" for n in BUILDINGS_BY_CATEGORY.get(catégorie, []) if building_counts.get(n, 0) > 0],
         })
 
-    # meilleur(s) pal(s) par metier : TOUTES les especes possedees a egalite du palier
-    # d'etoiles maximum pour chaque categorie (pas juste la premiere), avec statut deploye/non.
+    # meilleur(s) pal(s) par métier : TOUTES les espèces possédées a egalite du palier
+    # d'etoiles maximum pour chaque catégorie (pas juste la première), avec statut déployé/non.
     meilleur_par_metier = []
-    for categorie, candidats in WORK_RECOMMENDATIONS.items():
+    for catégorie, candidats in WORK_RECOMMENDATIONS.items():
         owned = []
         for codename, nom_affiche in candidats:
             variants = [codename, "BOSS_" + codename]
             nombre = sum(species_count.get(v, 0) for v in variants)
             if nombre:
                 stars = WORK_SUITABILITY_FULL.get(codename, {}).get("work_suitability", {}).get(
-                    CATEGORY_FIELD[categorie], 0
+                    CATEGORY_FIELD[catégorie], 0
                 )
                 owned.append((stars, nom_affiche, codename in deployed_base_codenames))
         if not owned:
@@ -990,14 +990,14 @@ def collect_data():
         max_star = max(o[0] for o in owned)
         tied = [o for o in owned if o[0] == max_star]
         meilleur_par_metier.append({
-            "categorie": categorie,
+            "categorie": catégorie,
             "etoiles": max_star,
             "noms": [(nom, dep) for _, nom, dep in tied[:2]],
             "extra": max(0, len(tied) - 2),
         })
 
-    # Zoom Minage : TOUTES les especes possedees avec une aptitude Minage > 0 (pas juste le
-    # top), avec etoiles/nombre possede/deploye/consommation de nourriture -- pour choisir
+    # Zoom Minage : TOUTES les espèces possédées avec une aptitude Minage > 0 (pas juste le
+    # top), avec etoiles/nombre possédé/déployé/consommation de nourriture -- pour choisir
     # librement combien de mineurs dedier, pas juste le meilleur candidat unique.
     zoom_minage = []
     for codename, nom_affiche in WORK_RECOMMENDATIONS.get("Minage", []):
@@ -1016,7 +1016,7 @@ def collect_data():
         })
     zoom_minage.sort(key=lambda z: (-z["etoiles"], z["food"] if z["food"] is not None else 999))
 
-    # especes possedees sans aucune donnee d'aptitude connue (variantes/DLC absents du DataTable)
+    # espèces possédées sans aucune donnée d'aptitude connue (variantes/DLC absents du DataTable)
     especes_non_couvertes = sum(
         1 for cn in species_count if resolve_species_profile(cn)[1] is None
     )
@@ -1036,7 +1036,7 @@ def collect_data():
         eggs_named = []
         for sp in eggs:
             if not sp:
-                eggs_named.append("espece indeterminee")
+                eggs_named.append("espèce indeterminee")
                 continue
             base_cn, profil = resolve_species_profile(sp)
             eggs_named.append(profil.get("display_name", sp) if profil else sp)
@@ -1069,14 +1069,14 @@ def collect_data():
         "zoom_minage": zoom_minage,
     }
 
-    # --- CUISINE (recettes cuisinables avec les cultures + stations reellement possedees) ---
+    # --- CUISINE (recettes cuisinables avec les cultures + stations réellement possédées) ---
     # Recettes/ingredients/effets : source communautaire (switchbladegaming.com), pas le
     # DataTable brut du jeu -- moins rigoureux que le reste du dashboard, note dans l'UI.
     cultures_dispo = set()
     for crop_building, ingredient in CROP_TO_INGREDIENT.items():
         if building_counts.get(crop_building, 0) > 0:
             cultures_dispo.add(ingredient)
-    # La Farine necessite en plus un Moulin (FlourMill) pour transformer le ble
+    # La Farine nécessite en plus un Moulin (FlourMill) pour transformer le ble
     if "Flour" in cultures_dispo and building_counts.get("FlourMill", 0) == 0:
         cultures_dispo.discard("Flour")
 
@@ -1106,8 +1106,8 @@ def collect_data():
 
     recettes_out.sort(key=lambda r: (not r["prete"], r["station_status"] != "ok", r["effet"] is None, -r["san"]))
 
-    # Meilleur cuisinier possede : le niveau d'aptitude Allumage (Kindling) du Pal assigne
-    # accelere reellement la cuisson (mecanique confirmee : palworld.wiki.gg/wiki/Kindling,
+    # Meilleur cuisinier possédé : le niveau d'aptitude Allumage (Kindling) du Pal assigne
+    # accelere réellement la cuisson (mecanique confirmee : palworld.wiki.gg/wiki/Kindling,
     # thepalprofessor.com) -- combine avec le palier de la station (Electric Kitchen la
     # plus rapide des stations confirmees ici).
     meilleur_cuisinier = None
@@ -1171,33 +1171,33 @@ def collect_data():
     if bta["nb_a_ameliorer"]:
         tips.append(
             f"&#128295; <b>{bta['nb_a_ameliorer']}</b> poste(s) de travail sur {bta['nb_emplacements']} peuvent "
-            f"etre ameliores avec de meilleurs pals deja dans la reserve. "
+            f"être améliorés avec de meilleurs pals déjà dans la réserve. "
             f"<a class='tip-link' onclick=\"goToTab('tab-work')\">Voir &#8594;</a>"
         )
     if bta["categories_batiment_manquant"]:
         tips.append(
-            f"&#127959;&#65039; Batiment(s) manquant(s) a la base : <b>{', '.join(bta['categories_batiment_manquant'])}</b> "
+            f"&#127959;&#65039; Bâtiment(s) manquant(s) a la base : <b>{', '.join(bta['categories_batiment_manquant'])}</b> "
             f"-- des pals adaptes attendent sans poste. <a class='tip-link' onclick=\"goToTab('tab-work')\">Voir &#8594;</a>"
         )
     monde = data["monde"]
-    sans_proprio = data["pals"]["repartition"].get("Sans proprietaire", 0)
+    sans_proprio = data["pals"]["repartition"].get("Sans propriétaire", 0)
     if sans_proprio:
         tips.append(
-            f"&#128062; <b>{sans_proprio}</b> pals sans proprietaire trainent dans la reserve. "
+            f"&#128062; <b>{sans_proprio}</b> pals sans propriétaire trainent dans la réserve. "
             f"<a class='tip-link' onclick=\"goToTab('tab-pals')\">Voir &#8594;</a>"
         )
     if bta["especes_non_couvertes"]:
         tips.append(
-            f"&#128202; <b>{bta['especes_non_couvertes']}</b> especes possedees ne sont pas encore couvertes "
-            f"par les recommandations de travail (variantes/DLC recentes absentes du DataTable). "
+            f"&#128202; <b>{bta['especes_non_couvertes']}</b> espèces possédées ne sont pas encore couvertes "
+            f"par les recommandations de travail (variantes/DLC récentes absentes du DataTable). "
             f"<a class='tip-link' onclick=\"goToTab('tab-work')\">Voir &#8594;</a>"
         )
     combinaisons = data["elevage"]["combinaisons"]
     if combinaisons:
         top = combinaisons[0]
         tips.append(
-            f"&#129370; Elevage : combinez <b>{top['parentA']}</b> + <b>{top['parentB']}</b> pour obtenir "
-            f"<b>{top['nom']}</b>, une espece qui vous manque. <a class='tip-link' onclick=\"goToTab('tab-breeding')\">Voir &#8594;</a>"
+            f"&#129370; Élevage : combinez <b>{top['parentA']}</b> + <b>{top['parentB']}</b> pour obtenir "
+            f"<b>{top['nom']}</b>, une espèce qui vous manque. <a class='tip-link' onclick=\"goToTab('tab-breeding')\">Voir &#8594;</a>"
         )
     recettes_pretes = [r for r in data["cuisine"]["recettes"] if r["prete"]]
     if recettes_pretes:
@@ -1212,8 +1212,8 @@ def collect_data():
         if p["pct"] < 95:
             manquantes = len(p["manquantes"])
             tips.append(
-                f"&#128220; Palpedia de <b>{esc(p['joueur'])}</b> : {p['pct']}% ({p['possedees']}/{p['total']}) -- "
-                f"{manquantes} espece(s) encore a capturer. <a class='tip-link' onclick=\"goToTab('tab-palpedia')\">Voir &#8594;</a>"
+                f"&#128220; Palpédia de <b>{esc(p['joueur'])}</b> : {p['pct']}% ({p['possedees']}/{p['total']}) -- "
+                f"{manquantes} espèce(s) encore a capturer. <a class='tip-link' onclick=\"goToTab('tab-palpedia')\">Voir &#8594;</a>"
             )
     data["tips"] = tips
 
@@ -1234,16 +1234,16 @@ def esc(s):
 BOOST_TAGS = [
     ("vitesse", "vitesse de travail"),
     ("attaque", "attaque"),
-    ("defense", "defense"),
+    ("defense", "défense"),
     ("faim", "faim ralentie"),
-    ("sanite", "sanite ralentie"),
-    ("epique", "qualite epique"),
-    ("elevage", "elevage uniquement"),
+    ("sanite", "san ralentie"),
+    ("epique", "qualité épique"),
+    ("elevage", "élevage uniquement"),
 ]
 
 
 def categorize_effect(effet):
-    """Return the list of boost-type tags (slugs) present in a recipe's effect text."""
+    """Return the list of boost-type tags (slugs) présent in a recipe's effect text."""
     if not effet:
         return ["aucun"]
     low = effet.lower()
@@ -1256,7 +1256,7 @@ def svg_line_chart(series_list, width=700, height=160, colors=None):
     colors = colors or ["#3498db", "#9b59b6", "#f1c40f", "#2ecc71", "#e67e22", "#e74c3c"]
     all_values = [v for _, pts in series_list for _, v in pts]
     if len(all_values) < 2:
-        return "<p class='muted'>Pas encore assez de donnees pour un graphique (revenez dans quelques heures).</p>"
+        return "<p class='muted'>Pas encore assez de données pour un graphique (revenez dans quelques heures).</p>"
     vmin, vmax = min(all_values), max(all_values)
     if vmin == vmax:
         vmin, vmax = vmin - 1, vmax + 1
@@ -1295,7 +1295,7 @@ def render_html(data):
     for j in data["joueurs"]:
         stats_rows = "".join(
             f"<tr><td>{esc(n)}</td><td>+{p}</td></tr>" for n, p in j.get("stats", [])
-        ) or "<tr><td colspan='2' class='muted'>aucun point depense</td></tr>"
+        ) or "<tr><td colspan='2' class='muted'>aucun point dépense</td></tr>"
 
         if j.get("derniere_connexion_jours") is not None:
             da = j["derniere_connexion_jours"]
@@ -1317,7 +1317,7 @@ def render_html(data):
             <span>&#128337; {conn_txt}</span>
             <span>&#127918; {esc(j.get('plateforme','?'))}</span>
             <span>&#127775; {j.get('points_tech_boss','?')} pts boss</span>
-            <span>&#9989; {j.get('quetes_completees','?')} quetes</span>
+            <span>&#9989; {j.get('quetes_completees','?')} quêtes</span>
             <span>&#128736; {j.get('recettes_debloquees','?')} recettes</span>
             <span>&#9876;&#65039; {j.get('camps_conquis','?')} camps conquis (total)</span>
           </div>
@@ -1351,14 +1351,14 @@ def render_html(data):
     for membre in equipe_terrain.get("membres", []):
         if membre["role"] == "monture":
             raison = (
-                f"Monture la plus rapide possedee (vitesse {membre['ride_sprint_speed']:.0f}) -- "
-                f"{esc(membre['partner_skill'])}" if membre.get("partner_skill") else "Monture la plus rapide possedee."
+                f"Monture la plus rapide possédée (vitesse {membre['ride_sprint_speed']:.0f}) -- "
+                f"{esc(membre['partner_skill'])}" if membre.get("partner_skill") else "Monture la plus rapide possédée."
             )
             badge = "&#127943; MONTURE"
         else:
             raison = (
-                f"Puissance brute {membre['power']} (melee+distance) parmi les plus fortes possedees, "
-                f"element {esc('/'.join(membre['elements']))}."
+                f"Puissance brute {membre['power']} (mêlée+distance) parmi les plus fortes possédées, "
+                f"élément {esc('/'.join(membre['elements']))}."
             )
             badge = "&#9876;&#65039; COMBAT"
         passifs_txt = (
@@ -1373,9 +1373,9 @@ def render_html(data):
 
     elements_non_couverts = equipe_terrain.get("elements_non_couverts", [])
     elements_txt = (
-        f"<p class='muted' style='font-size:0.82rem'>&#9888;&#65039; Elements non couverts par le roster possede : {esc(', '.join(elements_non_couverts))}</p>"
+        f"<p class='muted' style='font-size:0.82rem'>&#9888;&#65039; Éléments non couverts par le roster possédé : {esc(', '.join(elements_non_couverts))}</p>"
         if elements_non_couverts else
-        "<p class='muted' style='font-size:0.82rem'>&#9989; Tous les elements du jeu sont couverts par le roster possede.</p>"
+        "<p class='muted' style='font-size:0.82rem'>&#9989; Tous les éléments du jeu sont couverts par le roster possédé.</p>"
     )
 
     travail_base = ""
@@ -1404,13 +1404,13 @@ def render_html(data):
         food_s, food_e = s.get("food_sortant"), s.get("food_entrant")
         if food_s is not None and food_e is not None:
             delta = food_e - food_s
-            food_swap_txt = f", {'+' if delta>0 else ''}{delta} nourriture/ration" if delta else ", meme conso. nourriture"
+            food_swap_txt = f", {'+' if delta>0 else ''}{delta} nourriture/ration" if delta else ", même conso. nourriture"
         else:
             food_swap_txt = ""
         swaps_rows += f"""<tr>
           <td>&#10060; {esc(s['sortir'])}<div class='muted' style='font-size:0.75rem'>{esc(s['sortir_raison'])}</div></td>
           <td>&#8594;</td>
-          <td>&#9989; {esc(s['entrer'])}<div class='muted' style='font-size:0.75rem'>{esc(s['entrer_categorie'])} {s['entrer_etoiles']}&#9733; -- x{s['entrer_nombre_possede']} possede(s), non deploye{food_swap_txt}</div></td>
+          <td>&#9989; {esc(s['entrer'])}<div class='muted' style='font-size:0.75rem'>{esc(s['entrer_categorie'])} {s['entrer_etoiles']}&#9733; -- x{s['entrer_nombre_possede']} possédé(s), non déployé{food_swap_txt}</div></td>
         </tr>"""
 
     batiments_rows = ""
@@ -1423,11 +1423,11 @@ def render_html(data):
     for e in bta.get("manques_sans_batiment", []):
         manques_sans_batiment_txt += (
             f"<li><b>{esc(e['categorie'])}</b> : {esc(e['nom'])} ({e['etoiles']}&#9733;, "
-            f"x{e['nombre_possede']} possede(s)) -- inutile de le deployer tant qu'aucune structure "
+            f"x{e['nombre_possede']} possédé(s)) -- inutile de le deployer tant qu'aucune structure "
             f"correspondante n'est construite</li>"
         )
 
-    # "A faire" : swaps consolides (N x meme sortant -> meme entrant regroupes)
+    # "A faire" : swaps consolides (N x même sortant -> même entrant regroupes)
     swap_groups = {}
     swap_order = []
     for s in bta.get("swaps", []):
@@ -1447,7 +1447,7 @@ def render_html(data):
         prefix = f"{count}&times; " if count > 1 else ""
         if food_s is not None and food_e is not None:
             delta = food_e - food_s
-            food_txt = f", {'+' if delta>0 else ''}{delta} nourriture/ration" if delta else ", meme conso. nourriture"
+            food_txt = f", {'+' if delta>0 else ''}{delta} nourriture/ration" if delta else ", même conso. nourriture"
         else:
             food_txt = ""
         advice_swaps += (
@@ -1459,7 +1459,7 @@ def render_html(data):
     deja_optimaux_noms = sorted(set(p["nom"] for p in bta.get("postes", []) if p["decision"] == "garder"))
     deja_optimaux_txt = ", ".join(f"<b>{esc(n)}</b>" for n in deja_optimaux_noms)
 
-    # Recap compact "ce qu'on a" : un poste regroupe par (espece, aptitudes, decision) au lieu
+    # Recap compact "ce qu'on a" : un poste regroupe par (espèce, aptitudes, decision) au lieu
     # d'une carte + un paragraphe par exemplaire individuel -- vue courte, pas de doublons verbeux.
     recap_groupes = {}
     recap_order = []
@@ -1475,10 +1475,10 @@ def render_html(data):
 
     recap_rows = ""
     for key in recap_order:
-        nom, apt_txt, decision, remplacant = key
+        nom, apt_txt, decision, remplaçant = key
         count = recap_groupes[key]
         prefix = f"{count}&times; " if count > 1 else ""
-        badge = "<span style='color:#2ecc71'>&#9989;</span>" if decision == "garder" else f"<span style='color:#e74c3c'>&#128260; &#8594; {esc(remplacant)}</span>"
+        badge = "<span style='color:#2ecc71'>&#9989;</span>" if decision == "garder" else f"<span style='color:#e74c3c'>&#128260; &#8594; {esc(remplaçant)}</span>"
         recap_rows += f"<li>{prefix}<b>{esc(nom)}</b> -- {apt_txt} &nbsp; {badge}</li>"
 
     bases_recap_txt = " &middot; ".join(
@@ -1513,7 +1513,7 @@ def render_html(data):
     manques_inline = ""
     if bta.get("manques_sans_batiment"):
         parts = [f"{e['categorie']} ({e['nom']} {e['etoiles']}★, x{e['nombre_possede']})" for e in bta["manques_sans_batiment"]]
-        manques_inline = f"<p style='margin:6px 0'><span class='muted'>En reserve mais inutiles sans structure : {esc(', '.join(parts))}</span></p>"
+        manques_inline = f"<p style='margin:6px 0'><span class='muted'>En réserve mais inutiles sans structure : {esc(', '.join(parts))}</span></p>"
 
     tips_rows = "".join(f"<li>{t}</li>" for t in data.get("tips", []))
     qn = data.get("quicknav", {})
@@ -1539,13 +1539,13 @@ def render_html(data):
 
     zoom_minage_rows = ""
     for z in bta.get("zoom_minage", []):
-        statut = f"<span style='color:#2ecc71'>&#9989; {z['nb_deployes']} deploye(s)</span>" if z["nb_deployes"] else "<span class='muted'>en reserve, pas deploye</span>"
+        statut = f"<span style='color:#2ecc71'>&#9989; {z['nb_deployes']} déployé(s)</span>" if z["nb_deployes"] else "<span class='muted'>en réserve, pas déployé</span>"
         food_txt = f"&#127831; {z['food']}/ration" if z["food"] is not None else "conso. inconnue"
         td_style = "padding:7px 10px; border-bottom:1px solid var(--border)"
         zoom_minage_rows += f"""<tr>
           <td style="{td_style}"><b>{esc(z['nom'])}</b></td>
           <td style="{td_style}">{z['etoiles']}&#9733;</td>
-          <td style="{td_style}">x{z['nombre_possede']} possede(s)</td>
+          <td style="{td_style}">x{z['nombre_possede']} possédé(s)</td>
           <td style="{td_style}">{food_txt}</td>
           <td style="{td_style}">{statut}</td>
         </tr>"""
@@ -1564,9 +1564,9 @@ def render_html(data):
         if len(history) >= 2 else "historique en cours de constitution"
     )
 
-    elevage = data.get("elevage", {})
+    élevage = data.get("elevage", {})
     breed_cards = ""
-    for combo in elevage.get("combinaisons", []):
+    for combo in élevage.get("combinaisons", []):
         breed_cards += f"""<div class="breed-card" data-nom="{esc(combo['nom'])}" data-rang="{combo['target_rank']}" data-ecart="{combo['dist']}">
           <div class="breed-egg">&#129370;</div>
           <div class="breed-result">{esc(combo['nom'])}</div>
@@ -1581,9 +1581,9 @@ def render_html(data):
     cuisine = data.get("cuisine", {})
     BOOST_LABELS = {
         "vitesse": "&#9889; Vitesse de travail", "attaque": "&#9876;&#65039; Attaque",
-        "defense": "&#128737;&#65039; Defense", "faim": "&#127831; Faim ralentie",
-        "sanite": "&#128516; Sanite ralentie", "epique": "&#127775; Epique",
-        "elevage": "&#129370; Elevage", "aucun": "&#10062; Aucun effet",
+        "defense": "&#128737;&#65039; Défense", "faim": "&#127831; Faim ralentie",
+        "sanite": "&#128516; SAN ralentie", "epique": "&#127775; Épique",
+        "elevage": "&#129370; Élevage", "aucun": "&#10062; Aucun effet",
     }
     recipe_cards = ""
     boosts_present = set()
@@ -1603,7 +1603,7 @@ def render_html(data):
         card_cls = "recipe-card" if r["prete"] else "recipe-card blocked"
         blocage = ""
         if r["station_status"] == "inconnue":
-            blocage = f"<div style='font-size:0.78rem; margin-top:8px; color:var(--orange)'>&#10067; station {esc(r['station'])} non trackee -- a verifier en jeu</div>"
+            blocage = f"<div style='font-size:0.78rem; margin-top:8px; color:var(--orange)'>&#10067; station {esc(r['station'])} non trackee -- a vérifier en jeu</div>"
         elif r["station_status"] == "manquante":
             blocage = f"<div class='muted' style='font-size:0.78rem; margin-top:8px'>&#10060; station {esc(r['station'])} non construite</div>"
         elif r["ingredients_manquants_culture"]:
@@ -1629,11 +1629,11 @@ def render_html(data):
 
     mc = cuisine.get("meilleur_cuisinier")
     if mc:
-        statut_mc = "<span style='color:#2ecc71'>&#9989; deja dans l'equipe de la base</span>" if mc["deploye"] else "<span class='muted'>en reserve, pas encore affecte</span>"
+        statut_mc = "<span style='color:#2ecc71'>&#9989; déjà dans l'equipe de la base</span>" if mc["deploye"] else "<span class='muted'>en réserve, pas encore affecte</span>"
         meilleur_cuisinier_txt = (
-            f"<p class='muted' style='font-size:0.85rem'>&#128293; Meilleur cuisinier possede : "
-            f"<b>{esc(mc['nom'])}</b> ({mc['etoiles']}&#9733; Allumage, x{mc['nombre_possede']} possede(s)) -- "
-            f"un fort Allumage accelere reellement la cuisson. {statut_mc}</p>"
+            f"<p class='muted' style='font-size:0.85rem'>&#128293; Meilleur cuisinier possédé : "
+            f"<b>{esc(mc['nom'])}</b> ({mc['etoiles']}&#9733; Allumage, x{mc['nombre_possede']} possédé(s)) -- "
+            f"un fort Allumage accelere réellement la cuisson. {statut_mc}</p>"
         )
     else:
         meilleur_cuisinier_txt = ""
@@ -1662,14 +1662,14 @@ def render_html(data):
         )
         palpedia_panels_html += f"""<div class="palpedia-player-panel" data-player="{slug}" style="{panel_style}">
           <div class="palpedia-bar-track"><div class="palpedia-bar-fill" style="width:{p['pct']}%"></div></div>
-          <div class="palpedia-count">{p['possedees']} / {p['total']} especes possedees -- {len(p['manquantes'])} a capturer (clique sur une carte pour voir ses stats)</div>
+          <div class="palpedia-count">{p['possedees']} / {p['total']} espèces possédées -- {len(p['manquantes'])} a capturer (clique sur une carte pour voir ses stats)</div>
           <div class="filter-row" style="margin-top:14px">
             <span class="muted" style="font-size:0.8rem; align-self:center">Cartes par page :</span>
             {page_size_buttons}
           </div>
-          <div class="palpedia-card-grid" id="palpedia-grid-{slug}">{pal_cards_html or "<p class='muted'>Aucune espece manquante -- collection complete !</p>"}</div>
+          <div class="palpedia-card-grid" id="palpedia-grid-{slug}">{pal_cards_html or "<p class='muted'>Aucune espèce manquante -- collection complète !</p>"}</div>
           <div class="pagination-row">
-            <button class="filter-btn" onclick="palpediaPage('{slug}', -1)">&#8592; Precedent</button>
+            <button class="filter-btn" onclick="palpediaPage('{slug}', -1)">&#8592; Précédent</button>
             <span id="palpedia-pageinfo-{slug}" class="muted" style="font-size:0.82rem"></span>
             <button class="filter-btn" onclick="palpediaPage('{slug}', 1)">Suivant &#8594;</button>
           </div>
@@ -1928,7 +1928,7 @@ def render_html(data):
         <span class="brand-mark">&#127991;&#65039;</span>
         <div>
           <h1>Palworld -- Tableau de bord</h1>
-          <p class="tagline">Suivi communautaire en direct de notre monde : bases, Pals, elevage, cuisine et progression des joueurs.</p>
+          <p class="tagline">Suivi communautaire en direct de notre monde : bases, Pals, élevage, cuisine et progression des joueurs.</p>
         </div>
       </div>
       <div class="updated-pill"><span class="dot"></span> Mis a jour {esc(data['genere_le'])}</div>
@@ -1942,9 +1942,9 @@ def render_html(data):
     <button class="tab-btn" data-tab="tab-pals" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#128062; Pals</button>
     <button class="tab-btn" data-tab="tab-work" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128736; Travail a la base</button>
     <button class="tab-btn" data-tab="tab-history" style="--tab-accent: var(--green)" onclick="showTab(this)">&#128200; Historique</button>
-    <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Elevage</button>
+    <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Élevage</button>
     <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
-    <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpedia</button>
+    <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
   </nav>
 
   <div id="tab-overview" class="tab-panel active">
@@ -1955,8 +1955,8 @@ def render_html(data):
           <div class="kpi"><span class="label">Jours ecoules</span><span class="value">{m['jours']}</span></div>
           <div class="kpi"><span class="label">Bases</span><span class="value">{m['bases']}</span></div>
           <div class="kpi"><span class="label">Raids en cours</span><span class="value">{m['raids_actifs']}/{m['raids_total']}</span></div>
-          <div class="kpi"><span class="label">Camps repeuples (transitoire)</span><span class="value">{m['camps_total'] - m['camps_nettoyes']}/{m['camps_total']}</span></div>
-          <div class="kpi"><span class="label">Reperes donjon</span><span class="value">{m['donjons']}</span></div>
+          <div class="kpi"><span class="label">Camps repeuplés (transitoire)</span><span class="value">{m['camps_total'] - m['camps_nettoyes']}/{m['camps_total']}</span></div>
+          <div class="kpi"><span class="label">Repères donjon</span><span class="value">{m['donjons']}</span></div>
         </div>
       </div>
 
@@ -1982,7 +1982,7 @@ def render_html(data):
       <div class="quicknav-card" onclick="goToTab('tab-pals')">
         <span class="qn-icon">&#128062;</span>
         <span class="qn-body"><span class="qn-title">Pals</span>
-        <span class="qn-stat">{qn.get('pals_total', 0)} pals &middot; {qn.get('pals_especes', 0)} especes</span></span>
+        <span class="qn-stat">{qn.get('pals_total', 0)} pals &middot; {qn.get('pals_especes', 0)} espèces</span></span>
         <span class="qn-arrow">&#8594;</span>
       </div>
       <div class="quicknav-card" onclick="goToTab('tab-work')">
@@ -1994,7 +1994,7 @@ def render_html(data):
     </div>
 
     <div class="card tips">
-      <h2>&#128161; Pistes d'amelioration</h2>
+      <h2>&#128161; Pistes d'amélioration</h2>
       <ul class="advice-list">{tips_rows or "<li class='muted'>Rien a signaler pour le moment.</li>"}</ul>
     </div>
   </div>
@@ -2011,9 +2011,9 @@ def render_html(data):
         <h2>&#128062; Vue d'ensemble</h2>
         <div class="kpi-grid">
           <div class="kpi"><span class="label">Total</span><span class="value">{pals['total']}</span></div>
-          <div class="kpi"><span class="label">Especes</span><span class="value">{pals['especes']}</span></div>
+          <div class="kpi"><span class="label">Espèces</span><span class="value">{pals['especes']}</span></div>
         </div>
-        <h3 style="margin-top:18px">Repartition par proprietaire</h3>
+        <h3 style="margin-top:18px">Répartition par propriétaire</h3>
         <ul>{owner_rows}</ul>
       </div>
 
@@ -2027,18 +2027,18 @@ def render_html(data):
 
       <div class="card" style="border-left-color: var(--gold); grid-column: 1 / -1">
         <h2>&#128142; Top IV &amp; Passifs</h2>
-        <p class="muted" style="margin-top:-6px">Les 10 Pals possedes avec les meilleures IV (PV/Attaque/Defense), et leurs passifs reels.</p>
+        <p class="muted" style="margin-top:-6px">Les 10 Pals possédés avec les meilleures IV (PV/Attaque/Defense), et leurs passifs reels.</p>
         <ul>{top_iv}</ul>
       </div>
 
       <div class="card" style="border-left-color: var(--red); grid-column: 1 / -1">
         <h2>&#9876;&#65039; Equipe de terrain recommandee</h2>
         <p class="muted" style="margin-top:-6px">
-          A emmener en exploration/combat (distinct du travail a la base) : stats de combat reelles
-          (attaque, PV, defense) du DataTable, croisees avec le meilleur exemplaire possede de chaque
-          espece (niveau + IV), plus une monture rapide. Recalcule a chaque generation.
+          A emmener en exploration/combat (distinct du travail a la base) : stats de combat réelles
+          (attaque, PV, defense) du DataTable, croisees avec le meilleur exemplaire possédé de chaque
+          espèce (niveau + IV), plus une monture rapide. Recalcule a chaque génération.
         </p>
-        {equipe_rows or "<p class='muted'>Aucune donnee de combat exploitable pour l'instant.</p>"}
+        {equipe_rows or "<p class='muted'>Aucune donnée de combat exploitable pour l'instant.</p>"}
         {elements_txt}
       </div>
     </div>
@@ -2052,8 +2052,8 @@ def render_html(data):
         <div class="kpi-grid" style="margin-bottom:16px">
           <div class="kpi"><span class="label">Postes</span><span class="value">{bta.get('nb_emplacements', 0)}</span></div>
           <div class="kpi"><span class="label">Optimaux</span><span class="value" style="color:var(--green)">{bta.get('nb_optimaux', 0)}</span></div>
-          <div class="kpi"><span class="label">A ameliorer</span><span class="value" style="color:#e74c3c">{bta.get('nb_a_ameliorer', 0)}</span></div>
-          <div class="kpi"><span class="label">Batiments manquants</span><span class="value">{len(bta.get('categories_batiment_manquant', []))}</span></div>
+          <div class="kpi"><span class="label">A améliorer</span><span class="value" style="color:#e74c3c">{bta.get('nb_a_ameliorer', 0)}</span></div>
+          <div class="kpi"><span class="label">Bâtiments manquants</span><span class="value">{len(bta.get('categories_batiment_manquant', []))}</span></div>
         </div>
 
         <h3>&#128203; Ce qu'on a</h3>
@@ -2062,13 +2062,13 @@ def render_html(data):
         {manques_inline}
 
         <div class="subhead">
-          <h3>&#128161; Comment ameliorer</h3>
-          <ul class="advice-list">{advice_swaps or "<li class='muted'>Rien a changer -- les postes actuels couvrent deja les meilleures especes possedees.</li>"}</ul>
+          <h3>&#128161; Comment améliorer</h3>
+          <ul class="advice-list">{advice_swaps or "<li class='muted'>Rien a changer -- les postes actuels couvrent déjà les meilleures espèces possédées.</li>"}</ul>
         </div>
 
         <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
           Etoiles 0-4 du DataTable du jeu (<code>blaynem/paldex</code> + paldb.cc). {bta.get('especes_non_couvertes', 0)}
-          especes possedees non couvertes (variantes/DLC recentes), exclues plutot que devinees.
+          espèces possédées non couvertes (variantes/DLC récentes), exclues plutot que devinees.
         </p>
       </div>
     </div>
@@ -2079,7 +2079,7 @@ def render_html(data):
       <div class="card basecard">
         <h2>&#128200; Evolution dans le temps</h2>
         <p class="muted" style="margin-top:-6px">
-          Un point ajoute a chaque generation (toutes les heures) -- {history_range_txt}.
+          Un point ajoute a chaque génération (toutes les heures) -- {history_range_txt}.
         </p>
         <h3>Pals total</h3>
         {chart_pals}
@@ -2092,23 +2092,23 @@ def render_html(data):
   <div id="tab-breeding" class="tab-panel">
     <div class="grid">
       <div class="card" style="border-left-color: var(--gold); grid-column: 1 / -1;">
-        <h2>&#129370; Elevage -- nouvelles especes possibles</h2>
+        <h2>&#129370; Élevage -- nouvelles espèces possibles</h2>
         <p class="muted" style="margin-top:-6px">
           Calcule via la vraie formule de reproduction du jeu (Combi Rank : le rang de l'oeuf =
-          (rang parent A + rang parent B + 1) &#247; 2, arrondi a l'espece dont le rang reel est
-          le plus proche) -- {elevage.get('nb_especes_possedees_avec_rang', 0)} especes possedees
+          (rang parent A + rang parent B + 1) &#247; 2, arrondi a l'espèce dont le rang réel est
+          le plus proche) -- {élevage.get('nb_especes_possedees_avec_rang', 0)} espèces possédées
           avec un rang combi connu, combinees deux a deux pour trouver ce qui manque a la collection.
-          Recalcule a chaque generation.
+          Recalcule a chaque génération.
         </p>
         <div class="filter-row">
           <button class="filter-btn active" data-sort="ecart" onclick="sortBreeding(this)">Confiance (par defaut)</button>
-          <button class="filter-btn" data-sort="rang" onclick="sortBreeding(this)">Rarete (rang combi)</button>
+          <button class="filter-btn" data-sort="rang" onclick="sortBreeding(this)">Rareté (rang combi)</button>
           <button class="filter-btn" data-sort="nom" onclick="sortBreeding(this)">Alphabetique</button>
         </div>
         <div class="breed-grid" id="breed-grid">{breed_cards or "<p class='muted'>Aucune nouvelle combinaison trouvee pour l'instant.</p>"}</div>
         <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
-          Deux reserves : (1) le jeu compte ~28 paires speciales qui outrepassent cette formule
-          generale avec un resultat unique -- non modelisees ici, a verifier en jeu avant un elevage
+          Deux réserves : (1) le jeu compte ~28 paires speciales qui outrepassent cette formule
+          generale avec un résultat unique -- non modelisees ici, a vérifier en jeu avant un élevage
           long ; (2) il faut un male et une femelle parmi les deux parents indiques (peu importe lequel).
         </p>
       </div>
@@ -2120,13 +2120,13 @@ def render_html(data):
       <div class="card" style="border-left-color: var(--green); grid-column: 1 / -1;">
         <h2>&#127859; Cuisine -- meilleurs plats a preparer</h2>
         <p class="muted" style="margin-top:-6px">
-          Croise les cultures et stations de cuisine reellement construites a la base avec une
+          Croise les cultures et stations de cuisine réellement construites a la base avec une
           liste de recettes (ingredients/effets sources d'un guide communautaire, pas du DataTable
           brut du jeu comme le reste du dashboard -- a prendre avec un peu plus de recul).
-          Recalcule a chaque generation.
+          Recalcule a chaque génération.
         </p>
         <div class="kpi-grid" style="margin-bottom:6px">
-          <div class="kpi"><span class="label">Pretes a cuisiner</span><span class="value" style="color:var(--green)">{nb_prete}</span></div>
+          <div class="kpi"><span class="label">Prêtes a cuisiner</span><span class="value" style="color:var(--green)">{nb_prete}</span></div>
           <div class="kpi"><span class="label">Cultures dispo</span><span class="value" style="font-size:0.95rem">{esc(cultures_txt)}</span></div>
           <div class="kpi"><span class="label">Stations dispo</span><span class="value" style="font-size:0.95rem">{esc(stations_txt)}</span></div>
         </div>
@@ -2136,7 +2136,7 @@ def render_html(data):
         <p class="muted" id="recipe-empty-msg" style="display:none">Aucun plat ne correspond a ce filtre.</p>
         <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
           Les ingredients en <span style="color:var(--orange)">orange</span> (viande, oeuf, lait...) ne sont
-          pas verifies automatiquement (contenu des coffres illisible depuis la sauvegarde) -- a confirmer
+          pas vérifiés automatiquement (contenu des coffres illisible depuis la sauvegarde) -- a confirmer
           en jeu. Ceux en <span style="color:#e74c3c">rouge</span> manquent carrement (culture pas plantee).
         </p>
       </div>
@@ -2146,12 +2146,12 @@ def render_html(data):
   <div id="tab-palpedia" class="tab-panel">
     <div class="grid">
       <div class="card" style="border-left-color: var(--purple); grid-column: 1 / -1;">
-        <h2>&#128220; Palpedia -- completion par joueur</h2>
+        <h2>&#128220; Palpédia -- complétion par joueur</h2>
         <p class="muted" style="margin-top:-6px">
-          Base sur la propriete ACTUELLE des Pals (pas un historique de capture) contre
-          {len(PALPEDIA_UNIVERSE)} especes reelles reconnues (PNJ uniques de tour et contenu
+          Base sur la propriété ACTUELLE des Pals (pas un historique de capture) contre
+          {len(PALPEDIA_UNIVERSE)} espèces réelles reconnues (PNJ uniques de tour et contenu
           non disponible exclus). Si un Pal a change de main ou dort dans un coffre partage,
-          ca peut sous-compter. Recalcule a chaque generation.
+          ca peut sous-compter. Recalcule a chaque génération.
         </p>
         <div class="filter-row" id="palpedia-player-tabs">{palpedia_tabs_html or "<p class='muted'>Aucun joueur avec des Pals identifies.</p>"}</div>
         {palpedia_panels_html}
@@ -2159,7 +2159,7 @@ def render_html(data):
     </div>
   </div>
 
-  <footer>Genere automatiquement depuis la sauvegarde du serveur Palworld -- refresh periodique</footer>
+  <footer>Généré automatiquement depuis la sauvegarde du serveur Palworld -- refresh periodique</footer>
   </div>
 
   <div class="pal-modal-overlay" id="pal-modal-overlay" onclick="if (event.target === this) closePalModal()">
@@ -2243,12 +2243,12 @@ def render_html(data):
       }}).join(' &middot; ');
       var stats = '';
       if (d.hp != null) stats += '<div><span class="stat-label">PV</span> <span class="stat-value">' + d.hp + '</span></div>';
-      if (d.atk != null) stats += '<div><span class="stat-label">Attaque (melee)</span> <span class="stat-value">' + d.atk + '</span></div>';
+      if (d.atk != null) stats += '<div><span class="stat-label">Attaque (mêlée)</span> <span class="stat-value">' + d.atk + '</span></div>';
       if (d.atk_tir != null) stats += '<div><span class="stat-label">Attaque (tir)</span> <span class="stat-value">' + d.atk_tir + '</span></div>';
       if (d['def'] != null) stats += '<div><span class="stat-label">Defense</span> <span class="stat-value">' + d['def'] + '</span></div>';
       if (d.food != null) stats += '<div><span class="stat-label">Nourriture/repas</span> <span class="stat-value">' + d.food + '</span></div>';
       if (d.monture) stats += '<div><span class="stat-label">Vitesse monture</span> <span class="stat-value">' + d.monture + '</span></div>';
-      if (d.rang_combi != null) stats += '<div><span class="stat-label">Rang combi (elevage)</span> <span class="stat-value">' + d.rang_combi + '</span></div>';
+      if (d.rang_combi != null) stats += '<div><span class="stat-label">Rang combi (élevage)</span> <span class="stat-value">' + d.rang_combi + '</span></div>';
       document.getElementById('pal-modal-stats').innerHTML = stats || '<div class="pal-modal-empty">Stats non disponibles</div>';
       var aptSection = document.getElementById('pal-modal-apt-section');
       if (d.aptitudes && d.aptitudes.length) {{
@@ -2289,7 +2289,7 @@ def render_html(data):
       var start = (st.page - 1) * st.size, end = start + st.size;
       cards.forEach(function(c, i) {{ c.style.display = (i >= start && i < end) ? '' : 'none'; }});
       var info = document.getElementById('palpedia-pageinfo-' + slug);
-      if (info) info.textContent = cards.length ? ('Page ' + st.page + ' / ' + totalPages + ' (' + cards.length + ' especes)') : '';
+      if (info) info.textContent = cards.length ? ('Page ' + st.page + ' / ' + totalPages + ' (' + cards.length + ' espèces)') : '';
     }}
     function palpediaSetPageSize(btn, slug) {{
       var size = parseInt(btn.getAttribute('data-size'), 10);
@@ -2361,7 +2361,7 @@ def append_history(data):
 
 def compute_diff_lines(old, new):
     if old is None:
-        return ["Premiere execution -- pas de comparaison possible."]
+        return ["Première exécution -- pas de comparaison possible."]
 
     lines = []
 
@@ -2372,7 +2372,7 @@ def compute_diff_lines(old, new):
     if d_total:
         lines.append(f"Pals total : {old_pals.get('total')} -> {new_pals.get('total')} ({'+' if d_total>0 else ''}{d_total})")
     if d_esp:
-        lines.append(f"Especes differentes : {old_pals.get('especes')} -> {new_pals.get('especes')} ({'+' if d_esp>0 else ''}{d_esp})")
+        lines.append(f"Espèces différentes : {old_pals.get('especes')} -> {new_pals.get('especes')} ({'+' if d_esp>0 else ''}{d_esp})")
 
     old_players = {p["nom"]: p for p in old.get("joueurs", [])}
     for p in new.get("joueurs", []):
@@ -2395,7 +2395,7 @@ def compute_diff_lines(old, new):
         if d_xp:
             parts.append(f"XP {'+' if d_xp>0 else ''}{d_xp:,}")
         if d_quests:
-            parts.append(f"quetes {'+' if d_quests>0 else ''}{d_quests}")
+            parts.append(f"quêtes {'+' if d_quests>0 else ''}{d_quests}")
         if d_recipes:
             parts.append(f"recettes {'+' if d_recipes>0 else ''}{d_recipes}")
         if d_boss_tour:
@@ -2412,7 +2412,7 @@ def compute_diff_lines(old, new):
 def post_diff_notification(diff_lines):
     if not diff_lines:
         return  # rien de nouveau, pas de notif
-    content = "**Mise a jour Palworld (derniere heure)**\n\n" + "\n".join(f"- {l}" for l in diff_lines)
+    content = "**Mise a jour Palworld (dernière heure)**\n\n" + "\n".join(f"- {l}" for l in diff_lines)
     payload = json.dumps({"content": content}).encode("utf-8")
     import urllib.request
     req = urllib.request.Request(
