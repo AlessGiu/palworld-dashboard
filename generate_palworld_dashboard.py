@@ -1734,12 +1734,13 @@ def render_html(data):
 
   /* ---- tab nav ---- */
   .tabs {{
-    position: sticky; top: 0; z-index: 10; display: flex; gap: 6px; flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 10; display: flex; gap: 6px; flex-wrap: nowrap;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
     background: rgba(10,12,17,.92); backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-soft); padding: 12px 0; margin-bottom: 24px;
   }}
   .tab-btn {{
-    background: transparent; border: 1px solid transparent; color: var(--muted);
+    flex-shrink: 0; background: transparent; border: 1px solid transparent; color: var(--muted);
     padding: 9px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 600;
     font-family: var(--font-body); cursor: pointer; transition: color .15s, border-color .15s, background .15s;
   }}
@@ -1757,12 +1758,9 @@ def render_html(data):
     .brand-mark {{ width: 42px; height: 42px; font-size: 1.4rem; border-radius: 12px; }}
     .brand h1 {{ font-size: 1.15rem; }}
     .brand .tagline {{ font-size: 0.8rem; }}
-    .tabs {{
-      flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
-      margin: 0 -14px 20px; padding: 10px 14px; scrollbar-width: none;
-    }}
+    .tabs {{ margin: 0 -14px 20px; padding: 10px 14px; scrollbar-width: none; }}
     .tabs::-webkit-scrollbar {{ display: none; }}
-    .tab-btn {{ flex-shrink: 0; padding: 8px 13px; font-size: 0.82rem; }}
+    .tab-btn {{ padding: 8px 13px; font-size: 0.82rem; }}
   }}
 
   /* ---- kanban ---- */
