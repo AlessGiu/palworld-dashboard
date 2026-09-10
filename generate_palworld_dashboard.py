@@ -1704,7 +1704,8 @@ def render_html(data):
     margin: 0; background: var(--bg); color: var(--text);
     font-family: var(--font-body); line-height: 1.55; font-size: 15px;
   }}
-  .page {{ max-width: 1240px; margin: 0 auto; padding: 0 24px 48px; }}
+  .layout {{ max-width: 1300px; margin: 0 auto; padding: 24px 24px 48px; display: flex; align-items: flex-start; gap: 24px; }}
+  .page {{ flex: 1; min-width: 0; }}
   h1, h2, h3, h4 {{ font-family: var(--font-display); margin-top: 0; text-wrap: balance; letter-spacing: -0.01em; }}
   .value, .kpi .value, .stat-row .value, .breed-result, .palpedia-pct, .recipe-effect .san {{
     font-family: var(--font-display); font-variant-numeric: tabular-nums;
@@ -1732,16 +1733,17 @@ def render_html(data):
   }}
   .updated-pill .dot {{ width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(78,209,149,.18); }}
 
-  /* ---- tab nav ---- */
+  /* ---- tab nav (sidebar verticale a gauche) ---- */
   .tabs {{
-    position: sticky; top: 0; z-index: 10; display: flex; gap: 6px; flex-wrap: nowrap;
-    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
-    background: rgba(10,12,17,.92); backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-soft); padding: 12px 0; margin-bottom: 24px;
+    position: sticky; top: 24px; z-index: 10; display: flex; flex-direction: column; gap: 4px;
+    flex-shrink: 0; width: 210px;
+    background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    padding: 10px; box-shadow: var(--shadow);
   }}
   .tab-btn {{
-    flex-shrink: 0; background: transparent; border: 1px solid transparent; color: var(--muted);
-    padding: 9px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 600;
+    flex-shrink: 0; display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+    background: transparent; border: 1px solid transparent; color: var(--muted);
+    padding: 10px 14px; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
     font-family: var(--font-body); cursor: pointer; transition: color .15s, border-color .15s, background .15s;
   }}
   .tab-btn:hover {{ color: var(--text); background: var(--card-soft); }}
@@ -1753,14 +1755,19 @@ def render_html(data):
 
   /* ---- mobile ---- */
   @media (max-width: 640px) {{
-    .page {{ padding: 0 14px 32px; }}
+    .layout {{ padding: 0 14px 32px; flex-direction: column; gap: 14px; }}
     .site-header {{ padding: 20px 14px 16px; }}
     .brand-mark {{ width: 42px; height: 42px; font-size: 1.4rem; border-radius: 12px; }}
     .brand h1 {{ font-size: 1.15rem; }}
     .brand .tagline {{ font-size: 0.8rem; }}
-    .tabs {{ margin: 0 -14px 20px; padding: 10px 14px; scrollbar-width: none; }}
+    .tabs {{
+      position: sticky; top: 0; flex-direction: row; width: auto; flex-wrap: nowrap;
+      overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      margin: 0 -14px; padding: 10px 14px; border-radius: 0; border-left: none; border-right: none;
+      background: rgba(10,12,17,.92); backdrop-filter: blur(8px);
+    }}
     .tabs::-webkit-scrollbar {{ display: none; }}
-    .tab-btn {{ padding: 8px 13px; font-size: 0.82rem; }}
+    .tab-btn {{ width: auto; padding: 8px 13px; font-size: 0.82rem; }}
   }}
 
   /* ---- kanban ---- */
@@ -1978,7 +1985,7 @@ def render_html(data):
     </div>
   </header>
 
-  <div class="page">
+  <div class="layout">
   <nav class="tabs">
     <button class="tab-btn active" data-tab="tab-overview" style="--tab-accent: var(--blue)" onclick="showTab(this)">&#127757; Vue d'ensemble</button>
     <button class="tab-btn" data-tab="tab-players" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128100; Joueurs</button>
@@ -1990,6 +1997,7 @@ def render_html(data):
     <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
     <button class="tab-btn" data-tab="tab-kanban" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128203; Organisation</button>
   </nav>
+  <div class="page">
 
   <div id="tab-overview" class="tab-panel active">
     <div class="grid grid-2col">
@@ -2233,6 +2241,7 @@ def render_html(data):
   </div>
 
   <footer>Généré automatiquement depuis la sauvegarde du serveur Palworld -- refresh periodique</footer>
+  </div>
   </div>
 
   <div class="pal-modal-overlay" id="pal-modal-overlay" onclick="if (event.target === this) closePalModal()">
