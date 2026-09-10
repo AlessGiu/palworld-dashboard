@@ -1,0 +1,23 @@
+# Secrets -- jamais commit, copier secrets_local.py.example
+secrets_local.py
+
+# Python
+__pycache__/
+*.pyc
+
+# Sorties generees a chaque run (regenerees automatiquement, pas du code source)
+palworld_dashboard.html
+palworld_last_snapshot.json
+
+# Sauvegardes brutes de la partie (gros fichiers binaires, retelechargeables via le script)
+*.sav
+FULL_BACKUP_20260907/
+remote_save/
+remote_save_BACKUP_ORIGINAL/
+remote_save_v2/
+remote_save_v2_BACKUP_BEFORE_GUILDFIX/
+
+# Copies de reference de librairies tierces (non importees au runtime -- palworld_save_tools
+# est installe via pip ; seul palworld-hostfix-toolkit/ooz/libooz.dll est une vraie dependance)
+pst_site_backup/
+pst_latest/

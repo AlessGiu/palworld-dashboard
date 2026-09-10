@@ -1,0 +1,93 @@
+[
+  {
+    "categorie": "Allumage",
+    "meilleur_possede": "Blazamut",
+    "codename": "KingBahamut",
+    "nombre_possede": 1,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Arrosage",
+    "meilleur_possede": "Skutlass",
+    "codename": "SwordCutlassfish",
+    "nombre_possede": 2,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Plantation",
+    "meilleur_possede": "Petallia",
+    "codename": "FlowerDoll",
+    "nombre_possede": 2,
+    "deja_deploye": true
+  },
+  {
+    "categorie": "Electricite",
+    "meilleur_possede": "Relaxaurus Lux",
+    "codename": "LazyDragon_Electric",
+    "nombre_possede": 5,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Manutention",
+    "meilleur_possede": "Wixen",
+    "codename": "FoxMage",
+    "nombre_possede": 6,
+    "deja_deploye": true
+  },
+  {
+    "categorie": "Cueillette",
+    "meilleur_possede": "Verdash",
+    "codename": "GrassRabbitMan",
+    "nombre_possede": 5,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Bucheronnage",
+    "meilleur_possede": "Skutlass",
+    "codename": "SwordCutlassfish",
+    "nombre_possede": 2,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Minage",
+    "meilleur_possede": "Blazamut",
+    "codename": "KingBahamut",
+    "nombre_possede": 1,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Extraction de petrole",
+    "meilleur_possede": "Prixter",
+    "codename": "ScorpionMan",
+    "nombre_possede": 3,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Medecine",
+    "meilleur_possede": "Felbat",
+    "codename": "CatVampire",
+    "nombre_possede": 4,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Refroidissement",
+    "meilleur_possede": "Snugloo",
+    "codename": "SmallYeti",
+    "nombre_possede": 3,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Transport",
+    "meilleur_possede": "Vanwyrm",
+    "codename": "BirdDragon",
+    "nombre_possede": 8,
+    "deja_deploye": false
+  },
+  {
+    "categorie": "Elevage/Ferme",
+    "meilleur_possede": "Melpaca",
+    "codename": "Alpaca",
+    "nombre_possede": 10,
+    "deja_deploye": false
+  }
+]

@@ -1,0 +1,1938 @@
+{
+ "GYM_BlackGriffon": {
+  "display_name": "PAL Genetic Research Unit Commander Victor & Shadowbeak",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 130,
+  "shot_attack": 200,
+  "hp": 8000,
+  "defense": 220,
+  "ride_sprint_speed": 1100,
+  "partner_skill_description": "Can be ridden as an flying mount. Enhances Dark attacks while mounted."
+ },
+ "GYM_ElecPanda": {
+  "display_name": "Rayne Syndicate Officer Zoe & Grizzbolt",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 6000,
+  "defense": 100,
+  "ride_sprint_speed": 650,
+  "partner_skill_description": "Can be ridden. Can rapidly fire a minigun while mounted."
+ },
+ "GYM_Horus": {
+  "display_name": "PIDF Officer Marcus & Faleris",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 120,
+  "hp": 6500,
+  "defense": 125,
+  "ride_sprint_speed": 1300,
+  "partner_skill_description": "Can be ridden as an flying mount. While fighting together, Ice Pals drop more items when defeated."
+ },
+ "GYM_LilyQueen": {
+  "display_name": "Free Pal Alliance Founder Lily & Lyleen",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 110,
+  "hp": 5500,
+  "defense": 105,
+  "ride_sprint_speed": 650,
+  "partner_skill_description": "When activated, the queen's soothing graces greatly restore the player's HP."
+ },
+ "GYM_ThunderDragonMan": {
+  "display_name": "Brothers of the Eternal Pyre Soul Reader Axel & Orserk",
+  "elements": [
+   "Dragon",
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 140,
+  "hp": 6500,
+  "defense": 110,
+  "ride_sprint_speed": 1300,
+  "partner_skill_description": "While fighting together, Water Pals drop more items when defeated."
+ },
+ "BadCatgirl": {
+  "display_name": "Nyafia",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 90,
+  "hp": 100,
+  "defense": 90,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "BlueberryFairy": {
+  "display_name": "Prunelia",
+  "elements": [
+   "Grass",
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "BrownRabbit": {
+  "display_name": "Lapiron",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "ElecLion": {
+  "display_name": "Boltmane",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 110,
+  "hp": 100,
+  "defense": 70,
+  "ride_sprint_speed": 1000,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "FeatherOstrich": {
+  "display_name": "Dazemu",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "GoldenHorse": {
+  "display_name": "Gildane",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "PinkKangaroo": {
+  "display_name": "PinkKangaroo",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "Missing..."
+ },
+ "ScorpionMan": {
+  "display_name": "Prixter",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "SifuDog": {
+  "display_name": "Dogen",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "TentacleTurtle": {
+  "display_name": "Turtacle",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "WingGolem": {
+  "display_name": "Knocklem",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "BeardedDragon": {
+  "display_name": "BeardedDragon",
+  "elements": [
+   "Dragon"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "WaterLizard": {
+  "display_name": "WaterLizard",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 120,
+  "shot_attack": 90,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "Missing..."
+ },
+ "GuardianDog": {
+  "display_name": "Yakumo",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 80,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "GrassDragon": {
+  "display_name": "GrassDragon",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 120,
+  "hp": 130,
+  "defense": 90,
+  "ride_sprint_speed": -1,
+  "partner_skill_description": "Missing..."
+ },
+ "Anubis": {
+  "display_name": "Anubis",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 130,
+  "shot_attack": 130,
+  "hp": 120,
+  "defense": 100,
+  "ride_sprint_speed": 1000,
+  "partner_skill_description": "When fighting together, applies Ground damage to the player's attacks.\r\nSometimes dodges attacks with a high speed sidestep while in battle."
+ },
+ "Baphomet": {
+  "display_name": "Incineram",
+  "elements": [
+   "Fire",
+   "Dark"
+  ],
+  "melee_attack": 150,
+  "shot_attack": 100,
+  "hp": 95,
+  "defense": 85,
+  "ride_sprint_speed": 960,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Hellfire Claw."
+ },
+ "Baphomet_Dark": {
+  "display_name": "Incineram Noct",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 150,
+  "shot_attack": 105,
+  "hp": 95,
+  "defense": 85,
+  "ride_sprint_speed": 960,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Hellfire Claw."
+ },
+ "Bastet": {
+  "display_name": "Mau",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 60,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Sometimes digs up Gold Coin when assigned to Ranch."
+ },
+ "Bastet_Ice": {
+  "display_name": "Mau Cryst",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 65,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Sometimes digs up Gold Coin when assigned to Ranch."
+ },
+ "Boar": {
+  "display_name": "Rushoar",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 80,
+  "defense": 70,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Increases efficiency of destroying boulders while mounted."
+ },
+ "Carbunclo": {
+  "display_name": "Lifmunk",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 75,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, leaps onto the player's head and uses a submachine gun to follows up player attacks."
+ },
+ "ColorfulBird": {
+  "display_name": "Tocotoco",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 75,
+  "hp": 60,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, equips to the player and transforms into an egg launcher."
+ },
+ "Deer": {
+  "display_name": "Eikthyrdeer",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 80,
+  "hp": 95,
+  "defense": 80,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "Can be ridden. Can perform a double jump while mounted.\r\nIncreases efficiency of cutting trees."
+ },
+ "Deer_Ground": {
+  "display_name": "Eikthyrdeer Terra",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 80,
+  "hp": 95,
+  "defense": 80,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "Can be ridden. Can perform a double jump while mounted.\r\nIncreases efficiency of cutting trees."
+ },
+ "DrillGame": {
+  "display_name": "Digtoise",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 95,
+  "hp": 80,
+  "defense": 120,
+  "ride_sprint_speed": 420,
+  "partner_skill_description": "When activated, performs Shell Spin, follows the player while spinning, and mines ores efficiently."
+ },
+ "Eagle": {
+  "display_name": "Galeclaw",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 120,
+  "shot_attack": 85,
+  "hp": 75,
+  "defense": 60,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "While in team, can be summoned and used instead of a glider. Allows you to fire a gun while gliding with this Pal."
+ },
+ "ElecPanda": {
+  "display_name": "Grizzbolt",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 120,
+  "shot_attack": 100,
+  "hp": 105,
+  "defense": 100,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Can be ridden. Can rapidly fire a minigun while mounted."
+ },
+ "Ganesha": {
+  "display_name": "Teafant",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 60,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "When activated, spouts mysterious water that soothes wounds and restores the player's HP."
+ },
+ "Garm": {
+  "display_name": "Direhowl",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 90,
+  "hp": 80,
+  "defense": 75,
+  "ride_sprint_speed": 1050,
+  "partner_skill_description": "Can be ridden. Moves slightly faster than most mounts."
+ },
+ "Gorilla": {
+  "display_name": "Gorirat",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 95,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": 720,
+  "partner_skill_description": "When activated, unleashes a primal fury that increases Gorirat's attack power."
+ },
+ "Hedgehog": {
+  "display_name": "Jolthog",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 75,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, equips Jolthog to the player's hand. When thrown at an enemy, causes an electrical explosion upon impact."
+ },
+ "Hedgehog_Ice": {
+  "display_name": "Jolthog Cryst",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 75,
+  "hp": 70,
+  "defense": 80,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, equips Jolthog Cryst to the player's hand. When thrown at an enemy, causes an icy explosion upon impact."
+ },
+ "Kirin": {
+  "display_name": "Univolt",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 105,
+  "hp": 80,
+  "defense": 105,
+  "ride_sprint_speed": 1100,
+  "partner_skill_description": "Can be ridden. Applies Electric damage\r\nto the player's attacks while mounted."
+ },
+ "Kitsunebi": {
+  "display_name": "Foxparks",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 75,
+  "hp": 65,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, equips to the player and transforms into a flamethrower."
+ },
+ "LittleBriarRose": {
+  "display_name": "Bristla",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 80,
+  "hp": 80,
+  "defense": 80,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, increases attack power of Grass Pals."
+ },
+ "Mutant": {
+  "display_name": "Lunaris",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 100,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": 650,
+  "partner_skill_description": "While in team, Lunaris manipulates gravity, increasing the player's max carrying capacity."
+ },
+ "Penguin": {
+  "display_name": "Pengullet",
+  "elements": [
+   "Water",
+   "Ice"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 75,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 650,
+  "partner_skill_description": "When activated, the player equips a Rocket Launcher and fires Pengullet as ammunition.\r\nPengullet explodes on contact and is incapacitated."
+ },
+ "RaijinDaughter": {
+  "display_name": "Dazzi",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 80,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, appears near the player. Follows up player attacks with lightning bolts."
+ },
+ "SharkKid": {
+  "display_name": "Gobfin",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 90,
+  "hp": 90,
+  "defense": 75,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Aqua Gun.\r\nWhile in team, increases player's attack power."
+ },
+ "SharkKid_Fire": {
+  "display_name": "Gobfin Ignis",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 90,
+  "hp": 90,
+  "defense": 75,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Spirit Fire.\r\nWhile in team, increases player's attack power."
+ },
+ "SheepBall": {
+  "display_name": "Lamball",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, equips to the player and becomes a shield. Sometimes drops Wool when assigned to\r\nRanch."
+ },
+ "Umihebi": {
+  "display_name": "Jormuntide",
+  "elements": [
+   "Dragon",
+   "Water"
+  ],
+  "melee_attack": 150,
+  "shot_attack": 120,
+  "hp": 130,
+  "defense": 100,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden to travel on water. While mounted, prevents stamina depletion while moving over water."
+ },
+ "Umihebi_Fire": {
+  "display_name": "Jormuntide Ignis",
+  "elements": [
+   "Dragon",
+   "Fire"
+  ],
+  "melee_attack": 150,
+  "shot_attack": 130,
+  "hp": 130,
+  "defense": 100,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Enhances Fire attacks while mounted."
+ },
+ "Werewolf": {
+  "display_name": "Loupmoon",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 130,
+  "shot_attack": 100,
+  "hp": 80,
+  "defense": 80,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Jumping Claw."
+ },
+ "WindChimes": {
+  "display_name": "Hangyu",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 80,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, can be summoned and used instead of a glider. Carries the player up high while gliding."
+ },
+ "WindChimes_Ice": {
+  "display_name": "Hangyu Cryst",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 80,
+  "hp": 80,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, can be summoned and used instead of a glider. Carries the player up high while gliding."
+ },
+ "Suzaku": {
+  "display_name": "Suzaku",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 120,
+  "defense": 105,
+  "ride_sprint_speed": 1100,
+  "partner_skill_description": "Can be ridden as an flying mount. Enhances Fire attacks while mounted."
+ },
+ "Suzaku_Water": {
+  "display_name": "Suzaku Aqua",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 125,
+  "defense": 105,
+  "ride_sprint_speed": 1100,
+  "partner_skill_description": "Can be ridden as an flying mount. Enhances Water attacks while mounted."
+ },
+ "FireKirin": {
+  "display_name": "Pyrin",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 95,
+  "hp": 100,
+  "defense": 90,
+  "ride_sprint_speed": 1300,
+  "partner_skill_description": "Can be ridden. Applies Fire damage\r\nto the player's attacks while mounted."
+ },
+ "FireKirin_Dark": {
+  "display_name": "Pyrin Noct",
+  "elements": [
+   "Fire",
+   "Dark"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 95,
+  "hp": 100,
+  "defense": 90,
+  "ride_sprint_speed": 1300,
+  "partner_skill_description": "Can be ridden. Applies Dark damage\r\nto the player's attacks while mounted."
+ },
+ "FairyDragon": {
+  "display_name": "Elphidran",
+  "elements": [
+   "Dragon"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 80,
+  "hp": 110,
+  "defense": 90,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden as an flying mount. While fighting together, Dark Pals drop more items when defeated."
+ },
+ "FairyDragon_Water": {
+  "display_name": "Elphidran Aqua",
+  "elements": [
+   "Dragon",
+   "Water"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 80,
+  "hp": 115,
+  "defense": 95,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden as an flying mount. While fighting together, Fire Pals drop more items when defeated."
+ },
+ "SweetsSheep": {
+  "display_name": "Woolipop",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 90,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "Sometimes drops Cotton Candy when assigned to Ranch."
+ },
+ "WhiteTiger": {
+  "display_name": "Cryolinx",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 140,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 110,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "While fighting together, Dragon Pals drop more items when defeated."
+ },
+ "Alpaca": {
+  "display_name": "Melpaca",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 75,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Sometimes drops Wool when assigned to\r\nRanch."
+ },
+ "Serpent": {
+  "display_name": "Surfent",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 90,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 650,
+  "partner_skill_description": "Can be ridden to travel on water. While mounted, prevents stamina depletion\r\nwhile moving over water."
+ },
+ "Serpent_Ground": {
+  "display_name": "Surfent Terra",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 90,
+  "hp": 90,
+  "defense": 100,
+  "ride_sprint_speed": 650,
+  "partner_skill_description": "Can be ridden."
+ },
+ "DarkCrow": {
+  "display_name": "Cawgnito",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 95,
+  "hp": 75,
+  "defense": 80,
+  "ride_sprint_speed": 1200,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Phantom Peck."
+ },
+ "BlueDragon": {
+  "display_name": "Azurobe",
+  "elements": [
+   "Water",
+   "Dragon"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 100,
+  "hp": 110,
+  "defense": 100,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden to travel on water. Applies Water damage\r\nto the player's attacks while mounted."
+ },
+ "PinkCat": {
+  "display_name": "Cattiva",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, Cattiva helps carry supplies, increasing the player's max carrying capacity."
+ },
+ "NegativeKoala": {
+  "display_name": "Depresso",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "When activated, Depresso drinks a massive amount of energy drinks,\r\ncausing its movement speed to increase."
+ },
+ "FengyunDeeper": {
+  "display_name": "Fenglope",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 110,
+  "hp": 110,
+  "defense": 90,
+  "ride_sprint_speed": 1050,
+  "partner_skill_description": "Can be ridden. Can double jump while mounted."
+ },
+ "VolcanicMonster": {
+  "display_name": "Reptyro",
+  "elements": [
+   "Fire",
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 110,
+  "defense": 120,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Can be ridden. Improves efficiency of mining ores while mounted."
+ },
+ "VolcanicMonster_Ice": {
+  "display_name": "Ice Reptyro",
+  "elements": [
+   "Ice",
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 110,
+  "defense": 130,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Can be ridden. Improves efficiency of mining ores while mounted."
+ },
+ "GhostBeast": {
+  "display_name": "Maraith",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 50,
+  "shot_attack": 105,
+  "hp": 75,
+  "defense": 80,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Applies Dark damage\r\nto the player's attacks while mounted."
+ },
+ "RobinHood": {
+  "display_name": "Robinquill",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 750,
+  "partner_skill_description": "While fighting together, allows you to deal more damage to weak points."
+ },
+ "RobinHood_Ground": {
+  "display_name": "Robinquill Terra",
+  "elements": [
+   "Grass",
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 750,
+  "partner_skill_description": "While fighting together, allows you to deal more damage to weak points."
+ },
+ "LazyDragon": {
+  "display_name": "Relaxaurus",
+  "elements": [
+   "Dragon",
+   "Water"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 100,
+  "hp": 110,
+  "defense": 70,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Can rapidly fire a missile launcher while mounted."
+ },
+ "LazyDragon_Electric": {
+  "display_name": "Relaxaurus Lux",
+  "elements": [
+   "Dragon",
+   "Electric"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 110,
+  "hp": 110,
+  "defense": 75,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Can rapidly fire a missile launcher while mounted."
+ },
+ "AmaterasuWolf": {
+  "display_name": "Kitsun",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 115,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "Can be ridden. Unaffected by the cold or heat while riding this Pal."
+ },
+ "LizardMan": {
+  "display_name": "Leezpunk",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 80,
+  "hp": 80,
+  "defense": 50,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "When activated, utilizes its sixth sense to detect nearby dungeons."
+ },
+ "LizardMan_Fire": {
+  "display_name": "Leezpunk Ignis",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 80,
+  "hp": 80,
+  "defense": 50,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, utilizes its sixth sense to detect nearby dungeons."
+ },
+ "BluePlatypus": {
+  "display_name": "Fuack",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 80,
+  "hp": 60,
+  "defense": 60,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "When activated, Fuack body surfs towards an enemy and slams into them."
+ },
+ "BlackFurDragon": {
+  "display_name": "Dragostrophe",
+  "elements": [
+   "Dark",
+   "Dragon"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 130,
+  "hp": 130,
+  "defense": 110,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "BirdDragon": {
+  "display_name": "Vanwyrm",
+  "elements": [
+   "Fire",
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 115,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": 850,
+  "partner_skill_description": "Can be ridden as an flying mount. Increases damage player deals\r\nto enemy weak points while mounted."
+ },
+ "BirdDragon_Ice": {
+  "display_name": "Vanwyrm Cryst",
+  "elements": [
+   "Ice",
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 120,
+  "hp": 90,
+  "defense": 95,
+  "ride_sprint_speed": 850,
+  "partner_skill_description": "Can be ridden as an flying mount. Increases damage player deals\r\nto enemy weak points while mounted."
+ },
+ "ChickenPal": {
+  "display_name": "Chikipi",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 60,
+  "hp": 60,
+  "defense": 60,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Sometimes lays an Egg when assigned to Ranch."
+ },
+ "FlowerDinosaur": {
+  "display_name": "Dinossom",
+  "elements": [
+   "Grass",
+   "Dragon"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 85,
+  "hp": 110,
+  "defense": 90,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Enhances Grass attacks while mounted."
+ },
+ "FlowerDinosaur_Electric": {
+  "display_name": "Dinossom Lux",
+  "elements": [
+   "Electric",
+   "Dragon"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 90,
+  "hp": 110,
+  "defense": 90,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Enhances Electric attacks while mounted."
+ },
+ "ElecCat": {
+  "display_name": "Sparkit",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 60,
+  "shot_attack": 75,
+  "hp": 60,
+  "defense": 70,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "While in team, increases attack power of Electric Pals."
+ },
+ "IceHorse": {
+  "display_name": "Frostallion",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 140,
+  "hp": 140,
+  "defense": 120,
+  "ride_sprint_speed": 1500,
+  "partner_skill_description": "Can be ridden as an flying mount. Changes the player's attack type to Ice\r\nand enhances Ice attacks while mounted."
+ },
+ "IceHorse_Dark": {
+  "display_name": "Frostallion Noct",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 140,
+  "hp": 140,
+  "defense": 135,
+  "ride_sprint_speed": 1500,
+  "partner_skill_description": "Can be ridden as an flying mount. Changes the player's attack type to Dark\r\nand enhances Dark attacks while mounted."
+ },
+ "GrassMammoth": {
+  "display_name": "Mammorest",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 85,
+  "hp": 150,
+  "defense": 90,
+  "ride_sprint_speed": 600,
+  "partner_skill_description": "Can be ridden. Improves efficiency of cutting trees and mining ores while mounted."
+ },
+ "GrassMammoth_Ice": {
+  "display_name": "Mammorest Cryst",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 85,
+  "hp": 150,
+  "defense": 90,
+  "ride_sprint_speed": 600,
+  "partner_skill_description": "Can be ridden. Improves efficiency of cutting trees and mining ores while mounted."
+ },
+ "CatVampire": {
+  "display_name": "Felbat",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 100,
+  "defense": 110,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "While fighting together, grants the player and Felbat the life steal effect which absorbs some of the received damage and restores HP."
+ },
+ "SakuraSaurus": {
+  "display_name": "Broncherry",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 90,
+  "hp": 120,
+  "defense": 100,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "Can be ridden. While in team, Broncherry helps carry supplies,\r\nincreasing the player's max carrying capacity."
+ },
+ "SakuraSaurus_Water": {
+  "display_name": "Broncherry Aqua",
+  "elements": [
+   "Grass",
+   "Water"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 95,
+  "hp": 120,
+  "defense": 100,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "Can be ridden. While in team, Broncherry Aqua helps carry supplies,\r\nincreasing the player's max carrying capacity."
+ },
+ "Horus": {
+  "display_name": "Faleris",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 100,
+  "defense": 110,
+  "ride_sprint_speed": 1400,
+  "partner_skill_description": "Can be ridden as an flying mount. While fighting together, Ice Pals drop more items when defeated."
+ },
+ "KingBahamut": {
+  "display_name": "Blazamut",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 150,
+  "shot_attack": 125,
+  "hp": 100,
+  "defense": 120,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "Can be ridden. Enhances Fire attacks while mounted."
+ },
+ "BerryGoat": {
+  "display_name": "Caprity",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 100,
+  "defense": 90,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Sometimes drops Red Berries from its back when assigned to Ranch."
+ },
+ "IceDeer": {
+  "display_name": "Reindrix",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 80,
+  "shot_attack": 85,
+  "hp": 100,
+  "defense": 110,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Keeps the rider cool in hot environments."
+ },
+ "BlackGriffon": {
+  "display_name": "Shadowbeak",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 130,
+  "shot_attack": 120,
+  "hp": 120,
+  "defense": 140,
+  "ride_sprint_speed": 1200,
+  "partner_skill_description": "Can be ridden as an flying mount. Enhances Dark attacks while mounted."
+ },
+ "WhiteMoth": {
+  "display_name": "Sibelyx",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 90,
+  "shot_attack": 90,
+  "hp": 110,
+  "defense": 100,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Blizzard Spike.\r\nSometimes produces High Quality Cloth\r\nwhen assigned to Ranch."
+ },
+ "CuteFox": {
+  "display_name": "Vixy",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 450,
+  "partner_skill_description": "Sometimes digs up items from the ground when assigned to Ranch."
+ },
+ "FoxMage": {
+  "display_name": "Wixen",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 50,
+  "shot_attack": 110,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 620,
+  "partner_skill_description": "When fighting together, applies Fire damage to the player's attacks."
+ },
+ "PinkLizard": {
+  "display_name": "Lovander",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 120,
+  "defense": 70,
+  "ride_sprint_speed": 850,
+  "partner_skill_description": "While fighting together, grants the player and Lovander the life steal effect which absorbs some of the received damage and restores HP."
+ },
+ "WizardOwl": {
+  "display_name": "Hoocrates",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 80,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, increases attack power of Dark Pals."
+ },
+ "Kelpie": {
+  "display_name": "Kelpsea",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "While in team, increases attack power of Water Pals."
+ },
+ "Kelpie_Fire": {
+  "display_name": "Kelpsea Ignis",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "While in team, increases attack power of Fire Pals."
+ },
+ "NegativeOctopus": {
+  "display_name": "Killamari",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 60,
+  "hp": 60,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, can be summoned and used instead of a glider. Can float for long periods of time while gliding."
+ },
+ "CowPal": {
+  "display_name": "Mozzarina",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 50,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Sometimes produces Milk when assigned to Ranch."
+ },
+ "Yeti": {
+  "display_name": "Wumpo",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 80,
+  "hp": 140,
+  "defense": 100,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Can be ridden. While in team, Wumpo helps carry supplies,\r\nincreasing the player's max carrying capacity."
+ },
+ "Yeti_Grass": {
+  "display_name": "Wumpo Botan",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 80,
+  "hp": 140,
+  "defense": 110,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Can be ridden. While in team, Wumpo Botan helps carry supplies,\r\nincreasing the player's max carrying capacity."
+ },
+ "VioletFairy": {
+  "display_name": "Vaelet",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 120,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While fighting together, Ground Pals drop more items when defeated."
+ },
+ "HawkBird": {
+  "display_name": "Nitewing",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 95,
+  "hp": 100,
+  "defense": 80,
+  "ride_sprint_speed": 750,
+  "partner_skill_description": "Can be ridden as an flying mount."
+ },
+ "FlowerRabbit": {
+  "display_name": "Flopie",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 65,
+  "hp": 75,
+  "defense": 70,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, appears near the player. Automatically picks up nearby items."
+ },
+ "LilyQueen": {
+  "display_name": "Lyleen",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 110,
+  "hp": 110,
+  "defense": 105,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, the queen's soothing graces greatly restore the player's HP."
+ },
+ "LilyQueen_Dark": {
+  "display_name": "Lyleen Noct",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 110,
+  "hp": 110,
+  "defense": 115,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, the queen's soothing graces greatly restore the player's HP."
+ },
+ "QueenBee": {
+  "display_name": "Elizabee",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 90,
+  "defense": 100,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While fighting together, stats will increase the more Beegarde are in your team."
+ },
+ "SoldierBee": {
+  "display_name": "Beegarde",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 90,
+  "hp": 80,
+  "defense": 90,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "Sometimes drops Honey when assigned to Ranch.\r\nWhile in team, Elizabee's stats will be increased."
+ },
+ "CatBat": {
+  "display_name": "Tombat",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 95,
+  "hp": 95,
+  "defense": 80,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, uses ultrasonic waves to detect the location of nearby Pals."
+ },
+ "GrassPanda": {
+  "display_name": "Mossanda",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 90,
+  "hp": 100,
+  "defense": 90,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Can rapidly fire a grenade launcher while mounted."
+ },
+ "GrassPanda_Electric": {
+  "display_name": "Mossanda Lux",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. Can rapidly fire a grenade launcher while mounted."
+ },
+ "FlameBuffalo": {
+  "display_name": "Arsox",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 95,
+  "hp": 85,
+  "defense": 95,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Keeps the rider warm in cold environments."
+ },
+ "ThunderDog": {
+  "display_name": "Rayhound",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 1150,
+  "partner_skill_description": "Can be ridden. Can double jump while mounted."
+ },
+ "CuteMole": {
+  "display_name": "Fuddler",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 80,
+  "hp": 65,
+  "defense": 50,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "When activated, generates subtle vibrations to detect nearby ore."
+ },
+ "BlackMetalDragon": {
+  "display_name": "Astegon",
+  "elements": [
+   "Dragon",
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 125,
+  "hp": 100,
+  "defense": 125,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden as an flying mount. Increases damage dealt to ore while mounted."
+ },
+ "GrassRabbitMan": {
+  "display_name": "Verdash",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 115,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "When fighting together, increases player's movement speed and applies Grass damage to the player's attacks."
+ },
+ "IceFox": {
+  "display_name": "Foxcicle",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 95,
+  "hp": 90,
+  "defense": 105,
+  "ride_sprint_speed": 750,
+  "partner_skill_description": "While in team, increases attack power of Ice Pals."
+ },
+ "JetDragon": {
+  "display_name": "Jetragon",
+  "elements": [
+   "Dragon"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 140,
+  "hp": 110,
+  "defense": 110,
+  "ride_sprint_speed": 3300,
+  "partner_skill_description": "Can be ridden as an flying mount. Can rapidly fire a missile launcher while mounted."
+ },
+ "DreamDemon": {
+  "display_name": "Daedream",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 75,
+  "hp": 70,
+  "defense": 60,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, appears near the player. Follows up player attacks with magic bullets."
+ },
+ "Monkey": {
+  "display_name": "Tanzee",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 80,
+  "defense": 70,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "When activated, Tanzee will mercilessly fire an assault rifle at nearby enemies."
+ },
+ "Manticore": {
+  "display_name": "Blazehowl",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 110,
+  "hp": 105,
+  "defense": 80,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "Can be ridden. While fighting together, Grass Pals drop more items when defeated."
+ },
+ "Manticore_Dark": {
+  "display_name": "Blazehowl Noct",
+  "elements": [
+   "Fire",
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 115,
+  "hp": 105,
+  "defense": 80,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "Can be ridden. While fighting together, Neutral Pals drop more items when defeated."
+ },
+ "KingAlpaca": {
+  "display_name": "Kingpaca",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 85,
+  "hp": 120,
+  "defense": 90,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. While in team, Kingpaca helps carry supplies,\r\nincreasing the player's max carrying capacity."
+ },
+ "KingAlpaca_Ice": {
+  "display_name": "Ice Kingpaca",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 85,
+  "hp": 120,
+  "defense": 90,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "Can be ridden. While in team, Ice Kingpaca helps carry supplies,\r\nincreasing the player's max carrying capacity."
+ },
+ "PlantSlime": {
+  "display_name": "Gumoss",
+  "elements": [
+   "Grass",
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 70,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "While in team, improves efficiency of cutting trees."
+ },
+ "DarkMutant": {
+  "display_name": "DarkMutant",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "This Pal is under investigation."
+ },
+ "MopBaby": {
+  "display_name": "Swee",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 60,
+  "hp": 60,
+  "defense": 60,
+  "ride_sprint_speed": 400,
+  "partner_skill_description": "While in team, Sweepa's stats will be increased."
+ },
+ "MopKing": {
+  "display_name": "Sweepa",
+  "elements": [
+   "Ice"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 90,
+  "hp": 100,
+  "defense": 90,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "Can be ridden. While fighting together, stats will increase the more Swee are in your team."
+ },
+ "CatMage": {
+  "display_name": "Katress",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 90,
+  "defense": 90,
+  "ride_sprint_speed": 620,
+  "partner_skill_description": "While fighting together, Neutral Pals drop more items when defeated."
+ },
+ "PinkRabbit": {
+  "display_name": "Ribbuny",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 65,
+  "hp": 75,
+  "defense": 70,
+  "ride_sprint_speed": 350,
+  "partner_skill_description": "While in team, increases attack power of Neutral Pals. While at a base, increases work efficiency if working at Weapon Workbench."
+ },
+ "ThunderBird": {
+  "display_name": "Beakon",
+  "elements": [
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 115,
+  "hp": 105,
+  "defense": 80,
+  "ride_sprint_speed": 1200,
+  "partner_skill_description": "Can be ridden as an flying mount. Applies Electric damage to the player's attacks while mounted."
+ },
+ "HerculesBeetle": {
+  "display_name": "Warsect",
+  "elements": [
+   "Ground",
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 120,
+  "defense": 120,
+  "ride_sprint_speed": 600,
+  "partner_skill_description": "When fighting together, increases player's defense and applies Fire damage to the player's attacks."
+ },
+ "SaintCentaur": {
+  "display_name": "Paladius",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 110,
+  "shot_attack": 120,
+  "hp": 130,
+  "defense": 145,
+  "ride_sprint_speed": 1400,
+  "partner_skill_description": "Can be ridden. Can triple jump while mounted."
+ },
+ "NightFox": {
+  "display_name": "Nox",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 85,
+  "hp": 75,
+  "defense": 70,
+  "ride_sprint_speed": 500,
+  "partner_skill_description": "When fighting together, applies Dark damage to the player's attacks."
+ },
+ "CaptainPenguin": {
+  "display_name": "Penking",
+  "elements": [
+   "Water",
+   "Ice"
+  ],
+  "melee_attack": 70,
+  "shot_attack": 95,
+  "hp": 95,
+  "defense": 95,
+  "ride_sprint_speed": 600,
+  "partner_skill_description": "While fighting together, Fire Pals drop more items when defeated."
+ },
+ "WeaselDragon": {
+  "display_name": "Chillet",
+  "elements": [
+   "Ice",
+   "Dragon"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 80,
+  "hp": 90,
+  "defense": 80,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Applies Dragon damage to the player's attacks while mounted."
+ },
+ "SkyDragon": {
+  "display_name": "Quivern",
+  "elements": [
+   "Dragon"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 105,
+  "defense": 100,
+  "ride_sprint_speed": 950,
+  "partner_skill_description": "Can be ridden as an flying mount. Enhances Dragon attacks while mounted."
+ },
+ "HadesBird": {
+  "display_name": "Helzephyr",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 125,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": 1100,
+  "partner_skill_description": "Can be ridden as an flying mount. Applies Dark damage to the player's attacks while mounted."
+ },
+ "RedArmorBird": {
+  "display_name": "Ragnahawk",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 105,
+  "hp": 95,
+  "defense": 120,
+  "ride_sprint_speed": 1300,
+  "partner_skill_description": "Can be ridden as an flying mount. Applies Fire damage to the player's attacks while mounted."
+ },
+ "Ronin": {
+  "display_name": "Bushi",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 125,
+  "hp": 80,
+  "defense": 80,
+  "ride_sprint_speed": 900,
+  "partner_skill_description": "When activated, attacks targeted enemy with a powerful Iaigiri."
+ },
+ "FlyingManta": {
+  "display_name": "Celaray",
+  "elements": [
+   "Water"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 80,
+  "defense": 80,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "While in team, can be summoned and used instead of a glider. Allows you to move quickly for long periods of time while gliding with this Pal."
+ },
+ "BlackCentaur": {
+  "display_name": "Necromus",
+  "elements": [
+   "Dark"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 145,
+  "hp": 130,
+  "defense": 120,
+  "ride_sprint_speed": 1600,
+  "partner_skill_description": "Can be ridden. Can double jump while mounted."
+ },
+ "FlowerDoll": {
+  "display_name": "Petallia",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 95,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "When activated, uses medicinal flowers to restore the player's HP."
+ },
+ "NaughtyCat": {
+  "display_name": "Grintale",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 80,
+  "hp": 110,
+  "defense": 80,
+  "ride_sprint_speed": 800,
+  "partner_skill_description": "Can be ridden. Enhances Neutral attacks while mounted."
+ },
+ "CuteButterfly": {
+  "display_name": "Cinnamoth",
+  "elements": [
+   "Grass"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 80,
+  "hp": 70,
+  "defense": 80,
+  "ride_sprint_speed": 700,
+  "partner_skill_description": "When activated, attacks targeted enemy with Poison Fog."
+ },
+ "DarkScorpion": {
+  "display_name": "Menasting",
+  "elements": [
+   "Dark",
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 100,
+  "hp": 100,
+  "defense": 130,
+  "ride_sprint_speed": 1200,
+  "partner_skill_description": "When fighting together, increases the player's defense and Electric Pals drop more items when defeated."
+ },
+ "ThunderDragonMan": {
+  "display_name": "Orserk",
+  "elements": [
+   "Dragon",
+   "Electric"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 130,
+  "hp": 100,
+  "defense": 100,
+  "ride_sprint_speed": 1200,
+  "partner_skill_description": "While fighting together, Water Pals drop more items when defeated."
+ },
+ "WoolFox": {
+  "display_name": "Cremis",
+  "elements": [
+   "Neutral"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 70,
+  "defense": 75,
+  "ride_sprint_speed": 450,
+  "partner_skill_description": "While in team, increases attack power of Neutral Pals. Sometimes drops Wool when assigned to Ranch."
+ },
+ "LazyCatfish": {
+  "display_name": "Dumud",
+  "elements": [
+   "Ground"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 100,
+  "defense": 95,
+  "ride_sprint_speed": 600,
+  "partner_skill_description": "While in team, increases attack power of Ground Pals."
+ },
+ "LavaGirl": {
+  "display_name": "Flambelle",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 60,
+  "defense": 80,
+  "ride_sprint_speed": 375,
+  "partner_skill_description": "Sometimes produces Flame Organ when assigned to Ranch."
+ },
+ "FlameBambi": {
+  "display_name": "Rooby",
+  "elements": [
+   "Fire"
+  ],
+  "melee_attack": 100,
+  "shot_attack": 70,
+  "hp": 75,
+  "defense": 75,
+  "ride_sprint_speed": 550,
+  "partner_skill_description": "While in team, increases attack power of Fire Pals."
+ }
+}

@@ -1,0 +1,108 @@
+
+DISHES:
+Bread -> Pain
+Broncherry Rib Roast -> R\xf4ti de Broncherry
+Cake -> G\xe2teau
+Carbonara -> Carbonara
+Chikipi Saute -> Saut\xe9 de Chikipi
+Dumud Chowder -> Chaudr\xe9e de Dumud
+Eikthyrdeer Loco Moco -> Loco moco d'Eikthyrdeer
+Eikthyrdeer Stew -> Rago\xfbt d'Eikthyrdeer
+Fried Chikipi -> Nugget de Chikipi
+Fried Egg -> \u0152uf au plat
+Galeclaw Nikujaga -> Nikujaga de Galeclaw
+Grilled Chikipi -> Brochette de Chikipi
+Grilled Galeclaw -> Grillade de Galeclaw
+Grilled Lamball -> Jingisukan de Lamball
+Herb Roasted Caprity -> Grillade de Caprity
+Herb Roasted Lamball -> Grillade de Lamball
+Hot Milk -> Lait chaud
+Jam-filled Bun -> Pain fourr\xe9
+Lamball Kebab -> Kebab de Lamball
+Mammorest Curry -> Curry de Mammorest
+Mammorest Steak -> Steak de Mammorest
+Marinated Mushrooms -> Champignons marin\xe9s
+Minestrone -> Minestrone
+Mozzarina Cheeseburger -> Cheeseburger de Mozzarina
+Mozzarina Hamburger -> Hamburger de Mozzarina
+Omelet -> Omelette
+Pancake -> Pancake
+Pizza -> Pizza
+Reindrix Stew -> Rago\xfbt de Reindrix
+Roast Reindrix -> R\xf4ti de Reindrix
+Roast Rushoar -> R\xf4ti de Rushoar
+Rushoar Hot Dog -> Hot-dog de Rushoar
+Salad -> Salade
+Stewed Galeclaw -> Rago\xfbt de Galeclaw
+
+INGREDIENTS:
+Bread -> Pain
+Breeding Farm -> Ranch
+Broncherry Meat -> Viande de Broncherry
+Broncherry Rib Roast -> R\xf4ti de Broncherry
+Cake -> G\xe2teau
+Caprity Meat -> Viande de Caprity
+Carbonara -> Carbonara
+Carrot -> Carotte
+Chikipi Poultry -> Viande de Chikipi
+Digtoise -> Digtoise
+Dumud Chowder -> Chaudr\xe9e de Dumud
+Egg -> \u0152uf
+Eikthyrdeer Loco Moco -> Loco moco d'Eikthyrdeer
+Eikthyrdeer Stew -> Rago\xfbt d'Eikthyrdeer
+Eikthyrdeer Venison -> Viande de Eikthyrdeer
+Flour -> Farine
+Foxcicle -> Foxcicle
+Free Pal Alliance Believer -> Ligue pour la protection des Pals \u2013 adh\xe9rent
+Free Pal Alliance Judicator -> Ligue pour la protection des Pals \u2014 juge
+Fried Chikipi -> Nugget de Chikipi
+Fried Egg -> \u0152uf au plat
+Galeclaw Nikujaga -> Nikujaga de Galeclaw
+Galeclaw Poultry -> Viande de Galeclaw
+Gold Coin -> Pi\xe8ce d'or
+Grilled Chikipi -> Brochette de Chikipi
+Grilled Galeclaw -> Grillade de Galeclaw
+Grilled Lamball -> Jingisukan de Lamball
+Herb Roasted Caprity -> Grillade de Caprity
+Herb Roasted Lamball -> Grillade de Lamball
+High Quality Pal Oil -> Huile de Pal de qualit\xe9
+Honey -> Miel
+Hot Milk -> Lait chaud
+Islander -> Habitant de l'\xcele
+Kingpaca -> Kingpaca
+Lamball Kebab -> Kebab de Lamball
+Lamball Mutton -> Viande de Lamball
+Lettuce -> Laitue
+Lovander -> Lovander
+Mammorest -> Mammorest
+Mammorest Curry -> Curry de Mammorest
+Mammorest Meat -> Viande de Mammorest
+Mammorest Steak -> Steak de Mammorest
+Marinated Mushrooms -> Champignons marin\xe9s
+Milk -> Lait
+Minestrone -> Minestrone
+Mozzarina Cheeseburger -> Cheeseburger de Mozzarina
+Mozzarina Hamburger -> Hamburger de Mozzarina
+Mozzarina Meat -> Viande de Mozzarina
+Muffly -> Muffly
+Mushroom -> Champignon
+Negotiator -> Negotiator
+Omelet -> Omelette
+Onion -> Oignon
+Pancake -> Pancake
+Pizza -> Pizza
+Potato -> Pomme de terre
+Raw Dumud -> Viande de Dumud
+Red Berries -> Baie rouge
+Reindrix Stew -> Rago\xfbt de Reindrix
+Reindrix Venison -> Viande de Reindrix
+Reptyro Cryst -> Reptyro Cryst
+Roast Reindrix -> R\xf4ti de Reindrix
+Roast Rushoar -> R\xf4ti de Rushoar
+Rushoar Hot Dog -> Hot-dog de Rushoar
+Rushoar Pork -> Viande de Rushoar
+Salad -> Salade
+Stewed Galeclaw -> Rago\xfbt de Galeclaw
+Syndicate Thug -> Braconniers \u2013 nouvelle recrue
+Tomato -> Tomate
+Villager -> Villageois

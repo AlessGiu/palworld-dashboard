@@ -1,0 +1,11 @@
+num groups 9
+--- group 7 guild ---
+keys: ['values']
+admin_player_uid: None
+players: None
+base_ids: None
+--- group 8 guild ---
+keys: ['values']
+admin_player_uid: None
+players: None
+base_ids: None

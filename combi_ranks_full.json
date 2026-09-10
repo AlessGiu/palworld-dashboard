@@ -1,0 +1,550 @@
+{
+ "Anubis": {
+  "display_name": "Anubis",
+  "rank": 570
+ },
+ "Baphomet": {
+  "display_name": "Incineram",
+  "rank": 590
+ },
+ "Baphomet_Dark": {
+  "display_name": "Incineram Noct",
+  "rank": 580
+ },
+ "Bastet": {
+  "display_name": "Mau",
+  "rank": 1480
+ },
+ "Bastet_Ice": {
+  "display_name": "Mau Cryst",
+  "rank": 1440
+ },
+ "Boar": {
+  "display_name": "Rushoar",
+  "rank": 1130
+ },
+ "Carbunclo": {
+  "display_name": "Lifmunk",
+  "rank": 1430
+ },
+ "ColorfulBird": {
+  "display_name": "Tocotoco",
+  "rank": 1340
+ },
+ "Deer": {
+  "display_name": "Eikthyrdeer",
+  "rank": 920
+ },
+ "Deer_Ground": {
+  "display_name": "Eikthyrdeer Terra",
+  "rank": 900
+ },
+ "DrillGame": {
+  "display_name": "Digtoise",
+  "rank": 850
+ },
+ "Eagle": {
+  "display_name": "Galeclaw",
+  "rank": 1030
+ },
+ "ElecPanda": {
+  "display_name": "Grizzbolt",
+  "rank": 200
+ },
+ "Ganesha": {
+  "display_name": "Teafant",
+  "rank": 1490
+ },
+ "Garm": {
+  "display_name": "Direhowl",
+  "rank": 1060
+ },
+ "Gorilla": {
+  "display_name": "Gorirat",
+  "rank": 1040
+ },
+ "Hedgehog": {
+  "display_name": "Jolthog",
+  "rank": 1370
+ },
+ "Hedgehog_Ice": {
+  "display_name": "Jolthog Cryst",
+  "rank": 1360
+ },
+ "Kirin": {
+  "display_name": "Univolt",
+  "rank": 680
+ },
+ "Kitsunebi": {
+  "display_name": "Foxparks",
+  "rank": 1400
+ },
+ "LittleBriarRose": {
+  "display_name": "Bristla",
+  "rank": 1320
+ },
+ "Mutant": {
+  "display_name": "Lunaris",
+  "rank": 1110
+ },
+ "Penguin": {
+  "display_name": "Pengullet",
+  "rank": 1350
+ },
+ "RaijinDaughter": {
+  "display_name": "Dazzi",
+  "rank": 1210
+ },
+ "SharkKid": {
+  "display_name": "Gobfin",
+  "rank": 1090
+ },
+ "SharkKid_Fire": {
+  "display_name": "Gobfin Ignis",
+  "rank": 1100
+ },
+ "SheepBall": {
+  "display_name": "Lamball",
+  "rank": 1470
+ },
+ "Umihebi": {
+  "display_name": "Jormuntide",
+  "rank": 310
+ },
+ "Umihebi_Fire": {
+  "display_name": "Jormuntide Ignis",
+  "rank": 315
+ },
+ "Werewolf": {
+  "display_name": "Loupmoon",
+  "rank": 950
+ },
+ "WindChimes": {
+  "display_name": "Hangyu",
+  "rank": 1420
+ },
+ "WindChimes_Ice": {
+  "display_name": "Hangyu Cryst",
+  "rank": 1422
+ },
+ "Suzaku": {
+  "display_name": "Suzaku",
+  "rank": 50
+ },
+ "Suzaku_Water": {
+  "display_name": "Suzaku Aqua",
+  "rank": 30
+ },
+ "FireKirin": {
+  "display_name": "Pyrin",
+  "rank": 360
+ },
+ "FireKirin_Dark": {
+  "display_name": "Pyrin Noct",
+  "rank": 240
+ },
+ "FairyDragon": {
+  "display_name": "Elphidran",
+  "rank": 540
+ },
+ "FairyDragon_Water": {
+  "display_name": "Elphidran Aqua",
+  "rank": 530
+ },
+ "SweetsSheep": {
+  "display_name": "Woolipop",
+  "rank": 1190
+ },
+ "WhiteTiger": {
+  "display_name": "Cryolinx",
+  "rank": 130
+ },
+ "Alpaca": {
+  "display_name": "Melpaca",
+  "rank": 890
+ },
+ "Serpent": {
+  "display_name": "Surfent",
+  "rank": 560
+ },
+ "Serpent_Ground": {
+  "display_name": "Surfent Terra",
+  "rank": 550
+ },
+ "DarkCrow": {
+  "display_name": "Cawgnito",
+  "rank": 1080
+ },
+ "BlueDragon": {
+  "display_name": "Azurobe",
+  "rank": 500
+ },
+ "PinkCat": {
+  "display_name": "Cattiva",
+  "rank": 1460
+ },
+ "NegativeKoala": {
+  "display_name": "Depresso",
+  "rank": 1380
+ },
+ "FengyunDeeper": {
+  "display_name": "Fenglope",
+  "rank": 980
+ },
+ "VolcanicMonster": {
+  "display_name": "Reptyro",
+  "rank": 320
+ },
+ "VolcanicMonster_Ice": {
+  "display_name": "Ice Reptyro",
+  "rank": 230
+ },
+ "GhostBeast": {
+  "display_name": "Maraith",
+  "rank": 1150
+ },
+ "RobinHood": {
+  "display_name": "Robinquill",
+  "rank": 1020
+ },
+ "RobinHood_Ground": {
+  "display_name": "Robinquill Terra",
+  "rank": 1000
+ },
+ "LazyDragon": {
+  "display_name": "Relaxaurus",
+  "rank": 280
+ },
+ "LazyDragon_Electric": {
+  "display_name": "Relaxaurus Lux",
+  "rank": 270
+ },
+ "AmaterasuWolf": {
+  "display_name": "Kitsun",
+  "rank": 830
+ },
+ "LizardMan": {
+  "display_name": "Leezpunk",
+  "rank": 1120
+ },
+ "LizardMan_Fire": {
+  "display_name": "Leezpunk Ignis",
+  "rank": 1140
+ },
+ "BluePlatypus": {
+  "display_name": "Fuack",
+  "rank": 1330
+ },
+ "BirdDragon": {
+  "display_name": "Vanwyrm",
+  "rank": 660
+ },
+ "BirdDragon_Ice": {
+  "display_name": "Vanwyrm Cryst",
+  "rank": 620
+ },
+ "ChickenPal": {
+  "display_name": "Chikipi",
+  "rank": 1500
+ },
+ "FlowerDinosaur": {
+  "display_name": "Dinossom",
+  "rank": 820
+ },
+ "FlowerDinosaur_Electric": {
+  "display_name": "Dinossom Lux",
+  "rank": 810
+ },
+ "ElecCat": {
+  "display_name": "Sparkit",
+  "rank": 1410
+ },
+ "IceHorse": {
+  "display_name": "Frostallion",
+  "rank": 120
+ },
+ "IceHorse_Dark": {
+  "display_name": "Frostallion Noct",
+  "rank": 100
+ },
+ "GrassMammoth": {
+  "display_name": "Mammorest",
+  "rank": 300
+ },
+ "GrassMammoth_Ice": {
+  "display_name": "Mammorest Cryst",
+  "rank": 290
+ },
+ "CatVampire": {
+  "display_name": "Felbat",
+  "rank": 1010
+ },
+ "SakuraSaurus": {
+  "display_name": "Broncherry",
+  "rank": 860
+ },
+ "SakuraSaurus_Water": {
+  "display_name": "Broncherry Aqua",
+  "rank": 840
+ },
+ "Horus": {
+  "display_name": "Faleris",
+  "rank": 370
+ },
+ "KingBahamut": {
+  "display_name": "Blazamut",
+  "rank": 10
+ },
+ "BerryGoat": {
+  "display_name": "Caprity",
+  "rank": 930
+ },
+ "IceDeer": {
+  "display_name": "Reindrix",
+  "rank": 880
+ },
+ "BlackGriffon": {
+  "display_name": "Shadowbeak",
+  "rank": 60
+ },
+ "WhiteMoth": {
+  "display_name": "Sibelyx",
+  "rank": 450
+ },
+ "CuteFox": {
+  "display_name": "Vixy",
+  "rank": 1450
+ },
+ "FoxMage": {
+  "display_name": "Wixen",
+  "rank": 1160
+ },
+ "PinkLizard": {
+  "display_name": "Lovander",
+  "rank": 940
+ },
+ "WizardOwl": {
+  "display_name": "Hoocrates",
+  "rank": 1390
+ },
+ "Kelpie": {
+  "display_name": "Kelpsea",
+  "rank": 1260
+ },
+ "Kelpie_Fire": {
+  "display_name": "Kelpsea Ignis",
+  "rank": 1270
+ },
+ "NegativeOctopus": {
+  "display_name": "Killamari",
+  "rank": 1290
+ },
+ "CowPal": {
+  "display_name": "Mozzarina",
+  "rank": 910
+ },
+ "Yeti": {
+  "display_name": "Wumpo",
+  "rank": 460
+ },
+ "Yeti_Grass": {
+  "display_name": "Wumpo Botan",
+  "rank": 480
+ },
+ "VioletFairy": {
+  "display_name": "Vaelet",
+  "rank": 1050
+ },
+ "HawkBird": {
+  "display_name": "Nitewing",
+  "rank": 420
+ },
+ "FlowerRabbit": {
+  "display_name": "Flopie",
+  "rank": 1280
+ },
+ "LilyQueen": {
+  "display_name": "Lyleen",
+  "rank": 250
+ },
+ "LilyQueen_Dark": {
+  "display_name": "Lyleen Noct",
+  "rank": 210
+ },
+ "QueenBee": {
+  "display_name": "Elizabee",
+  "rank": 330
+ },
+ "SoldierBee": {
+  "display_name": "Beegarde",
+  "rank": 1070
+ },
+ "CatBat": {
+  "display_name": "Tombat",
+  "rank": 750
+ },
+ "GrassPanda": {
+  "display_name": "Mossanda",
+  "rank": 430
+ },
+ "GrassPanda_Electric": {
+  "display_name": "Mossanda Lux",
+  "rank": 390
+ },
+ "FlameBuffalo": {
+  "display_name": "Arsox",
+  "rank": 790
+ },
+ "ThunderDog": {
+  "display_name": "Rayhound",
+  "rank": 740
+ },
+ "CuteMole": {
+  "display_name": "Fuddler",
+  "rank": 1220
+ },
+ "BlackMetalDragon": {
+  "display_name": "Astegon",
+  "rank": 150
+ },
+ "GrassRabbitMan": {
+  "display_name": "Verdash",
+  "rank": 990
+ },
+ "IceFox": {
+  "display_name": "Foxcicle",
+  "rank": 760
+ },
+ "JetDragon": {
+  "display_name": "Jetragon",
+  "rank": 90
+ },
+ "DreamDemon": {
+  "display_name": "Daedream",
+  "rank": 1230
+ },
+ "Monkey": {
+  "display_name": "Tanzee",
+  "rank": 1250
+ },
+ "Manticore": {
+  "display_name": "Blazehowl",
+  "rank": 710
+ },
+ "Manticore_Dark": {
+  "display_name": "Blazehowl Noct",
+  "rank": 670
+ },
+ "KingAlpaca": {
+  "display_name": "Kingpaca",
+  "rank": 470
+ },
+ "KingAlpaca_Ice": {
+  "display_name": "Ice Kingpaca",
+  "rank": 440
+ },
+ "PlantSlime": {
+  "display_name": "Gumoss",
+  "rank": 1240
+ },
+ "MopBaby": {
+  "display_name": "Swee",
+  "rank": 1300
+ },
+ "MopKing": {
+  "display_name": "Sweepa",
+  "rank": 410
+ },
+ "CatMage": {
+  "display_name": "Katress",
+  "rank": 700
+ },
+ "PinkRabbit": {
+  "display_name": "Ribbuny",
+  "rank": 1310
+ },
+ "ThunderBird": {
+  "display_name": "Beakon",
+  "rank": 220
+ },
+ "HerculesBeetle": {
+  "display_name": "Warsect",
+  "rank": 340
+ },
+ "SaintCentaur": {
+  "display_name": "Paladius",
+  "rank": 80
+ },
+ "NightFox": {
+  "display_name": "Nox",
+  "rank": 1180
+ },
+ "CaptainPenguin": {
+  "display_name": "Penking",
+  "rank": 520
+ },
+ "WeaselDragon": {
+  "display_name": "Chillet",
+  "rank": 800
+ },
+ "SkyDragon": {
+  "display_name": "Quivern",
+  "rank": 350
+ },
+ "HadesBird": {
+  "display_name": "Helzephyr",
+  "rank": 190
+ },
+ "RedArmorBird": {
+  "display_name": "Ragnahawk",
+  "rank": 380
+ },
+ "Ronin": {
+  "display_name": "Bushi",
+  "rank": 640
+ },
+ "FlyingManta": {
+  "display_name": "Celaray",
+  "rank": 870
+ },
+ "BlackCentaur": {
+  "display_name": "Necromus",
+  "rank": 70
+ },
+ "FlowerDoll": {
+  "display_name": "Petallia",
+  "rank": 780
+ },
+ "NaughtyCat": {
+  "display_name": "Grintale",
+  "rank": 510
+ },
+ "CuteButterfly": {
+  "display_name": "Cinnamoth",
+  "rank": 490
+ },
+ "DarkScorpion": {
+  "display_name": "Menasting",
+  "rank": 260
+ },
+ "ThunderDragonMan": {
+  "display_name": "Orserk",
+  "rank": 140
+ },
+ "WoolFox": {
+  "display_name": "Cremis",
+  "rank": 1455
+ },
+ "LazyCatfish": {
+  "display_name": "Dumud",
+  "rank": 895
+ },
+ "LavaGirl": {
+  "display_name": "Flambelle",
+  "rank": 1405
+ },
+ "FlameBambi": {
+  "display_name": "Rooby",
+  "rank": 1155
+ }
+}

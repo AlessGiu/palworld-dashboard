@@ -1,0 +1,3365 @@
+{
+ "GYM_BlackGriffon": {
+  "display_name": "PAL Genetic Research Unit Commander Victor & Shadowbeak",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "GYM_ElecPanda": {
+  "display_name": "Rayne Syndicate Officer Zoe & Grizzbolt",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 3,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "GYM_Horus": {
+  "display_name": "PIDF Officer Marcus & Faleris",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "GYM_LilyQueen": {
+  "display_name": "Free Pal Alliance Founder Lily & Lyleen",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 3,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "GYM_ThunderDragonMan": {
+  "display_name": "Brothers of the Eternal Pyre Soul Reader Axel & Orserk",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 3,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "BadCatgirl": {
+  "display_name": "Nyafia",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 3,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "BlueberryFairy": {
+  "display_name": "Prunelia",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "BrownRabbit": {
+  "display_name": "Lapiron",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 1,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "ElecLion": {
+  "display_name": "Boltmane",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "FeatherOstrich": {
+  "display_name": "Dazemu",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "GoldenHorse": {
+  "display_name": "Gildane",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 3,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "PinkKangaroo": {
+  "display_name": "PinkKangaroo",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "ScorpionMan": {
+  "display_name": "Prixter",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 3,
+   "mining": 0,
+   "oil_extraction": 2,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "SifuDog": {
+  "display_name": "Dogen",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 2,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "TentacleTurtle": {
+  "display_name": "Turtacle",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "WingGolem": {
+  "display_name": "Knocklem",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 4,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "BeardedDragon": {
+  "display_name": "BeardedDragon",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 9
+ },
+ "WaterLizard": {
+  "display_name": "WaterLizard",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "GuardianDog": {
+  "display_name": "Yakumo",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "GrassDragon": {
+  "display_name": "GrassDragon",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Anubis": {
+  "display_name": "Anubis",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 4,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "Baphomet": {
+  "display_name": "Incineram",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "Baphomet_Dark": {
+  "display_name": "Incineram Noct",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "Bastet": {
+  "display_name": "Mau",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 1
+ },
+ "Bastet_Ice": {
+  "display_name": "Mau Cryst",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 1,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 1
+ },
+ "Boar": {
+  "display_name": "Rushoar",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "Carbunclo": {
+  "display_name": "Lifmunk",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 1
+ },
+ "ColorfulBird": {
+  "display_name": "Tocotoco",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Deer": {
+  "display_name": "Eikthyrdeer",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "Deer_Ground": {
+  "display_name": "Eikthyrdeer Terra",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "DrillGame": {
+  "display_name": "Digtoise",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "Eagle": {
+  "display_name": "Galeclaw",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "ElecPanda": {
+  "display_name": "Grizzbolt",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 3,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Ganesha": {
+  "display_name": "Teafant",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Garm": {
+  "display_name": "Direhowl",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "Gorilla": {
+  "display_name": "Gorirat",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "Hedgehog": {
+  "display_name": "Jolthog",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 1,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Hedgehog_Ice": {
+  "display_name": "Jolthog Cryst",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 1,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Kirin": {
+  "display_name": "Univolt",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 2,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "Kitsunebi": {
+  "display_name": "Foxparks",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "LittleBriarRose": {
+  "display_name": "Bristla",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "Mutant": {
+  "display_name": "Lunaris",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Penguin": {
+  "display_name": "Pengullet",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 1,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "RaijinDaughter": {
+  "display_name": "Dazzi",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 1,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "SharkKid": {
+  "display_name": "Gobfin",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "SharkKid_Fire": {
+  "display_name": "Gobfin Ignis",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "SheepBall": {
+  "display_name": "Lamball",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 1
+  },
+  "food_amount": 2
+ },
+ "Umihebi": {
+  "display_name": "Jormuntide",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 4,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Umihebi_Fire": {
+  "display_name": "Jormuntide Ignis",
+  "work_suitability": {
+   "emit_flame": 4,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Werewolf": {
+  "display_name": "Loupmoon",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "WindChimes": {
+  "display_name": "Hangyu",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "WindChimes_Ice": {
+  "display_name": "Hangyu Cryst",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 1,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Suzaku": {
+  "display_name": "Suzaku",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "Suzaku_Water": {
+  "display_name": "Suzaku Aqua",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 3,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "FireKirin": {
+  "display_name": "Pyrin",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "FireKirin_Dark": {
+  "display_name": "Pyrin Noct",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "FairyDragon": {
+  "display_name": "Elphidran",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "FairyDragon_Water": {
+  "display_name": "Elphidran Aqua",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 3,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "SweetsSheep": {
+  "display_name": "Woolipop",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 2
+ },
+ "WhiteTiger": {
+  "display_name": "Cryolinx",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 3,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Alpaca": {
+  "display_name": "Melpaca",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 3
+ },
+ "Serpent": {
+  "display_name": "Surfent",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "Serpent_Ground": {
+  "display_name": "Surfent Terra",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "DarkCrow": {
+  "display_name": "Cawgnito",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "BlueDragon": {
+  "display_name": "Azurobe",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 3,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "PinkCat": {
+  "display_name": "Cattiva",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "NegativeKoala": {
+  "display_name": "Depresso",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "FengyunDeeper": {
+  "display_name": "Fenglope",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "VolcanicMonster": {
+  "display_name": "Reptyro",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "VolcanicMonster_Ice": {
+  "display_name": "Ice Reptyro",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 3,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "GhostBeast": {
+  "display_name": "Maraith",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "RobinHood": {
+  "display_name": "Robinquill",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "RobinHood_Ground": {
+  "display_name": "Robinquill Terra",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "LazyDragon": {
+  "display_name": "Relaxaurus",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "LazyDragon_Electric": {
+  "display_name": "Relaxaurus Lux",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 3,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "AmaterasuWolf": {
+  "display_name": "Kitsun",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "LizardMan": {
+  "display_name": "Leezpunk",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "LizardMan_Fire": {
+  "display_name": "Leezpunk Ignis",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "BluePlatypus": {
+  "display_name": "Fuack",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "BlackFurDragon": {
+  "display_name": "Dragostrophe",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "BirdDragon": {
+  "display_name": "Vanwyrm",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "BirdDragon_Ice": {
+  "display_name": "Vanwyrm Cryst",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "ChickenPal": {
+  "display_name": "Chikipi",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 1
+ },
+ "FlowerDinosaur": {
+  "display_name": "Dinossom",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "FlowerDinosaur_Electric": {
+  "display_name": "Dinossom Lux",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 2,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "ElecCat": {
+  "display_name": "Sparkit",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 1,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "IceHorse": {
+  "display_name": "Frostallion",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 4,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "IceHorse_Dark": {
+  "display_name": "Frostallion Noct",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 4,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "GrassMammoth": {
+  "display_name": "Mammorest",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "GrassMammoth_Ice": {
+  "display_name": "Mammorest Cryst",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "CatVampire": {
+  "display_name": "Felbat",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "SakuraSaurus": {
+  "display_name": "Broncherry",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 3,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "SakuraSaurus_Water": {
+  "display_name": "Broncherry Aqua",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 3,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Horus": {
+  "display_name": "Faleris",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "KingBahamut": {
+  "display_name": "Blazamut",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 4,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 9
+ },
+ "BerryGoat": {
+  "display_name": "Caprity",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 4
+ },
+ "IceDeer": {
+  "display_name": "Reindrix",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "BlackGriffon": {
+  "display_name": "Shadowbeak",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "WhiteMoth": {
+  "display_name": "Sibelyx",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 2,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 5
+ },
+ "CuteFox": {
+  "display_name": "Vixy",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 1
+ },
+ "FoxMage": {
+  "display_name": "Wixen",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "PinkLizard": {
+  "display_name": "Lovander",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "WizardOwl": {
+  "display_name": "Hoocrates",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "Kelpie": {
+  "display_name": "Kelpsea",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 1
+ },
+ "Kelpie_Fire": {
+  "display_name": "Kelpsea Ignis",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 1
+ },
+ "NegativeOctopus": {
+  "display_name": "Killamari",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "CowPal": {
+  "display_name": "Mozzarina",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 3
+ },
+ "Yeti": {
+  "display_name": "Wumpo",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 3,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 4,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "Yeti_Grass": {
+  "display_name": "Wumpo Botan",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 3,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 4,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "VioletFairy": {
+  "display_name": "Vaelet",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "HawkBird": {
+  "display_name": "Nitewing",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "FlowerRabbit": {
+  "display_name": "Flopie",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "LilyQueen": {
+  "display_name": "Lyleen",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 4,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "LilyQueen_Dark": {
+  "display_name": "Lyleen Noct",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "QueenBee": {
+  "display_name": "Elizabee",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "SoldierBee": {
+  "display_name": "Beegarde",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 1
+  },
+  "food_amount": 3
+ },
+ "CatBat": {
+  "display_name": "Tombat",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "GrassPanda": {
+  "display_name": "Mossanda",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "GrassPanda_Electric": {
+  "display_name": "Mossanda Lux",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 2,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "FlameBuffalo": {
+  "display_name": "Arsox",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "ThunderDog": {
+  "display_name": "Rayhound",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 2,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "CuteMole": {
+  "display_name": "Fuddler",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 1,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "BlackMetalDragon": {
+  "display_name": "Astegon",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 4,
+   "oil_extraction": 3,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 9
+ },
+ "GrassRabbitMan": {
+  "display_name": "Verdash",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 3,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "IceFox": {
+  "display_name": "Foxcicle",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "JetDragon": {
+  "display_name": "Jetragon",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 3,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 3,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 9
+ },
+ "DreamDemon": {
+  "display_name": "Daedream",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "Monkey": {
+  "display_name": "Tanzee",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "Manticore": {
+  "display_name": "Blazehowl",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Manticore_Dark": {
+  "display_name": "Blazehowl Noct",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "KingAlpaca": {
+  "display_name": "Kingpaca",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "KingAlpaca_Ice": {
+  "display_name": "Ice Kingpaca",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 3,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "PlantSlime": {
+  "display_name": "Gumoss",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 1
+ },
+ "DarkMutant": {
+  "display_name": "DarkMutant",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 3,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "MopBaby": {
+  "display_name": "Swee",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 1,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "MopKing": {
+  "display_name": "Sweepa",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "CatMage": {
+  "display_name": "Katress",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 5
+ },
+ "PinkRabbit": {
+  "display_name": "Ribbuny",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "ThunderBird": {
+  "display_name": "Beakon",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 2,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "HerculesBeetle": {
+  "display_name": "Warsect",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 3,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 6
+ },
+ "SaintCentaur": {
+  "display_name": "Paladius",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 9
+ },
+ "NightFox": {
+  "display_name": "Nox",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 2
+ },
+ "CaptainPenguin": {
+  "display_name": "Penking",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "WeaselDragon": {
+  "display_name": "Chillet",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 1,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "SkyDragon": {
+  "display_name": "Quivern",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "HadesBird": {
+  "display_name": "Helzephyr",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 8
+ },
+ "RedArmorBird": {
+  "display_name": "Ragnahawk",
+  "work_suitability": {
+   "emit_flame": 3,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "Ronin": {
+  "display_name": "Bushi",
+  "work_suitability": {
+   "emit_flame": 2,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 3,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "FlyingManta": {
+  "display_name": "Celaray",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "BlackCentaur": {
+  "display_name": "Necromus",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 9
+ },
+ "FlowerDoll": {
+  "display_name": "Petallia",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 3,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "NaughtyCat": {
+  "display_name": "Grintale",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "CuteButterfly": {
+  "display_name": "Cinnamoth",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 2,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "DarkScorpion": {
+  "display_name": "Menasting",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 2,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "ThunderDragonMan": {
+  "display_name": "Orserk",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 4,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": 7
+ },
+ "WoolFox": {
+  "display_name": "Cremis",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 1
+  },
+  "food_amount": 2
+ },
+ "LazyCatfish": {
+  "display_name": "Dumud",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 2,
+   "oil_extraction": 1,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": 4
+ },
+ "LavaGirl": {
+  "display_name": "Flambelle",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 1
+  },
+  "food_amount": 2
+ },
+ "FlameBambi": {
+  "display_name": "Rooby",
+  "work_suitability": {
+   "emit_flame": 1,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": 3
+ },
+ "CloverFairy": {
+  "display_name": "Clovee",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "JellyfishFairy": {
+  "display_name": "Jelliette",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "JellyfishGhost": {
+  "display_name": "Jellroy",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "PurpleSpider": {
+  "display_name": "Tarantriss",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 3,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 2,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "ClioneTwins": {
+  "display_name": "Amione",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "ElecPomeranian": {
+  "display_name": "Puffolt",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 2,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "FluffyBird": {
+  "display_name": "Muffly",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 2,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "GhostBlackCat": {
+  "display_name": "Wispaw",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 1,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "GrassMinotaur": {
+  "display_name": "Elgrove",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 3,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 2,
+   "deforest": 3,
+   "mining": 2,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 3,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "PandaGirl": {
+  "display_name": "Leafan",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 3,
+   "generate_electricity": 0,
+   "handcraft": 3,
+   "collection": 3,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "SamuraiDog": {
+  "display_name": "Pupperai",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 1,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "SmallYeti": {
+  "display_name": "Snugloo",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 2,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 3,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 3,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "StuffedShark": {
+  "display_name": "Finsider",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 2,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "SwordCutlassfish": {
+  "display_name": "Skutlass",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 4,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 4,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 0,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "KendoFrog": {
+  "display_name": "Croajiro",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 1,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 1,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "DarkAlien": {
+  "display_name": "Xenovader",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 0,
+   "deforest": 3,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "MimicDog": {
+  "display_name": "Mimog",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 0,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 2,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ },
+ "LeafMomonga": {
+  "display_name": "Herbil",
+  "work_suitability": {
+   "emit_flame": 0,
+   "watering": 0,
+   "seeding": 1,
+   "generate_electricity": 0,
+   "handcraft": 0,
+   "collection": 1,
+   "deforest": 0,
+   "mining": 0,
+   "oil_extraction": 0,
+   "product_medicine": 0,
+   "cool": 0,
+   "transport": 1,
+   "monster_farm": 0
+  },
+  "food_amount": null
+ }
+}

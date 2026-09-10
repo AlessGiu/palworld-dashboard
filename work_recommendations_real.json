@@ -1,0 +1,301 @@
+{
+  "Allumage": [
+    {
+      "stars": 3,
+      "max_level": 33,
+      "codename": "BOSS_Manticore",
+      "count": 1,
+      "display_name": "Crimson Goliath Blazehowl"
+    },
+    {
+      "stars": 3,
+      "max_level": 4,
+      "codename": "BOSS_KingBahamut",
+      "count": 1,
+      "display_name": "Cursed Tyrant Blazamut"
+    },
+    {
+      "stars": 3,
+      "max_level": 4,
+      "codename": "Manticore",
+      "count": 1,
+      "display_name": "Blazehowl"
+    }
+  ],
+  "Arrosage": [
+    {
+      "stars": 4,
+      "max_level": 4,
+      "codename": "SwordCutlassfish",
+      "count": 2,
+      "display_name": "Skutlass"
+    },
+    {
+      "stars": 3,
+      "max_level": 40,
+      "codename": "BOSS_BlueDragon",
+      "count": 1,
+      "display_name": "Lady of the Lake Azurobe"
+    },
+    {
+      "stars": 3,
+      "max_level": 37,
+      "codename": "BlueDragon",
+      "count": 2,
+      "display_name": "Azurobe"
+    }
+  ],
+  "Plantation": [
+    {
+      "stars": 3,
+      "max_level": 54,
+      "codename": "SakuraSaurus",
+      "count": 6,
+      "display_name": "Broncherry"
+    },
+    {
+      "stars": 3,
+      "max_level": 38,
+      "codename": "PandaGirl",
+      "count": 4,
+      "display_name": "Leafan"
+    },
+    {
+      "stars": 3,
+      "max_level": 33,
+      "codename": "FlowerDoll",
+      "count": 2,
+      "display_name": "Petallia"
+    }
+  ],
+  "Electricite": [
+    {
+      "stars": 3,
+      "max_level": 52,
+      "codename": "LazyDragon_Electric",
+      "count": 5,
+      "display_name": "Relaxaurus Lux"
+    },
+    {
+      "stars": 2,
+      "max_level": 37,
+      "codename": "BOSS_ThunderBird",
+      "count": 2,
+      "display_name": "Wings of Thunder Beakon"
+    },
+    {
+      "stars": 2,
+      "max_level": 33,
+      "codename": "ThunderBird",
+      "count": 3,
+      "display_name": "Beakon"
+    }
+  ],
+  "Manutention": [
+    {
+      "stars": 3,
+      "max_level": 42,
+      "codename": "FoxMage",
+      "count": 4,
+      "display_name": "Wixen"
+    },
+    {
+      "stars": 3,
+      "max_level": 38,
+      "codename": "PandaGirl",
+      "count": 4,
+      "display_name": "Leafan"
+    },
+    {
+      "stars": 3,
+      "max_level": 36,
+      "codename": "BOSS_PurpleSpider",
+      "count": 1,
+      "display_name": "Tarantriss"
+    }
+  ],
+  "Cueillette": [
+    {
+      "stars": 3,
+      "max_level": 38,
+      "codename": "PandaGirl",
+      "count": 4,
+      "display_name": "Leafan"
+    },
+    {
+      "stars": 3,
+      "max_level": 36,
+      "codename": "BOSS_PurpleSpider",
+      "count": 1,
+      "display_name": "Tarantriss"
+    },
+    {
+      "stars": 3,
+      "max_level": 36,
+      "codename": "PurpleSpider",
+      "count": 6,
+      "display_name": "Tarantriss"
+    }
+  ],
+  "Bucheronnage": [
+    {
+      "stars": 4,
+      "max_level": 4,
+      "codename": "SwordCutlassfish",
+      "count": 2,
+      "display_name": "Skutlass"
+    },
+    {
+      "stars": 3,
+      "max_level": 49,
+      "codename": "ScorpionMan",
+      "count": 2,
+      "display_name": "Prixter"
+    },
+    {
+      "stars": 3,
+      "max_level": 39,
+      "codename": "DarkAlien",
+      "count": 12,
+      "display_name": "Xenovader"
+    }
+  ],
+  "Minage": [
+    {
+      "stars": 4,
+      "max_level": 4,
+      "codename": "BOSS_KingBahamut",
+      "count": 1,
+      "display_name": "Cursed Tyrant Blazamut"
+    },
+    {
+      "stars": 3,
+      "max_level": 33,
+      "codename": "SmallYeti",
+      "count": 3,
+      "display_name": "Snugloo"
+    },
+    {
+      "stars": 2,
+      "max_level": 45,
+      "codename": "BOSS_GrassMammoth",
+      "count": 4,
+      "display_name": "King of the Forest Mammorest"
+    }
+  ],
+  "Extraction de petrole": [
+    {
+      "stars": 2,
+      "max_level": 49,
+      "codename": "ScorpionMan",
+      "count": 2,
+      "display_name": "Prixter"
+    },
+    {
+      "stars": 2,
+      "max_level": 1,
+      "codename": "BOSS_ScorpionMan",
+      "count": 1,
+      "display_name": "Prixter"
+    },
+    {
+      "stars": 1,
+      "max_level": 25,
+      "codename": "LazyCatfish",
+      "count": 10,
+      "display_name": "Dumud"
+    }
+  ],
+  "Medecine": [
+    {
+      "stars": 3,
+      "max_level": 27,
+      "codename": "BOSS_CatVampire",
+      "count": 1,
+      "display_name": "Gloom-shrouded Bloodsucker Felbat"
+    },
+    {
+      "stars": 3,
+      "max_level": 23,
+      "codename": "CatVampire",
+      "count": 3,
+      "display_name": "Felbat"
+    },
+    {
+      "stars": 2,
+      "max_level": 41,
+      "codename": "PinkLizard",
+      "count": 2,
+      "display_name": "Lovander"
+    }
+  ],
+  "Refroidissement": [
+    {
+      "stars": 3,
+      "max_level": 33,
+      "codename": "SmallYeti",
+      "count": 3,
+      "display_name": "Snugloo"
+    },
+    {
+      "stars": 2,
+      "max_level": 40,
+      "codename": "BOSS_WhiteMoth",
+      "count": 1,
+      "display_name": "Pallid Lady Sibelyx"
+    },
+    {
+      "stars": 2,
+      "max_level": 34,
+      "codename": "IceDeer",
+      "count": 3,
+      "display_name": "Reindrix"
+    }
+  ],
+  "Transport": [
+    {
+      "stars": 3,
+      "max_level": 44,
+      "codename": "BirdDragon",
+      "count": 7,
+      "display_name": "Vanwyrm"
+    },
+    {
+      "stars": 3,
+      "max_level": 40,
+      "codename": "HadesBird",
+      "count": 2,
+      "display_name": "Helzephyr"
+    },
+    {
+      "stars": 3,
+      "max_level": 37,
+      "codename": "BOSS_ThunderBird",
+      "count": 2,
+      "display_name": "Wings of Thunder Beakon"
+    }
+  ],
+  "Elevage/Ferme": [
+    {
+      "stars": 1,
+      "max_level": 40,
+      "codename": "BOSS_WhiteMoth",
+      "count": 1,
+      "display_name": "Pallid Lady Sibelyx"
+    },
+    {
+      "stars": 1,
+      "max_level": 32,
+      "codename": "CowPal",
+      "count": 12,
+      "display_name": "Mozzarina"
+    },
+    {
+      "stars": 1,
+      "max_level": 31,
+      "codename": "SoldierBee",
+      "count": 5,
+      "display_name": "Beegarde"
+    }
+  ]
+}

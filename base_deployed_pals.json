@@ -1,0 +1,72 @@
+[
+  {
+    "codename": "BOSS_CaptainPenguin",
+    "level": 33,
+    "is_player": false
+  },
+  {
+    "codename": "CatBat",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "CowPal",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "BOSS_PurpleSpider",
+    "level": 36,
+    "is_player": false
+  },
+  {
+    "codename": "Baphomet",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "CatBat",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "BOSS_CaptainPenguin",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "Kirin",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "FlowerDoll",
+    "level": 33,
+    "is_player": false
+  },
+  {
+    "codename": "BOSS_Manticore",
+    "level": 33,
+    "is_player": false
+  },
+  {
+    "codename": "BlueDragon",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "FoxMage",
+    "level": 24,
+    "is_player": false
+  },
+  {
+    "codename": "CatBat",
+    "level": 32,
+    "is_player": false
+  },
+  {
+    "codename": "SakuraSaurus",
+    "level": 22,
+    "is_player": false
+  }
+]

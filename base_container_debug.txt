@@ -1,0 +1,26 @@
+num containers: 8
+key: {'ID': {'struct_type': 'Guid', 'struct_id': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'id': None, 'value': palworld_sa
+valkeys: ['bReferenceSlot', 'Slots', 'SlotNum', 'RawData', 'CustomVersionData']
+num slots: 5
+sample slot: {'SlotIndex': {'id': None, 'value': 0, 'type': 'IntProperty'}, 'RawData': {'array_type': 'ByteProperty', 'id': None, 'value': {'player_uid': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'instance_id': palworld_save_tools.archive.UUID('0c33c635-4e90-ba55-8e5b-c6a0d45714e2'), 'permission_tribe_id': 0, 'trailing_bytes': [0, 0, 0, 0, 0]}, 'type': 'ArrayProperty', 'custom_t
+---
+key: {'ID': {'struct_type': 'Guid', 'struct_id': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'id': None, 'value': palworld_sa
+valkeys: ['bReferenceSlot', 'Slots', 'SlotNum', 'RawData', 'CustomVersionData']
+num slots: 402
+sample slot: {'SlotIndex': {'id': None, 'value': 0, 'type': 'IntProperty'}, 'RawData': {'array_type': 'ByteProperty', 'id': None, 'value': {'player_uid': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'instance_id': palworld_save_tools.archive.UUID('9beda22b-49ff-bad3-cf8a-52b51f2fdf57'), 'permission_tribe_id': 0, 'trailing_bytes': [0, 0, 0, 0, 0]}, 'type': 'ArrayProperty', 'custom_t
+---
+key: {'ID': {'struct_type': 'Guid', 'struct_id': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'id': None, 'value': palworld_sa
+valkeys: ['bReferenceSlot', 'Slots', 'SlotNum', 'RawData', 'CustomVersionData']
+num slots: 5
+sample slot: {'SlotIndex': {'id': None, 'value': 0, 'type': 'IntProperty'}, 'RawData': {'array_type': 'ByteProperty', 'id': None, 'value': {'player_uid': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'instance_id': palworld_save_tools.archive.UUID('a026a98f-4afc-4815-bfb0-94b269bc4693'), 'permission_tribe_id': 0, 'trailing_bytes': [0, 0, 0, 0, 0]}, 'type': 'ArrayProperty', 'custom_t
+---
+key: {'ID': {'struct_type': 'Guid', 'struct_id': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'id': None, 'value': palworld_sa
+valkeys: ['bReferenceSlot', 'Slots', 'SlotNum', 'RawData', 'CustomVersionData']
+num slots: 447
+sample slot: {'SlotIndex': {'id': None, 'value': 0, 'type': 'IntProperty'}, 'RawData': {'array_type': 'ByteProperty', 'id': None, 'value': {'player_uid': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'instance_id': palworld_save_tools.archive.UUID('4cfdfe94-4c87-1bca-2d1a-53bee5d367d3'), 'permission_tribe_id': 0, 'trailing_bytes': [0, 0, 0, 0, 0]}, 'type': 'ArrayProperty', 'custom_t
+---
+key: {'ID': {'struct_type': 'Guid', 'struct_id': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'id': None, 'value': palworld_sa
+valkeys: ['bReferenceSlot', 'Slots', 'SlotNum', 'RawData', 'CustomVersionData']
+num slots: 14
+sample slot: {'SlotIndex': {'id': None, 'value': 0, 'type': 'IntProperty'}, 'RawData': {'array_type': 'ByteProperty', 'id': None, 'value': {'player_uid': palworld_save_tools.archive.UUID('00000000-0000-0000-0000-000000000000'), 'instance_id': palworld_save_tools.archive.UUID('140334dd-4050-46d1-c983-939e741e34b4'), 'permission_tribe_id': 0, 'trailing_bytes': [0, 0, 0, 0, 0]}, 'type': 'ArrayProperty', 'custom_t
+---

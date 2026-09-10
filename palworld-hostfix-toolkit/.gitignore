@@ -1,0 +1,10 @@
+.claude/
+__pycache__/
+*.pyc
+*.sav
+.env
+
+# ooz binary is fetched on demand (see scripts/fetch_ooz.py) — not redistributed via git,
+# since upstream zao/ooz has no explicit license (GitHub license field is null).
+ooz/*.zip
+ooz/*.dll
