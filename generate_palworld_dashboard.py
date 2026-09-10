@@ -1750,6 +1750,51 @@ def render_html(data):
   @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(4px); }} to {{ opacity: 1; transform: translateY(0); }} }}
   @media (prefers-reduced-motion: reduce) {{ .tab-panel.active {{ animation: none; }} html {{ scroll-behavior: auto; }} }}
 
+  /* ---- mobile ---- */
+  @media (max-width: 640px) {{
+    .page {{ padding: 0 14px 32px; }}
+    .site-header {{ padding: 20px 14px 16px; }}
+    .brand-mark {{ width: 42px; height: 42px; font-size: 1.4rem; border-radius: 12px; }}
+    .brand h1 {{ font-size: 1.15rem; }}
+    .brand .tagline {{ font-size: 0.8rem; }}
+    .tabs {{
+      flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      margin: 0 -14px 20px; padding: 10px 14px; scrollbar-width: none;
+    }}
+    .tabs::-webkit-scrollbar {{ display: none; }}
+    .tab-btn {{ flex-shrink: 0; padding: 8px 13px; font-size: 0.82rem; }}
+  }}
+
+  /* ---- kanban ---- */
+  .kanban-add-row {{ display: flex; gap: 8px; margin: 16px 0; }}
+  .kanban-input {{
+    flex: 1; background: var(--card-soft); border: 1px solid var(--border-soft); border-radius: 8px;
+    padding: 9px 12px; color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
+  }}
+  .kanban-input:focus {{ outline: none; border-color: var(--orange); }}
+  .kanban-board {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }}
+  .kanban-column {{
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    padding: 12px; min-height: 120px;
+  }}
+  .kanban-column.drag-over {{ border-color: var(--orange); }}
+  .kanban-col-title {{ display: flex; align-items: center; justify-content: space-between; font-size: 0.9rem; margin: 0 0 10px 0; }}
+  .kanban-count {{ background: var(--bg); border-radius: 999px; padding: 2px 9px; font-size: 0.75rem; color: var(--muted); }}
+  .kanban-col-body {{ display: flex; flex-direction: column; gap: 8px; min-height: 60px; }}
+  .kanban-card {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; cursor: grab; }}
+  .kanban-card:active {{ cursor: grabbing; }}
+  .kanban-card.dragging {{ opacity: 0.4; }}
+  .kanban-card-title {{ font-size: 0.88rem; font-weight: 600; overflow-wrap: break-word; }}
+  .kanban-card-desc {{ font-size: 0.78rem; color: var(--muted); margin-top: 4px; overflow-wrap: break-word; }}
+  .kanban-card-actions {{ display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }}
+  .kanban-card-move {{ display: flex; gap: 4px; }}
+  .kanban-card-move button, .kanban-card-del {{
+    background: none; border: 1px solid var(--border-soft); color: var(--muted); border-radius: 6px;
+    padding: 2px 7px; font-size: 0.75rem; cursor: pointer; font-family: var(--font-body);
+  }}
+  .kanban-card-move button:hover, .kanban-card-del:hover {{ color: var(--text); border-color: var(--orange); }}
+  @media (max-width: 640px) {{ .kanban-board {{ grid-template-columns: 1fr; }} }}
+
   .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }}
   .grid-2col {{ grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }}
   .card {{
@@ -1945,6 +1990,7 @@ def render_html(data):
     <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Élevage</button>
     <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
     <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
+    <button class="tab-btn" data-tab="tab-kanban" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128203; Organisation</button>
   </nav>
 
   <div id="tab-overview" class="tab-panel active">
@@ -2159,6 +2205,35 @@ def render_html(data):
     </div>
   </div>
 
+  <div id="tab-kanban" class="tab-panel">
+    <div class="card" style="border-left-color: var(--orange)">
+      <h2>&#128203; Organisation -- a faire pour le serveur</h2>
+      <p class="muted" style="margin-top:-6px">
+        Liste de taches partagee entre vous deux (stockee a part, elle survit aux regenerations
+        horaires du dashboard). Glissez une carte vers une autre colonne, ou utilisez les fleches.
+      </p>
+      <div class="kanban-add-row">
+        <input type="text" id="kanban-new-title" class="kanban-input" placeholder="Nouvelle tache...">
+        <button class="filter-btn active" onclick="kanbanAddTask()">+ Ajouter</button>
+      </div>
+      <div class="kanban-board" id="kanban-board">
+        <div class="kanban-column" data-column="todo">
+          <h3 class="kanban-col-title">A faire <span class="kanban-count" id="kanban-count-todo">0</span></h3>
+          <div class="kanban-col-body" id="kanban-col-todo" ondragover="kanbanDragOver(event)" ondrop="kanbanDrop(event, 'todo')"></div>
+        </div>
+        <div class="kanban-column" data-column="doing">
+          <h3 class="kanban-col-title">En cours <span class="kanban-count" id="kanban-count-doing">0</span></h3>
+          <div class="kanban-col-body" id="kanban-col-doing" ondragover="kanbanDragOver(event)" ondrop="kanbanDrop(event, 'doing')"></div>
+        </div>
+        <div class="kanban-column" data-column="done">
+          <h3 class="kanban-col-title">Fait <span class="kanban-count" id="kanban-count-done">0</span></h3>
+          <div class="kanban-col-body" id="kanban-col-done" ondragover="kanbanDragOver(event)" ondrop="kanbanDrop(event, 'done')"></div>
+        </div>
+      </div>
+      <p class="muted" id="kanban-status" style="font-size:0.78rem; margin-top:12px"></p>
+    </div>
+  </div>
+
   <footer>Généré automatiquement depuis la sauvegarde du serveur Palworld -- refresh periodique</footer>
   </div>
 
@@ -2308,6 +2383,137 @@ def render_html(data):
     document.querySelectorAll('.palpedia-player-panel').forEach(function(p) {{
       palpediaRender(p.getAttribute('data-player'));
     }});
+    var KANBAN_API = '/api/tasks';
+    var KANBAN_COLUMNS = ['todo', 'doing', 'done'];
+    var kanbanTasks = [];
+    function kanbanStatus(msg) {{
+      var el = document.getElementById('kanban-status');
+      if (el) el.textContent = msg || '';
+    }}
+    function kanbanLoad() {{
+      fetch(KANBAN_API).then(function(r) {{
+        if (!r.ok) throw new Error('http ' + r.status);
+        return r.json();
+      }}).then(function(data) {{
+        kanbanTasks = data;
+        kanbanStatus('');
+        kanbanRender();
+      }}).catch(function() {{
+        kanbanStatus('Impossible de charger les taches (service indisponible pour le moment).');
+      }});
+    }}
+    function kanbanCardEl(t, colIdx) {{
+      var card = document.createElement('div');
+      card.className = 'kanban-card';
+      card.draggable = true;
+      card.dataset.id = t.id;
+      card.addEventListener('dragstart', function(e) {{
+        e.dataTransfer.setData('text/plain', String(t.id));
+        card.classList.add('dragging');
+      }});
+      card.addEventListener('dragend', function() {{ card.classList.remove('dragging'); }});
+      var title = document.createElement('div');
+      title.className = 'kanban-card-title';
+      title.textContent = t.title;
+      card.appendChild(title);
+      if (t.description) {{
+        var desc = document.createElement('div');
+        desc.className = 'kanban-card-desc';
+        desc.textContent = t.description;
+        card.appendChild(desc);
+      }}
+      var actions = document.createElement('div');
+      actions.className = 'kanban-card-actions';
+      var move = document.createElement('div');
+      move.className = 'kanban-card-move';
+      if (colIdx > 0) {{
+        var left = document.createElement('button');
+        left.type = 'button';
+        left.textContent = '←';
+        left.onclick = function() {{ kanbanMove(t.id, KANBAN_COLUMNS[colIdx - 1]); }};
+        move.appendChild(left);
+      }}
+      if (colIdx < KANBAN_COLUMNS.length - 1) {{
+        var right = document.createElement('button');
+        right.type = 'button';
+        right.textContent = '→';
+        right.onclick = function() {{ kanbanMove(t.id, KANBAN_COLUMNS[colIdx + 1]); }};
+        move.appendChild(right);
+      }}
+      actions.appendChild(move);
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'kanban-card-del';
+      del.textContent = '×';
+      del.onclick = function() {{ kanbanDelete(t.id); }};
+      actions.appendChild(del);
+      card.appendChild(actions);
+      return card;
+    }}
+    function kanbanRender() {{
+      KANBAN_COLUMNS.forEach(function(col, colIdx) {{
+        var body = document.getElementById('kanban-col-' + col);
+        if (!body) return;
+        body.innerHTML = '';
+        var items = kanbanTasks.filter(function(t) {{ return t.column === col; }})
+          .sort(function(a, b) {{ return a.position - b.position; }});
+        var countEl = document.getElementById('kanban-count-' + col);
+        if (countEl) countEl.textContent = items.length;
+        items.forEach(function(t) {{ body.appendChild(kanbanCardEl(t, colIdx)); }});
+      }});
+    }}
+    function kanbanAddTask() {{
+      var input = document.getElementById('kanban-new-title');
+      var title = (input.value || '').trim();
+      if (!title) return;
+      fetch(KANBAN_API, {{
+        method: 'POST', headers: {{'Content-Type': 'application/json'}},
+        body: JSON.stringify({{title: title, column: 'todo'}})
+      }}).then(function(r) {{ return r.json(); }}).then(function(task) {{
+        kanbanTasks.push(task);
+        kanbanRender();
+        input.value = '';
+        kanbanStatus('');
+      }}).catch(function() {{ kanbanStatus("Erreur lors de l'ajout."); }});
+    }}
+    function kanbanMove(id, newColumn) {{
+      fetch(KANBAN_API + '/' + id, {{
+        method: 'PATCH', headers: {{'Content-Type': 'application/json'}},
+        body: JSON.stringify({{column: newColumn}})
+      }}).then(function(r) {{ return r.json(); }}).then(function(updated) {{
+        kanbanTasks = kanbanTasks.map(function(t) {{ return t.id === updated.id ? updated : t; }});
+        kanbanRender();
+      }}).catch(function() {{ kanbanStatus('Erreur lors du deplacement.'); }});
+    }}
+    function kanbanDelete(id) {{
+      fetch(KANBAN_API + '/' + id, {{method: 'DELETE'}}).then(function() {{
+        kanbanTasks = kanbanTasks.filter(function(t) {{ return t.id !== id; }});
+        kanbanRender();
+      }}).catch(function() {{ kanbanStatus('Erreur lors de la suppression.'); }});
+    }}
+    function kanbanDragOver(e) {{
+      e.preventDefault();
+      var col = e.currentTarget.closest('.kanban-column');
+      if (col) col.classList.add('drag-over');
+    }}
+    function kanbanDrop(e, column) {{
+      e.preventDefault();
+      var col = e.currentTarget.closest('.kanban-column');
+      if (col) col.classList.remove('drag-over');
+      var id = parseInt(e.dataTransfer.getData('text/plain'), 10);
+      if (id) kanbanMove(id, column);
+    }}
+    document.querySelectorAll('.kanban-col-body').forEach(function(body) {{
+      body.addEventListener('dragleave', function() {{
+        var col = body.closest('.kanban-column');
+        if (col) col.classList.remove('drag-over');
+      }});
+    }});
+    var kanbanNewInput = document.getElementById('kanban-new-title');
+    if (kanbanNewInput) {{
+      kanbanNewInput.addEventListener('keydown', function(e) {{ if (e.key === 'Enter') kanbanAddTask(); }});
+    }}
+    kanbanLoad();
     (function() {{
       try {{
         var saved = localStorage.getItem('palworld_dash_tab');

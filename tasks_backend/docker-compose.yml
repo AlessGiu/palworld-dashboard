@@ -1,0 +1,14 @@
+services:
+  palworld-tasks:
+    build: .
+    container_name: palworld-tasks
+    restart: unless-stopped
+    ports:
+      - "5010:5000"
+    volumes:
+      - palworld-tasks-data:/data
+    environment:
+      TASKS_DB_PATH: /data/tasks.sqlite
+
+volumes:
+  palworld-tasks-data:
