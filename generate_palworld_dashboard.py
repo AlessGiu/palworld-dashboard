@@ -2318,6 +2318,67 @@ def render_html(data):
         Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
       </p>
     </div>
+
+    <div class="card" style="border-left-color: var(--purple); margin-top:20px">
+      <h2>&#127968; Une base mid-game qui tient la route</h2>
+      <p class="muted" style="margin-top:-6px">
+        Resume de la video <a href="https://www.youtube.com/watch?v=6b-u0D7_vp8" target="_blank" rel="noopener">« UNE BASE PARFAITE MID GAME? sur PALWORLD 1.0 »</a>
+        (Cheatah, 14 aout 2026) -- agencement, astuces et exemples de Pals pour la transition niveau ~30/40 vers 80.
+      </p>
+      <p class="muted" style="font-size:0.82rem; background:var(--card-soft); border:1px dashed var(--border); border-radius:10px; padding:10px 14px; margin-top:12px">
+        &#9888;&#65039; Le createur joue avec une contrainte perso (deblocage des Pals a l'ordre du Palpedia) : ses choix de Pals sont adaptes a cette regle, pas forcement le pick optimal standard. Les principes d'agencement restent valables pour tous.
+      </p>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#128205; Choix d'emplacement</h3>
+      <ul class="advice-list">
+        <li><b>Regroupez vos futures bases</b> -- une zone avec la place pour 4 bases cote a cote evite les allers-retours en teleporteur en late-game.</li>
+        <li><b>Construire sur l'eau est debloque bien plus tot</b> -- environ niveau 20-23 desormais (contre ~66 avant), terrain plat garanti.</li>
+        <li><b>L'emplacement compte surtout en early-game</b> -- en late-game vous produirez tout sur place, l'impact du spot devient minime.</li>
+      </ul>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#128193; Organisation par secteurs</h3>
+      <ul class="advice-list">
+        <li>Agriculture + transformation de nourriture regroupees, forge pas loin.</li>
+        <li>Un coin elevage/ferme distinct plutot qu'eparpille.</li>
+        <li>Coffre "cherche-tout" + Coffre de Guilde (sans peremption) pose direct sur les postes d'extraction pour un depot automatique.</li>
+        <li>Prioriser la recherche arrosage/fontaine : +20% d'arrosage sur toute la base.</li>
+        <li>Un seul bon generateur electrique (~5 points de recherche investis) peut couvrir toute l'energie de la base.</li>
+      </ul>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#128142; Farm rapide de cubes</h3>
+      <p class="muted" style="margin-top:0">
+        Pour fermer des noyaux de civilisation antique, des <b style="color:var(--text)">petites expeditions repetees</b>
+        (~30 min, ciblant les fragments de bete noire) sont bien plus rentables qu'une grosse expedition longue (~1h) :
+        3-4 cubes minimum par cycle plus des livres de competence, contre 1-2 noyaux pour une grosse expedition a pleine charge.
+      </p>
+      <p class="muted" style="font-size:0.82rem">
+        &#128161; Astuce bonus : dans l'ecran d'expedition, une exception permet d'empecher un Pal precis de partir
+        (utile pour ne jamais perdre l'acces a votre ramasseur d'oeufs par exemple).
+      </p>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#129521; Astuce empilement (lits / cultures)</h3>
+      <p class="muted" style="margin-top:0">Gain de place et d'ergonomie, aucun gain de performance associe.</p>
+      <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
+        <li>Placez un mur de reference.</li>
+        <li>Alignez votre objet (lit, parcelle) contre le mur avec la touche d'alignement (Ctrl).</li>
+        <li>Ajoutez un coussin de sol (ou banc/chaise) a l'endroit du prochain objet.</li>
+        <li>Reconstruisez l'objet aligne sur le mur, par-dessus le coussin -- repetez pour empiler.</li>
+      </ol>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#128062; Exemples de roles de Pals (mid-game)</h3>
+      <ul class="advice-list">
+        <li><b>Lumoun</b> -- Artisanat : 3&#9733; + Serieux/Applique/Soumis/Nocturne (travaille 24/7), top early-mid game.</li>
+        <li><b>Oeil de Kouloulou</b> -- Transport : build 100% vitesse, cite comme top 1-2 des meilleurs transporteurs meme en late-game.</li>
+        <li><b>Cinnamoth</b> -- Agriculture : semence + collecte full etoile pour gerer seule les parcelles.</li>
+        <li><b>Ruchoir</b> -- Minage : 5&#9733;, epaule par un second mineur car un seul ne suit plus en mid-game.</li>
+        <li><b>Tifan</b> -- Eau/polyvalent : arrose tout sans trou, plus transport, farine, pierre-&gt;brique et recherche eau.</li>
+        <li><b>Ruby / Melpaca / Chikipi</b> -- Production long-terme (laine, lait, oeufs), montes a fond car utiles jusqu'a la fin.</li>
+      </ul>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
+      </p>
+    </div>
   </div>
 
   <footer>Généré automatiquement depuis la sauvegarde du serveur Palworld -- refresh periodique</footer>
