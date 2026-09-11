@@ -2264,6 +2264,7 @@ def render_html(data):
     <div class="filter-row" id="guide-selector">
       <button class="filter-btn active" data-guide="g0" onclick="showGuide(this)">&#128214; Farm XP mid-game</button>
       <button class="filter-btn" data-guide="g1" onclick="showGuide(this)">&#127968; Base mid-game</button>
+      <button class="filter-btn" data-guide="g2" onclick="showGuide(this)">&#127907; La peche</button>
     </div>
 
     <div class="guide-panel" data-guide="g0">
@@ -2432,6 +2433,105 @@ def render_html(data):
         <li><b>Ruby / Melpaca / Chikipi</b> -- Production long-terme
           <div class="muted" style="font-size:0.85rem; margin-top:4px">Laine, lait, oeufs -- montes a fond car utiles jusqu'a la fin.</div>
         </li>
+      </ul>
+      </div>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
+      </p>
+    </div>
+    </div>
+
+    <div class="guide-panel" data-guide="g2" style="display:none">
+    <div class="card" style="border-left-color: var(--blue)">
+      <h2>&#127907; La peche -- comment ca marche</h2>
+      <p class="muted" style="margin-top:-6px">
+        Resume de la video <a href="https://www.youtube.com/watch?v=NBMXHd5Tqeg" target="_blank" rel="noopener">« LA PECHE COMMENT CA MARCHE? sur PALWORLD 1.0 »</a>
+        (Cheatah, 15 aout 2026) -- cannes, appats, equipe de Pals, spots et peche a l'aimant.
+      </p>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#127907; Materiel</h3>
+      <ul class="advice-list">
+        <li><b>3 cannes a peche</b> -- Normale et Epique se debloquent par recherche technologique. La Legendaire demande de dropper son plan (notamment via les campements ennemis aquatiques, gros taux selon le createur).
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">La canne influence la taille/facilite de la jauge du mini-jeu de capture, pas la qualite du loot.</div>
+        </li>
+        <li><b>Les appats n'accelerent pas la touche</b> (teste par le createur)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Ce qu'ils changent vraiment : un bonus de depart direct sur la jauge de capture -- meilleur appat = pourcentage de depart plus eleve.</div>
+        </li>
+        <li><b>L'aimant de peche</b> -- debloque par la recherche, mecanique cle a partir du niveau ~62.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128062; Equipe pour la peche standard</h3>
+      <ul class="advice-list">
+        <li><b>Gloupy</b> (full etoilee)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Reduit de 35% la penalite en cas d'erreur au mini-jeu. Inutile si vous ne ratez jamais -- mais "ca arrive toujours" selon le createur.</div>
+        </li>
+        <li><b>Jelliette</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Double les items droppes en peche standard (ne fonctionne pas pour la peche a l'aimant, c'est le role de Jellroy).</div>
+        </li>
+        <li><b>Walaska + Walaska Ignis</b> (cumulables)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">+17% et +14% de jauge de capture des le debut (soit +30% cumule). Necessitent une selle craftee pour que le passif s'active -- juste presents dans le stock de Pals, pas besoin de les sortir.</div>
+        </li>
+        <li><b>Salmora / Salmora Ignis</b> <span class="muted" style="font-weight:400">(optionnel)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Augmente l'IV des Pals captures en pechant -- utile seulement si vous pechez pour chopper des Pals (moins pertinent depuis l'Arbre Monde selon le createur).</div>
+        </li>
+        <li>Aucune competence passive du Pal lui-meme n'influence la peche -- passifs libres.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128204; Reperer les spots</h3>
+      <p class="muted" style="margin-top:0">
+        Les loots suivent les biomes (zone d'herbe &#8594; foret &#8594; volcan &#8594; desert &#8594; neige &#8594; Sakura &#8594; Feybreak &#8594; iles volantes &#8594; Arbre Monde), avec un loot proportionnellement meilleur dans les biomes avances. L'Arbre Monde est le meilleur spot en late-game (plans epiques/legendaires).
+      </p>
+      <p class="muted" style="font-size:0.82rem; background:var(--card-soft); border:1px dashed var(--border); border-radius:10px; padding:10px 14px">
+        &#9888;&#65039; La distinction "5 poissons visibles = spot standard / 3 poissons = spot legendaire" est une deduction personnelle du createur et sa communaute (aucune source officielle trouvee) -- il a lui-meme eu un contre-exemple pendant le tournage. A prendre avec prudence, ou verifier via le site paldb.cc (lien description video) qui donne spots et temps de respawn exacts.
+      </p>
+      <ul class="advice-list">
+        <li><b>Aura verte</b> sur un poisson
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Pal capture avec passifs quasi assures rainbow/legendaires -- la aura a viser si vous pechez pour chopper des Pals.</div>
+        </li>
+        <li><b>Aura violette simple</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Marqueur "alpha" seulement, peu d'interet en soi.</div>
+        </li>
+        <li><b>Aura violette + eclat (GZR)</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Trophee des Flots garanti a 100% -- specialiste aquatique.</div>
+        </li>
+      </ul>
+      <p class="muted" style="font-size:0.82rem">
+        Les appats et auras n'influencent QUE le Pal obtenu en capture -- jamais les ressources/items droppes.
+      </p>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129442; Peche a l'aimant</h3>
+      <p class="muted" style="margin-top:0">
+        Mecanique separee, debloquee vers le niveau 62 : recuperer les detritus en mer, surtout pour le <b style="color:var(--text)">Korallium</b>
+        (essentiel en late-game, avant de pouvoir le synthetiser bien plus tard).
+      </p>
+      <ul class="advice-list">
+        <li><b>Jellroy</b> (le plus etoile possible)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Double ce que vous recuperez -- indispensable, contrairement a Jelliette qui ne marche que pour la peche standard.</div>
+        </li>
+        <li><b>Un Pal de deplacement rapide dans l'eau</b> (Neptilus dans la video)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Pour enchainer les points de detritus vite -- le reste de l'equipe de peche standard est inutile ici.</div>
+        </li>
+        <li>La qualite/niveau de la canne a peche n'influence pas la peche a l'aimant (teste par le createur).</li>
+        <li><b>2 types de spots aussi</b> -- standard (tonneau gris) vs legendaire (tonneau a bordure doree, loot bien meilleur) : dans la zone Feybreak c'est garanti a 100% legendaire, pas aleatoire.</li>
+      </ul>
+      <p class="muted" style="font-size:0.82rem; background:var(--card-soft); border:1px dashed var(--border); border-radius:10px; padding:10px 14px">
+        &#128161; Astuce d'un commentateur de la video (non verifiee par le createur) : le combo <b style="color:var(--text)">Reptyro / Reptyro Cryst</b> annule le poids du Korallium recupere -- pratique pour les longues sessions de farm intensif.
+      </p>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#9888;&#65039; A savoir</h3>
+      <ul class="advice-list">
+        <li>Alternative mineure pour du Korallium en tout debut de jeu : looter les Walaska tues directement (4 a 6 par kill max, pas une grosse quantite).</li>
+        <li>D'apres un commentaire de la video, viser les poissons "de base" plutot que "brillants" donnerait plus de composants (fluides, ingredients cuisine) -- les brillants dropperaient plutot des objets a vendre. Non confirme par le createur lui-meme.</li>
       </ul>
       </div>
 
