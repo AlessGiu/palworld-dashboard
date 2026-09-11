@@ -2261,6 +2261,12 @@ def render_html(data):
   </div>
 
   <div id="tab-guides" class="tab-panel">
+    <div class="filter-row" id="guide-selector">
+      <button class="filter-btn active" data-guide="g0" onclick="showGuide(this)">&#128214; Farm XP mid-game</button>
+      <button class="filter-btn" data-guide="g1" onclick="showGuide(this)">&#127968; Base mid-game</button>
+    </div>
+
+    <div class="guide-panel" data-guide="g0">
     <div class="card" style="border-left-color: var(--gold)">
       <h2>&#128214; Farm XP mid-game -- le camp qu'on ne finit jamais</h2>
       <p class="muted" style="margin-top:-6px">
@@ -2268,16 +2274,29 @@ def render_html(data):
         (Cheatah, 21 aout 2026) -- comment monter une equipe de Pals jusqu'au niveau ~70-75 sans materiel de fin de jeu.
       </p>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#127890; Materiel necessaire</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#127890; Materiel necessaire</h3>
       <ul class="advice-list">
-        <li><b>Un Pal avec une grosse attaque de zone (AOE)</b> -- Herbil ou Omascul avec Rafale de Vent dans la video. D'autres attaques de zone (tourbillon de sable, tenebres...) devraient marcher aussi, non testees de facon exhaustive par le createur.</li>
-        <li><b>Omascul si accessible</b> <span class="muted">(optionnel)</span> -- passif +80% XP a 4 etoiles plein. Pal tardif a capturer, la technique marche quand meme sans lui.</li>
-        <li><b>Nourriture boost XP</b> pour les Pals a monter -- une salade a base de poisson/fruits de mer citee dans la video, recette pas claire dans la transcription, a verifier en jeu.</li>
-        <li><b>La Clochette de Croissance</b> (objet posable, boost XP) -- emplacement exact non retrouve par le createur ; un commentaire de la video mentionne un plan vers -26, -92, <span style="color:var(--red)">non verifie</span>.</li>
-        <li><b>Vos Pals niveau 1 a monter</b> (4 a 15 selon le besoin).</li>
+        <li><b>Un Pal avec une grosse attaque de zone (AOE)</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Herbil ou Omascul avec Rafale de Vent dans la video. D'autres attaques de zone (tourbillon de sable, tenebres...) devraient marcher aussi, non testees de facon exhaustive par le createur.</div>
+        </li>
+        <li><b>Omascul si accessible</b> <span class="muted" style="font-weight:400">(optionnel)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Passif +80% XP a 4 etoiles plein. Pal tardif a capturer, la technique marche quand meme sans lui.</div>
+        </li>
+        <li><b>Nourriture boost XP</b> pour les Pals a monter
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Une salade a base de poisson/fruits de mer citee dans la video, recette pas claire dans la transcription, a verifier en jeu.</div>
+        </li>
+        <li><b>La Clochette de Croissance</b> (objet posable, boost XP)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Emplacement exact non retrouve par le createur ; un commentaire de la video mentionne un plan vers -26, -92, <span style="color:var(--red)">non verifie</span>.</div>
+        </li>
+        <li><b>Vos Pals niveau 1 a monter</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">4 a 15 selon le besoin.</div>
+        </li>
       </ul>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#127800; Le lieu</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#127800; Le lieu</h3>
       <p class="muted" style="margin-top:0">
         <b style="color:var(--text)">Ile de Sakura</b> -- camp de PNJ colle a un teleporteur, condition clee pour boucler vite.
         L'ile du Fin a ete testee et ecartee : aucun camp assez proche d'un TP.
@@ -2286,8 +2305,10 @@ def render_html(data):
         <div class="kpi"><span class="label">Niveau de zone</span><span class="value" style="font-size:1.1rem">~50-60</span></div>
         <div class="kpi"><span class="label">Teleporteur</span><span class="value" style="font-size:1.1rem">-600, 214</span></div>
       </div>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#128260; La boucle</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128260; La boucle</h3>
       <p class="muted" style="margin-top:0">Principe : ne jamais tuer 100% du camp, pour eviter le respawn PNJ classique (~30 min).</p>
       <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
         <li>Emmenez vos Pals niveau 1 + leur nourriture XP au camp (donnez la bouffe avant de commencer).</li>
@@ -2300,26 +2321,37 @@ def render_html(data):
         &#9201;&#65039; Le vrai goulot d'etranglement n'est pas le combat mais l'ecran de chargement du teleporteur --
         beaucoup plus rapide en solo/serveur local qu'en multi.
       </p>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#129517; Alternatives evoquees</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129517; Alternatives evoquees</h3>
       <ul class="advice-list">
-        <li><b>Boucler une tour de donjon</b> -- fonctionne (~30 sec/boucle sur la plus rapide), mais ratio XP/temps juge moins bon par le createur.</li>
-        <li><b>Monture + attaque feu sur la Tour du Paradis</b> -- piste evoquee, pas encore testee en video au moment de l'enregistrement.</li>
+        <li><b>Boucler une tour de donjon</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Fonctionne (~30 sec/boucle sur la plus rapide), mais ratio XP/temps juge moins bon par le createur.</div>
+        </li>
+        <li><b>Monture + attaque feu sur la Tour du Paradis</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Piste evoquee, pas encore testee en video au moment de l'enregistrement.</div>
+        </li>
       </ul>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#9888;&#65039; A savoir avant de vous lancer</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#9888;&#65039; A savoir avant de vous lancer</h3>
       <ul class="advice-list">
         <li>Ce n'est pas un niveau 70 en 10 secondes -- il faut repeter la boucle plusieurs fois.</li>
         <li>Pour le end-game pur (niveau 80), l'autre technique du createur (Omascul full stuff + boss unique) a ete nerfee recemment : comptez plutot 75-77 que 80.</li>
         <li>Choisissez un camp adapte a votre niveau actuel -- trop bas level si vous etes deja loin en progression, l'efficacite XP en patit.</li>
         <li>Details non verifies par le createur lui-meme : emplacement exact de la Clochette de Croissance, recette precise de la nourriture XP.</li>
       </ul>
+      </div>
       <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
         Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
       </p>
     </div>
+    </div>
 
-    <div class="card" style="border-left-color: var(--purple); margin-top:20px">
+    <div class="guide-panel" data-guide="g1" style="display:none">
+    <div class="card" style="border-left-color: var(--purple)">
       <h2>&#127968; Une base mid-game qui tient la route</h2>
       <p class="muted" style="margin-top:-6px">
         Resume de la video <a href="https://www.youtube.com/watch?v=6b-u0D7_vp8" target="_blank" rel="noopener">« UNE BASE PARFAITE MID GAME? sur PALWORLD 1.0 »</a>
@@ -2329,14 +2361,23 @@ def render_html(data):
         &#9888;&#65039; Le createur joue avec une contrainte perso (deblocage des Pals a l'ordre du Palpedia) : ses choix de Pals sont adaptes a cette regle, pas forcement le pick optimal standard. Les principes d'agencement restent valables pour tous.
       </p>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#128205; Choix d'emplacement</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128205; Choix d'emplacement</h3>
       <ul class="advice-list">
-        <li><b>Regroupez vos futures bases</b> -- une zone avec la place pour 4 bases cote a cote evite les allers-retours en teleporteur en late-game.</li>
-        <li><b>Construire sur l'eau est debloque bien plus tot</b> -- environ niveau 20-23 desormais (contre ~66 avant), terrain plat garanti.</li>
-        <li><b>L'emplacement compte surtout en early-game</b> -- en late-game vous produirez tout sur place, l'impact du spot devient minime.</li>
+        <li><b>Regroupez vos futures bases</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Une zone avec la place pour 4 bases cote a cote evite les allers-retours en teleporteur en late-game.</div>
+        </li>
+        <li><b>Construire sur l'eau est debloque bien plus tot</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Environ niveau 20-23 desormais (contre ~66 avant), terrain plat garanti.</div>
+        </li>
+        <li><b>L'emplacement compte surtout en early-game</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">En late-game vous produirez tout sur place, l'impact du spot devient minime.</div>
+        </li>
       </ul>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#128193; Organisation par secteurs</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128193; Organisation par secteurs</h3>
       <ul class="advice-list">
         <li>Agriculture + transformation de nourriture regroupees, forge pas loin.</li>
         <li>Un coin elevage/ferme distinct plutot qu'eparpille.</li>
@@ -2344,8 +2385,10 @@ def render_html(data):
         <li>Prioriser la recherche arrosage/fontaine : +20% d'arrosage sur toute la base.</li>
         <li>Un seul bon generateur electrique (~5 points de recherche investis) peut couvrir toute l'energie de la base.</li>
       </ul>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#128142; Farm rapide de cubes</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128142; Farm rapide de cubes</h3>
       <p class="muted" style="margin-top:0">
         Pour fermer des noyaux de civilisation antique, des <b style="color:var(--text)">petites expeditions repetees</b>
         (~30 min, ciblant les fragments de bete noire) sont bien plus rentables qu'une grosse expedition longue (~1h) :
@@ -2355,8 +2398,10 @@ def render_html(data):
         &#128161; Astuce bonus : dans l'ecran d'expedition, une exception permet d'empecher un Pal precis de partir
         (utile pour ne jamais perdre l'acces a votre ramasseur d'oeufs par exemple).
       </p>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#129521; Astuce empilement (lits / cultures)</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129521; Astuce empilement (lits / cultures)</h3>
       <p class="muted" style="margin-top:0">Gain de place et d'ergonomie, aucun gain de performance associe.</p>
       <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
         <li>Placez un mur de reference.</li>
@@ -2364,20 +2409,36 @@ def render_html(data):
         <li>Ajoutez un coussin de sol (ou banc/chaise) a l'endroit du prochain objet.</li>
         <li>Reconstruisez l'objet aligne sur le mur, par-dessus le coussin -- repetez pour empiler.</li>
       </ol>
+      </div>
 
-      <h3 style="margin-top:22px; font-size:1rem">&#128062; Exemples de roles de Pals (mid-game)</h3>
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128062; Exemples de roles de Pals (mid-game)</h3>
       <ul class="advice-list">
-        <li><b>Lumoun</b> -- Artisanat : 3&#9733; + Serieux/Applique/Soumis/Nocturne (travaille 24/7), top early-mid game.</li>
-        <li><b>Oeil de Kouloulou</b> -- Transport : build 100% vitesse, cite comme top 1-2 des meilleurs transporteurs meme en late-game.</li>
-        <li><b>Cinnamoth</b> -- Agriculture : semence + collecte full etoile pour gerer seule les parcelles.</li>
-        <li><b>Ruchoir</b> -- Minage : 5&#9733;, epaule par un second mineur car un seul ne suit plus en mid-game.</li>
-        <li><b>Tifan</b> -- Eau/polyvalent : arrose tout sans trou, plus transport, farine, pierre-&gt;brique et recherche eau.</li>
-        <li><b>Ruby / Melpaca / Chikipi</b> -- Production long-terme (laine, lait, oeufs), montes a fond car utiles jusqu'a la fin.</li>
+        <li><b>Lumoun</b> -- Artisanat
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">3&#9733; + Serieux/Applique/Soumis/Nocturne (travaille 24/7), top early-mid game.</div>
+        </li>
+        <li><b>Oeil de Kouloulou</b> -- Transport
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Build 100% vitesse, cite comme top 1-2 des meilleurs transporteurs meme en late-game.</div>
+        </li>
+        <li><b>Cinnamoth</b> -- Agriculture
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Semence + collecte full etoile pour gerer seule les parcelles.</div>
+        </li>
+        <li><b>Ruchoir</b> -- Minage
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">5&#9733;, epaule par un second mineur car un seul ne suit plus en mid-game.</div>
+        </li>
+        <li><b>Tifan</b> -- Eau / polyvalent
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Arrose tout sans trou, plus transport, farine, pierre-&gt;brique et recherche eau.</div>
+        </li>
+        <li><b>Ruby / Melpaca / Chikipi</b> -- Production long-terme
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Laine, lait, oeufs -- montes a fond car utiles jusqu'a la fin.</div>
+        </li>
       </ul>
+      </div>
 
       <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
         Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
       </p>
+    </div>
     </div>
   </div>
 
@@ -2492,6 +2553,14 @@ def render_html(data):
     }});
     var PAL_ICON_FALLBACK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='10' fill='%23232838'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23888'%3E%3F%3C/text%3E%3C/svg%3E";
     function palIconError(img) {{ img.onerror = null; img.src = PAL_ICON_FALLBACK; }}
+    function showGuide(btn) {{
+      var slug = btn.getAttribute('data-guide');
+      document.querySelectorAll('#guide-selector .filter-btn').forEach(function(b) {{ b.classList.remove('active'); }});
+      btn.classList.add('active');
+      document.querySelectorAll('.guide-panel').forEach(function(p) {{ p.style.display = 'none'; }});
+      var panel = document.querySelector('.guide-panel[data-guide="' + slug + '"]');
+      if (panel) panel.style.display = '';
+    }}
     function palpediaShowPlayer(btn) {{
       var slug = btn.getAttribute('data-player');
       document.querySelectorAll('#palpedia-player-tabs .filter-btn').forEach(function(b) {{ b.classList.remove('active'); }});
