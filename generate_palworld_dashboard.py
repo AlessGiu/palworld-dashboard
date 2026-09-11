@@ -2015,6 +2015,7 @@ def render_html(data):
     <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
     <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
     <button class="tab-btn" data-tab="tab-kanban" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128203; Organisation</button>
+    <button class="tab-btn" data-tab="tab-guides" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#128214; Guides</button>
   </nav>
   <div class="page">
 
@@ -2256,6 +2257,66 @@ def render_html(data):
         </div>
       </div>
       <p class="muted" id="kanban-status" style="font-size:0.78rem; margin-top:12px"></p>
+    </div>
+  </div>
+
+  <div id="tab-guides" class="tab-panel">
+    <div class="card" style="border-left-color: var(--gold)">
+      <h2>&#128214; Farm XP mid-game -- le camp qu'on ne finit jamais</h2>
+      <p class="muted" style="margin-top:-6px">
+        Resume de la video <a href="https://www.youtube.com/watch?v=1ipOrXhpZuw" target="_blank" rel="noopener">« NOUVELLE TECHNIQUE D'XP POUR VOS PALS sur PALWORLD 1.0 »</a>
+        (Cheatah, 21 aout 2026) -- comment monter une equipe de Pals jusqu'au niveau ~70-75 sans materiel de fin de jeu.
+      </p>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#127890; Materiel necessaire</h3>
+      <ul class="advice-list">
+        <li><b>Un Pal avec une grosse attaque de zone (AOE)</b> -- Herbil ou Omascul avec Rafale de Vent dans la video. D'autres attaques de zone (tourbillon de sable, tenebres...) devraient marcher aussi, non testees de facon exhaustive par le createur.</li>
+        <li><b>Omascul si accessible</b> <span class="muted">(optionnel)</span> -- passif +80% XP a 4 etoiles plein. Pal tardif a capturer, la technique marche quand meme sans lui.</li>
+        <li><b>Nourriture boost XP</b> pour les Pals a monter -- une salade a base de poisson/fruits de mer citee dans la video, recette pas claire dans la transcription, a verifier en jeu.</li>
+        <li><b>La Clochette de Croissance</b> (objet posable, boost XP) -- emplacement exact non retrouve par le createur ; un commentaire de la video mentionne un plan vers -26, -92, <span style="color:var(--red)">non verifie</span>.</li>
+        <li><b>Vos Pals niveau 1 a monter</b> (4 a 15 selon le besoin).</li>
+      </ul>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#127800; Le lieu</h3>
+      <p class="muted" style="margin-top:0">
+        <b style="color:var(--text)">Ile de Sakura</b> -- camp de PNJ colle a un teleporteur, condition clee pour boucler vite.
+        L'ile du Fin a ete testee et ecartee : aucun camp assez proche d'un TP.
+      </p>
+      <div class="kpi-grid">
+        <div class="kpi"><span class="label">Niveau de zone</span><span class="value" style="font-size:1.1rem">~50-60</span></div>
+        <div class="kpi"><span class="label">Teleporteur</span><span class="value" style="font-size:1.1rem">-600, 214</span></div>
+      </div>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#128260; La boucle</h3>
+      <p class="muted" style="margin-top:0">Principe : ne jamais tuer 100% du camp, pour eviter le respawn PNJ classique (~30 min).</p>
+      <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
+        <li>Emmenez vos Pals niveau 1 + leur nourriture XP au camp (donnez la bouffe avant de commencer).</li>
+        <li>Envoyez le Pal a attaque de zone au milieu du camp -- il nettoie la majorite des ennemis en un coup.</li>
+        <li>Repartez sans tout achever, puis dechargez la zone (fuite rapide/vol, ou aller-retour au teleporteur).</li>
+        <li>Revenez : le camp s'est regenere sans avoir attendu le timer complet.</li>
+        <li>Repetez 5 a 10 fois -- selon les parametres serveur, comptez une equipe autour du niveau 70-75, avec de l'or/tissu/loot a chaque passage.</li>
+      </ol>
+      <p class="muted" style="font-size:0.85rem">
+        &#9201;&#65039; Le vrai goulot d'etranglement n'est pas le combat mais l'ecran de chargement du teleporteur --
+        beaucoup plus rapide en solo/serveur local qu'en multi.
+      </p>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#129517; Alternatives evoquees</h3>
+      <ul class="advice-list">
+        <li><b>Boucler une tour de donjon</b> -- fonctionne (~30 sec/boucle sur la plus rapide), mais ratio XP/temps juge moins bon par le createur.</li>
+        <li><b>Monture + attaque feu sur la Tour du Paradis</b> -- piste evoquee, pas encore testee en video au moment de l'enregistrement.</li>
+      </ul>
+
+      <h3 style="margin-top:22px; font-size:1rem">&#9888;&#65039; A savoir avant de vous lancer</h3>
+      <ul class="advice-list">
+        <li>Ce n'est pas un niveau 70 en 10 secondes -- il faut repeter la boucle plusieurs fois.</li>
+        <li>Pour le end-game pur (niveau 80), l'autre technique du createur (Omascul full stuff + boss unique) a ete nerfee recemment : comptez plutot 75-77 que 80.</li>
+        <li>Choisissez un camp adapte a votre niveau actuel -- trop bas level si vous etes deja loin en progression, l'efficacite XP en patit.</li>
+        <li>Details non verifies par le createur lui-meme : emplacement exact de la Clochette de Croissance, recette precise de la nourriture XP.</li>
+      </ul>
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
+      </p>
     </div>
   </div>
 
