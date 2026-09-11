@@ -492,12 +492,20 @@ def collect_data():
             ),
             key=lambda x: x["nom"],
         )
+        possedees_liste = sorted(
+            (
+                {"nom": WORK_SUITABILITY_FULL[cn]["display_name"], "codename": cn}
+                for cn in owned_in_universe
+            ),
+            key=lambda x: x["nom"],
+        )
         palpedia_out.append({
             "joueur": player_name,
             "possedees": len(owned_in_universe),
             "total": len(palpedia_universe_set),
             "pct": round(len(owned_in_universe) / len(palpedia_universe_set) * 100, 1),
             "manquantes": missing,
+            "possedees_liste": possedees_liste,
         })
     palpedia_out.sort(key=lambda p: -p["pct"])
 
@@ -1648,14 +1656,19 @@ def render_html(data):
             f'<button class="filter-btn{active}" data-player="{slug}" onclick="palpediaShowPlayer(this)">'
             f"&#128100; {esc(p['joueur'])} ({p['pct']}%)</button>"
         )
-        pal_cards_html = "".join(
-            f"""<div class="palpedia-pal-card" onclick="showPalCard('{esc(m['codename'])}')">
+        def _pal_card(m, status):
+            return f"""<div class="palpedia-pal-card" data-status="{status}" onclick="showPalCard('{esc(m['codename'])}')">
               <img class="palpedia-pal-icon" src="{esc(pal_icon_url(m['codename']))}" loading="lazy" alt="{esc(m['nom'])}" onerror="palIconError(this)">
               <span class="palpedia-pal-name">{esc(m['nom'])}</span>
             </div>"""
-            for m in p["manquantes"]
-        )
+
+        pal_cards_html = "".join(_pal_card(m, "missing") for m in p["manquantes"])
+        pal_cards_html += "".join(_pal_card(m, "owned") for m in p["possedees_liste"])
         panel_style = "" if idx == 0 else "display:none"
+        status_buttons = (
+            '<button class="filter-btn active" data-status="missing" onclick="palpediaSetStatus(this, \'' + slug + '\')">Non capturé</button>'
+            '<button class="filter-btn" data-status="owned" onclick="palpediaSetStatus(this, \'' + slug + '\')">Capturé</button>'
+        )
         page_size_buttons = "".join(
             f'<button class="filter-btn{" active" if size == 20 else ""}" data-size="{size}" onclick="palpediaSetPageSize(this, \'{slug}\')">{label}</button>'
             for size, label in [(20, "20"), (50, "50"), (100, "100"), (9999, "Tout")]
@@ -1664,10 +1677,14 @@ def render_html(data):
           <div class="palpedia-bar-track"><div class="palpedia-bar-fill" style="width:{p['pct']}%"></div></div>
           <div class="palpedia-count">{p['possedees']} / {p['total']} espèces possédées -- {len(p['manquantes'])} a capturer (clique sur une carte pour voir ses stats)</div>
           <div class="filter-row" style="margin-top:14px">
+            {status_buttons}
+          </div>
+          <div class="filter-row" style="margin-top:8px">
             <span class="muted" style="font-size:0.8rem; align-self:center">Cartes par page :</span>
             {page_size_buttons}
           </div>
-          <div class="palpedia-card-grid" id="palpedia-grid-{slug}">{pal_cards_html or "<p class='muted'>Aucune espèce manquante -- collection complète !</p>"}</div>
+          <div class="palpedia-card-grid" id="palpedia-grid-{slug}">{pal_cards_html}</div>
+          <p class="muted" id="palpedia-empty-{slug}" style="display:none">Aucune espèce dans cette categorie.</p>
           <div class="pagination-row">
             <button class="filter-btn" onclick="palpediaPage('{slug}', -1)">&#8592; Précédent</button>
             <span id="palpedia-pageinfo-{slug}" class="muted" style="font-size:0.82rem"></span>
@@ -1930,6 +1947,8 @@ def render_html(data):
     border-radius: 12px; cursor: pointer; transition: border-color .15s, transform .15s, box-shadow .15s;
   }}
   .palpedia-pal-card:hover {{ border-color: var(--purple); transform: translateY(-3px); box-shadow: var(--shadow); }}
+  .palpedia-pal-card[data-status="owned"] {{ border-top-color: var(--green); }}
+  .palpedia-pal-card[data-status="owned"]:hover {{ border-color: var(--green); }}
   .palpedia-pal-icon {{ width: 76px; height: 76px; object-fit: contain; border-radius: 10px; background: var(--bg); flex-shrink: 0; }}
   .palpedia-pal-name {{
     font-size: 0.85rem; font-weight: 600; color: var(--text); text-align: center; line-height: 1.2;
@@ -2360,31 +2379,55 @@ def render_html(data):
       if (panel) panel.style.display = '';
     }}
     var palpediaState = {{}};
+    function palpediaGetState(slug) {{
+      var st = palpediaState[slug];
+      if (!st) {{
+        st = {{page: 1, size: 20, status: 'missing'}};
+        palpediaState[slug] = st;
+      }}
+      return st;
+    }}
     function palpediaRender(slug) {{
-      var st = palpediaState[slug] || {{page: 1, size: 20}};
-      palpediaState[slug] = st;
+      var st = palpediaGetState(slug);
       var grid = document.getElementById('palpedia-grid-' + slug);
       if (!grid) return;
-      var cards = Array.prototype.slice.call(grid.querySelectorAll('.palpedia-pal-card'));
+      var allCards = Array.prototype.slice.call(grid.querySelectorAll('.palpedia-pal-card'));
+      var cards = allCards.filter(function(c) {{ return c.getAttribute('data-status') === st.status; }});
+      allCards.forEach(function(c) {{
+        if (c.getAttribute('data-status') !== st.status) c.style.display = 'none';
+      }});
       var totalPages = Math.max(1, Math.ceil(cards.length / st.size));
       if (st.page > totalPages) st.page = totalPages;
       var start = (st.page - 1) * st.size, end = start + st.size;
       cards.forEach(function(c, i) {{ c.style.display = (i >= start && i < end) ? '' : 'none'; }});
       var info = document.getElementById('palpedia-pageinfo-' + slug);
       if (info) info.textContent = cards.length ? ('Page ' + st.page + ' / ' + totalPages + ' (' + cards.length + ' espèces)') : '';
+      var empty = document.getElementById('palpedia-empty-' + slug);
+      if (empty) empty.style.display = cards.length ? 'none' : '';
+    }}
+    function palpediaSetStatus(btn, slug) {{
+      var status = btn.getAttribute('data-status');
+      var row = btn.parentElement;
+      row.querySelectorAll('.filter-btn').forEach(function(b) {{ b.classList.remove('active'); }});
+      btn.classList.add('active');
+      var st = palpediaGetState(slug);
+      st.status = status;
+      st.page = 1;
+      palpediaRender(slug);
     }}
     function palpediaSetPageSize(btn, slug) {{
       var size = parseInt(btn.getAttribute('data-size'), 10);
       var row = btn.parentElement;
       row.querySelectorAll('.filter-btn').forEach(function(b) {{ b.classList.remove('active'); }});
       btn.classList.add('active');
-      palpediaState[slug] = {{page: 1, size: size}};
+      var st = palpediaGetState(slug);
+      st.size = size;
+      st.page = 1;
       palpediaRender(slug);
     }}
     function palpediaPage(slug, delta) {{
-      var st = palpediaState[slug] || {{page: 1, size: 20}};
+      var st = palpediaGetState(slug);
       st.page = Math.max(1, st.page + delta);
-      palpediaState[slug] = st;
       palpediaRender(slug);
     }}
     document.querySelectorAll('.palpedia-player-panel').forEach(function(p) {{
