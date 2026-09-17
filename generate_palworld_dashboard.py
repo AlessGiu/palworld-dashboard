@@ -1821,6 +1821,9 @@ def render_html(data):
             {status_buttons}
           </div>
           <div class="filter-row" style="margin-top:8px">
+            <input type="text" class="kanban-input" style="max-width:260px" placeholder="&#128269; Rechercher un pal..." oninput="palpediaSetQuery(this, '{slug}')">
+          </div>
+          <div class="filter-row" style="margin-top:8px">
             <span class="muted" style="font-size:0.8rem; align-self:center">Cartes par page :</span>
             {page_size_buttons}
           </div>
@@ -1906,6 +1909,10 @@ def render_html(data):
   }}
   .tab-btn:hover {{ color: var(--text); background: var(--card-soft); }}
   .tab-btn.active {{ color: var(--bg); background: var(--tab-accent, var(--blue)); border-color: var(--tab-accent, var(--blue)); }}
+  .tab-section-label {{
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700;
+    color: var(--muted); margin: 10px 10px 0; padding-top: 8px; border-top: 1px solid var(--border-soft);
+  }}
   .tab-panel {{ display: none; }}
   .tab-panel.active {{ display: block; animation: fadeIn .2s ease; }}
   @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(4px); }} to {{ opacity: 1; transform: translateY(0); }} }}
@@ -1926,6 +1933,7 @@ def render_html(data):
     }}
     .tabs::-webkit-scrollbar {{ display: none; }}
     .tab-btn {{ width: auto; padding: 8px 13px; font-size: 0.82rem; }}
+    .tab-section-label {{ display: none; }}
   }}
 
   /* ---- kanban ---- */
@@ -2148,13 +2156,17 @@ def render_html(data):
   <div class="layout">
   <nav class="tabs">
     <button class="tab-btn active" data-tab="tab-overview" style="--tab-accent: var(--blue)" onclick="showTab(this)">&#127757; Vue d'ensemble</button>
-    <button class="tab-btn" data-tab="tab-players" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128100; Joueurs</button>
+    <div class="tab-section-label">Pals</div>
     <button class="tab-btn" data-tab="tab-pals" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#128062; Pals</button>
-    <button class="tab-btn" data-tab="tab-work" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128736; Travail a la base</button>
-    <button class="tab-btn" data-tab="tab-history" style="--tab-accent: var(--green)" onclick="showTab(this)">&#128200; Historique</button>
-    <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Élevage</button>
-    <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
     <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
+    <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Élevage</button>
+    <div class="tab-section-label">Base</div>
+    <button class="tab-btn" data-tab="tab-work" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128736; Travail a la base</button>
+    <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
+    <div class="tab-section-label">Suivi</div>
+    <button class="tab-btn" data-tab="tab-players" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128100; Joueurs</button>
+    <button class="tab-btn" data-tab="tab-history" style="--tab-accent: var(--green)" onclick="showTab(this)">&#128200; Historique</button>
+    <div class="tab-section-label">Perso</div>
     <button class="tab-btn" data-tab="tab-kanban" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128203; Organisation</button>
     <button class="tab-btn" data-tab="tab-guides" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#128214; Guides</button>
   </nav>
@@ -2406,8 +2418,10 @@ def render_html(data):
       <button class="filter-btn active" data-guide="g0" onclick="showGuide(this)">&#128214; Farm XP mid-game</button>
       <button class="filter-btn" data-guide="g1" onclick="showGuide(this)">&#127968; Base mid-game</button>
       <button class="filter-btn" data-guide="g2" onclick="showGuide(this)">&#127907; La peche</button>
-      <button class="filter-btn" data-guide="g3" onclick="showGuide(this)">&#128295; Installer des mods</button>
-      <button class="filter-btn" data-guide="g4" onclick="showGuide(this)">&#129412; Maxer un Frostallion</button>
+      <button class="filter-btn" data-guide="g3" onclick="showGuide(this)">&#128165; Build Tocotoco -- Megaton Implode</button>
+      <button class="filter-btn" data-guide="g4" onclick="showGuide(this)">&#128163; Puffsplode -- la chaine complete</button>
+      <button class="filter-btn" data-guide="g5" onclick="showGuide(this)">&#128295; Installer des mods</button>
+      <button class="filter-btn" data-guide="g6" onclick="showGuide(this)">&#129412; Maxer un Frostallion</button>
     </div>
 
     <div class="guide-panel" data-guide="g0">
@@ -2685,6 +2699,121 @@ def render_html(data):
     </div>
 
     <div class="guide-panel" data-guide="g3" style="display:none">
+    <div class="card" style="border-left-color: var(--red)">
+      <h2>&#128165; Build Tocotoco -- Megaton Implode</h2>
+      <p class="muted" style="margin-top:-6px">
+        Inspire d'un build <a href="https://www.reddit.com/r/Palworld/comments/1wb313h/he_has_become_death_destroyer_of_worlds/" target="_blank" rel="noopener">partage sur r/Palworld</a> (691 upvotes) : un Tocotoco niveau 66 qui spamme Megaton Implode (1200 de puissance affichee) sans jamais mourir de sa propre explosion.
+      </p>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#9888;&#65039; Le principe</h3>
+      <p class="muted" style="margin-top:0">
+        <b style="color:var(--text)">Megaton Implode</b> est la competence exclusive de Tocotoco (aucun fruit de competence n'existe pour l'apprendre a un autre Pal) -- Neutre, 500 de puissance de base (55s de cooldown, Brulure 100%), apprise naturellement au <b style="color:var(--text)">niveau 22</b>. Sa description est claire : le Pal "risque sa vie" pour l'explosion -- elle inflige des degats au Pal lui-meme. Tout le build sert a survivre a sa propre attaque pour la spammer en boucle.
+      </p>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129514; Les 4 passifs du build</h3>
+      <ul class="advice-list">
+        <li><b>Heavily Armored</b> <span class="muted" style="font-weight:400">(la piece maitresse)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Immunite aux degats d'explosion -- sans lui, Megaton Implode se retourne contre le Pal. Passif de mutation, implant "Disposable Implant: Heavily Armored" (rarete 4).</div>
+        </li>
+        <li><b>God of Destruction</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Attaque +40% / Defense +20% / PV -50%. Implant obtenu via Officiers de Prime, Marchand de l'Arene, ou en recyclant des Reliques Anciennes a l'Ancient Relic Recycler (rarete de relique plus elevee = meilleure chance) -- ou trouve directement sur un Pal capture dans l'Arbre Monde.</div>
+        </li>
+        <li><b>Diamond Body</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Bonus de Defense (ajoute avec Feybreak), compense la perte de PV de God of Destruction. Memes sources d'implant que God of Destruction.</div>
+        </li>
+        <li><b>Lucky</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Vitesse de travail +15% / Attaque +15%. Ne se trouve <b style="color:var(--text)">jamais</b> sur un Pal sauvage aleatoire -- uniquement via reproduction depuis une lignee qui l'a deja, ou sur certains boss.</div>
+        </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128221; Etapes</h3>
+      <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
+        <li>Capturer/posseder un Tocotoco et le monter au moins au niveau 22 pour debloquer Megaton Implode (le monter plus haut ensuite pour les stats/rangs).</li>
+        <li>Debloquer la Table de Chirurgie Pal (Technology, niveau 38) -- indispensable pour implanter les 3 passifs qui ne se trouvent jamais naturellement sur un Tocotoco sauvage.</li>
+        <li>Farmer/acheter les implants Heavily Armored, God of Destruction et Diamond Body (Officiers de Prime, Marchand de l'Arene, Ancient Relic Recycler).</li>
+        <li>Reproduire pour faire remonter Lucky sur la lignee de Tocotoco (breeding, pas d'implant possible).</li>
+        <li>Implanter les 4 passifs sur le Tocotoco via la Table de Chirurgie.</li>
+        <li>Reproduire plusieurs Tocotoco entre eux pour monter les IV (Talents PV/Attaque/Defense proches de 100%), et sacrifier les doublons au Pal Box pour monter le rang (etoiles).</li>
+      </ol>
+      </div>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Compile depuis un post r/Palworld et plusieurs pages wiki (palworld.wiki.gg, Game8, PalMods, Fextralife) -- pas un guide officiel Palworld, a verifier patch par patch (les valeurs de puissance/passifs evoluent avec les mises a jour du jeu).
+      </p>
+    </div>
+    </div>
+
+    <div class="guide-panel" data-guide="g4" style="display:none">
+    <div class="card" style="border-left-color: var(--orange)">
+      <h2>&#128163; Puffsplode -- la chaine complete</h2>
+      <p class="muted" style="margin-top:-6px">
+        Inspire d'un build <a href="https://www.reddit.com/r/Palworld/comments/1wc1s52/i_made_the_cutest_little_nuke_youve_ever_seen/" target="_blank" rel="noopener">partage sur r/Palworld</a> (1.4K upvotes) -- la suite logique du build Tocotoco : une espece finale minuscule qui garde Megaton Implode.
+      </p>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128300; Le principe</h3>
+      <p class="muted" style="margin-top:0">
+        Deux Puffolt (orthographie "Puffbolt" par l'auteur) differents sont necessaires, obtenus par <b style="color:var(--text)">deux chemins de reproduction separes</b>, puis combines ensemble pour obtenir Puffsplode.
+      </p>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128260; Chemin 1 -- le Puffolt qui porte Megaton Implode</h3>
+      <p class="muted" style="margin-top:0">
+        <b style="color:var(--text)">Tocotoco + Pyrin &#8594; Puffolt</b> (avec Megaton Implode herite, a condition que le Tocotoco parent le connaisse deja -- voir le guide Tocotoco ci-dessus).
+      </p>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129516; Chemin 2 -- un second Puffolt "propre" (chaine a 3 etapes)</h3>
+      <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
+        <li><b style="color:var(--text)">Hartail + Moldron &#8594; Azurmane</b></li>
+        <li><b style="color:var(--text)">Azurmane + Green Slime &#8594; Smokie</b></li>
+        <li><b style="color:var(--text)">Smokie + Gumoss &#8594; Puffolt</b></li>
+      </ol>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#127919; Etape finale</h3>
+      <p class="muted" style="margin-top:0">
+        <b style="color:var(--text)">Puffolt (chemin 1) + Puffolt (chemin 2) &#8594; Puffsplode</b>, qui herite de Megaton Implode.
+      </p>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129514; Passifs et astuces annexes du thread</h3>
+      <ul class="advice-list">
+        <li><b>Immortality + Demon God</b> <span class="muted" style="font-weight:400">(build initial de l'auteur)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Envisage de remplacer Immortality par <b style="color:var(--text)">God of Destruction</b> (meme passif que le build Tocotoco) -- alternative citee aussi : <b style="color:var(--text)">Twin-Edged Holy Blade</b>.</div>
+        </li>
+        <li><b>Explosive Resistant Undershirt</b> <span class="muted" style="font-weight:400">(alternative a Heavily Armored)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Cet accessoire protege le joueur ET les pals actifs de l'equipe des degats d'explosion (confirme par deux commentateurs) -- pas besoin forcement d'implanter Heavily Armored si tu l'equipes.</div>
+        </li>
+        <li><b>Optimisation IV en reproduction</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Gateaux legume (vegetable cake, puis extravagant vegetable cake = meilleure transmission d'IV) + un pal comme <b style="color:var(--text)">Grintale</b> (50-75% de chance de doubler le nombre d'oeufs par ponte) pour accelerer le tri des meilleurs IV.</div>
+        </li>
+        <li><b>Ca marche aussi avec d'autres pals de base</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Un commentateur dit avoir fait la meme chose en partant de <b style="color:var(--text)">Kingpaca</b> au lieu de Tocotoco.</div>
+        </li>
+      </ul>
+      </div>
+
+      <p class="muted" style="font-size:0.82rem; background:var(--card-soft); border:1px dashed var(--border); border-radius:10px; padding:10px 14px; margin-top:12px">
+        &#9888;&#65039; Puffsplode n'apparait pas encore dans les bases de breeding tierces verifiees (ex. palbreed.com) -- probablement un ajout de contenu tres recent. Les etapes ci-dessus viennent uniquement du temoignage de l'auteur du post en commentaire, pas d'une source wiki confirmee independamment.
+      </p>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Compile depuis un post r/Palworld -- pas un guide officiel Palworld.
+      </p>
+    </div>
+    </div>
+
+    <div class="guide-panel" data-guide="g5" style="display:none">
     <div class="card" style="border-left-color: var(--green)">
       <h2>&#128295; Installer des mods (UE4SS) -- le guide complet</h2>
       <p class="muted" style="margin-top:-6px">
@@ -2766,7 +2895,7 @@ def render_html(data):
     </div>
     </div>
 
-    <div class="guide-panel" data-guide="g4" style="display:none">
+    <div class="guide-panel" data-guide="g6" style="display:none">
     <div class="card" style="border-left-color: var(--orange)">
       <h2>&#129412; Maxer un Frostallion -- passifs, IV, etoiles</h2>
       <p class="muted" style="margin-top:-6px">
@@ -2962,19 +3091,30 @@ def render_html(data):
     function palpediaGetState(slug) {{
       var st = palpediaState[slug];
       if (!st) {{
-        st = {{page: 1, size: 20, status: 'missing'}};
+        st = {{page: 1, size: 20, status: 'missing', query: ''}};
         palpediaState[slug] = st;
       }}
       return st;
+    }}
+    function palpediaSetQuery(input, slug) {{
+      var st = palpediaGetState(slug);
+      st.query = (input.value || '').trim().toLowerCase();
+      st.page = 1;
+      palpediaRender(slug);
     }}
     function palpediaRender(slug) {{
       var st = palpediaGetState(slug);
       var grid = document.getElementById('palpedia-grid-' + slug);
       if (!grid) return;
       var allCards = Array.prototype.slice.call(grid.querySelectorAll('.palpedia-pal-card'));
-      var cards = allCards.filter(function(c) {{ return c.getAttribute('data-status') === st.status; }});
+      var matchesQuery = function(c) {{
+        if (!st.query) return true;
+        var name = c.querySelector('.palpedia-pal-name');
+        return name && name.textContent.toLowerCase().indexOf(st.query) !== -1;
+      }};
+      var cards = allCards.filter(function(c) {{ return c.getAttribute('data-status') === st.status && matchesQuery(c); }});
       allCards.forEach(function(c) {{
-        if (c.getAttribute('data-status') !== st.status) c.style.display = 'none';
+        if (c.getAttribute('data-status') !== st.status || !matchesQuery(c)) c.style.display = 'none';
       }});
       var totalPages = Math.max(1, Math.ceil(cards.length / st.size));
       if (st.page > totalPages) st.page = totalPages;
