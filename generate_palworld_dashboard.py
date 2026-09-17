@@ -402,6 +402,39 @@ STOCK_ITEM_LABELS = {
     "Leather": "Cuir", "bone": "Os", "Horn": "Corne",
 }
 
+# Noms d'affichage des passifs (identifiants internes -- verifie via paldb.cc/PassiveSkills_Table).
+# Couvre uniquement les passifs vus sur les meilleurs individus du tableau "Meilleurs IV" --
+# pas la liste complete des ~150 passifs du jeu.
+PASSIVE_NAME_DISPLAY = {
+    "CoolTimeReduction_Down_1": "Easygoing", "CoolTimeReduction_Up_2": "Impatient",
+    "CraftSpeed_down1": "Clumsy", "CraftSpeed_down2": "Slacker", "CraftSpeed_up2": "Artisan",
+    "Deffence_down1": "Downtrodden", "Deffence_down2": "Brittle",
+    "Deffence_up1": "Hard Skin", "Deffence_up2_2": "Heavyweight",
+    "ElementBoost_Aqua_2_PAL": "Lord of the Sea", "ElementBoost_Dark_1_PAL": "Veil of Darkness",
+    "ElementBoost_Dark_2_PAL": "Lord of the Underworld", "ElementBoost_Dragon_1_PAL": "Blood of the Dragon",
+    "ElementBoost_Earth_2_PAL": "Earth Emperor", "ElementBoost_Fire_1_PAL": "Pyromaniac",
+    "ElementBoost_Fire_2_PAL": "Flame Emperor", "ElementBoost_Ice_1_PAL": "Coldblooded",
+    "ElementBoost_Ice_2_PAL": "Ice Emperor", "ElementBoost_Leaf_1_PAL": "Fragrant Foliage",
+    "ElementBoost_Normal_1_PAL": "Spirit of Zen", "ElementBoost_Normal_2_PAL": "Celestial Emperor",
+    "ElementResist_Aqua_1_PAL": "Waterproof", "ElementResist_Leaf_1_PAL": "Botanical Barrier",
+    "ElementResist_Normal_1_PAL": "Abnormal", "Legend": "Legend", "MiniNushi": "Whopper",
+    "MoveSpeed_up_1": "Nimble", "MoveSpeed_up_2": "Runner",
+    "MutationPal_Babysitter": "Babysitter", "Nocturnal": "Insomnia", "Noukin": "Musclehead",
+    "PAL_ALLAttack_down1": "Coward", "PAL_ALLAttack_up2": "Ferocious",
+    "PAL_FullStomach_Down_1": "Dainty Eater", "PAL_FullStomach_Up_1": "Glutton",
+    "PAL_FullStomach_Up_2": "Bottomless Stomach", "PAL_Sanity_Up_1": "Unstable",
+    "PAL_masochist": "Masochist", "PAL_rude": "Hooligan", "PAL_sadist": "Sadist",
+    "PlayerSP_DecreaseRate_Passive": "Wellness Watcher", "ReloadSpeedUp_Passive": "Reload Master",
+    "RideJumpCount_Increase1": "Lightfooted", "SalePrice_Up_1": "Noble",
+    "SelfDeathAddItemDrop_up_2": "Service-Minded", "Stamina_Down_1": "Sickly",
+    "Stamina_Up_1": "Infinite Stamina", "Stamina_Up_2": "Fit as a Fiddle",
+    "SwimSpeed_up_1": "Sleek Stroke", "SwimSpeed_up_2": "Ace Swimmer",
+    "Test_PalEgg_HatchingSpeed_Up": "Philanthropist", "TrainerATK_UP_1": "Vanguard",
+    "TrainerDEF_UP_1": "Stronghold Strategist", "TrainerLogging_up1": "Logging Foreman",
+    "TrainerMining_up1": "Mine Foreman", "TrainerWorkSpeed_UP_1": "Motivational Leader",
+    "WorkSuitabilityAddRank_MonsterFarm_1": "Farmhand",
+}
+
 
 # Pourquoi chaque ressource suivie compte pour la suite de la progression -- affiche
 # uniquement pour celles actuellement sous leur seuil (voir RESOURCE_ALERT_THRESHOLDS).
@@ -639,6 +672,7 @@ def collect_data():
             "iv_total": int(iv_score(best)),
             "rang_combi": rang,
             "proprietaire": owner_name,
+            "passifs": [PASSIVE_NAME_DISPLAY.get(p, p) for p in passive_names(best)],
         })
     meilleurs_iv.sort(key=lambda r: r["rang_combi"])
 
@@ -1771,8 +1805,13 @@ def render_html(data):
         return "pill-zero"
 
     meilleurs_iv_rows = ""
+    all_passifs_seen = set()
     for r in élevage.get("meilleurs_iv", []):
-        meilleurs_iv_rows += f"""<tr data-nom="{esc(r['nom'].lower())}" data-total="{r['iv_total']}">
+        passifs_list = r.get("passifs", [])
+        all_passifs_seen.update(passifs_list)
+        passifs_attr = esc("|".join(p.lower() for p in passifs_list))
+        passifs_txt = ", ".join(passifs_list) if passifs_list else "-"
+        meilleurs_iv_rows += f"""<tr data-nom="{esc(r['nom'].lower())}" data-total="{r['iv_total']}" data-passifs="{passifs_attr}">
           <td>{esc(r['nom'])}<div class="note" style="font-family:var(--mono)">{esc(r['codename'])}</div></td>
           <td class="qty">{r['count']}</td>
           <td class="qty">{r['niveau']}</td>
@@ -1780,7 +1819,12 @@ def render_html(data):
           <td class="qty">{r['iv_hp']} / {r['iv_atk']} / {r['iv_def']}</td>
           <td class="qty"><span class="pill {iv_pill_class(r['iv_total'])}">{r['iv_total']}</span></td>
           <td class="qty">{r['rang_combi']}</td>
+          <td class="note">{esc(passifs_txt)}</td>
         </tr>"""
+
+    passif_filter_options = "".join(
+        f'<option value="{esc(p.lower())}">{esc(p)}</option>' for p in sorted(all_passifs_seen)
+    )
 
     cuisine = data.get("cuisine", {})
     BOOST_LABELS = {
@@ -2419,8 +2463,14 @@ def render_html(data):
           par somme d'IV (PV+Attaque+Défense sur 300). Recalcule a chaque génération -- les Pals sans
           nom sont a repérer par niveau + IV exacts (Lunettes d'Aptitude) dans le Palbox.
         </p>
-        <input type="text" id="iv-search" class="kanban-input" style="max-width:280px; margin-bottom:12px"
-          placeholder="&#128269; Rechercher une espèce..." oninput="ivFilterByName(this.value)">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px">
+          <input type="text" id="iv-search" class="kanban-input" style="max-width:280px"
+            placeholder="&#128269; Rechercher une espèce..." oninput="ivFilterByName(this.value)">
+          <select id="iv-passif-filter" class="kanban-input" style="max-width:240px" onchange="ivFilterByPassif(this.value)">
+            <option value="">&#129514; Tous les passifs</option>
+            {passif_filter_options}
+          </select>
+        </div>
         <div class="table-scroll">
         <table class="iv-table" id="iv-table">
           <thead>
@@ -2428,13 +2478,13 @@ def render_html(data):
             <th>Espèce</th><th class="qty">Possédés</th><th class="qty">Niveau</th>
             <th>Propriétaire</th><th class="qty">IV (PV/ATK/DEF)</th>
             <th class="qty sortable" id="iv-th-total" onclick="ivSortByTotal()">Total /300 &#8645;&#65039;</th>
-            <th class="qty">Rang combi</th>
+            <th class="qty">Rang combi</th><th>Passifs</th>
           </tr>
           </thead>
-          <tbody id="iv-tbody">{meilleurs_iv_rows or "<tr><td colspan='7' class='muted'>Aucune espèce en double avec un bon rang combi pour l'instant.</td></tr>"}</tbody>
+          <tbody id="iv-tbody">{meilleurs_iv_rows or "<tr><td colspan='8' class='muted'>Aucune espèce en double avec un bon rang combi pour l'instant.</td></tr>"}</tbody>
         </table>
         </div>
-        <p class="muted" id="iv-empty-msg" style="display:none">Aucune espèce ne correspond a cette recherche.</p>
+        <p class="muted" id="iv-empty-msg" style="display:none">Aucune espèce ne correspond a ces filtres.</p>
       </div>
     </div>
   </div>
@@ -3151,19 +3201,31 @@ def render_html(data):
       }}
       rows.forEach(function(r) {{ tbody.appendChild(r); }});
     }}
-    function ivFilterByName(query) {{
+    var ivNameQuery = '';
+    var ivPassifQuery = '';
+    function ivApplyFilters() {{
       var tbody = document.getElementById('iv-tbody');
       if (!tbody) return;
-      var q = query.trim().toLowerCase();
       var rows = tbody.querySelectorAll('tr[data-nom]');
       var shown = 0;
       rows.forEach(function(r) {{
-        var match = q === '' || r.getAttribute('data-nom').indexOf(q) !== -1;
+        var nameMatch = ivNameQuery === '' || r.getAttribute('data-nom').indexOf(ivNameQuery) !== -1;
+        var passifs = r.getAttribute('data-passifs') || '';
+        var passifMatch = ivPassifQuery === '' || ('|' + passifs + '|').indexOf('|' + ivPassifQuery + '|') !== -1;
+        var match = nameMatch && passifMatch;
         r.style.display = match ? '' : 'none';
         if (match) shown++;
       }});
       var emptyMsg = document.getElementById('iv-empty-msg');
       if (emptyMsg) emptyMsg.style.display = (shown === 0 && rows.length > 0) ? '' : 'none';
+    }}
+    function ivFilterByName(query) {{
+      ivNameQuery = query.trim().toLowerCase();
+      ivApplyFilters();
+    }}
+    function ivFilterByPassif(value) {{
+      ivPassifQuery = value;
+      ivApplyFilters();
     }}
     var ELEMENT_LABEL = {{
       Neutral: '&#9898; Neutre', Fire: '&#128293; Feu', Water: '&#128167; Eau', Grass: '&#127807; Plante',
