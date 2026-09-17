@@ -607,6 +607,41 @@ def collect_data():
         ],
     }
 
+    # --- MEILLEURS IV POUR LA REPRODUCTION (par espece/variante, doublons seulement) ---
+    # Rang combi <= ce seuil = espece jugee assez rare/puissante pour valoir le tri --
+    # sinon la liste explose (243 especes ont >=2 exemplaires, la plupart sans interet).
+    IV_BREEDING_RANG_CUTOFF = 600
+    pals_by_codename = {}
+    for p in pals:
+        cid = unwrap(p.get("CharacterID"), "?")
+        pals_by_codename.setdefault(cid, []).append(p)
+
+    meilleurs_iv = []
+    for cn, group in pals_by_codename.items():
+        if len(group) < 2:
+            continue
+        base_cn, _ = resolve_species_profile(cn)
+        card = PAL_CARD_DATA.get(base_cn, {})
+        rang = card.get("rang_combi")
+        if rang is None or rang > IV_BREEDING_RANG_CUTOFF:
+            continue
+        best = max(group, key=iv_score)
+        owner = unwrap(best.get("OwnerPlayerUId"), None)
+        owner_name = uid_to_name.get(str(owner), "Sans propriétaire") if owner else "Sans propriétaire"
+        meilleurs_iv.append({
+            "nom": card.get("nom", cn),
+            "codename": cn,
+            "count": len(group),
+            "niveau": unwrap(best.get("Level"), 1),
+            "iv_hp": int(safe_float(unwrap(best.get("Talent_HP"), 0))),
+            "iv_atk": int(safe_float(unwrap(best.get("Talent_Shot"), 0))),
+            "iv_def": int(safe_float(unwrap(best.get("Talent_Defense"), 0))),
+            "iv_total": int(iv_score(best)),
+            "rang_combi": rang,
+            "proprietaire": owner_name,
+        })
+    meilleurs_iv.sort(key=lambda r: r["rang_combi"])
+
     # --- PALPEDIA PAR JOUEUR ---
     # Base sur la propriété ACTUELLE des Pals (OwnerPlayerUId), pas un historique de capture --
     # si un Pal a change de main ou dort dans un coffre partage, ca peut sous-compter le vrai
@@ -786,6 +821,7 @@ def collect_data():
     data["elevage"] = {
         "combinaisons": breeding_list,
         "nb_especes_possedees_avec_rang": len(owned_ranked),
+        "meilleurs_iv": meilleurs_iv,
     }
 
     # --- TRAVAIL A LA BASE (recommandations, croisees avec le roster réel) ---
@@ -1727,6 +1763,25 @@ def render_html(data):
           <div class="breed-rank">Rang combi cible {combo['target_rank']} (ecart {combo['dist']})</div>
         </div>"""
 
+    def iv_pill_class(total):
+        if total >= 240:
+            return "pill-ok"
+        if total >= 180:
+            return "pill-low"
+        return "pill-zero"
+
+    meilleurs_iv_rows = ""
+    for r in élevage.get("meilleurs_iv", []):
+        meilleurs_iv_rows += f"""<tr data-nom="{esc(r['nom'].lower())}" data-total="{r['iv_total']}">
+          <td>{esc(r['nom'])}<div class="note" style="font-family:var(--mono)">{esc(r['codename'])}</div></td>
+          <td class="qty">{r['count']}</td>
+          <td class="qty">{r['niveau']}</td>
+          <td class="qty">{esc(r['proprietaire'])}</td>
+          <td class="qty">{r['iv_hp']} / {r['iv_atk']} / {r['iv_def']}</td>
+          <td class="qty"><span class="pill {iv_pill_class(r['iv_total'])}">{r['iv_total']}</span></td>
+          <td class="qty">{r['rang_combi']}</td>
+        </tr>"""
+
     cuisine = data.get("cuisine", {})
     BOOST_LABELS = {
         "vitesse": "&#9889; Vitesse de travail", "attaque": "&#9876;&#65039; Attaque",
@@ -1993,6 +2048,24 @@ def render_html(data):
   .stat-table {{ width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem; }}
   .stat-table td {{ padding: 5px 6px; border-bottom: 1px solid var(--border-soft); }}
   .stat-table td:last-child {{ text-align: right; color: var(--gold); font-weight: 700; font-variant-numeric: tabular-nums; }}
+  .table-scroll {{ overflow-x: auto; }}
+  .iv-table {{ width: 100%; border-collapse: collapse; margin-top: 12px; }}
+  .iv-table th {{
+    text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--muted); font-weight: 700; padding: 6px 10px; white-space: nowrap;
+  }}
+  .iv-table th.sortable {{ cursor: pointer; user-select: none; }}
+  .iv-table th.sortable:hover {{ color: var(--text); }}
+  .iv-table td {{ padding: 9px 10px; border-top: 1px solid var(--border-soft); font-size: 0.87rem; vertical-align: top; }}
+  .iv-table td.qty {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
+  .iv-table tr:hover td {{ background: rgba(255,255,255,.02); }}
+  .pill {{
+    display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.74rem;
+    font-weight: 700; white-space: nowrap;
+  }}
+  .pill-ok {{ background: rgba(78,209,149,.16); color: var(--green); }}
+  .pill-low {{ background: rgba(240,169,61,.18); color: var(--gold); }}
+  .pill-zero {{ background: rgba(239,95,107,.2); color: var(--red); }}
   .muted {{ color: var(--muted); }}
   .cols3 {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 12px; }}
   ul {{ margin: 6px 0; padding-left: 20px; }}
@@ -2336,6 +2409,32 @@ def render_html(data):
           generale avec un résultat unique -- non modelisees ici, a vérifier en jeu avant un élevage
           long ; (2) il faut un male et une femelle parmi les deux parents indiques (peu importe lequel).
         </p>
+      </div>
+
+      <div class="card" style="border-left-color: var(--green); grid-column: 1 / -1;">
+        <h2>&#129514; Meilleurs IV pour la reproduction</h2>
+        <p class="muted" style="margin-top:-6px">
+          Pour chaque espèce/variante possédée en double (codename différent = individu génétiquement
+          distinct même si le nom affiché se ressemble) avec un bon rang combi, le meilleur exemplaire
+          par somme d'IV (PV+Attaque+Défense sur 300). Recalcule a chaque génération -- les Pals sans
+          nom sont a repérer par niveau + IV exacts (Lunettes d'Aptitude) dans le Palbox.
+        </p>
+        <input type="text" id="iv-search" class="kanban-input" style="max-width:280px; margin-bottom:12px"
+          placeholder="&#128269; Rechercher une espèce..." oninput="ivFilterByName(this.value)">
+        <div class="table-scroll">
+        <table class="iv-table" id="iv-table">
+          <thead>
+          <tr>
+            <th>Espèce</th><th class="qty">Possédés</th><th class="qty">Niveau</th>
+            <th>Propriétaire</th><th class="qty">IV (PV/ATK/DEF)</th>
+            <th class="qty sortable" id="iv-th-total" onclick="ivSortByTotal()">Total /300 &#8645;&#65039;</th>
+            <th class="qty">Rang combi</th>
+          </tr>
+          </thead>
+          <tbody id="iv-tbody">{meilleurs_iv_rows or "<tr><td colspan='7' class='muted'>Aucune espèce en double avec un bon rang combi pour l'instant.</td></tr>"}</tbody>
+        </table>
+        </div>
+        <p class="muted" id="iv-empty-msg" style="display:none">Aucune espèce ne correspond a cette recherche.</p>
       </div>
     </div>
   </div>
@@ -3028,6 +3127,43 @@ def render_html(data):
         return av - bv;
       }});
       cards.forEach(function(card) {{ grid.appendChild(card); }});
+    }}
+    var ivDefaultOrder = null;
+    var ivSortState = 'default';
+    function ivSortByTotal() {{
+      var tbody = document.getElementById('iv-tbody');
+      if (!tbody) return;
+      var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr[data-total]'));
+      if (ivDefaultOrder === null) ivDefaultOrder = rows.slice();
+      var th = document.getElementById('iv-th-total');
+      if (ivSortState === 'desc') {{
+        rows.sort(function(a, b) {{ return parseInt(a.getAttribute('data-total'), 10) - parseInt(b.getAttribute('data-total'), 10); }});
+        ivSortState = 'asc';
+        th.innerHTML = 'Total /300 &#8593;';
+      }} else if (ivSortState === 'asc') {{
+        rows = ivDefaultOrder.slice();
+        ivSortState = 'default';
+        th.innerHTML = 'Total /300 &#8645;&#65039;';
+      }} else {{
+        rows.sort(function(a, b) {{ return parseInt(b.getAttribute('data-total'), 10) - parseInt(a.getAttribute('data-total'), 10); }});
+        ivSortState = 'desc';
+        th.innerHTML = 'Total /300 &#8595;';
+      }}
+      rows.forEach(function(r) {{ tbody.appendChild(r); }});
+    }}
+    function ivFilterByName(query) {{
+      var tbody = document.getElementById('iv-tbody');
+      if (!tbody) return;
+      var q = query.trim().toLowerCase();
+      var rows = tbody.querySelectorAll('tr[data-nom]');
+      var shown = 0;
+      rows.forEach(function(r) {{
+        var match = q === '' || r.getAttribute('data-nom').indexOf(q) !== -1;
+        r.style.display = match ? '' : 'none';
+        if (match) shown++;
+      }});
+      var emptyMsg = document.getElementById('iv-empty-msg');
+      if (emptyMsg) emptyMsg.style.display = (shown === 0 && rows.length > 0) ? '' : 'none';
     }}
     var ELEMENT_LABEL = {{
       Neutral: '&#9898; Neutre', Fire: '&#128293; Feu', Water: '&#128167; Eau', Grass: '&#127807; Plante',
