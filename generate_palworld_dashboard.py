@@ -2,6 +2,7 @@ import io
 import os
 import re
 import json
+import struct
 import contextlib
 import datetime
 import subprocess
@@ -9,7 +10,10 @@ import subprocess
 import paramiko
 
 from recipes_data import RECIPES, CROP_TO_INGREDIENT, STATION_BUILDINGS
-from secrets_local import SFTP_HOST, SFTP_PORT, SFTP_USER, SFTP_PASS, WEBHOOK_URL, PROXMOX_HOST
+from secrets_local import (
+    SFTP_HOST, SFTP_PORT, SFTP_USER, SFTP_PASS, WEBHOOK_URL, PROXMOX_HOST,
+    WEBHOOK_URL_PROGRESSION, WEBHOOK_URL_ALERTES_RESSOURCES, WEBHOOK_URL_STOCK,
+)
 
 REMOTE_SAVE_DIR = "/Pal/Saved/SaveGames/0/D5C16DC3464E7CC492225ABB991F1FA2"
 REMOTE_LEVEL_SAV = REMOTE_SAVE_DIR + "/Level.sav"
@@ -313,6 +317,138 @@ def load_player_save_data(local_path):
     return data
 
 
+# Ressources brutes/de craft jugees importantes pour la progression -- seuil en dessous
+# duquel on considere que c'est "a court". Choisi a partir de ce qui alimente les recettes
+# mid/late-game (Lingot de Metal Pal notamment : Minerai + Fragments de Paldium + Quartz).
+RESOURCE_ALERT_THRESHOLDS = {
+    "Coal": ("Charbon", 200),
+    "CopperOre": ("Minerai de cuivre", 20),
+    "ManganeseOre": ("Minerai de manganese", 20),
+    "Sulfur": ("Soufre", 100),
+    "Quartz": ("Quartz", 200),
+    "Cement": ("Ciment", 50),
+    "Pal_crystal_S": ("Fragments de Paldium", 20),
+}
+
+
+def decode_item_slot(raw_bytes):
+    b = bytes(raw_bytes)
+    if len(b) < 12:
+        return None
+    stack_count = struct.unpack_from("<I", b, 4)[0]
+    str_len = struct.unpack_from("<I", b, 8)[0]
+    if str_len <= 0 or 12 + str_len > len(b):
+        return None
+    static_id = b[12 : 12 + str_len - 1].decode("ascii", errors="replace")
+    return static_id, stack_count
+
+
+def aggregate_item_totals(wsd):
+    icd = wsd["ItemContainerSaveData"]["value"]
+    totals = {}
+    for e in icd:
+        slots = e["value"].get("Slots", {})
+        slot_values = slots.get("value", {}).get("values", [])
+        for slot in slot_values:
+            raw = slot.get("RawData", {})
+            raw_bytes = raw.get("value", {}).get("values", [])
+            if not raw_bytes:
+                continue
+            res = decode_item_slot(raw_bytes)
+            if res is None:
+                continue
+            static_id, count = res
+            totals[static_id] = totals.get(static_id, 0) + count
+    return totals
+
+
+def compute_stock_alerts(totals):
+    alerts = []
+    for item_id, (label, threshold) in RESOURCE_ALERT_THRESHOLDS.items():
+        stock = totals.get(item_id, 0)
+        if stock < threshold:
+            alerts.append({"item_id": item_id, "label": label, "stock": stock, "seuil": threshold})
+    return alerts
+
+
+# Compte-rendu complet poste a chaque regeneration -- memes ressources que le scan manuel
+# du 16/09/2026, groupees par categorie pour rester lisible sur Discord.
+STOCK_REPORT_CATEGORIES = [
+    ("Matieres premieres & minerais", [
+        "CopperOre", "ManganeseOre", "Coal", "Sulfur", "Quartz", "Stone",
+        "Wood", "Wood_Fine", "Fiber", "Pal_crystal_S", "CrudeOil", "Cloth2",
+    ]),
+    ("Materiaux raffines (fonderie)", [
+        "CopperIngot", "IronIngot", "ManganeseIngot", "StealIngot", "StainlessSteel",
+        "Cement", "Charcoal",
+    ]),
+    ("Materiaux avances / rares", [
+        "RainbowCrystal", "PredatorCrystal", "AncientParts2", "AncientParts3",
+        "BeastBone_Ancient", "Chromium", "NightStone", "Leather", "bone", "Horn",
+    ]),
+]
+
+# Libelles FR pour l'affichage du compte-rendu (independants des seuils d'alerte).
+STOCK_ITEM_LABELS = {
+    "Stone": "Pierre", "Wood": "Bois", "Wood_Fine": "Bois fin", "Fiber": "Fibre",
+    "CrudeOil": "Petrole brut", "Cloth2": "Tissu de qualite",
+    "CopperIngot": "Lingot de cuivre", "IronIngot": "Lingot de fer",
+    "ManganeseIngot": "Lingot de manganese",
+    "StealIngot": "Lingot d'acier", "StainlessSteel": "Acier inoxydable",
+    "Charcoal": "Charbon de bois",
+    "RainbowCrystal": "Quartz Hexolite", "PredatorCrystal": "Noyau Predateur",
+    "AncientParts2": "Pieces civilisation ancienne", "AncientParts3": "Manuscrit Pal ancien",
+    "BeastBone_Ancient": "Os ancien", "Chromium": "Chromium", "NightStone": "Pierre de nuit",
+    "Leather": "Cuir", "bone": "Os", "Horn": "Corne",
+}
+
+
+# Pourquoi chaque ressource suivie compte pour la suite de la progression -- affiche
+# uniquement pour celles actuellement sous leur seuil (voir RESOURCE_ALERT_THRESHOLDS).
+PROGRESSION_PRIORITY_NOTES = {
+    "CopperOre": "sert au Lingot de cuivre, toujours utilise en fonderie.",
+    "ManganeseOre": "necessaire pour le Lingot de manganese (equipement mid-game).",
+    "Coal": "consomme par presque tous les fourneaux -- une penurie ralentit toute la fonderie.",
+    "Sulfur": "ingredient des munitions et de certains objets avances -- a surveiller avant un gros craft de munitions.",
+    "Quartz": "entre dans plusieurs circuits electroniques et recettes avancees.",
+    "Cement": "necessaire pour le Plasteel et la suite de la progression d'armure.",
+    "Pal_crystal_S": "Fragments de Paldium -- ingredient recurrent des recettes avancees.",
+}
+
+
+def format_priority_section(alerts):
+    if not alerts:
+        return "\n\U0001F3AF **Priorites progression**\nRAS -- aucune ressource suivie n'est sous son seuil actuellement."
+    lines = ["\n\U0001F3AF **Priorites progression**"]
+    for i, a in enumerate(alerts, 1):
+        note = PROGRESSION_PRIORITY_NOTES.get(a["item_id"], "")
+        lines.append(f"{i}. **{a['label']}** ({a['stock']}) -- {note}")
+    return "\n".join(lines)
+
+
+def format_stock_report(totals):
+    lines = ["**Compte-rendu des stocks Palworld**"]
+    for category_label, item_ids in STOCK_REPORT_CATEGORIES:
+        lines.append(f"\n__{category_label}__")
+        for item_id in item_ids:
+            stock = totals.get(item_id, 0)
+            label = RESOURCE_ALERT_THRESHOLDS.get(item_id, (None, None))[0] \
+                or STOCK_ITEM_LABELS.get(item_id, item_id)
+            threshold = RESOURCE_ALERT_THRESHOLDS.get(item_id, (None, None))[1]
+            if threshold is not None:
+                dot = "\U0001F534" if stock < threshold else "\U0001F7E2"
+            else:
+                dot = "\U0001F7E2" if stock > 0 else "\U000026AA"
+            lines.append(f"{dot} {label} : {stock:,}".replace(",", " "))
+    lines.append(format_priority_section(compute_stock_alerts(totals)))
+    return "\n".join(lines)
+
+
+def post_stock_report(totals):
+    content = format_stock_report(totals)
+    print("Discord stock report code:", post_discord_message(content, WEBHOOK_URL_STOCK))
+
+
 def collect_data():
     download_level_sav()
     wsd = load_world_save_data()
@@ -335,7 +471,12 @@ def collect_data():
 
     uid_to_name = {uid: unwrap(sp.get("NickName"), "?") for uid, sp in players}
 
+    resource_totals = aggregate_item_totals(wsd)
+    stock_alerts = compute_stock_alerts(resource_totals)
+
     data = {}
+    data["stock_ressources"] = resource_totals
+    data["alertes_stock"] = stock_alerts
 
     # --- MONDE ---
     gt = wsd["GameTimeSaveData"]["value"]
@@ -2265,6 +2406,8 @@ def render_html(data):
       <button class="filter-btn active" data-guide="g0" onclick="showGuide(this)">&#128214; Farm XP mid-game</button>
       <button class="filter-btn" data-guide="g1" onclick="showGuide(this)">&#127968; Base mid-game</button>
       <button class="filter-btn" data-guide="g2" onclick="showGuide(this)">&#127907; La peche</button>
+      <button class="filter-btn" data-guide="g3" onclick="showGuide(this)">&#128295; Installer des mods</button>
+      <button class="filter-btn" data-guide="g4" onclick="showGuide(this)">&#129412; Maxer un Frostallion</button>
     </div>
 
     <div class="guide-panel" data-guide="g0">
@@ -2537,6 +2680,152 @@ def render_html(data):
 
       <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
         Contenu resume d'une video tierce (chaine Cheatah), pas un guide officiel Palworld.
+      </p>
+    </div>
+    </div>
+
+    <div class="guide-panel" data-guide="g3" style="display:none">
+    <div class="card" style="border-left-color: var(--green)">
+      <h2>&#128295; Installer des mods (UE4SS) -- le guide complet</h2>
+      <p class="muted" style="margin-top:-6px">
+        A suivre par chaque joueur qui veut voir un mod cote client (boussole, recherche Palbox, etc.) --
+        installer un mod sur le serveur seul ne suffit jamais pour ca.
+      </p>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129504; Un mod, deux moities possibles</h3>
+      <ul class="advice-list">
+        <li><b>Cote serveur</b> -- tourne sur la machine qui heberge la partie (Hosterfy). Modifie des donnees de jeu (loot, IA, sauvegarde). Invisible sans la bonne moitie cote client.</li>
+        <li><b>Cote client</b> -- tourne sur VOTRE PC, affiche des choses a l'ecran (boussole, barre de recherche, minimap...). C'est cette partie que chaque joueur doit installer lui-meme, sur sa propre machine.
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Un mod purement visuel (comme un marqueur de boussole) ne fonctionne QUE si vous avez fait cette installation cote client -- meme si le serveur a deja tout ce qu'il faut.</div>
+        </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">1&#65039;&#8419; Installer UE4SS (une seule fois)</h3>
+      <p class="muted" style="margin-top:0">
+        UE4SS est le moteur qui permet de charger des mods Lua dans Palworld. Il se telecharge une seule fois, tous les mods suivants viennent se ranger dedans.
+      </p>
+      <ul class="advice-list">
+        <li>Telecharger <b>UE4SS Experimental (Palworld)</b> sur Nexus Mods (compte gratuit requis) : bouton "Manual download" puis "Slow download" (gratuit, un peu d'attente).</li>
+        <li>Trouver le dossier du jeu : clic droit sur Palworld dans Steam &#8594; Gerer &#8594; Parcourir les fichiers locaux.</li>
+        <li>Extraire le zip <b>directement dans ce dossier</b> -- le dossier <code>Pal</code> du zip vient fusionner avec celui du jeu (ne pas creer un sous-dossier a part).</li>
+        <li>Verifier que <code>Pal/Binaries/Win64/ue4ss</code> et <code>dwmapi.dll</code> existent bien apres extraction.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">2&#65039;&#8419; Installer un mod</h3>
+      <ul class="advice-list">
+        <li>Telecharger le mod voulu sur Nexus Mods (meme methode : Manual download &#8594; Slow download).</li>
+        <li>Extraire le zip -- copier le dossier du mod (ex: <code>PalPlates</code>) dans <code>Pal/Binaries/Win64/ue4ss/Mods/</code>.</li>
+        <li>Si le zip contient aussi un fichier <code>.pak</code> (dans un dossier <code>Content/Paks/~mods</code>), le copier au meme endroit dans le jeu -- certains mods (recherche Palbox par ex.) ne fonctionnent pas sans.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">3&#65039;&#8419; Activer le mod dans mods.txt</h3>
+      <ul class="advice-list">
+        <li>Ouvrir <code>Pal/Binaries/Win64/ue4ss/Mods/mods.txt</code> avec le Bloc-notes.</li>
+        <li>Ajouter une ligne <code>NomDuMod : 1</code> (le nom exact du dossier du mod).</li>
+        <li><b>Toujours ajouter la nouvelle ligne APRES <code>Keybinds : 1</code></b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Le fichier porte un commentaire "Built-in keybinds, do not move up!" -- si un mod se retrouve avant cette ligne, certains raccourcis clavier du jeu peuvent casser.</div>
+        </li>
+        <li>Enregistrer, puis lancer le jeu normalement via Steam -- pas besoin de lanceur special, <code>dwmapi.dll</code> charge UE4SS tout seul au demarrage.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#9989; Mods deja actifs sur notre serveur</h3>
+      <ul class="advice-list">
+        <li><b>Recover Pal Spheres</b> -- <a href="https://www.nexusmods.com/palworld/mods/4547" target="_blank" rel="noopener">nexusmods.com/palworld/mods/4547</a>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">100% cote serveur -- rien a installer chez vous, ca marche deja pour tout le monde.</div>
+        </li>
+        <li><b>Palbox Search Plus</b> (Ctrl+F pour chercher un Pal par nom) -- <a href="https://www.nexusmods.com/palworld/mods/4537" target="_blank" rel="noopener">nexusmods.com/palworld/mods/4537</a>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Necessite l'installation cote client (etapes 1-3 ci-dessus) pour voir la barre de recherche apparaitre.</div>
+        </li>
+        <li><b>PalPlates</b> (marqueur colore + distance des coequipiers sur la boussole) -- <a href="https://www.nexusmods.com/palworld/mods/4514" target="_blank" rel="noopener">nexusmods.com/palworld/mods/4514</a>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Meme chose : sans l'installation cote client, rien ne s'affiche sur votre boussole meme si le serveur est a jour.</div>
+        </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#9888;&#65039; Pieges frequents</h3>
+      <ul class="advice-list">
+        <li><b>Ne jamais installer UE4SS deux fois</b> (par exemple la version Nexus + la version Steam Workshop en meme temps) -- le jeu peut planter au demarrage.</li>
+        <li>Faire une sauvegarde du dossier <code>Mods</code> avant de toucher a <code>mods.txt</code>, au cas ou.</li>
+        <li>Un mod qui necessite un fichier <code>.pak</code> et qui ne fonctionne pas malgre tout &#8594; verifier qu'il est bien dans <code>~mods</code> et pas dans <code>LogicMods</code> (certains mods precisent l'un ou l'autre dans leur description Nexus).</li>
+      </ul>
+      </div>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Guide ecrit pour notre serveur -- en cas de doute, demander avant de toucher aux fichiers du jeu.
+      </p>
+    </div>
+    </div>
+
+    <div class="guide-panel" data-guide="g4" style="display:none">
+    <div class="card" style="border-left-color: var(--orange)">
+      <h2>&#129412; Maxer un Frostallion -- passifs, IV, etoiles</h2>
+      <p class="muted" style="margin-top:-6px">
+        Frostallion (et son variant Noct) suivent des regles differentes des Pals normaux --
+        voici comment pousser un exemplaire au maximum.
+      </p>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#9888;&#65039; La regle qui change tout</h3>
+      <ul class="advice-list">
+        <li><b>Frostallion ne se reproduit qu'avec lui-meme</b> (Frostallion + Frostallion, seule recette possible)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Impossible d'aller chercher un passif chez une autre espece et de l'injecter comme sur un Pal classique (chain breeding). La seule source de nouveaux passifs : un exemplaire sauvage qui l'a deja en spawn, ou une mutation aleatoire lors d'un accouplement Frostallion x Frostallion.</div>
+        </li>
+        <li><b>Legend + Ice Emperor</b> (ou <b>Lord of the Underworld</b> pour le Noct) sont garantis d'office sur chaque exemplaire -- ce ne sont pas des passifs "chanceux", tous les Frostallion les ont.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#127919; Meilleures combos de passifs (4 emplacements)</h3>
+      <ul class="advice-list">
+        <li><b>Combat</b> : Legend + Musclehead + Ferocious + Ice Emperor
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">+70% ATK, +20% degats de type Glace.</div>
+        </li>
+        <li><b>Vitesse</b> : Legend + Swift + Runner + Nimble
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">+75% vitesse de deplacement -- utile en monture.</div>
+        </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128205; Ou farmer d'autres exemplaires</h3>
+      <ul class="advice-list">
+        <li><b>Frostallion</b> -- Astral Mountains, coordonnees <b style="color:var(--text)">-357, 508</b> (lac gele)</li>
+        <li><b>Frostallion Noct</b> (variant Tenebres) -- Sanctuaire de vie sauvage n3, coordonnees <b style="color:var(--text)">689, 648</b></li>
+        <li>Alpha de terrain fixe (pas un spawn aleatoire) -- <b>respawn ~1h</b> apres capture/mise a mort, ou plus vite en dormant dans un lit pour sauter la nuit.</li>
+        <li>Sphere Hyper ou Ultra recommandee, faire descendre les PV en dessous de la barre avant de lancer.</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128269; Maximiser les IV (stats cachees 0-100%)</h3>
+      <ul class="advice-list">
+        <li>Fabriquer les <b>Lunettes d'Aptitude</b> pour voir les IV (HP/Attaque/Defense) de chaque exemplaire directement en jeu.</li>
+        <li>Strategie de reproduction : isoler un individu avec UNE stat parfaite, le croiser jusqu'a obtenir un enfant avec 2 stats parfaites, puis chasser la 3eme -- eviter de reproduire des parents mediocres en esperant que ca remonte, l'IV d'un enfant vient directement de celles des parents.</li>
+        <li><b>Fruits de Potentiel</b> : alternative/raccourci pour booster directement une stat de +10 par fruit, sans dependre du hasard -- particulierement utile ici vu que le vivier de Frostallion est petit (peu d'individus pour iterer).</li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#11088; Etoiles / Condensateur d'Essence Pal</h3>
+      <ul class="advice-list">
+        <li>Construction du condensateur : <b>20 Lingots + 20 Fragments de Paldium + 5 Pieces de Civilisation Ancienne</b>.</li>
+        <li>Cout total pour passer un Frostallion a <b>4 etoiles</b> : <b style="color:var(--text)">48 doublons</b> sacrifies (4 pour la 1ere etoile, puis 8, 12, 24) en plus de l'exemplaire garde.</li>
+        <li>Frostallion et Frostallion Noct sont deux especes distinctes pour le condensateur -- les doublons de l'un ne comptent pas pour l'autre.</li>
+      </ul>
+      </div>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Mecaniques verifiees (breeding restreint, cout de condensation 1.0, spots de spawn) -- pas un guide officiel Palworld.
       </p>
     </div>
     </div>
@@ -2956,14 +3245,11 @@ def compute_diff_lines(old, new):
     return lines
 
 
-def post_diff_notification(diff_lines):
-    if not diff_lines:
-        return  # rien de nouveau, pas de notif
-    content = "**Mise a jour Palworld (dernière heure)**\n\n" + "\n".join(f"- {l}" for l in diff_lines)
+def post_discord_message(content, webhook_url=WEBHOOK_URL):
     payload = json.dumps({"content": content}).encode("utf-8")
     import urllib.request
     req = urllib.request.Request(
-        WEBHOOK_URL,
+        webhook_url,
         data=payload,
         headers={
             "Content-Type": "application/json",
@@ -2972,7 +3258,29 @@ def post_diff_notification(diff_lines):
         method="POST",
     )
     with urllib.request.urlopen(req) as resp:
-        print("Discord diff notification code:", resp.status)
+        return resp.status
+
+
+def post_diff_notification(diff_lines):
+    if not diff_lines:
+        return  # rien de nouveau, pas de notif
+    content = "**Mise a jour Palworld (dernière heure)**\n\n" + "\n".join(f"- {l}" for l in diff_lines)
+    print("Discord diff notification code:", post_discord_message(content, WEBHOOK_URL_PROGRESSION))
+
+
+def compute_new_stock_alerts(previous, current_alerts):
+    # Ne signale que les ressources qui viennent de PASSER sous le seuil -- pas de spam
+    # a chaque run tant que le stock reste bas et que personne n'a mine entre-temps.
+    previous_ids = {a["item_id"] for a in (previous or {}).get("alertes_stock", [])}
+    return [a for a in current_alerts if a["item_id"] not in previous_ids]
+
+
+def post_stock_alert_notification(new_alerts):
+    if not new_alerts:
+        return  # rien de nouveau sous le seuil, pas de notif
+    lines = [f"- **{a['label']}** : {a['stock']} (seuil {a['seuil']})" for a in new_alerts]
+    content = "**Alerte stock Palworld -- ressource(s) a court pour la progression**\n\n" + "\n".join(lines)
+    print("Discord stock alert code:", post_discord_message(content, WEBHOOK_URL_ALERTES_RESSOURCES))
 
 
 def deploy(local_html_path):
@@ -2997,6 +3305,13 @@ def main():
     for l in diff_lines:
         print("DIFF:", l.encode("ascii", "replace").decode())
     post_diff_notification(diff_lines)
+
+    new_stock_alerts = compute_new_stock_alerts(previous, data["alertes_stock"])
+    for a in new_stock_alerts:
+        print("ALERTE STOCK:", a["label"], a["stock"], "/", a["seuil"])
+    post_stock_alert_notification(new_stock_alerts)
+
+    post_stock_report(data["stock_ressources"])
 
     data["history"] = append_history(data)
 
