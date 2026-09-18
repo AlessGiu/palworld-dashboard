@@ -726,6 +726,7 @@ def collect_data():
                     PASSIVE_NAME_DISPLAY.get(x, x) for x in passive_names(p) if x in LEGENDARY_PASSIVE_IDS
                 ],
                 "raisons": sorted(raisons),
+                "count": len(group),
             }
 
         interesting = {}  # instance_id -> (pal, {raisons})
@@ -1899,6 +1900,59 @@ def render_html(data):
         f'<option value="{esc(p.lower())}">{esc(p)}</option>' for p in sorted(all_passifs_seen)
     )
 
+    # --- CARTES CANDIDATS REPRODUCTION (page dediee, images + IV + passifs + condensation) ---
+    def repro_bar(label, value, color_var):
+        pct = max(0, min(100, value))
+        return f"""<div class="repro-iv-row">
+          <span class="repro-iv-label">{label}</span>
+          <div class="repro-bar"><div class="repro-bar-fill" style="width:{pct}%; background:var({color_var})"></div></div>
+          <b class="repro-iv-val">{value}</b>
+        </div>"""
+
+    RAISON_BADGE = {
+        "bonne_iv": ("&#11088; IV exceptionnelle", "badge-iv"),
+        "passif_legendaire": ("&#128142; Passif légendaire", "badge-legendary"),
+    }
+
+    repro_cards = ""
+    for r in data.get("candidats_reproduction", []):
+        raison_badges = "".join(
+            f'<span class="repro-badge {RAISON_BADGE[raison][1]}">{RAISON_BADGE[raison][0]}</span>'
+            for raison in r["raisons"] if raison in RAISON_BADGE
+        )
+        passif_badges = "".join(
+            f'<span class="repro-badge badge-legendary">&#127775; {esc(p)}</span>' for p in r["passifs_legendaires"]
+        )
+        nickname_html = f'<div class="repro-card-nick muted">&laquo; {esc(r["nickname"])} &raquo;</div>' if r.get("nickname") else ""
+        raisons_attr = esc(" ".join(r["raisons"]))
+        repro_cards += f"""<div class="repro-card" data-nom="{esc(r['nom'].lower())}" data-raison="{raisons_attr}" data-total="{r['iv_total']}">
+          <div class="repro-card-head">
+            <img class="repro-card-icon" src="{pal_icon_url(r['codename'])}" alt="{esc(r['nom'])}" loading="lazy"
+              onerror="this.style.visibility='hidden'">
+            <div>
+              <div class="repro-card-name">{esc(r['nom'])}</div>
+              {nickname_html}
+              <div class="note" style="font-family:var(--mono)">{esc(r['codename'])}</div>
+            </div>
+          </div>
+          <div class="repro-badges">{raison_badges}{passif_badges}</div>
+          <div class="repro-iv">
+            {repro_bar("PV", r['iv_hp'], "--green")}
+            {repro_bar("ATK", r['iv_atk'], "--orange")}
+            {repro_bar("DEF", r['iv_def'], "--blue")}
+          </div>
+          <div class="repro-total">Total <b class="pill {iv_pill_class(r['iv_total'])}">{r['iv_total']}</b> / 300</div>
+          <div class="repro-meta muted">
+            Niveau {r['niveau']} -- {esc(r['proprietaire'])}<br>
+            {r['count']} exemplaire(s) possede(s) -- 48 doublons necessaires pour un 4&#9733; complet
+          </div>
+        </div>"""
+
+    REPRO_RAISON_LABEL = {"bonne_iv": "IV exceptionnelle", "passif_legendaire": "Passif légendaire"}
+    repro_raison_options = "".join(
+        f'<option value="{raison}">{esc(label)}</option>' for raison, label in REPRO_RAISON_LABEL.items()
+    )
+
     cuisine = data.get("cuisine", {})
     BOOST_LABELS = {
         "vitesse": "&#9889; Vitesse de travail", "attaque": "&#9876;&#65039; Attaque",
@@ -2183,6 +2237,50 @@ def render_html(data):
   .pill-ok {{ background: rgba(78,209,149,.16); color: var(--green); }}
   .pill-low {{ background: rgba(240,169,61,.18); color: var(--gold); }}
   .pill-zero {{ background: rgba(239,95,107,.2); color: var(--red); }}
+
+  .repro-toolbar {{
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 14px 0 4px;
+  }}
+  .repro-grid {{
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
+    margin-top: 14px;
+  }}
+  .repro-card {{
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-top: 3px solid var(--gold);
+    border-radius: var(--radius-sm); padding: 16px; display: flex; flex-direction: column; gap: 12px;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }}
+  .repro-card:hover {{ border-color: var(--gold); transform: translateY(-3px); box-shadow: var(--shadow); }}
+  .repro-card-head {{ display: flex; align-items: center; gap: 12px; }}
+  .repro-card-icon {{ width: 60px; height: 60px; object-fit: contain; border-radius: 10px; background: var(--bg); flex-shrink: 0; }}
+  .repro-card-name {{ font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1.2; }}
+  .repro-card-nick {{ font-size: 0.78rem; font-style: italic; margin-top: 1px; }}
+  .repro-badges {{ display: flex; gap: 6px; flex-wrap: wrap; }}
+  .repro-badge {{
+    display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+  }}
+  .badge-iv {{ background: rgba(78,209,149,.16); color: var(--green); }}
+  .badge-legendary {{ background: rgba(240,185,61,.18); color: var(--gold); }}
+  .repro-iv {{ display: flex; flex-direction: column; gap: 6px; }}
+  .repro-iv-row {{ display: grid; grid-template-columns: 34px 1fr 28px; align-items: center; gap: 8px; }}
+  .repro-iv-label {{ font-size: 0.72rem; color: var(--muted); font-weight: 700; }}
+  .repro-bar {{ height: 7px; border-radius: 999px; background: var(--bg); overflow: hidden; }}
+  .repro-bar-fill {{ height: 100%; border-radius: 999px; }}
+  .repro-iv-val {{ font-size: 0.78rem; text-align: right; font-variant-numeric: tabular-nums; }}
+  .repro-total {{ font-size: 0.85rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }}
+  .repro-total b.pill {{ font-size: 0.85rem; padding: 2px 12px; }}
+  .repro-meta {{ font-size: 0.76rem; line-height: 1.5; border-top: 1px solid var(--border-soft); padding-top: 8px; }}
+  .repro-condense-grid {{
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 12px;
+  }}
+  .repro-condense-star {{
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
+    padding: 10px 12px; text-align: center;
+  }}
+  .repro-condense-star .stars {{ color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }}
+  .repro-condense-star .stat {{ font-size: 1.1rem; font-weight: 800; color: var(--text); margin-top: 4px; }}
+  .repro-condense-star .label {{ font-size: 0.7rem; color: var(--muted); margin-top: 2px; }}
   .muted {{ color: var(--muted); }}
   .cols3 {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 12px; }}
   ul {{ margin: 6px 0; padding-left: 20px; }}
@@ -2350,6 +2448,7 @@ def render_html(data):
     <button class="tab-btn" data-tab="tab-pals" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#128062; Pals</button>
     <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
     <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Élevage</button>
+    <button class="tab-btn" data-tab="tab-reproduction" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129516; Candidats Reproduction</button>
     <div class="tab-section-label">Base</div>
     <button class="tab-btn" data-tab="tab-work" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128736; Travail a la base</button>
     <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
@@ -2558,6 +2657,55 @@ def render_html(data):
         </table>
         </div>
         <p class="muted" id="iv-empty-msg" style="display:none">Aucune espèce ne correspond a ces filtres.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-reproduction" class="tab-panel">
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--gold); grid-column: 1 / -1;">
+        <h2>&#129516; Candidats Reproduction -- bonne IV ou passif légendaire</h2>
+        <p class="muted" style="margin-top:-6px">
+          Scan automatique de tous les Pals possédés en double (espèce assez rare/puissante pour
+          valoir le tri). Un individu apparait ici si son IV totale atteint <b style="color:var(--text)">250/300</b>
+          ou s'il porte au moins un passif de rang légendaire/rainbow (Legend, les Empereurs élémentaires,
+          Lucky, Vampiric, Siren of the Void...). La même liste est envoyée sur le salon Discord
+          <span style="font-family:var(--mono)">#reproduction-pals</span> a chaque nouvelle sauvegarde,
+          mais uniquement pour les individus jamais signalés auparavant.
+        </p>
+
+        <div class="subhead">
+        <h3 style="font-size:1rem">&#11088; Ce qu'apporte la condensation (Pal Essence Condenser)</h3>
+        <p class="muted" style="margin-top:0; font-size:0.85rem">
+          Bonus identiques pour toutes les espèces -- vérifié via palworld.wiki.gg. Chaque étoile
+          coute des doublons de la <u>même espèce/variante exacte</u> (codename identique).
+        </p>
+        <div class="repro-condense-grid">
+          <div class="repro-condense-star"><div class="stars">&#9733;</div><div class="stat">+5%</div><div class="label">PV/ATK/DEF -- 4 doublons</div></div>
+          <div class="repro-condense-star"><div class="stars">&#9733;&#9733;</div><div class="stat">+10%</div><div class="label">PV/ATK/DEF -- 8 doublons</div></div>
+          <div class="repro-condense-star"><div class="stars">&#9733;&#9733;&#9733;</div><div class="stat">+15%</div><div class="label">PV/ATK/DEF -- 12 doublons</div></div>
+          <div class="repro-condense-star"><div class="stars">&#9733;&#9733;&#9733;&#9733;</div><div class="stat">+20%</div><div class="label">PV/ATK/DEF -- 24 doublons</div></div>
+        </div>
+        <ul class="advice-list" style="margin-top:12px">
+          <li><b>Competence de soutien (Partner Skill)</b> : +1 niveau par étoile (niveau 2 a 1&#9733;, jusqu'a niveau 5 a 4&#9733;).</li>
+          <li><b>Aptitudes de travail</b> : +1 sur la meilleure aptitude a 1&#9733;, puis la 2e/3e meilleure a 2&#9733;/3&#9733; -- et a 4&#9733;, <b style="color:var(--text)">toutes</b> les aptitudes de travail montent de +1.</li>
+          <li>Cout cumule pour un 4&#9733; complet : <b style="color:var(--text)">48 doublons</b> sacrifies (4+8+12+24) en plus de l'exemplaire garde.</li>
+        </ul>
+        </div>
+
+        <div class="repro-toolbar">
+          <input type="text" id="repro-search" class="kanban-input" style="max-width:280px"
+            placeholder="&#128269; Rechercher une espèce..." oninput="reproFilterByName(this.value)">
+          <select id="repro-raison-filter" class="kanban-input" style="max-width:240px" onchange="reproFilterByRaison(this.value)">
+            <option value="">&#128218; Toutes les raisons</option>
+            {repro_raison_options}
+          </select>
+          <button class="filter-btn active" id="repro-sort-btn" onclick="reproSortToggle()">Trier par IV totale &#8595;</button>
+        </div>
+
+        <div class="repro-grid" id="repro-grid">{repro_cards or ""}</div>
+        <p class="muted" id="repro-empty-msg" style="display:none">Aucun candidat ne correspond a ces filtres.</p>
+        {"<p class='muted'>Aucun candidat reproduction pour l'instant -- revient apres avoir capture/reproduit davantage.</p>" if not repro_cards else ""}
       </div>
     </div>
   </div>
@@ -3360,6 +3508,49 @@ def render_html(data):
     function ivFilterByPassif(value) {{
       ivPassifQuery = value;
       ivApplyFilters();
+    }}
+    var reproNameQuery = '';
+    var reproRaisonQuery = '';
+    var reproSortDesc = true;
+    var reproDefaultOrder = null;
+    function reproApplyFilters() {{
+      var grid = document.getElementById('repro-grid');
+      if (!grid) return;
+      var cards = grid.querySelectorAll('.repro-card[data-nom]');
+      var shown = 0;
+      cards.forEach(function(c) {{
+        var nameMatch = reproNameQuery === '' || c.getAttribute('data-nom').indexOf(reproNameQuery) !== -1;
+        var raisons = ' ' + (c.getAttribute('data-raison') || '') + ' ';
+        var raisonMatch = reproRaisonQuery === '' || raisons.indexOf(' ' + reproRaisonQuery + ' ') !== -1;
+        var match = nameMatch && raisonMatch;
+        c.style.display = match ? '' : 'none';
+        if (match) shown++;
+      }});
+      var emptyMsg = document.getElementById('repro-empty-msg');
+      if (emptyMsg) emptyMsg.style.display = (shown === 0 && cards.length > 0) ? '' : 'none';
+    }}
+    function reproFilterByName(query) {{
+      reproNameQuery = query.trim().toLowerCase();
+      reproApplyFilters();
+    }}
+    function reproFilterByRaison(value) {{
+      reproRaisonQuery = value;
+      reproApplyFilters();
+    }}
+    function reproSortToggle() {{
+      var grid = document.getElementById('repro-grid');
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.repro-card[data-total]'));
+      if (reproDefaultOrder === null) reproDefaultOrder = cards.slice();
+      var btn = document.getElementById('repro-sort-btn');
+      reproSortDesc = !reproSortDesc;
+      cards.sort(function(a, b) {{
+        var av = parseInt(a.getAttribute('data-total'), 10);
+        var bv = parseInt(b.getAttribute('data-total'), 10);
+        return reproSortDesc ? (bv - av) : (av - bv);
+      }});
+      if (btn) btn.innerHTML = 'Trier par IV totale ' + (reproSortDesc ? '&#8595;' : '&#8593;');
+      cards.forEach(function(c) {{ grid.appendChild(c); }});
     }}
     var ELEMENT_LABEL = {{
       Neutral: '&#9898; Neutre', Fire: '&#128293; Feu', Water: '&#128167; Eau', Grass: '&#127807; Plante',
