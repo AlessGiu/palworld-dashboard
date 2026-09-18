@@ -1647,9 +1647,10 @@ def render_html(data):
     equipe_rows = ""
     for membre in equipe_terrain.get("membres", []):
         if membre["role"] == "monture":
+            skill_fr = translate_partner_skill(membre.get("partner_skill"))
             raison = (
                 f"Monture la plus rapide possédée (vitesse {membre['ride_sprint_speed']:.0f}) -- "
-                f"{esc(membre['partner_skill'])}" if membre.get("partner_skill") else "Monture la plus rapide possédée."
+                f"{esc(skill_fr)}" if skill_fr else "Monture la plus rapide possédée."
             )
             badge = "&#127943; MONTURE"
         else:
@@ -1931,7 +1932,7 @@ def render_html(data):
         repro_passifs_seen.update(r["passifs_legendaires"])
         passifs_attr = esc("|".join(p.lower() for p in r["passifs_legendaires"]))
         nickname_html = f'<div class="repro-card-nick muted">&laquo; {esc(r["nickname"])} &raquo;</div>' if r.get("nickname") else ""
-        skill = clean_partner_skill(r.get("partner_skill"))
+        skill = translate_partner_skill(r.get("partner_skill"))
         skill_html = (
             f'<div class="repro-skill"><span class="repro-skill-label">&#127942; En équipe :</span> {esc(skill)}</div>'
             if skill else
@@ -3990,11 +3991,159 @@ def clean_partner_skill(text):
     return " ".join(text.replace("\r\n", " ").replace("\n", " ").split())
 
 
+# Traduction FR des competences de soutien (Partner Skill), phrase par phrase --
+# le texte source (combat_stats_full.json) est en anglais et se compose toujours
+# des memes clauses courtes separees par ". ". Couvre les 125 clauses distinctes
+# observees sur l'ensemble des especes du jeu (extraites de combat_stats_full.json
+# le 18/09/2026) -- une clause non couverte (nouvelle espece/MAJ du jeu) retombe
+# simplement sur le texte anglais d'origine plutot que de planter.
+PARTNER_SKILL_CLAUSE_FR = {
+    "Allows you to fire a gun while gliding with this Pal": "permet de tirer une arme en planant avec ce Pal",
+    "Allows you to move quickly for long periods of time while gliding with this Pal": "permet de se déplacer rapidement pendant longtemps en planant avec ce Pal",
+    "Applies Dark damage to the player's attacks while mounted": "applique des dégâts de type Ténèbres aux attaques du joueur en étant monté",
+    "Applies Dragon damage to the player's attacks while mounted": "applique des dégâts de type Dragon aux attaques du joueur en étant monté",
+    "Applies Electric damage to the player's attacks while mounted": "applique des dégâts de type Foudre aux attaques du joueur en étant monté",
+    "Applies Fire damage to the player's attacks while mounted": "applique des dégâts de type Feu aux attaques du joueur en étant monté",
+    "Applies Water damage to the player's attacks while mounted": "applique des dégâts de type Eau aux attaques du joueur en étant monté",
+    "Automatically picks up nearby items": "ramasse automatiquement les objets à proximité",
+    "Can be ridden": "peut être monté",
+    "Can be ridden as an flying mount": "peut être monté comme monture volante",
+    "Can be ridden to travel on water": "peut être monté pour se déplacer sur l'eau",
+    "Can double jump while mounted": "permet un double saut en étant monté",
+    "Can float for long periods of time while gliding": "peut planer longtemps sans perdre d'altitude",
+    "Can perform a double jump while mounted": "permet un double saut en étant monté",
+    "Can rapidly fire a grenade launcher while mounted": "permet de tirer rapidement un lance-grenades en étant monté",
+    "Can rapidly fire a minigun while mounted": "permet de tirer rapidement une mini-gun en étant monté",
+    "Can rapidly fire a missile launcher while mounted": "permet de tirer rapidement un lance-missiles en étant monté",
+    "Can triple jump while mounted": "permet un triple saut en étant monté",
+    "Carries the player up high while gliding": "porte le joueur en hauteur en planant",
+    "Changes the player's attack type to Dark and enhances Dark attacks while mounted": "change le type d'attaque du joueur en Ténèbres et améliore les attaques de type Ténèbres en étant monté",
+    "Changes the player's attack type to Ice and enhances Ice attacks while mounted": "change le type d'attaque du joueur en Glace et améliore les attaques de type Glace en étant monté",
+    "Enhances Dark attacks while mounted": "améliore les attaques de type Ténèbres en étant monté",
+    "Enhances Dragon attacks while mounted": "améliore les attaques de type Dragon en étant monté",
+    "Enhances Electric attacks while mounted": "améliore les attaques de type Foudre en étant monté",
+    "Enhances Fire attacks while mounted": "améliore les attaques de type Feu en étant monté",
+    "Enhances Grass attacks while mounted": "améliore les attaques de type Plante en étant monté",
+    "Enhances Neutral attacks while mounted": "améliore les attaques de type Normal en étant monté",
+    "Enhances Water attacks while mounted": "améliore les attaques de type Eau en étant monté",
+    "Follows up player attacks with lightning bolts": "complète les attaques du joueur avec des éclairs",
+    "Follows up player attacks with magic bullets": "complète les attaques du joueur avec des balles magiques",
+    "Improves efficiency of cutting trees and mining ores while mounted": "améliore l'efficacité de la coupe de bois et du minage en étant monté",
+    "Improves efficiency of mining ores while mounted": "améliore l'efficacité du minage en étant monté",
+    "Increases damage dealt to ore while mounted": "augmente les dégâts infligés au minerai en étant monté",
+    "Increases damage player deals to enemy weak points while mounted": "augmente les dégâts infligés aux points faibles des ennemis en étant monté",
+    "Increases efficiency of cutting trees": "augmente l'efficacité de la coupe de bois",
+    "Increases efficiency of destroying boulders while mounted": "augmente l'efficacité de la destruction des rochers en étant monté",
+    "Keeps the rider cool in hot environments": "garde le cavalier au frais dans les environnements chauds",
+    "Keeps the rider warm in cold environments": "garde le cavalier au chaud dans les environnements froids",
+    "Missing": "manquant",
+    "Moves slightly faster than most mounts": "se déplace légèrement plus vite que la plupart des montures",
+    "Pengullet explodes on contact and is incapacitated": "le Pengullet explose au contact et est mis hors d'état de nuire",
+    "Sometimes digs up Gold Coin when assigned to Ranch": "déterre parfois une Pièce d'Or quand assigné à un enclos",
+    "Sometimes digs up items from the ground when assigned to Ranch": "déterre parfois des objets du sol quand assigné à un enclos",
+    "Sometimes dodges attacks with a high speed sidestep while in battle": "esquive parfois les attaques grâce à un pas de côté rapide en combat",
+    "Sometimes drops Cotton Candy when assigned to Ranch": "laisse parfois tomber de la Barbe à Papa quand assigné à un enclos",
+    "Sometimes drops Honey when assigned to Ranch": "laisse parfois tomber du Miel quand assigné à un enclos",
+    "Sometimes drops Red Berries from its back when assigned to Ranch": "laisse parfois tomber des Baies Rouges de son dos quand assigné à un enclos",
+    "Sometimes drops Wool when assigned to Ranch": "laisse parfois tomber de la Laine quand assigné à un enclos",
+    "Sometimes lays an Egg when assigned to Ranch": "pond parfois un Œuf quand assigné à un enclos",
+    "Sometimes produces Flame Organ when assigned to Ranch": "produit parfois un Organe de Flamme quand assigné à un enclos",
+    "Sometimes produces High Quality Cloth when assigned to Ranch": "produit parfois du Tissu de Qualité quand assigné à un enclos",
+    "Sometimes produces Milk when assigned to Ranch": "produit parfois du Lait quand assigné à un enclos",
+    "This Pal is under investigation": "ce Pal est encore à l'étude",
+    "Unaffected by the cold or heat while riding this Pal": "insensible au froid ou à la chaleur en montant ce Pal",
+    "When activated, Depresso drinks a massive amount of energy drinks, causing its movement speed to increase": "une fois activé, Depresso engloutit une quantité massive de boissons énergisantes, augmentant sa vitesse de déplacement",
+    "When activated, Fuack body surfs towards an enemy and slams into them": "une fois activé, Fuack fonce en glissant sur le ventre vers un ennemi et le percute",
+    "When activated, Tanzee will mercilessly fire an assault rifle at nearby enemies": "une fois activé, Tanzee mitraille sans pitié les ennemis à proximité avec un fusil d'assaut",
+    "When activated, attacks targeted enemy with Poison Fog": "une fois activé, attaque l'ennemi ciblé avec un Brouillard Empoisonné",
+    "When activated, attacks targeted enemy with a powerful Aqua Gun": "une fois activé, attaque l'ennemi ciblé avec un puissant Pistolet à Eau",
+    "When activated, attacks targeted enemy with a powerful Blizzard Spike": "une fois activé, attaque l'ennemi ciblé avec un puissant Pic de Blizzard",
+    "When activated, attacks targeted enemy with a powerful Hellfire Claw": "une fois activé, attaque l'ennemi ciblé avec une puissante Griffe de Feu Infernal",
+    "When activated, attacks targeted enemy with a powerful Iaigiri": "une fois activé, attaque l'ennemi ciblé avec un puissant Iaigiri",
+    "When activated, attacks targeted enemy with a powerful Jumping Claw": "une fois activé, attaque l'ennemi ciblé avec une puissante Griffe Bondissante",
+    "When activated, attacks targeted enemy with a powerful Phantom Peck": "une fois activé, attaque l'ennemi ciblé avec un puissant Bec Fantôme",
+    "When activated, attacks targeted enemy with a powerful Spirit Fire": "une fois activé, attaque l'ennemi ciblé avec un puissant Feu Spirituel",
+    "When activated, equips Jolthog Cryst to the player's hand": "une fois activé, équipe Jolthog Cryst dans la main du joueur",
+    "When activated, equips Jolthog to the player's hand": "une fois activé, équipe Jolthog dans la main du joueur",
+    "When activated, equips to the player and becomes a shield": "une fois activé, s'équipe sur le joueur et devient un bouclier",
+    "When activated, equips to the player and transforms into a flamethrower": "une fois activé, s'équipe sur le joueur et se transforme en lance-flammes",
+    "When activated, equips to the player and transforms into an egg launcher": "une fois activé, s'équipe sur le joueur et se transforme en lance-œufs",
+    "When activated, generates subtle vibrations to detect nearby ore": "une fois activé, génère de légères vibrations pour détecter le minerai à proximité",
+    "When activated, leaps onto the player's head and uses a submachine gun to follows up player attacks": "une fois activé, saute sur la tête du joueur et complète ses attaques avec une mitraillette",
+    "When activated, performs Shell Spin, follows the player while spinning, and mines ores efficiently": "une fois activé, effectue une Toupie Coquille, suit le joueur en tournoyant et mine efficacement le minerai",
+    "When activated, spouts mysterious water that soothes wounds and restores the player's HP": "une fois activé, projette une eau mystérieuse qui apaise les blessures et restaure les PV du joueur",
+    "When activated, the player equips a Rocket Launcher and fires Pengullet as ammunition": "une fois activé, le joueur équipe un lance-roquettes et tire Pengullet en guise de munition",
+    "When activated, the queen's soothing graces greatly restore the player's HP": "une fois activé, les bienfaits apaisants de la reine restaurent grandement les PV du joueur",
+    "When activated, unleashes a primal fury that increases Gorirat's attack power": "une fois activé, déchaîne une fureur primale qui augmente la puissance d'attaque de Gorirat",
+    "When activated, uses medicinal flowers to restore the player's HP": "une fois activé, utilise des fleurs médicinales pour restaurer les PV du joueur",
+    "When activated, uses ultrasonic waves to detect the location of nearby Pals": "une fois activé, utilise des ultrasons pour détecter la position des Pals à proximité",
+    "When activated, utilizes its sixth sense to detect nearby dungeons": "une fois activé, utilise son sixième sens pour détecter les donjons à proximité",
+    "When fighting together, applies Dark damage to the player's attacks": "en combattant ensemble, applique des dégâts de type Ténèbres aux attaques du joueur",
+    "When fighting together, applies Fire damage to the player's attacks": "en combattant ensemble, applique des dégâts de type Feu aux attaques du joueur",
+    "When fighting together, applies Ground damage to the player's attacks": "en combattant ensemble, applique des dégâts de type Sol aux attaques du joueur",
+    "When fighting together, increases player's defense and applies Fire damage to the player's attacks": "en combattant ensemble, augmente la défense du joueur et applique des dégâts de type Feu à ses attaques",
+    "When fighting together, increases player's movement speed and applies Grass damage to the player's attacks": "en combattant ensemble, augmente la vitesse de déplacement du joueur et applique des dégâts de type Plante à ses attaques",
+    "When fighting together, increases the player's defense and Electric Pals drop more items when defeated": "en combattant ensemble, augmente la défense du joueur et les Pals de type Foudre lâchent plus d'objets une fois vaincus",
+    "When thrown at an enemy, causes an electrical explosion upon impact": "lancé sur un ennemi, provoque une explosion électrique à l'impact",
+    "When thrown at an enemy, causes an icy explosion upon impact": "lancé sur un ennemi, provoque une explosion de glace à l'impact",
+    "While at a base, increases work efficiency if working at Weapon Workbench": "à la base, augmente l'efficacité de travail à l'Établi d'Armes",
+    "While fighting together, Dark Pals drop more items when defeated": "en combattant ensemble, les Pals de type Ténèbres lâchent plus d'objets une fois vaincus",
+    "While fighting together, Dragon Pals drop more items when defeated": "en combattant ensemble, les Pals de type Dragon lâchent plus d'objets une fois vaincus",
+    "While fighting together, Fire Pals drop more items when defeated": "en combattant ensemble, les Pals de type Feu lâchent plus d'objets une fois vaincus",
+    "While fighting together, Grass Pals drop more items when defeated": "en combattant ensemble, les Pals de type Plante lâchent plus d'objets une fois vaincus",
+    "While fighting together, Ground Pals drop more items when defeated": "en combattant ensemble, les Pals de type Sol lâchent plus d'objets une fois vaincus",
+    "While fighting together, Ice Pals drop more items when defeated": "en combattant ensemble, les Pals de type Glace lâchent plus d'objets une fois vaincus",
+    "While fighting together, Neutral Pals drop more items when defeated": "en combattant ensemble, les Pals de type Normal lâchent plus d'objets une fois vaincus",
+    "While fighting together, Water Pals drop more items when defeated": "en combattant ensemble, les Pals de type Eau lâchent plus d'objets une fois vaincus",
+    "While fighting together, allows you to deal more damage to weak points": "en combattant ensemble, permet d'infliger plus de dégâts aux points faibles",
+    "While fighting together, grants the player and Felbat the life steal effect which absorbs some of the received damage and restores HP": "en combattant ensemble, accorde au joueur et à Felbat un effet de vol de vie qui absorbe une partie des dégâts reçus et restaure des PV",
+    "While fighting together, grants the player and Lovander the life steal effect which absorbs some of the received damage and restores HP": "en combattant ensemble, accorde au joueur et à Lovander un effet de vol de vie qui absorbe une partie des dégâts reçus et restaure des PV",
+    "While fighting together, stats will increase the more Beegarde are in your team": "en combattant ensemble, les statistiques augmentent avec le nombre de Beegarde dans l'équipe",
+    "While fighting together, stats will increase the more Swee are in your team": "en combattant ensemble, les statistiques augmentent avec le nombre de Swee dans l'équipe",
+    "While in team, Broncherry Aqua helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Broncherry Aqua aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, Broncherry helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Broncherry aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, Cattiva helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Cattiva aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, Elizabee's stats will be increased": "dans l'équipe, les statistiques d'Elizabee augmentent",
+    "While in team, Ice Kingpaca helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Ice Kingpaca aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, Kingpaca helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Kingpaca aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, Lunaris manipulates gravity, increasing the player's max carrying capacity": "dans l'équipe, Lunaris manipule la gravité, augmentant la capacité de transport maximale du joueur",
+    "While in team, Sweepa's stats will be increased": "dans l'équipe, les statistiques de Sweepa augmentent",
+    "While in team, Wumpo Botan helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Wumpo Botan aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, Wumpo helps carry supplies, increasing the player's max carrying capacity": "dans l'équipe, Wumpo aide à porter les provisions, augmentant la capacité de transport maximale du joueur",
+    "While in team, appears near the player": "dans l'équipe, apparaît près du joueur",
+    "While in team, can be summoned and used instead of a glider": "dans l'équipe, peut être invoqué et utilisé à la place d'un planeur",
+    "While in team, improves efficiency of cutting trees": "dans l'équipe, améliore l'efficacité de la coupe de bois",
+    "While in team, increases attack power of Dark Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Ténèbres",
+    "While in team, increases attack power of Electric Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Foudre",
+    "While in team, increases attack power of Fire Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Feu",
+    "While in team, increases attack power of Grass Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Plante",
+    "While in team, increases attack power of Ground Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Sol",
+    "While in team, increases attack power of Ice Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Glace",
+    "While in team, increases attack power of Neutral Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Normal",
+    "While in team, increases attack power of Water Pals": "dans l'équipe, augmente la puissance d'attaque des Pals de type Eau",
+    "While in team, increases player's attack power": "dans l'équipe, augmente la puissance d'attaque du joueur",
+    "While mounted, prevents stamina depletion while moving over water": "en étant monté, empêche l'épuisement d'endurance lors des déplacements sur l'eau",
+}
+
+
+def translate_partner_skill(text):
+    cleaned = clean_partner_skill(text)
+    if not cleaned:
+        return None
+    sentences = [s.strip().rstrip(".").strip() for s in cleaned.split(". ") if s.strip()]
+    translated = [PARTNER_SKILL_CLAUSE_FR.get(s, s) for s in sentences if s]
+    if not translated:
+        return None
+    translated = [t[0].upper() + t[1:] if t else t for t in translated]
+    result = ". ".join(translated)
+    return result if result.endswith(".") else result + "."
+
+
 def format_breeding_candidate(c):
     raisons = " + ".join(RAISON_LABELS.get(r, r) for r in c["raisons"])
     nom_tag = f" « {c['nickname']} »" if c.get("nickname") else ""
     passifs_txt = f" -- passifs : {', '.join(c['passifs_legendaires'])}" if c["passifs_legendaires"] else ""
-    skill = clean_partner_skill(c.get("partner_skill"))
+    skill = translate_partner_skill(c.get("partner_skill"))
     skill_txt = f"\n  ↳ en équipe : {skill}" if skill else ""
     return (
         f"- **{c['nom']}**{nom_tag} (niv.{c['niveau']}, {c['proprietaire']}) : "
