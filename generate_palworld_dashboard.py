@@ -1918,6 +1918,7 @@ def render_html(data):
     }
 
     repro_cards = ""
+    repro_passifs_seen = set()
     for r in data.get("candidats_reproduction", []):
         raison_badges = "".join(
             f'<span class="repro-badge {RAISON_BADGE[raison][1]}">{RAISON_BADGE[raison][0]}</span>'
@@ -1926,15 +1927,16 @@ def render_html(data):
         passif_badges = "".join(
             f'<span class="repro-badge badge-legendary">&#127775; {esc(p)}</span>' for p in r["passifs_legendaires"]
         )
+        repro_passifs_seen.update(r["passifs_legendaires"])
+        passifs_attr = esc("|".join(p.lower() for p in r["passifs_legendaires"]))
         nickname_html = f'<div class="repro-card-nick muted">&laquo; {esc(r["nickname"])} &raquo;</div>' if r.get("nickname") else ""
-        raisons_attr = esc(" ".join(r["raisons"]))
         skill = clean_partner_skill(r.get("partner_skill"))
         skill_html = (
             f'<div class="repro-skill"><span class="repro-skill-label">&#127942; En équipe :</span> {esc(skill)}</div>'
             if skill else
             '<div class="repro-skill muted">&#127942; Aucune competence de soutien connue pour cette espèce.</div>'
         )
-        repro_cards += f"""<div class="repro-card" data-nom="{esc(r['nom'].lower())}" data-raison="{raisons_attr}" data-total="{r['iv_total']}">
+        repro_cards += f"""<div class="repro-card" data-nom="{esc(r['nom'].lower())}" data-passifs="{passifs_attr}" data-total="{r['iv_total']}">
           <div class="repro-card-head">
             <img class="repro-card-icon" src="{pal_icon_url(r['codename'])}" alt="{esc(r['nom'])}" loading="lazy"
               onerror="this.style.visibility='hidden'">
@@ -1958,9 +1960,9 @@ def render_html(data):
           </div>
         </div>"""
 
-    REPRO_RAISON_LABEL = {"bonne_iv": "IV exceptionnelle", "passif_legendaire": "Passif légendaire"}
-    repro_raison_options = "".join(
-        f'<option value="{raison}">{esc(label)}</option>' for raison, label in REPRO_RAISON_LABEL.items()
+    repro_passif_chips = "".join(
+        f'<button class="filter-btn" data-passif="{esc(p.lower())}" onclick="reproTogglePassifChip(this)">&#10024; {esc(p)}</button>'
+        for p in sorted(repro_passifs_seen)
     )
 
     cuisine = data.get("cuisine", {})
@@ -2711,11 +2713,10 @@ def render_html(data):
         <div class="repro-toolbar">
           <input type="text" id="repro-search" class="kanban-input" style="max-width:280px"
             placeholder="&#128269; Rechercher une espèce..." oninput="reproFilterByName(this.value)">
-          <select id="repro-raison-filter" class="kanban-input" style="max-width:240px" onchange="reproFilterByRaison(this.value)">
-            <option value="">&#128218; Toutes les raisons</option>
-            {repro_raison_options}
-          </select>
           <button class="filter-btn active" id="repro-sort-btn" onclick="reproSortToggle()">Trier par IV totale &#8595;</button>
+        </div>
+        <div class="repro-toolbar" id="repro-passif-chips">
+          {repro_passif_chips or "<span class='muted' style='font-size:0.85rem'>Aucun passif légendaire parmi les candidats actuels.</span>"}
         </div>
 
         <div class="repro-grid" id="repro-grid">{repro_cards or ""}</div>
@@ -3525,7 +3526,7 @@ def render_html(data):
       ivApplyFilters();
     }}
     var reproNameQuery = '';
-    var reproRaisonQuery = '';
+    var reproActivePassifs = [];
     var reproSortDesc = true;
     var reproDefaultOrder = null;
     function reproApplyFilters() {{
@@ -3535,9 +3536,11 @@ def render_html(data):
       var shown = 0;
       cards.forEach(function(c) {{
         var nameMatch = reproNameQuery === '' || c.getAttribute('data-nom').indexOf(reproNameQuery) !== -1;
-        var raisons = ' ' + (c.getAttribute('data-raison') || '') + ' ';
-        var raisonMatch = reproRaisonQuery === '' || raisons.indexOf(' ' + reproRaisonQuery + ' ') !== -1;
-        var match = nameMatch && raisonMatch;
+        var passifs = '|' + (c.getAttribute('data-passifs') || '') + '|';
+        var passifMatch = reproActivePassifs.length === 0 || reproActivePassifs.some(function(p) {{
+          return passifs.indexOf('|' + p + '|') !== -1;
+        }});
+        var match = nameMatch && passifMatch;
         c.style.display = match ? '' : 'none';
         if (match) shown++;
       }});
@@ -3548,8 +3551,15 @@ def render_html(data):
       reproNameQuery = query.trim().toLowerCase();
       reproApplyFilters();
     }}
-    function reproFilterByRaison(value) {{
-      reproRaisonQuery = value;
+    function reproTogglePassifChip(btn) {{
+      var passif = btn.getAttribute('data-passif');
+      btn.classList.toggle('active');
+      var idx = reproActivePassifs.indexOf(passif);
+      if (btn.classList.contains('active') && idx === -1) {{
+        reproActivePassifs.push(passif);
+      }} else if (!btn.classList.contains('active') && idx !== -1) {{
+        reproActivePassifs.splice(idx, 1);
+      }}
       reproApplyFilters();
     }}
     function reproSortToggle() {{
