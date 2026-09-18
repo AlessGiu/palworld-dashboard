@@ -707,6 +707,8 @@ def collect_data():
         rang = card.get("rang_combi")
         if rang is None or rang > IV_BREEDING_RANG_CUTOFF:
             continue
+        _, combat_profile = resolve_combat_profile(cn)
+        partner_skill = (combat_profile or {}).get("partner_skill_description")
 
         def make_candidate(p, raisons):
             owner = unwrap(p.get("OwnerPlayerUId"), None)
@@ -727,6 +729,7 @@ def collect_data():
                 ],
                 "raisons": sorted(raisons),
                 "count": len(group),
+                "partner_skill": partner_skill,
             }
 
         interesting = {}  # instance_id -> (pal, {raisons})
@@ -1925,6 +1928,12 @@ def render_html(data):
         )
         nickname_html = f'<div class="repro-card-nick muted">&laquo; {esc(r["nickname"])} &raquo;</div>' if r.get("nickname") else ""
         raisons_attr = esc(" ".join(r["raisons"]))
+        skill = clean_partner_skill(r.get("partner_skill"))
+        skill_html = (
+            f'<div class="repro-skill"><span class="repro-skill-label">&#127942; En équipe :</span> {esc(skill)}</div>'
+            if skill else
+            '<div class="repro-skill muted">&#127942; Aucune competence de soutien connue pour cette espèce.</div>'
+        )
         repro_cards += f"""<div class="repro-card" data-nom="{esc(r['nom'].lower())}" data-raison="{raisons_attr}" data-total="{r['iv_total']}">
           <div class="repro-card-head">
             <img class="repro-card-icon" src="{pal_icon_url(r['codename'])}" alt="{esc(r['nom'])}" loading="lazy"
@@ -1936,6 +1945,7 @@ def render_html(data):
             </div>
           </div>
           <div class="repro-badges">{raison_badges}{passif_badges}</div>
+          {skill_html}
           <div class="repro-iv">
             {repro_bar("PV", r['iv_hp'], "--green")}
             {repro_bar("ATK", r['iv_atk'], "--orange")}
@@ -2262,6 +2272,11 @@ def render_html(data):
   }}
   .badge-iv {{ background: rgba(78,209,149,.16); color: var(--green); }}
   .badge-legendary {{ background: rgba(240,185,61,.18); color: var(--gold); }}
+  .repro-skill {{
+    font-size: 0.8rem; line-height: 1.4; background: var(--bg); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm); padding: 8px 10px;
+  }}
+  .repro-skill-label {{ color: var(--gold); font-weight: 700; }}
   .repro-iv {{ display: flex; flex-direction: column; gap: 6px; }}
   .repro-iv-row {{ display: grid; grid-template-columns: 34px 1fr 28px; align-items: center; gap: 8px; }}
   .repro-iv-label {{ font-size: 0.72rem; color: var(--muted); font-weight: 700; }}
@@ -3956,25 +3971,51 @@ def compute_new_breeding_candidates(previous, current):
 RAISON_LABELS = {"bonne_iv": "IV exceptionnelle", "passif_legendaire": "passif legendaire"}
 
 
+def clean_partner_skill(text):
+    # Le texte source (combat_stats_full.json) contient parfois des \r\n internes --
+    # aplati en une seule ligne pour l'affichage Discord/dashboard.
+    if not text:
+        return None
+    return " ".join(text.replace("\r\n", " ").replace("\n", " ").split())
+
+
 def format_breeding_candidate(c):
     raisons = " + ".join(RAISON_LABELS.get(r, r) for r in c["raisons"])
     nom_tag = f" « {c['nickname']} »" if c.get("nickname") else ""
     passifs_txt = f" -- passifs : {', '.join(c['passifs_legendaires'])}" if c["passifs_legendaires"] else ""
+    skill = clean_partner_skill(c.get("partner_skill"))
+    skill_txt = f"\n  ↳ en équipe : {skill}" if skill else ""
     return (
         f"- **{c['nom']}**{nom_tag} (niv.{c['niveau']}, {c['proprietaire']}) : "
-        f"HP {c['iv_hp']} / ATK {c['iv_atk']} / DEF {c['iv_def']} (total {c['iv_total']}/300) -- {raisons}{passifs_txt}"
+        f"HP {c['iv_hp']} / ATK {c['iv_atk']} / DEF {c['iv_def']} (total {c['iv_total']}/300) -- {raisons}{passifs_txt}{skill_txt}"
     )
+
+
+DISCORD_MSG_BUDGET = 1900  # marge sous la limite Discord de 2000 caracteres
 
 
 def post_breeding_candidates_notification(new_candidates):
     if not new_candidates:
         return  # rien de nouveau, pas de notif
-    shown = new_candidates[:15]
-    lines = [format_breeding_candidate(c) for c in shown]
-    content = "**Nouveaux candidats a la reproduction (bonne IV / passif legendaire)**\n\n" + "\n".join(lines)
-    if len(new_candidates) > len(shown):
-        content += f"\n\n... et {len(new_candidates) - len(shown)} autre(s)."
-    print("Discord reproduction notification code:", post_discord_message(content, WEBHOOK_URL_REPRODUCTION))
+    header = "**Nouveaux candidats a la reproduction (bonne IV / passif legendaire)**"
+    lines = [format_breeding_candidate(c) for c in new_candidates]
+
+    chunks = []
+    current = [header]
+    current_len = len(header)
+    for line in lines:
+        added_len = len(line) + 1
+        if current_len + added_len > DISCORD_MSG_BUDGET and len(current) > 1:
+            chunks.append(current)
+            current = []
+            current_len = 0
+        current.append(line)
+        current_len += added_len
+    chunks.append(current)
+
+    for chunk in chunks:
+        content = "\n".join(chunk)
+        print("Discord reproduction notification code:", post_discord_message(content, WEBHOOK_URL_REPRODUCTION))
 
 
 def deploy(local_html_path):
