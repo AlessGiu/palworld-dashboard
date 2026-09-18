@@ -13,6 +13,7 @@ from recipes_data import RECIPES, CROP_TO_INGREDIENT, STATION_BUILDINGS
 from secrets_local import (
     SFTP_HOST, SFTP_PORT, SFTP_USER, SFTP_PASS, WEBHOOK_URL, PROXMOX_HOST,
     WEBHOOK_URL_PROGRESSION, WEBHOOK_URL_ALERTES_RESSOURCES, WEBHOOK_URL_STOCK,
+    WEBHOOK_URL_REPRODUCTION,
 )
 
 REMOTE_SAVE_DIR = "/Pal/Saved/SaveGames/0/D5C16DC3464E7CC492225ABB991F1FA2"
@@ -416,6 +417,8 @@ PASSIVE_NAME_DISPLAY = {
     "ElementBoost_Fire_2_PAL": "Flame Emperor", "ElementBoost_Ice_1_PAL": "Coldblooded",
     "ElementBoost_Ice_2_PAL": "Ice Emperor", "ElementBoost_Leaf_1_PAL": "Fragrant Foliage",
     "ElementBoost_Normal_1_PAL": "Spirit of Zen", "ElementBoost_Normal_2_PAL": "Celestial Emperor",
+    "ElementBoost_Dragon_2_PAL": "Divine Dragon", "Witch": "Siren of the Void",
+    "Rare": "Lucky", "Vampire": "Vampiric",
     "ElementResist_Aqua_1_PAL": "Waterproof", "ElementResist_Leaf_1_PAL": "Botanical Barrier",
     "ElementResist_Normal_1_PAL": "Abnormal", "Legend": "Legend", "MiniNushi": "Whopper",
     "MoveSpeed_up_1": "Nimble", "MoveSpeed_up_2": "Runner",
@@ -433,6 +436,17 @@ PASSIVE_NAME_DISPLAY = {
     "TrainerDEF_UP_1": "Stronghold Strategist", "TrainerLogging_up1": "Logging Foreman",
     "TrainerMining_up1": "Mine Foreman", "TrainerWorkSpeed_UP_1": "Motivational Leader",
     "WorkSuitabilityAddRank_MonsterFarm_1": "Farmhand",
+}
+
+# Passifs de rang "legendaire/rainbow" (verifie via palworld.wiki.gg + palmods.gg/docs --
+# les Emperor/Legend exclusifs a un boss/alpha, + Lucky/Vampiric/Siren of the Void, tier
+# le plus eleve du jeu). Sert a detecter les candidats reproduction sur passif rare, en
+# plus du critere IV -- voir candidats_reproduction dans collect_data().
+LEGENDARY_PASSIVE_IDS = {
+    "Legend", "Rare", "Vampire", "Witch",
+    "ElementBoost_Ice_2_PAL", "ElementBoost_Dark_2_PAL", "ElementBoost_Earth_2_PAL",
+    "ElementBoost_Fire_2_PAL", "ElementBoost_Normal_2_PAL", "ElementBoost_Aqua_2_PAL",
+    "ElementBoost_Dragon_2_PAL",
 }
 
 
@@ -676,6 +690,64 @@ def collect_data():
         })
     meilleurs_iv.sort(key=lambda r: r["rang_combi"])
 
+    # --- CANDIDATS REPRODUCTION (bonne IV ou passif legendaire) -- alerte Discord dediee ---
+    # Contrairement a meilleurs_iv (1 seule ligne = la meilleure IV par espece), un individu
+    # avec un passif legendaire mais une IV moyenne merite aussi d'etre signale -- on garde
+    # donc jusqu'a 2 entrees par espece (meilleure IV + meilleur porteur de passif legendaire,
+    # fusionnees si c'est le meme individu). Diffuse seulement les NOUVEAUX (voir main()).
+    BREEDING_CANDIDATE_IV_THRESHOLD = 250
+    instance_id_by_sp = {id(p): iid for iid, p in pal_by_instance.items()}
+
+    candidats_reproduction = []
+    for cn, group in pals_by_codename.items():
+        if len(group) < 2:
+            continue
+        base_cn, _ = resolve_species_profile(cn)
+        card = PAL_CARD_DATA.get(base_cn, {})
+        rang = card.get("rang_combi")
+        if rang is None or rang > IV_BREEDING_RANG_CUTOFF:
+            continue
+
+        def make_candidate(p, raisons):
+            owner = unwrap(p.get("OwnerPlayerUId"), None)
+            owner_name = uid_to_name.get(str(owner), "Sans propriétaire") if owner else "Sans propriétaire"
+            return {
+                "instance_id": instance_id_by_sp.get(id(p), "?"),
+                "nom": card.get("nom", cn),
+                "codename": cn,
+                "niveau": unwrap(p.get("Level"), 1),
+                "iv_hp": int(safe_float(unwrap(p.get("Talent_HP"), 0))),
+                "iv_atk": int(safe_float(unwrap(p.get("Talent_Shot"), 0))),
+                "iv_def": int(safe_float(unwrap(p.get("Talent_Defense"), 0))),
+                "iv_total": int(iv_score(p)),
+                "proprietaire": owner_name,
+                "nickname": unwrap(p.get("NickName"), None),
+                "passifs_legendaires": [
+                    PASSIVE_NAME_DISPLAY.get(x, x) for x in passive_names(p) if x in LEGENDARY_PASSIVE_IDS
+                ],
+                "raisons": sorted(raisons),
+            }
+
+        interesting = {}  # instance_id -> (pal, {raisons})
+        best_iv = max(group, key=iv_score)
+        if iv_score(best_iv) >= BREEDING_CANDIDATE_IV_THRESHOLD:
+            iid = instance_id_by_sp.get(id(best_iv), "?")
+            interesting[iid] = (best_iv, {"bonne_iv"})
+
+        legendary_group = [p for p in group if any(x in LEGENDARY_PASSIVE_IDS for x in passive_names(p))]
+        if legendary_group:
+            best_legendary = max(legendary_group, key=iv_score)
+            iid = instance_id_by_sp.get(id(best_legendary), "?")
+            if iid in interesting:
+                interesting[iid][1].add("passif_legendaire")
+            else:
+                interesting[iid] = (best_legendary, {"passif_legendaire"})
+
+        for p, raisons in interesting.values():
+            candidats_reproduction.append(make_candidate(p, raisons))
+
+    candidats_reproduction.sort(key=lambda r: -r["iv_total"])
+
     # --- PALPEDIA PAR JOUEUR ---
     # Base sur la propriété ACTUELLE des Pals (OwnerPlayerUId), pas un historique de capture --
     # si un Pal a change de main ou dort dans un coffre partage, ca peut sous-compter le vrai
@@ -857,6 +929,7 @@ def collect_data():
         "nb_especes_possedees_avec_rang": len(owned_ranked),
         "meilleurs_iv": meilleurs_iv,
     }
+    data["candidats_reproduction"] = candidats_reproduction
 
     # --- TRAVAIL A LA BASE (recommandations, croisees avec le roster réel) ---
     # Les formes Boss/Alpha (prefixe BOSS_) partagent les mêmes aptitudes de travail
@@ -3682,6 +3755,37 @@ def post_stock_alert_notification(new_alerts):
     print("Discord stock alert code:", post_discord_message(content, WEBHOOK_URL_ALERTES_RESSOURCES))
 
 
+def compute_new_breeding_candidates(previous, current):
+    # Ne signale que les individus jamais vus dans un run precedent -- sinon la meme
+    # "OK GOOD" reviendrait dans le salon a chaque regeneration horaire pour toujours.
+    previous_ids = {c["instance_id"] for c in (previous or {}).get("candidats_reproduction", [])}
+    return [c for c in current if c["instance_id"] not in previous_ids]
+
+
+RAISON_LABELS = {"bonne_iv": "IV exceptionnelle", "passif_legendaire": "passif legendaire"}
+
+
+def format_breeding_candidate(c):
+    raisons = " + ".join(RAISON_LABELS.get(r, r) for r in c["raisons"])
+    nom_tag = f" « {c['nickname']} »" if c.get("nickname") else ""
+    passifs_txt = f" -- passifs : {', '.join(c['passifs_legendaires'])}" if c["passifs_legendaires"] else ""
+    return (
+        f"- **{c['nom']}**{nom_tag} (niv.{c['niveau']}, {c['proprietaire']}) : "
+        f"HP {c['iv_hp']} / ATK {c['iv_atk']} / DEF {c['iv_def']} (total {c['iv_total']}/300) -- {raisons}{passifs_txt}"
+    )
+
+
+def post_breeding_candidates_notification(new_candidates):
+    if not new_candidates:
+        return  # rien de nouveau, pas de notif
+    shown = new_candidates[:15]
+    lines = [format_breeding_candidate(c) for c in shown]
+    content = "**Nouveaux candidats a la reproduction (bonne IV / passif legendaire)**\n\n" + "\n".join(lines)
+    if len(new_candidates) > len(shown):
+        content += f"\n\n... et {len(new_candidates) - len(shown)} autre(s)."
+    print("Discord reproduction notification code:", post_discord_message(content, WEBHOOK_URL_REPRODUCTION))
+
+
 def deploy(local_html_path):
     remote_tmp = "/tmp/palworld_dashboard.html"
     subprocess.run(
@@ -3709,6 +3813,11 @@ def main():
     for a in new_stock_alerts:
         print("ALERTE STOCK:", a["label"], a["stock"], "/", a["seuil"])
     post_stock_alert_notification(new_stock_alerts)
+
+    new_breeding_candidates = compute_new_breeding_candidates(previous, data["candidats_reproduction"])
+    for c in new_breeding_candidates:
+        print("CANDIDAT REPRODUCTION:", c["nom"], c["iv_total"], c["raisons"])
+    post_breeding_candidates_notification(new_breeding_candidates)
 
     post_stock_report(data["stock_ressources"])
 
