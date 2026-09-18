@@ -2571,6 +2571,7 @@ def render_html(data):
       <button class="filter-btn" data-guide="g4" onclick="showGuide(this)">&#128163; Puffsplode -- la chaine complete</button>
       <button class="filter-btn" data-guide="g5" onclick="showGuide(this)">&#128295; Installer des mods</button>
       <button class="filter-btn" data-guide="g6" onclick="showGuide(this)">&#129412; Maxer un Frostallion</button>
+      <button class="filter-btn" data-guide="g7" onclick="showGuide(this)">&#127907; Team pecheur optimale</button>
     </div>
 
     <div class="guide-panel" data-guide="g0">
@@ -3106,6 +3107,64 @@ def render_html(data):
 
       <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
         Mecaniques verifiees (breeding restreint, cout de condensation 1.0, spots de spawn) -- pas un guide officiel Palworld.
+      </p>
+    </div>
+    </div>
+
+    <div class="guide-panel" data-guide="g7" style="display:none">
+    <div class="card" style="border-left-color: var(--orange)">
+      <h2>&#127907; Team pecheur optimale -- combo perso base sur ta save</h2>
+      <p class="muted" style="margin-top:-6px">
+        Scan de tous les Pals de peche (standard + aimant) réellement possédés dans la sauvegarde --
+        le meilleur exemplaire de chaque espece a choisir pour le role, avec de quoi le faire progresser
+        immediatement grace aux doublons deja en stock.
+      </p>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#128062; Peche standard</h3>
+      <ul class="advice-list">
+        <li><b>Gloopie</b> -- anti-penalite mini-jeu (12&#8594;35%, scale avec les etoiles)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Garder l'exemplaire <b style="color:var(--text)">niv.58, 2&#9733;, IV 97</b> (Al[.exe]) -- c'est le seul deja starte sur les 2 possédés. Sacrifier l'autre (0&#9733;, IV 151) dedans pour continuer a monter les etoiles plutot que de le laisser inutilise.</div>
+        </li>
+        <li><b>Jelliette</b> -- double le loot de peche standard (55&#8594;95%, scale avec les etoiles)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">11 possédés. Garder <b style="color:var(--text)">niv.61, 0&#9733;, IV 197</b> (Al[.exe], meilleur profil) et sacrifier les 10 autres doublons dedans -- plus rentable que de garder celui deja a 2&#9733; mais IV 113 seulement.</div>
+        </li>
+        <li><b>Whalaska</b> + <b>Whalaska Ignis</b> -- +5&#8594;14% et +7&#8594;17% de jauge de capture des le debut (cumulables, montures)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">8 Whalaska possédés, tous a 0&#9733; -- garder <b style="color:var(--text)">niv.58, IV 209</b> (skP) et sacrifier les 7 autres dedans (aucune etoile perdue, ils partent tous de zero). 1 seul Whalaska Ignis (niv.43, IV 168, skP) -- il en manque d'autres a capturer pour pouvoir le star-up.</div>
+        </li>
+        <li><b>Salmora</b> / Salmora Lux -- bonus IV des Pals captures en pechant <span class="muted" style="font-weight:400">(optionnel)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Aucun possédé -- pas urgent, la video juge le pal "moins pertinent depuis l'Arbre Monde".</div>
+        </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#129442; Peche a l'aimant</h3>
+      <ul class="advice-list">
+        <li><b>Jellroy</b> -- double les detritus recuperes (indispensable, contrairement a Jelliette qui ne marche qu'en peche standard)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Seulement 2 possédés -- garder <b style="color:var(--text)">niv.15, 2&#9733;, IV 154</b> (Al[.exe], deja starte). Il manque des doublons pour le pousser plus haut : a recapturer en priorite si tu veux ameliorer ce role.</div>
+        </li>
+        <li><b>Pal rapide dans l'eau</b> -- pour enchainer les points de detritus (le reste de l'equipe standard ne sert a rien ici)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Ton meilleur <b>Neptilius</b> : <b style="color:var(--text)">niv.74, 5&#9733;, IV 221</b> (Al[.exe]), passifs <b>Legend + Nushi + SwimSpeed_up_2 + PAL_ALLAttack_up2</b> -- le passif de vitesse de nage tombe exactement sur ce role. 12 Neptilius possédés au total (dont un autre 5&#9733; IV 260 mais sans passif de nage) : largement de quoi sacrifier les 11 autres dedans pour le peaufiner encore.</div>
+        </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#127942; Combo bonus (optionnel)</h3>
+      <ul class="advice-list">
+        <li><b>Reptyro</b> + <b>Reptyro Cryst</b> -- annulerait le poids du Korallium recupere (astuce non verifiee par le createur de la video, pour du farm intensif)
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">7 Reptyro Cryst possédés mais 0 Reptyro de base -- combo incomplet, pas prioritaire.</div>
+        </li>
+      </ul>
+      </div>
+
+      <p class="muted" style="font-size:0.82rem; background:var(--card-soft); border:1px dashed var(--border); border-radius:10px; padding:10px 14px">
+        &#9989; <b style="color:var(--text)">Plan d'action immediat</b> -- tu as deja assez de doublons en stock pour maxer les etoiles de Jelliette, Whalaska et Neptilius sans rien capturer de nouveau. Seuls Whalaska Ignis et Jellroy demandent d'aller en attraper davantage pour continuer a progresser.
+      </p>
+
+      <p class="muted" style="font-size:0.72rem; margin-top:18px; border-top:1px solid var(--border); padding-top:10px">
+        Base sur le guide "La peche" (video Cheatah) + scan direct des IV/etoiles/passifs/proprietaires dans la sauvegarde -- a rescanner apres tout gros mouvement de Pals.
       </p>
     </div>
     </div>
