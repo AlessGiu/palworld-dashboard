@@ -3017,15 +3017,17 @@ def render_html(data):
       <div class="subhead">
       <h3 style="font-size:1rem">&#9989; Mods deja actifs sur notre serveur</h3>
       <ul class="advice-list">
-        <li><b>Recover Pal Spheres</b> -- <a href="https://www.nexusmods.com/palworld/mods/4547" target="_blank" rel="noopener">nexusmods.com/palworld/mods/4547</a>
-          <div class="muted" style="font-size:0.85rem; margin-top:4px">100% cote serveur -- rien a installer chez vous, ca marche deja pour tout le monde.</div>
-        </li>
-        <li><b>Palbox Search Plus</b> (Ctrl+F pour chercher un Pal par nom) -- <a href="https://www.nexusmods.com/palworld/mods/4537" target="_blank" rel="noopener">nexusmods.com/palworld/mods/4537</a>
-          <div class="muted" style="font-size:0.85rem; margin-top:4px">Necessite l'installation cote client (etapes 1-3 ci-dessus) pour voir la barre de recherche apparaitre.</div>
-        </li>
         <li><b>PalPlates</b> (marqueur colore + distance des coequipiers sur la boussole) -- <a href="https://www.nexusmods.com/palworld/mods/4514" target="_blank" rel="noopener">nexusmods.com/palworld/mods/4514</a>
-          <div class="muted" style="font-size:0.85rem; margin-top:4px">Meme chose : sans l'installation cote client, rien ne s'affiche sur votre boussole meme si le serveur est a jour.</div>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Necessite l'installation cote client (etapes 1-3 ci-dessus) pour voir les marqueurs sur votre boussole.</div>
         </li>
+      </ul>
+      </div>
+
+      <div class="subhead">
+      <h3 style="font-size:1rem">&#10060; Mods retires -- ne pas reinstaller sans savoir pourquoi</h3>
+      <ul class="advice-list">
+        <li><b>Recover Pal Spheres</b> -- retire le 18/09/2026, provoquait des deconnexions lors de captures dans les grottes/donjons.</li>
+        <li><b>Palbox Search Plus</b> -- retire le 16/09/2026, bugs geants.</li>
       </ul>
       </div>
 
