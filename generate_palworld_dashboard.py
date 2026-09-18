@@ -717,6 +717,7 @@ def collect_data():
                 "instance_id": instance_id_by_sp.get(id(p), "?"),
                 "nom": card.get("nom", cn),
                 "codename": cn,
+                "icon": card.get("icon") or pal_icon_url(base_cn),
                 "niveau": unwrap(p.get("Level"), 1),
                 "iv_hp": int(safe_float(unwrap(p.get("Talent_HP"), 0))),
                 "iv_atk": int(safe_float(unwrap(p.get("Talent_Shot"), 0))),
@@ -1938,7 +1939,7 @@ def render_html(data):
         )
         repro_cards += f"""<div class="repro-card" data-nom="{esc(r['nom'].lower())}" data-passifs="{passifs_attr}" data-total="{r['iv_total']}">
           <div class="repro-card-head">
-            <img class="repro-card-icon" src="{pal_icon_url(r['codename'])}" alt="{esc(r['nom'])}" loading="lazy"
+            <img class="repro-card-icon" src="{r['icon']}" alt="{esc(r['nom'])}" loading="lazy"
               onerror="this.style.visibility='hidden'">
             <div>
               <div class="repro-card-name">{esc(r['nom'])}</div>
