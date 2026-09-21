@@ -1,0 +1,2403 @@
+{
+"pals": {
+"YakushimaMonster001": "Gelée verte",
+"YakushimaMonster001_Blue": "Gelée bleue",
+"YakushimaMonster001_Red": "Gelée rouge",
+"YakushimaMonster001_Purple": "Gelée violette",
+"YakushimaMonster001_Pink": "Gelée lumineuse",
+"YakushimaMonster001_Rainbow": "Gelée arc-en-ciel",
+"YakushimaMonster002": "Épée envoûtée",
+"YakushimaMonster003": "Chauve-souris des grottes",
+"YakushimaMonster003_Purple": "Chauve-souris lumineuse",
+"YakushimaBoss001": "Œil de Cthulhu",
+"YakushimaBoss001_Small": "Œil de démon",
+"ChickenPal": "Chikipi",
+"Ganesha": "Teafant",
+"CuteFox": "Vixy",
+"SheepBall": "Lamball",
+"Bastet": "Mau",
+"Hedgehog": "Jolthog",
+"Carbunclo": "Lifmunk",
+"ElecCat": "Sparkit",
+"NegativeKoala": "Depresso",
+"Kitsunebi": "Foxparks",
+"BluePlatypus": "Fuack",
+"CloverFairy": "Clovee",
+"Penguin": "Pengullet",
+"PlantSlime": "Gumoss",
+"WizardOwl": "Hoocrates",
+"SamuraiDog": "Pupperai",
+"NightFox": "Nox",
+"DreamDemon": "Daedream",
+"Monkey": "Tanzee",
+"WoolFox": "Cremis",
+"Boar": "Rushoar",
+"FlameBambi": "Rooby",
+"PinkRabbit": "Ribbuny",
+"Hedgehog_Ice": "Jolthog Cryst",
+"MopBaby": "Swee",
+"Monkey_Fire": "Tanzee Ignis",
+"SweetsSheep": "Woolipop",
+"Kelpie": "Kelpsea",
+"CowPal": "Mozzarina",
+"CuteMole": "Fuddler",
+"WindChimes": "Hangyu",
+"NegativeOctopus": "Killamari",
+"PinkCat": "Cattiva",
+"Bastet_Ice": "Mau Cryst",
+"FlyingManta": "Celaray",
+"ColorfulBird": "Tocotoco",
+"Alpaca": "Melpaca",
+"Deer": "Eikthyrdeer",
+"LavaGirl": "Flambelle",
+"LittleBriarRose": "Bristla",
+"Garm": "Direhowl",
+"LizardMan": "Leezpunk",
+"FlowerRabbit": "Flopie",
+"JellyfishFairy": "Jelliette",
+"LizardMan_Fire": "Leezpunk Ignis",
+"LeafMomonga": "Herbil",
+"CuteButterfly": "Cinnamoth",
+"BerryGoat": "Caprity",
+"KendoFrog": "Croajiro",
+"JellyfishGhost": "Jellroy",
+"Deer_Ground": "Eikthyrdeer Terra",
+"Eagle": "Galeclaw",
+"HawkBird": "Nitewing",
+"SharkKid": "Gobfin",
+"NegativeOctopus_Neutral": "Killamari Primo",
+"OctopusGirl": "Gloopie",
+"ClioneTwins": "Amione",
+"WindChimes_Ice": "Hangyu Cryst",
+"Kitsunebi_Ice": "Foxparks Cryst",
+"Penguin_Electric": "Pengullet Lux",
+"FluffyBird": "Muffly",
+"Kelpie_Fire": "Kelpsea Ignis",
+"PinkRabbit_Grass": "Ribbuny Botan",
+"StuffedShark": "Finsider",
+"Serpent": "Surfent",
+"SharkKid_Fire": "Gobfin Ignis",
+"CactusDoll": "Needoll",
+"TentacleTurtle": "Turtacle",
+"RaijinDaughter": "Dazzi",
+"SmallYeti": "Snugloo",
+"FlyingManta_Thunder": "Celaray Lux",
+"DarkCrow": "Cawgnito",
+"ElecPomeranian": "Puffolt",
+"SoldierBee": "Beegarde",
+"CatBat": "Tombat",
+"WeaselDragon": "Chillet",
+"FlameBuffalo": "Arsox",
+"SmallArmadillo": "Kikit",
+"BluePlatypus_Fire": "Fuack Ignis",
+"LazyCatfish": "Dumud",
+"FairyDragon": "Elphidran",
+"Kirin": "Univolt",
+"RobinHood": "Robinquill",
+"GhostBlackCat": "Wispaw",
+"StuffedShark_Fire": "Finsider Ignis",
+"GuardianDog": "Yakumo",
+"KingAlpaca": "Kingpaca",
+"FeatherOstrich": "Dazemu",
+"MopKing": "Sweepa",
+"Gorilla": "Gorirat",
+"IceCrocodile": "Munchill",
+"NaughtyCat": "Grintale",
+"Werewolf": "Loupmoon",
+"FlowerDinosaur": "Dinossom",
+"PinkLizard": "Lovander",
+"FoxMage": "Wixen",
+"CaptainPenguin": "Penking",
+"GrassPanda": "Mossanda",
+"RobinHood_Ground": "Robinquill Terra",
+"CatMage": "Katress",
+"SweetsSheep_Ground": "Woolipop Terra",
+"GrassMinotaur": "Elgrove",
+"Mutant": "Lunaris",
+"DandelionGirl": "Souffline",
+"LeafPrincess": "Lullu",
+"FireKirin": "Pyrin",
+"IceFox": "Foxcicle",
+"FengyunDeeper": "Fenglope",
+"WeaselDragon_Fire": "Chillet Ignis",
+"BerryGoat_Dark": "Caprity Noct",
+"IceDeer": "Reindrix",
+"ThunderDog": "Rayhound",
+"RaijinDaughter_Water": "Dazzi Noct",
+"LongCat": "Valentail",
+"FlowerDinosaur_Electric": "Dinossom Lux",
+"Gorilla_Ground": "Gorirat Terra",
+"FireKirin_Dark": "Pyrin Noct",
+"KendoFrog_Dark": "Croajiro Noct",
+"CaptainPenguin_Black": "Penking Lux",
+"Serpent_Ground": "Surfent Terra",
+"BlueDragon": "Azurobe",
+"DarkAlien": "Xenovader",
+"WhiteMoth": "Sibelyx",
+"CatMage_Fire": "Katress Ignis",
+"QueenBee": "Elizabee",
+"ElecSnail": "Snock",
+"HoodGhost": "Hoodle",
+"BlackPuppy": "Smokie",
+"ElecLizard": "Slowatt",
+"MimicDog": "Mimog",
+"PurpleSpider": "Tarantriss",
+"FlowerDoll": "Petallia",
+"GhostBeast": "Maraith",
+"VenusFlytrap": "Carnibora",
+"ThunderBird": "Beakon",
+"BrownRabbit": "Lapiron",
+"AmaterasuWolf": "Kitsun",
+"IceSeal": "Polapup",
+"BirdDragon": "Vanwyrm",
+"FairyDragon_Water": "Elphidran Aqua",
+"OctopusGirl_Neutral": "Gloopie Primo",
+"LazyCatfish_Gold": "Dumud Gild",
+"BlackPuppy_Ice": "Smokie Cryst",
+"ThunderDog_Ice": "Rayhound Cryst",
+"SwordCutlassfish_Fire": "Skutlass Ignis",
+"CactusDoll_Dark": "Needoll Noct",
+"CatVampire": "Felbat",
+"Ronin": "Bushi",
+"DrillGame": "Digtoise",
+"OniGhostGirl": "Bakemi",
+"KingAlpaca_Ice": "Kingpaca Cryst",
+"MushroomDragon": "Shroomer",
+"ScorpionMan": "Prixter",
+"ElecSnail_Ground": "Snock Terra",
+"FoxMage_Dark": "Wixen Noct",
+"VioletFairy": "Vaelet",
+"Baphomet": "Incineram",
+"SifuDog": "Dogen",
+"MushroomDragon_Dark": "Shroomer Noct",
+"GrassPanda_Electric": "Mossanda Lux",
+"BirdDragon_Ice": "Vanwyrm Cryst",
+"SwordCutlassfish": "Skutlass",
+"PandaGirl": "Leafan",
+"ThunderFluffyBird": "Dynamoff",
+"BlueberryFairy": "Prunelia",
+"SakuraSaurus": "Broncherry",
+"KingSunfish": "Solmora",
+"Manticore": "Blazehowl",
+"RedFlowerBird": "Tropicaw",
+"GrassMammoth": "Mammorest",
+"TentacleTurtle_Ground": "Turtacle Terra",
+"GhostRabbit_Grass": "Nitemary Botan",
+"Baphomet_Dark": "Incineram Noct",
+"SkyDragon_Grass": "Quivern Botan",
+"Werewolf_Ice": "Loupmoon Cryst",
+"HerculesBeetle": "Warsect",
+"Manticore_Dark": "Blazehowl Noct",
+"IceWitch": "Icelyn",
+"BadCatgirl": "Nyafia",
+"TropicalOstrich": "Palumba",
+"GhostRabbit": "Nitemary",
+"BlueDragon_Ice": "Azurobe Cryst",
+"SkyDragon": "Quivern",
+"Suzaku": "Suzaku",
+"SumoDog": "Bulldosu",
+"MoonChild": "Wistella",
+"MummyPal": "Gildra",
+"GrassRabbitMan": "Verdash",
+"NightBlueHorse": "Starryon",
+"MysteryMask": "Omascul",
+"HadesBird": "Helzephyr",
+"DarkScorpion": "Menasting",
+"RockBeast": "Pierdon",
+"IceSeal_Ground": "Polapup Terra",
+"LazyDragon": "Relaxaurus",
+"SakuraSaurus_Water": "Broncherry Aqua",
+"GrassMammoth_Ice": "Mammorest Cryst",
+"VolcanicMonster": "Reptyro",
+"RedArmorBird": "Ragnahawk",
+"WhiteTiger": "Cryolinx",
+"Plesiosaur": "Braloha",
+"ElecPanda": "Grizzbolt",
+"DarkFlameFox": "Majex",
+"KingSunfish_Thunder": "Solmora Lux",
+"WhiteAlienDragon": "Xenogard",
+"CandleGhost": "Sootseer",
+"SnakeGirl": "Venusa",
+"HadesBird_Electric": "Helzephyr Lux",
+"FengyunDeeper_Electric": "Fenglope Lux",
+"LanternButler": "Loomen",
+"GhostAnglerfish": "Ghangler",
+"Sekhmet": "Sekhmet",
+"SnowPeafowl": "Frostplume",
+"ScorpionMan_Electric": "Prixter Lux",
+"Ronin_Dark": "Bushi Noct",
+"Yeti": "Wumpo",
+"FlowerDoll_Fire": "Petallia Ignis",
+"SleeveRabbit": "Lapure",
+"AmaterasuWolf_Dark": "Kitsun Noct",
+"CubeTurtle": "Tetroise",
+"GrimGirl": "Splatterina",
+"LazyDragon_Electric": "Relaxaurus Lux",
+"MushroomLady": "Mycora",
+"VolcanoDragon": "Moldron",
+"Suzaku_Water": "Suzaku Aqua",
+"GoldenHorse": "Gildane",
+"GhostAnglerfish_Fire": "Ghangler Ignis",
+"IceNarwhal": "Whalaska",
+"WhiteMoth_Neutral": "Sibelyx Primo",
+"DarkScorpion_Ground": "Menasting Terra",
+"HerculesBeetle_Ground": "Warsect Terra",
+"NightLady": "Bellanoir",
+"Yeti_Grass": "Wumpo Botan",
+"VolcanicMonster_Ice": "Reptyro Cryst",
+"Umihebi": "Jormuntide",
+"ThunderBird_Ice": "Beakon Cryst",
+"WhiteDeer": "Celesdir",
+"WhiteShieldDragon": "Silvegis",
+"BlackGriffon": "Shadowbeak",
+"Kirin_Ice": "Univolt Cryst",
+"ThiefBird": "Roujay",
+"ClownRabbit": "Dupin",
+"GrassGolem": "Dualith",
+"Horus": "Faleris",
+"BlackMetalDragon": "Astegon",
+"Anubis": "Anubis",
+"WhiteTiger_Ground": "Cryolinx Terra",
+"RockBeast_Ice": "Pierdon Cryst",
+"Horus_Water": "Faleris Aqua",
+"GrassMinotaur_Ice": "Elgrove Cryst",
+"NightBlueHorse_Neutral": "Starryon Primo",
+"BlueThunderHorse": "Azurmane",
+"KingBahamut": "Blazamut",
+"DarkMechaDragon": "Xenolord",
+"FoxExorcist": "Flaracle",
+"VolcanoDragon_Ice": "Moldron Cryst",
+"IceNarwhal_Fire": "Whalaska Ignis",
+"MoonQueen": "Selyne",
+"GhostDragon": "Eidrolon",
+"KabukiMan": "Renjishi",
+"MonochromeQueen": "Solenne",
+"WhiteDeer_Dark": "Celesdir Noct",
+"WingGolem": "Knocklem",
+"GrassGolem_Dark": "Dualith Noct",
+"LilyQueen": "Lyleen",
+"LotusDragon": "Ophydia",
+"LilyQueen_Dark": "Lyleen Noct",
+"WingGolem_Fire": "Knocklem Ignis",
+"CubeTurtle_Neutral": "Tetroise Primo",
+"BlackCentaur": "Necromus",
+"SaintCentaur": "Paladius",
+"Umihebi_Fire": "Jormuntide Ignis",
+"PoseidonOrca": "Neptilius",
+"IceHorse": "Frostallion",
+"GhostDragon_Fire": "Eidrolon Ignis",
+"NightLady_Dark": "Bellanoir Libero",
+"ThunderDragonMan": "Orserk",
+"IceHorse_Dark": "Frostallion Noct",
+"KingBahamut_Dragon": "Blazamut Ryu",
+"LegendDeer": "Hartalis",
+"Mothman": "Silvance",
+"JetDragon": "Jetragon",
+"FlowerPrince": "Dandilord",
+"SnowTigerBeastman": "Bastigor",
+"BlueSkyDragon": "Shaolong",
+"DomeArmorDragon": "Aegidron"
+},
+"passives": {
+"HP_ACC_up1": {
+"nom": "PV augmentés Niv. 1",
+"rang": 1,
+"desc": "PV max +10% (ToSelf)"
+},
+"HP_ACC_up2": {
+"nom": "PV augmentés Niv. 2",
+"rang": 2,
+"desc": "PV max +15% (ToSelf)"
+},
+"HP_ACC_up3": {
+"nom": "PV augmentés Niv. 3",
+"rang": 3,
+"desc": "PV max +20% (ToSelf)"
+},
+"HP_ACC_up4": {
+"nom": "PV augmentés Niv. 4",
+"rang": 4,
+"desc": "PV max +25% (ToSelf)"
+},
+"Attack_ACC_up1": {
+"nom": "Attaque augmentée Niv. 1",
+"rang": 1,
+"desc": "Attaque +5% (ToSelf)"
+},
+"Attack_ACC_up2": {
+"nom": "Attaque augmentée Niv. 2",
+"rang": 2,
+"desc": "Attaque +10% (ToSelf)"
+},
+"Attack_ACC_up3": {
+"nom": "Attaque augmentée Niv. 3",
+"rang": 3,
+"desc": "Attaque +15% (ToSelf)"
+},
+"Attack_ACC_up4": {
+"nom": "Attaque augmentée Niv. 4",
+"rang": 4,
+"desc": "Attaque +20% (ToSelf)"
+},
+"Attack_ACC_up1_Armor": {
+"nom": "Attaque augmentée (faible) Niv. 1",
+"rang": 1,
+"desc": "Attaque +3% (ToSelf)"
+},
+"Attack_ACC_up2_Armor": {
+"nom": "Attaque augmentée (faible) Niv. 2",
+"rang": 2,
+"desc": "Attaque +6% (ToSelf)"
+},
+"Attack_ACC_up3_Armor": {
+"nom": "Attaque augmentée (faible) Niv. 3",
+"rang": 3,
+"desc": "Attaque +9% (ToSelf)"
+},
+"Attack_ACC_up4_Armor": {
+"nom": "Attaque augmentée (faible) Niv. 4",
+"rang": 4,
+"desc": "Attaque +12% (ToSelf)"
+},
+"defense_ACC_up1": {
+"nom": "Défense augmentée Niv. 1",
+"rang": 1,
+"desc": "Défense +10% (ToSelf)"
+},
+"defense_ACC_up2": {
+"nom": "Défense augmentée Niv. 2",
+"rang": 2,
+"desc": "Défense +15% (ToSelf)"
+},
+"defense_ACC_up3": {
+"nom": "Défense augmentée Niv. 3",
+"rang": 3,
+"desc": "Défense +20% (ToSelf)"
+},
+"defense_ACC_up4": {
+"nom": "Défense augmentée Niv. 4",
+"rang": 4,
+"desc": "Défense +25% (ToSelf)"
+},
+"WorkSpeed_ACC_up1": {
+"nom": "Productivité Niv. 1",
+"rang": 1,
+"desc": "Vitesse de travail +10% (ToSelf)"
+},
+"WorkSpeed_ACC_up2": {
+"nom": "Productivité Niv. 2",
+"rang": 2,
+"desc": "Vitesse de travail +15% (ToSelf)"
+},
+"WorkSpeed_ACC_up3": {
+"nom": "Productivité Niv. 3",
+"rang": 3,
+"desc": "Vitesse de travail +20% (ToSelf)"
+},
+"WorkSpeed_ACC_up4": {
+"nom": "Productivité Niv. 4",
+"rang": 4,
+"desc": "Vitesse de travail +25% (ToSelf)"
+},
+"CraftSpeed_up3": {
+"nom": "Maîtrise Exceptionnelle",
+"rang": 4,
+"desc": "Vitesse de travail +75% (ToSelf)"
+},
+"CraftSpeed_up2": {
+"nom": "Appliqué",
+"rang": 3,
+"desc": "Vitesse de travail +50% (ToSelf)"
+},
+"CraftSpeed_up1": {
+"nom": "Sérieux",
+"rang": 1,
+"desc": "Vitesse de travail +20% (ToSelf)"
+},
+"CraftSpeed_down1": {
+"nom": "Maladroit",
+"rang": -1,
+"desc": "Vitesse de travail -10% (ToSelf)"
+},
+"CraftSpeed_down2": {
+"nom": "Négligent",
+"rang": -3,
+"desc": "Vitesse de travail -30% (ToSelf)"
+},
+"Deffence_up3": {
+"nom": "Corps Adamantin",
+"rang": 4,
+"desc": "Défense +30 % ; Immunité aux vacillements ; Immunité aux projections"
+},
+"Deffence_up2": {
+"nom": "Corps Robuste",
+"rang": 3,
+"desc": "Défense +20 % ; Immunité aux vacillements"
+},
+"Deffence_up1": {
+"nom": "Peau dure",
+"rang": 1,
+"desc": "Défense +10% (ToSelf)"
+},
+"Deffence_down1": {
+"nom": "Vulnérable aux Coups",
+"rang": -1,
+"desc": "Défense -10% (ToSelf)"
+},
+"Deffence_down2": {
+"nom": "Os fragiles",
+"rang": -3,
+"desc": "Défense -20% (ToSelf)"
+},
+"Noukin": {
+"nom": "Impulsif",
+"rang": 2,
+"desc": "Attaque +30% (ToSelf)"
+},
+"CollectItem_Egg": {
+"nom": "Production d'œufs",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Milk": {
+"nom": "Production de lait",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Berries": {
+"nom": "Cueillette de baies",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Sweets": {
+"nom": "Production de bonbons",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Money": {
+"nom": "Chercheur d'or",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Wool_Alpaca": {
+"nom": "Production de laine",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Wool_SheepBall": {
+"nom": "Production de laine",
+"rang": 0,
+"desc": ""
+},
+"CollectItem_Wool_WhiteMoth": {
+"nom": "Tissage de soie",
+"rang": 0,
+"desc": ""
+},
+"TemperatureResist_Heat1": {
+"nom": "Antichaleur Niv. 1",
+"rang": 1,
+"desc": "TemperatureResist_Heat +1% (ToSelf)"
+},
+"TemperatureResist_Heat2": {
+"nom": "Antichaleur Niv. 2",
+"rang": 2,
+"desc": "TemperatureResist_Heat +2% (ToSelf)"
+},
+"TemperatureResist_Heat3": {
+"nom": "Antichaleur Niv. 3",
+"rang": 3,
+"desc": "TemperatureResist_Heat +3% (ToSelf)"
+},
+"TemperatureResist_Cold1": {
+"nom": "Antifroid Niv. 1",
+"rang": 1,
+"desc": "TemperatureResist_Cold +1% (ToSelf)"
+},
+"TemperatureResist_Cold2": {
+"nom": "Antifroid Niv. 2",
+"rang": 2,
+"desc": "TemperatureResist_Cold +2% (ToSelf)"
+},
+"TemperatureResist_Cold3": {
+"nom": "Antifroid Niv. 3",
+"rang": 3,
+"desc": "TemperatureResist_Cold +3% (ToSelf)"
+},
+"TemperatureResist_Heat1Cold1": {
+"nom": "Antichaleur Niv. 1 / Antifroid Niv. 1",
+"rang": 1,
+"desc": "TemperatureResist_Cold +1% (ToSelf)"
+},
+"TemperatureResist_Heat2Cold2": {
+"nom": "Antichaleur Niv. 2 / Antifroid Niv. 2",
+"rang": 2,
+"desc": "TemperatureResist_Cold +2% (ToSelf)"
+},
+"TemperatureResist_Heat3Cold3": {
+"nom": "Antichaleur Niv. 3 / Antifroid Niv. 3",
+"rang": 3,
+"desc": "TemperatureResist_Cold +3% (ToSelf)"
+},
+"Rare": {
+"nom": "Chanceux",
+"rang": 4,
+"desc": "Attaque +15% (ToSelf)"
+},
+"Legend": {
+"nom": "Légende",
+"rang": 4,
+"desc": "Attaque +20 % ; Défense +20 % ; Vitesse de déplacement +20 %"
+},
+"Witch": {
+"nom": "Sorcière",
+"rang": 4,
+"desc": "Les dégâts de type Ténèbres augmentent de 30 % ; Les dégâts de type Glace augmentent de 30 %."
+},
+"EternalFlame": {
+"nom": "Feu Éternel",
+"rang": 4,
+"desc": "Les dégâts de type Feu augmentent de 30 %. ; Les dégâts de type Foudre augmentent de 30 %."
+},
+"Invader": {
+"nom": "Envahisseur",
+"rang": 4,
+"desc": "Les dégâts de type Ténèbres augmentent de 30 %. ; Les dégâts de type Dragon augmentent de 30 %."
+},
+"MaxInventoryWeight_up": {
+"nom": "Poids max. augmenté Niv. 1",
+"rang": 1,
+"desc": "Poids max +50 (ToTrainer)"
+},
+"MaxInventoryWeight_up2": {
+"nom": "Poids max. augmenté Niv. 2",
+"rang": 1,
+"desc": "Poids max +150 (ToTrainer)"
+},
+"MaxInventoryWeight_up3": {
+"nom": "Poids max. augmenté Niv. 3",
+"rang": 3,
+"desc": "Poids max +200 (ToTrainer)"
+},
+"PAL_ALLAttack_up3": {
+"nom": "Colère Divine",
+"rang": 4,
+"desc": "Attaque +30% (ToSelf)"
+},
+"PAL_ALLAttack_up2": {
+"nom": "Féroce",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"PAL_ALLAttack_up1": {
+"nom": "Brave",
+"rang": 1,
+"desc": "Attaque +10% (ToSelf)"
+},
+"PAL_ALLAttack_down1": {
+"nom": "Lâche",
+"rang": -1,
+"desc": "Attaque -10% (ToSelf)"
+},
+"PAL_ALLAttack_down2": {
+"nom": "Pacifiste",
+"rang": -3,
+"desc": "Attaque -20% (ToSelf)"
+},
+"PAL_rude": {
+"nom": "Trouble-Fête",
+"rang": 1,
+"desc": "Attaque +15% (ToSelf)"
+},
+"PAL_conceited": {
+"nom": "Vaniteux",
+"rang": 1,
+"desc": "Vitesse de travail +10% (ToSelf)"
+},
+"PAL_SpiritualInst": {
+"nom": "fr_Text",
+"rang": -1,
+"desc": "Vitesse de travail -10% (ToSelf)"
+},
+"PAL_sadist": {
+"nom": "Sadique",
+"rang": 1,
+"desc": "Attaque +15% (ToSelf)"
+},
+"PAL_masochist": {
+"nom": "Masochiste",
+"rang": 1,
+"desc": "Défense +15% (ToSelf)"
+},
+"PAL_CorporateSlave": {
+"nom": "Soumis",
+"rang": 1,
+"desc": "Vitesse de travail +30% (ToSelf)"
+},
+"PAL_oraora": {
+"nom": "Rentre-Dedans",
+"rang": 1,
+"desc": "Attaque +10% (ToSelf)"
+},
+"ElementResist_Normal_1": {
+"nom": "Réduction des dégâts non élémentaires Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Normal +15% (ToSelf)"
+},
+"ElementResist_Fire_1": {
+"nom": "Réduction des dégâts de feu Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Fire +15% (ToSelf)"
+},
+"ElementResist_Aqua_1": {
+"nom": "Réduction des dégâts d'eau Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Water +15% (ToSelf)"
+},
+"ElementResist_Thunder_1": {
+"nom": "Réduction des dégâts de foudre Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Electricity +15% (ToSelf)"
+},
+"ElementResist_Leaf_1": {
+"nom": "Réduction des dégâts de plante Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Leaf +15% (ToSelf)"
+},
+"ElementResist_Ice_1": {
+"nom": "Réduction des dégâts de glace Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Ice +15% (ToSelf)"
+},
+"ElementResist_Earth_1": {
+"nom": "Réduction des dégâts de terre Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Earth +15% (ToSelf)"
+},
+"ElementResist_Dark_1": {
+"nom": "Réduction des dégâts de ténèbres Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Dark +15% (ToSelf)"
+},
+"ElementResist_Dragon_1": {
+"nom": "Réduction des dégâts de dragon Niv. 1",
+"rang": 1,
+"desc": "ElementResist_Dragon +15% (ToSelf)"
+},
+"ElementResist_Normal_2": {
+"nom": "Réduction des dégâts non élémentaires Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Normal +25% (ToSelf)"
+},
+"ElementResist_Fire_2": {
+"nom": "Réduction des dégâts de feu Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Fire +25% (ToSelf)"
+},
+"ElementResist_Aqua_2": {
+"nom": "Réduction des dégâts d'eau Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Water +25% (ToSelf)"
+},
+"ElementResist_Thunder_2": {
+"nom": "Réduction des dégâts de foudre Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Electricity +25% (ToSelf)"
+},
+"ElementResist_Leaf_2": {
+"nom": "Réduction des dégâts de plante Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Leaf +25% (ToSelf)"
+},
+"ElementResist_Ice_2": {
+"nom": "Réduction des dégâts de glace Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Ice +25% (ToSelf)"
+},
+"ElementResist_Earth_2": {
+"nom": "Réduction des dégâts de terre Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Earth +25% (ToSelf)"
+},
+"ElementResist_Dark_2": {
+"nom": "Réduction des dégâts de ténèbres Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Dark +25% (ToSelf)"
+},
+"ElementResist_Dragon_2": {
+"nom": "Réduction des dégâts de dragon Niv. 2",
+"rang": 2,
+"desc": "ElementResist_Dragon +25% (ToSelf)"
+},
+"ElementResist_Normal_3": {
+"nom": "Réduction des dégâts non élémentaires Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Normal +30% (ToSelf)"
+},
+"ElementResist_Fire_3": {
+"nom": "Réduction des dégâts de feu Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Fire +30% (ToSelf)"
+},
+"ElementResist_Aqua_3": {
+"nom": "Réduction des dégâts d'eau Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Water +30% (ToSelf)"
+},
+"ElementResist_Thunder_3": {
+"nom": "Réduction des dégâts de foudre Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Electricity +30% (ToSelf)"
+},
+"ElementResist_Leaf_3": {
+"nom": "Réduction des dégâts de plante Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Leaf +30% (ToSelf)"
+},
+"ElementResist_Ice_3": {
+"nom": "Réduction des dégâts de glace Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Ice +30% (ToSelf)"
+},
+"ElementResist_Earth_3": {
+"nom": "Réduction des dégâts de terre Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Earth +30% (ToSelf)"
+},
+"ElementResist_Dark_3": {
+"nom": "Réduction des dégâts de ténèbres Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Dark +30% (ToSelf)"
+},
+"ElementResist_Dragon_3": {
+"nom": "Réduction des dégâts de dragon Niv. 3",
+"rang": 3,
+"desc": "ElementResist_Dragon +30% (ToSelf)"
+},
+"ElementResist_Normal_4": {
+"nom": "Réduction des dégâts non élémentaires Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Normal +35% (ToSelf)"
+},
+"ElementResist_Fire_4": {
+"nom": "Réduction des dégâts de feu Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Fire +35% (ToSelf)"
+},
+"ElementResist_Aqua_4": {
+"nom": "Réduction des dégâts d'eau Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Water +35% (ToSelf)"
+},
+"ElementResist_Thunder_4": {
+"nom": "Réduction des dégâts de foudre Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Electricity +35% (ToSelf)"
+},
+"ElementResist_Leaf_4": {
+"nom": "Réduction des dégâts de plante Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Leaf +35% (ToSelf)"
+},
+"ElementResist_Ice_4": {
+"nom": "Réduction des dégâts de glace Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Ice +35% (ToSelf)"
+},
+"ElementResist_Earth_4": {
+"nom": "Réduction des dégâts de terre Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Earth +35% (ToSelf)"
+},
+"ElementResist_Dark_4": {
+"nom": "Réduction des dégâts de ténèbres Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Dark +35% (ToSelf)"
+},
+"ElementResist_Dragon_4": {
+"nom": "Réduction des dégâts de dragon Niv. 4",
+"rang": 4,
+"desc": "ElementResist_Dragon +35% (ToSelf)"
+},
+"TrainerATK_UP_1": {
+"nom": "Chef d'Assaut",
+"rang": 3,
+"desc": "L'attaque du joueur augmente de 10 %."
+},
+"TrainerDEF_UP_1": {
+"nom": "Stratège de Forteresse",
+"rang": 3,
+"desc": "La défense du joueur augmente de 10 %."
+},
+"TrainerWorkSpeed_UP_1": {
+"nom": "Motivateur",
+"rang": 3,
+"desc": "La productivité du joueur augmente de 25 %."
+},
+"TrainerMining_up1": {
+"nom": "Chef d'Extraction",
+"rang": 3,
+"desc": "La capacité d'extraction du joueur augmente de 25 %."
+},
+"TrainerLogging_up1": {
+"nom": "Chef d'Abattage",
+"rang": 3,
+"desc": "La capacité d'abattage du joueur augmente de 25 %."
+},
+"ElementResist_Normal_1_PAL": {
+"nom": "Anormal",
+"rang": 1,
+"desc": "Les dégâts Non Élémentaires sont réduits de 10 %."
+},
+"ElementResist_Fire_1_PAL": {
+"nom": "Bronzage Naturel",
+"rang": 1,
+"desc": "Les dégâts de type Feu sont réduits de 10 %."
+},
+"ElementResist_Aqua_1_PAL": {
+"nom": "Imperméabilité",
+"rang": 1,
+"desc": "Les dégâts de type Eau sont réduits de 10 %."
+},
+"ElementResist_Thunder_1_PAL": {
+"nom": "Isolant",
+"rang": 1,
+"desc": "Les dégâts de type Foudre sont réduits de 10 %."
+},
+"ElementResist_Leaf_1_PAL": {
+"nom": "Protection Végétale",
+"rang": 1,
+"desc": "Les dégâts de type Plante sont réduits de 10 %."
+},
+"ElementResist_Ice_1_PAL": {
+"nom": "Sang Chaud",
+"rang": 1,
+"desc": "Les dégâts de type Glace sont réduits de 10 %."
+},
+"ElementResist_Earth_1_PAL": {
+"nom": "Parasismique",
+"rang": 1,
+"desc": "Les dégâts de type Terre sont réduits de 10 %."
+},
+"ElementResist_Dark_1_PAL": {
+"nom": "Lumineux",
+"rang": 1,
+"desc": "Les dégâts de type Ténèbres sont réduits de 10 %."
+},
+"ElementResist_Dragon_1_PAL": {
+"nom": "Tueur de Dragons",
+"rang": 1,
+"desc": "Les dégâts de type Dragon sont réduits de 10 %."
+},
+"ElementBoost_Normal_1_PAL": {
+"nom": "Esprit Zen",
+"rang": 1,
+"desc": "Les dégâts Non Élémentaires augmentent de 10 %."
+},
+"ElementBoost_Fire_1_PAL": {
+"nom": "Pyromane",
+"rang": 1,
+"desc": "Les dégâts de type Feu augmentent de 10 %."
+},
+"ElementBoost_Aqua_1_PAL": {
+"nom": "Hydrophile",
+"rang": 1,
+"desc": "Les dégâts de type Eau augmentent de 10 %."
+},
+"ElementBoost_Thunder_1_PAL": {
+"nom": "Condensateur",
+"rang": 1,
+"desc": "Les dégâts de type Foudre augmentent de 10 %."
+},
+"ElementBoost_Leaf_1_PAL": {
+"nom": "Fragrance Boisée",
+"rang": 1,
+"desc": "Les dégâts de type Plante augmentent de 10 %."
+},
+"ElementBoost_Ice_1_PAL": {
+"nom": "Sang Froid",
+"rang": 1,
+"desc": "Les dégâts de type Glace augmentent de 10 %."
+},
+"ElementBoost_Earth_1_PAL": {
+"nom": "Force Tellurique",
+"rang": 1,
+"desc": "Les dégâts de type Terre augmentent de 10 %."
+},
+"ElementBoost_Dark_1_PAL": {
+"nom": "Voile des Ténèbres",
+"rang": 1,
+"desc": "Les dégâts de type Ténèbres augmentent de 10 %."
+},
+"ElementBoost_Dragon_1_PAL": {
+"nom": "Sang de Dragon",
+"rang": 1,
+"desc": "Les dégâts de type Dragon augmentent de 10 %."
+},
+"PAL_FullStomach_Up_1": {
+"nom": "Glouton",
+"rang": -1,
+"desc": "Le degré de satiété diminue de +10.0 % plus rapidement."
+},
+"PAL_FullStomach_Up_2": {
+"nom": "Estomac sans Fond",
+"rang": -2,
+"desc": "Le degré de satiété diminue de +15.0 % plus rapidement."
+},
+"PAL_FullStomach_Down_1": {
+"nom": "Frugal",
+"rang": 1,
+"desc": "Le degré de satiété diminue de +10.0 % plus lentement."
+},
+"PAL_FullStomach_Down_2": {
+"nom": "Nutritionniste",
+"rang": 3,
+"desc": "Le degré de satiété diminue de +15.0 % plus lentement."
+},
+"PAL_FullStomach_Down_3": {
+"nom": "Maîtrise de la Faim",
+"rang": 4,
+"desc": "Le degré de satiété diminue de +20.0 % plus lentement."
+},
+"PAL_Sanity_Up_1": {
+"nom": "Mentalement Instable",
+"rang": -1,
+"desc": "Les points MEN diminuent de +10.0 % plus rapidement."
+},
+"PAL_Sanity_Up_2": {
+"nom": "Soif de Destruction",
+"rang": -2,
+"desc": "Les points MEN diminuent de +15.0 % plus rapidement."
+},
+"PAL_Sanity_Down_1": {
+"nom": "Optimiste",
+"rang": 1,
+"desc": "Les points MEN diminuent de +10.0 % plus lentement."
+},
+"PAL_Sanity_Down_2": {
+"nom": "Acharné",
+"rang": 3,
+"desc": "Les points MEN diminuent de +15.0 % plus lentement."
+},
+"PAL_Sanity_Down_3": {
+"nom": "Inébranlable",
+"rang": 4,
+"desc": "Les points MEN diminuent de +20.0 % plus lentement."
+},
+"ElementBoost_Normal_2_PAL": {
+"nom": "Empereur Céleste",
+"rang": 3,
+"desc": "Les dégâts Non Élémentaires augmentent de 30 %."
+},
+"ElementBoost_Fire_2_PAL": {
+"nom": "Empereur Enflammé",
+"rang": 3,
+"desc": "Les dégâts de type Feu augmentent de 30 %."
+},
+"ElementBoost_Aqua_2_PAL": {
+"nom": "Seigneur des Mers",
+"rang": 3,
+"desc": "Les dégâts de type Eau augmentent de 30 %."
+},
+"ElementBoost_Thunder_2_PAL": {
+"nom": "Seigneur des Tempêtes",
+"rang": 3,
+"desc": "Les dégâts de type Foudre augmentent de 30 %."
+},
+"ElementBoost_Leaf_2_PAL": {
+"nom": "Divinité de la Forêt",
+"rang": 3,
+"desc": "Les dégâts de type Plante augmentent de 30 %."
+},
+"ElementBoost_Ice_2_PAL": {
+"nom": "Empereur Glacial",
+"rang": 3,
+"desc": "Les dégâts de type Glace augmentent de 30 %."
+},
+"ElementBoost_Earth_2_PAL": {
+"nom": "Empereur Terrestre",
+"rang": 3,
+"desc": "Les dégâts de type Terre augmentent de 30 %."
+},
+"ElementBoost_Dark_2_PAL": {
+"nom": "Seigneur des Enfers",
+"rang": 3,
+"desc": "Les dégâts de type Ténèbres augmentent de 30 %."
+},
+"ElementBoost_Dragon_2_PAL": {
+"nom": "Dragon Divin",
+"rang": 3,
+"desc": "Les dégâts de type Dragon augmentent de 30 %."
+},
+"MoveSpeed_up_1": {
+"nom": "Vif",
+"rang": 1,
+"desc": "La vitesse de déplacement augmente de 10 %."
+},
+"MoveSpeed_up_2": {
+"nom": "Coursier",
+"rang": 3,
+"desc": "La vitesse de déplacement augmente de 20 %."
+},
+"MoveSpeed_up_3": {
+"nom": "Sprinteur",
+"rang": 4,
+"desc": "La vitesse de déplacement augmente de 30 %."
+},
+"NonKilling": {
+"nom": "Pitié",
+"rang": -1,
+"desc": "Frappe sans tuer. ; Impossible de réduire la santé de la cible à moins de 1 PV."
+},
+"MaxInventoryWeight_up_Equip_1": {
+"nom": "Poids max. augmenté Niv. 1",
+"rang": 1,
+"desc": "Poids max +50 (ToTrainer)"
+},
+"MaxInventoryWeight_up_Equip_2": {
+"nom": "Poids max. augmenté Niv. 2",
+"rang": 1,
+"desc": "Poids max +150 (ToTrainer)"
+},
+"MaxInventoryWeight_up_Equip_3": {
+"nom": "Poids max. augmenté Niv. 3",
+"rang": 3,
+"desc": "Poids max +200 (ToTrainer)"
+},
+"MaxInventoryWeight_up_Equip_4": {
+"nom": "Poids max. augmenté Niv. 4",
+"rang": -1,
+"desc": "Poids max +300 (ToSelf)"
+},
+"Nocturnal": {
+"nom": "Nocturne",
+"rang": 1,
+"desc": "Ne dort pas et continue à travailler la nuit."
+},
+"Test_PalEgg_HatchingSpeed_Up": {
+"nom": "Philanthrope",
+"rang": 3,
+"desc": "Lorsqu'il est affecté à un Élevage, la vitesse de production des œufs augmente de 100 %."
+},
+"CoolTimeReduction_Up_1": {
+"nom": "Sérénité",
+"rang": 3,
+"desc": "Réduction du temps de recharge des compétences actives de 30 % ; Attaque +10 %"
+},
+"CoolTimeReduction_Up_2": {
+"nom": "Impatient",
+"rang": 1,
+"desc": "Réduction du temps de recharge des compétences actives de 15 %"
+},
+"CoolTimeReduction_Up_3": {
+"nom": "Tempête Furieuse",
+"rang": 4,
+"desc": "Réduction du temps de recharge des compétences actives de 0 % ; Attaque +0 %"
+},
+"CoolTimeReduction_Down_1": {
+"nom": "Tranquille",
+"rang": -1,
+"desc": "Extension du temps de recharge des compétences actives de -15 %"
+},
+"Stamina_Up_1": {
+"nom": "Infatigable",
+"rang": 3,
+"desc": "Endurance maximale + 50 % ; (Pals montures uniquement)"
+},
+"Stamina_Up_2": {
+"nom": "Force de la Nature",
+"rang": 1,
+"desc": "Endurance maximale + 25 % ; (Pals montures uniquement)"
+},
+"Stamina_Up_3": {
+"nom": "Vigueur Éternelle",
+"rang": 4,
+"desc": "Endurance maximale + 75 % ; (Pals montures uniquement)"
+},
+"Stamina_Down_1": {
+"nom": "Reclus",
+"rang": -1,
+"desc": "Endurance maximale -25 % ; (Pals montures uniquement)"
+},
+"SalePrice_Up_1": {
+"nom": "Noble",
+"rang": 3,
+"desc": "La valeur des ventes augmente de +5 %."
+},
+"SalePrice_Up_2": {
+"nom": "Belle Fourrure",
+"rang": 1,
+"desc": "La valeur des ventes augmente de +3 %."
+},
+"SalePrice_Down_1": {
+"nom": "Miteux",
+"rang": -1,
+"desc": "La valeur des ventes diminue de -10 %."
+},
+"Alien": {
+"nom": "Organisme Inconnu",
+"rang": 1,
+"desc": "Attaque +10 % ; Réduction des dégâts de type Feu de 15 % ; Réduction des dégâts de type Foudre de 15 %"
+},
+"Vampire": {
+"nom": "Vampire",
+"rang": 4,
+"desc": "Absorbe 5 % des dégâts infligés pour restaurer ses PV. ; Ne dort pas et continue à travailler la nuit."
+},
+"ElementBoost_Normal_1_BossDefeat": {
+"nom": "Augmentation des dégâts non élémentaires (faible)",
+"rang": 1,
+"desc": "ElementBoost_Normal +1% (ToOtomo)"
+},
+"ElementBoost_Fire_1_BossDefeat": {
+"nom": "Augmentation des dégâts de feu (faible)",
+"rang": 1,
+"desc": "ElementBoost_Fire +1% (ToOtomo)"
+},
+"ElementBoost_Water_1_BossDefeat": {
+"nom": "Augmentation des dégâts d'eau (faible)",
+"rang": 1,
+"desc": "ElementBoost_Water +1% (ToOtomo)"
+},
+"ElementBoost_Electricity_1_BossDefeat": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"ElementBoost_Leaf_1_BossDefeat": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"ElementBoost_Ice_1_BossDefeat": {
+"nom": "Augmentation des dégâts de glace (faible)",
+"rang": 1,
+"desc": "ElementBoost_Ice +1% (ToOtomo)"
+},
+"ElementBoost_Earth_1_BossDefeat": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"ElementBoost_Dark_1_BossDefeat": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"ElementBoost_Dragon_1_BossDefeat": {
+"nom": "Augmentation des dégâts de dragon (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +1% (ToOtomo)"
+},
+"ElementBoost_Normal_2_BossDefeat": {
+"nom": "Augmentation des dégâts non élémentaires (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Normal +2% (ToOtomo)"
+},
+"ElementBoost_Fire_2_BossDefeat": {
+"nom": "Augmentation des dégâts de feu (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Fire +2% (ToOtomo)"
+},
+"ElementBoost_Water_2_BossDefeat": {
+"nom": "Augmentation des dégâts d'eau (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Water +2% (ToOtomo)"
+},
+"ElementBoost_Electricity_2_BossDefeat": {
+"nom": "Augmentation des dégâts de foudre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +2% (ToOtomo)"
+},
+"ElementBoost_Leaf_2_BossDefeat": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"ElementBoost_Ice_2_BossDefeat": {
+"nom": "Augmentation des dégâts de glace (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Ice +2% (ToOtomo)"
+},
+"ElementBoost_Earth_2_BossDefeat": {
+"nom": "Augmentation des dégâts de terre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Earth +2% (ToOtomo)"
+},
+"ElementBoost_Dark_2_BossDefeat": {
+"nom": "Augmentation des dégâts de ténèbres (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dark +2% (ToOtomo)"
+},
+"ElementBoost_Dragon_2_BossDefeat": {
+"nom": "Augmentation des dégâts de dragon (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +2% (ToOtomo)"
+},
+"ElementBoost_Normal_3_BossDefeat": {
+"nom": "Augmentation des dégâts non élémentaires (fort)",
+"rang": 1,
+"desc": "ElementBoost_Normal +3% (ToOtomo)"
+},
+"ElementBoost_Fire_3_BossDefeat": {
+"nom": "Augmentation des dégâts de feu (fort)",
+"rang": 1,
+"desc": "ElementBoost_Fire +3% (ToOtomo)"
+},
+"ElementBoost_Water_3_BossDefeat": {
+"nom": "Augmentation des dégâts d'eau (fort)",
+"rang": 1,
+"desc": "ElementBoost_Water +3% (ToOtomo)"
+},
+"ElementBoost_Electricity_3_BossDefeat": {
+"nom": "Augmentation des dégâts de foudre (fort)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +3% (ToOtomo)"
+},
+"ElementBoost_Leaf_3_BossDefeat": {
+"nom": "Augmentation des dégâts de plante (fort)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +3% (ToOtomo)"
+},
+"ElementBoost_Ice_3_BossDefeat": {
+"nom": "Augmentation des dégâts de glace (fort)",
+"rang": 1,
+"desc": "ElementBoost_Ice +3% (ToOtomo)"
+},
+"ElementBoost_Earth_3_BossDefeat": {
+"nom": "Augmentation des dégâts de terre (fort)",
+"rang": 1,
+"desc": "ElementBoost_Earth +3% (ToOtomo)"
+},
+"ElementBoost_Dark_3_BossDefeat": {
+"nom": "Augmentation des dégâts de ténèbres (fort)",
+"rang": 1,
+"desc": "ElementBoost_Dark +3% (ToOtomo)"
+},
+"ElementBoost_Dragon_3_BossDefeat": {
+"nom": "Augmentation des dégâts de dragon (fort)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +3% (ToOtomo)"
+},
+"SphereModule_Heavy": {
+"nom": "Poids des sphères +1",
+"rang": 1,
+"desc": "CurveType +16% (ToSelf)"
+},
+"SphereModule_Curve": {
+"nom": "Courbe des sphères +1",
+"rang": 1,
+"desc": "CurveType +7% (ToSelf)"
+},
+"SphereModule_Sniper": {
+"nom": "Portée des sphères +1",
+"rang": 1,
+"desc": "CurveType +1% (ToSelf)"
+},
+"SphereModule_Curve2": {
+"nom": "Sphères glissantes",
+"rang": 1,
+"desc": "CurveType +8% (ToSelf)"
+},
+"SphereModule_Sniper2": {
+"nom": "Portée des sphères +2",
+"rang": 1,
+"desc": "CurveType +2% (ToSelf)"
+},
+"SphereModule_Homing": {
+"nom": "Sphères à tête chercheuse",
+"rang": 1,
+"desc": "CurveType +19% (ToSelf)"
+},
+"CaptureLevel_Up_1": {
+"nom": "Force de capture +1",
+"rang": 1,
+"desc": "CaptureLevel +1% (ToSelf)"
+},
+"CaptureLevel_Up_2": {
+"nom": "Force de capture +2",
+"rang": 1,
+"desc": "CaptureLevel +2% (ToSelf)"
+},
+"CaptureLevel_Up_3": {
+"nom": "Force de capture +3",
+"rang": 1,
+"desc": "CaptureLevel +3% (ToSelf)"
+},
+"CaptureLevel_Up_4": {
+"nom": "Force de capture +4",
+"rang": 1,
+"desc": "CaptureLevel +4% (ToSelf)"
+},
+"CaptureLevel_Up_5": {
+"nom": "Force de capture +5",
+"rang": 1,
+"desc": "CaptureLevel +5% (ToSelf)"
+},
+"CaptureLevel_Up_6": {
+"nom": "Force de capture +6",
+"rang": 1,
+"desc": "CaptureLevel +6% (ToSelf)"
+},
+"JumpPower_Increase": {
+"nom": "Saut renforcé",
+"rang": 1,
+"desc": "Saut renforcé"
+},
+"JumpCount_Increase1": {
+"nom": "Saut additionnel +1",
+"rang": 1,
+"desc": "Saut additionnel +1"
+},
+"JumpCount_Increase2": {
+"nom": "Saut additionnel +2",
+"rang": 1,
+"desc": "Saut additionnel +2"
+},
+"JumpCount_Increase3": {
+"nom": "Saut additionnel +3",
+"rang": 1,
+"desc": "Saut additionnel +3"
+},
+"AirDash_1": {
+"nom": "Ruée aérienne +1",
+"rang": 1,
+"desc": "Ruée aérienne +1"
+},
+"AirDash_2": {
+"nom": "Ruée aérienne +2",
+"rang": 1,
+"desc": "Ruée aérienne +2"
+},
+"AirDash_3": {
+"nom": "Ruée aérienne +3",
+"rang": 1,
+"desc": "Ruée aérienne +3"
+},
+"AirDash_4": {
+"nom": "Ruée aérienne +4",
+"rang": 1,
+"desc": "Ruée aérienne +4"
+},
+"BossDefeatReward_WeaselDragon": {
+"nom": "Augmentation des dégâts de glace (faible)",
+"rang": 1,
+"desc": "ElementBoost_Ice +1% (ToOtomo)"
+},
+"BossDefeatReward_MopKing": {
+"nom": "Augmentation des dégâts de glace (faible)",
+"rang": 1,
+"desc": "ElementBoost_Ice +1% (ToOtomo)"
+},
+"BossDefeatReward_PlantSlime": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_LazyCatfish": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_CaptainPenguin": {
+"nom": "Augmentation des dégâts d'eau (faible)",
+"rang": 1,
+"desc": "ElementBoost_Water +1% (ToOtomo)"
+},
+"BossDefeatReward_BlueDragon": {
+"nom": "Augmentation des dégâts d'eau (faible)",
+"rang": 1,
+"desc": "ElementBoost_Water +1% (ToOtomo)"
+},
+"BossDefeatReward_NaughtyCat": {
+"nom": "Augmentation des dégâts non élémentaires (faible)",
+"rang": 1,
+"desc": "ElementBoost_Normal +1% (ToOtomo)"
+},
+"BossDefeatReward_HawkBird": {
+"nom": "Augmentation des dégâts non élémentaires (faible)",
+"rang": 1,
+"desc": "ElementBoost_Normal +1% (ToOtomo)"
+},
+"BossDefeatReward_SkyDragon": {
+"nom": "Augmentation des dégâts de dragon (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +1% (ToOtomo)"
+},
+"BossDefeatReward_CatVampire": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_KingAlpaca": {
+"nom": "Augmentation des dégâts non élémentaires (faible)",
+"rang": 1,
+"desc": "ElementBoost_Normal +1% (ToOtomo)"
+},
+"BossDefeatReward_SakuraSaurus": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_CatMage": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_Ronin": {
+"nom": "Augmentation des dégâts de feu (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Fire +2% (ToOtomo)"
+},
+"BossDefeatReward_FengyunDeeper": {
+"nom": "Augmentation des dégâts non élémentaires (faible)",
+"rang": 1,
+"desc": "ElementBoost_Normal +1% (ToOtomo)"
+},
+"BossDefeatReward_FlowerDoll": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_ThunderBird": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_HerculesBeetle": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_SakuraSaurus_Water": {
+"nom": "Augmentation des dégâts d'eau (faible)",
+"rang": 1,
+"desc": "ElementBoost_Water +1% (ToOtomo)"
+},
+"BossDefeatReward_FairyDragon": {
+"nom": "Augmentation des dégâts de dragon (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +1% (ToOtomo)"
+},
+"BossDefeatReward_LazyDragon_Electric": {
+"nom": "Augmentation des dégâts de dragon (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +1% (ToOtomo)"
+},
+"BossDefeatReward_Kirin": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_QueenBee": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_GrassPanda_Electric": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_Mutant": {
+"nom": "Augmentation des dégâts non élémentaires (faible)",
+"rang": 1,
+"desc": "ElementBoost_Normal +1% (ToOtomo)"
+},
+"BossDefeatReward_GrassRabbitMan": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_Yeti_Grass": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_GrassMammoth": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"BossDefeatReward_VioletFairy": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"BossDefeatReward_WhiteMoth": {
+"nom": "Augmentation des dégâts de glace (faible)",
+"rang": 1,
+"desc": "ElementBoost_Ice +1% (ToOtomo)"
+},
+"BossDefeatReward_DarkScorpion": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_Suzaku": {
+"nom": "Augmentation des dégâts de feu (fort)",
+"rang": 1,
+"desc": "ElementBoost_Fire +3% (ToOtomo)"
+},
+"BossDefeatReward_Umihebi": {
+"nom": "Augmentation des dégâts d'eau (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Water +2% (ToOtomo)"
+},
+"BossDefeatReward_KingAlpaca_Ice": {
+"nom": "Augmentation des dégâts de glace (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Ice +2% (ToOtomo)"
+},
+"BossDefeatReward_FlowerDinosaur_Electric": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_Anubis": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_BlackMetalDragon": {
+"nom": "Augmentation des dégâts de dragon (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +2% (ToOtomo)"
+},
+"BossDefeatReward_KingBahamut": {
+"nom": "Augmentation des dégâts de feu (fort)",
+"rang": 1,
+"desc": "ElementBoost_Fire +3% (ToOtomo)"
+},
+"BossDefeatReward_LilyQueen_Dark": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_DarkScorpion_Ground": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_WingGolem": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_GrimGirl": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_BlueThunderHorse": {
+"nom": "Augmentation des dégâts de foudre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +2% (ToOtomo)"
+},
+"BossDefeatReward_AmaterasuWolf_Dark": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_FengyunDeeper_Electric": {
+"nom": "Augmentation des dégâts de foudre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +2% (ToOtomo)"
+},
+"BossDefeatReward_WhiteDeer": {
+"nom": "Augmentation des dégâts non élémentaires (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Normal +2% (ToOtomo)"
+},
+"BossDefeatReward_WhiteShieldDragon": {
+"nom": "Augmentation des dégâts de dragon (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +2% (ToOtomo)"
+},
+"BossDefeatReward_Horus_Water": {
+"nom": "Augmentation des dégâts d'eau (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Water +2% (ToOtomo)"
+},
+"BossDefeatReward_JetDragon": {
+"nom": "Augmentation des dégâts de dragon (fort)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +3% (ToOtomo)"
+},
+"BossDefeatReward_IceHorse": {
+"nom": "Augmentation des dégâts de glace (fort)",
+"rang": 1,
+"desc": "ElementBoost_Ice +3% (ToOtomo)"
+},
+"BossDefeatReward_SaintCentaur_1": {
+"nom": "Augmentation des dégâts non élémentaires (fort)",
+"rang": 1,
+"desc": "ElementBoost_Normal +3% (ToOtomo)"
+},
+"BossDefeatReward_SaintCentaur_2": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_BlackPuppy": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_GhostRabbit": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_NightBlueHorse": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_BlueberryFairy": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"BossDefeatReward_BadCatgirl": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_GoldenHorse": {
+"nom": "Augmentation des dégâts de terre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Earth +2% (ToOtomo)"
+},
+"BossDefeatReward_MysteryMask": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_PurpleSpider": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_IceHorse_Dark": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_Kitsunebi_Ice": {
+"nom": "Augmentation des dégâts de glace (fort)",
+"rang": 1,
+"desc": "ElementBoost_Ice +3% (ToOtomo)"
+},
+"BossDefeatReward_RaijinDaughter_Water": {
+"nom": "Augmentation des dégâts de ténèbres (faible)",
+"rang": 1,
+"desc": "ElementBoost_Dark +1% (ToOtomo)"
+},
+"BossDefeatReward_WhiteTiger_Ground": {
+"nom": "Augmentation des dégâts de terre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Earth +2% (ToOtomo)"
+},
+"BossDefeatReward_BerryGoat_Dark": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"BossDefeatReward_Werewolf_Ice": {
+"nom": "Augmentation des dégâts de glace (fort)",
+"rang": 1,
+"desc": "ElementBoost_Ice +3% (ToOtomo)"
+},
+"BossDefeatReward_PinkRabbit_Grass": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"BossDefeatReward_HerculesBeetle_Ground": {
+"nom": "Augmentation des dégâts de terre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Earth +2% (ToOtomo)"
+},
+"BossDefeatReward_IceNarwhal": {
+"nom": "Dégâts de type Glace Augmentés (Fort)",
+"rang": 1,
+"desc": "ElementBoost_Ice +3% (ToOtomo)"
+},
+"BossDefeatReward_IceNarwhal_Fire": {
+"nom": "Dégâts de type Feu Augmentés (Fort)",
+"rang": 1,
+"desc": "ElementBoost_Fire +3% (ToOtomo)"
+},
+"BossDefeatReward_PoseidonOrca": {
+"nom": "Dégâts de type Eau Augmentés (Fort)",
+"rang": 1,
+"desc": "ElementBoost_Water +3% (ToOtomo)"
+},
+"BossDefeatReward_FireKirin": {
+"nom": "Augmentation des dégâts de feu (faible)",
+"rang": 1,
+"desc": "ElementBoost_Fire +1% (ToOtomo)"
+},
+"BossDefeatReward_CubeTurtle": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_VolcanicMonster": {
+"nom": "Augmentation des dégâts de terre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Earth +1% (ToOtomo)"
+},
+"BossDefeatReward_KabukiMan": {
+"nom": "Augmentation des dégâts de feu (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Fire +2% (ToOtomo)"
+},
+"BossDefeatReward_VolcanoDragon_Ice": {
+"nom": "Augmentation des dégâts de glace (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Ice +2% (ToOtomo)"
+},
+"BossDefeatReward_GrassGolem": {
+"nom": "Augmentation des dégâts de plante (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +2% (ToOtomo)"
+},
+"BossDefeatReward_MushroomLady": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_WhiteDeer_Dark": {
+"nom": "Augmentation des dégâts de ténèbres (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dark +2% (ToOtomo)"
+},
+"BossDefeatReward_RockBeast_Ice": {
+"nom": "Augmentation des dégâts de glace (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Ice +2% (ToOtomo)"
+},
+"BossDefeatReward_LotusDragon": {
+"nom": "Augmentation des dégâts d'eau (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Water +2% (ToOtomo)"
+},
+"BossDefeatReward_FoxExorcist": {
+"nom": "Augmentation des dégâts de feu (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Fire +2% (ToOtomo)"
+},
+"BossDefeatReward_ThunderFluffyBird": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_ElecLizard": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_ElecSnail": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_GhostDragon": {
+"nom": "Augmentation des dégâts de dragon (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +2% (ToOtomo)"
+},
+"BossDefeatReward_LilyQueen": {
+"nom": "Augmentation des dégâts de plante (fort)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +3% (ToOtomo)"
+},
+"BossDefeatReward_ElecPanda": {
+"nom": "Augmentation des dégâts de foudre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +2% (ToOtomo)"
+},
+"BossDefeatReward_GrassGolem_Dark": {
+"nom": "Augmentation des dégâts de ténèbres (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dark +2% (ToOtomo)"
+},
+"BossDefeatReward_Manticore": {
+"nom": "Augmentation des dégâts de feu (faible)",
+"rang": 1,
+"desc": "ElementBoost_Fire +1% (ToOtomo)"
+},
+"BossDefeatReward_FlameBuffalo": {
+"nom": "Augmentation des dégâts de feu (faible)",
+"rang": 1,
+"desc": "ElementBoost_Fire +1% (ToOtomo)"
+},
+"BossDefeatReward_IceFox": {
+"nom": "Augmentation des dégâts de glace (faible)",
+"rang": 1,
+"desc": "ElementBoost_Ice +1% (ToOtomo)"
+},
+"BossDefeatReward_FoxMage": {
+"nom": "Augmentation des dégâts de feu (faible)",
+"rang": 1,
+"desc": "ElementBoost_Fire +1% (ToOtomo)"
+},
+"BossDefeatReward_CubeTurtle_Neutral": {
+"nom": "Augmentation des dégâts non élémentaires (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Normal +2% (ToOtomo)"
+},
+"BossDefeatReward_MoonChild": {
+"nom": "Augmentation des dégâts de ténèbres (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Dark +2% (ToOtomo)"
+},
+"BossDefeatReward_ScorpionMan_Electric": {
+"nom": "Augmentation des dégâts de foudre (faible)",
+"rang": 1,
+"desc": "ElementBoost_Electricity +1% (ToOtomo)"
+},
+"BossDefeatReward_RockBeast": {
+"nom": "Augmentation des dégâts de terre (moyen)",
+"rang": 1,
+"desc": "ElementBoost_Earth +2% (ToOtomo)"
+},
+"BossDefeatReward_VolcanoDragon": {
+"nom": "Augmentation des dégâts de feu (faible)",
+"rang": 1,
+"desc": "ElementBoost_Fire +1% (ToOtomo)"
+},
+"BossDefeatReward_CactusDoll": {
+"nom": "Augmentation des dégâts de plante (faible)",
+"rang": 1,
+"desc": "ElementBoost_Leaf +1% (ToOtomo)"
+},
+"BossDefeatReward_DomeArmorDragon": {
+"nom": "Augmentation des dégâts de dragon (fort)",
+"rang": 1,
+"desc": "ElementBoost_Dragon +3% (ToOtomo)"
+},
+"ElementBoost_Normal_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts non élémentaires des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Normal +6% (ToOtomo)"
+},
+"ElementBoost_Fire_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de feu des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Fire +6% (ToOtomo)"
+},
+"ElementBoost_Water_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts d'eau des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Water +6% (ToOtomo)"
+},
+"ElementBoost_Electricity_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de foudre des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Electricity +6% (ToOtomo)"
+},
+"ElementBoost_Leaf_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de plante des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Leaf +6% (ToOtomo)"
+},
+"ElementBoost_Ice_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de glace des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Ice +6% (ToOtomo)"
+},
+"ElementBoost_Earth_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de terre des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Earth +6% (ToOtomo)"
+},
+"ElementBoost_Dark_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de ténèbres des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Dark +6% (ToOtomo)"
+},
+"ElementBoost_Dragon_1_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de dragon des Pals Niv. 1",
+"rang": 1,
+"desc": "ElementBoost_Dragon +6% (ToOtomo)"
+},
+"ElementBoost_Normal_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts non élémentaires des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Normal +12% (ToOtomo)"
+},
+"ElementBoost_Fire_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de feu des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Fire +12% (ToOtomo)"
+},
+"ElementBoost_Water_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts d'eau des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Water +12% (ToOtomo)"
+},
+"ElementBoost_Electricity_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de foudre des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Electricity +12% (ToOtomo)"
+},
+"ElementBoost_Leaf_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de plante des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Leaf +12% (ToOtomo)"
+},
+"ElementBoost_Ice_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de glace des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Ice +12% (ToOtomo)"
+},
+"ElementBoost_Earth_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de terre des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Earth +12% (ToOtomo)"
+},
+"ElementBoost_Dark_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de ténèbres des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Dark +12% (ToOtomo)"
+},
+"ElementBoost_Dragon_2_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de dragon des Pals Niv. 2",
+"rang": 2,
+"desc": "ElementBoost_Dragon +12% (ToOtomo)"
+},
+"ElementBoost_Normal_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts non élémentaires des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Normal +18% (ToOtomo)"
+},
+"ElementBoost_Fire_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de feu des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Fire +18% (ToOtomo)"
+},
+"ElementBoost_Water_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts d'eau des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Water +18% (ToOtomo)"
+},
+"ElementBoost_Electricity_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de foudre des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Electricity +18% (ToOtomo)"
+},
+"ElementBoost_Leaf_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de plante des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Leaf +18% (ToOtomo)"
+},
+"ElementBoost_Ice_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de glace des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Ice +18% (ToOtomo)"
+},
+"ElementBoost_Earth_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de terre des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Earth +18% (ToOtomo)"
+},
+"ElementBoost_Dark_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de ténèbres des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Dark +18% (ToOtomo)"
+},
+"ElementBoost_Dragon_3_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de dragon des Pals Niv. 3",
+"rang": 3,
+"desc": "ElementBoost_Dragon +18% (ToOtomo)"
+},
+"ElementBoost_Normal_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts non élémentaires des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Normal +20% (ToOtomo)"
+},
+"ElementBoost_Fire_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de feu des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Fire +20% (ToOtomo)"
+},
+"ElementBoost_Water_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts d'eau des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Water +20% (ToOtomo)"
+},
+"ElementBoost_Electricity_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de foudre des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Electricity +20% (ToOtomo)"
+},
+"ElementBoost_Leaf_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de plante des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Leaf +20% (ToOtomo)"
+},
+"ElementBoost_Ice_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de glace des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Ice +20% (ToOtomo)"
+},
+"ElementBoost_Earth_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de terre des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Earth +20% (ToOtomo)"
+},
+"ElementBoost_Dark_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de ténèbres des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Dark +20% (ToOtomo)"
+},
+"ElementBoost_Dragon_4_Otomo_Only_Equip": {
+"nom": "Augmentation des dégâts de dragon des Pals Niv. 4",
+"rang": 4,
+"desc": "ElementBoost_Dragon +20% (ToOtomo)"
+},
+"Attack_ACC_up1_Otomo_Only_Equip": {
+"nom": "Augmentation de l'attaque des Pals Niv. 1",
+"rang": 1,
+"desc": "Attaque +4% (ToOtomo)"
+},
+"Attack_ACC_up2_Otomo_Only_Equip": {
+"nom": "Augmentation de l'attaque des Pals Niv. 2",
+"rang": 2,
+"desc": "Attaque +8% (ToOtomo)"
+},
+"Attack_ACC_up3_Otomo_Only_Equip": {
+"nom": "Augmentation de l'attaque des Pals Niv. 3",
+"rang": 3,
+"desc": "Attaque +12% (ToOtomo)"
+},
+"Attack_ACC_up4_Otomo_Only_Equip": {
+"nom": "Augmentation de l'attaque des Pals Niv. 4",
+"rang": 4,
+"desc": "Attaque +16% (ToOtomo)"
+},
+"Defense_ACC_up1_Otomo_Only_Equip": {
+"nom": "Augmentation de la défense des Pals Niv. 1",
+"rang": 1,
+"desc": "Défense +5% (ToOtomo)"
+},
+"Defense_ACC_up2_Otomo_Only_Equip": {
+"nom": "Augmentation de la défense des Pals Niv. 2",
+"rang": 2,
+"desc": "Défense +10% (ToOtomo)"
+},
+"Defense_ACC_up3_Otomo_Only_Equip": {
+"nom": "Augmentation de la défense des Pals Niv. 3",
+"rang": 3,
+"desc": "Défense +15% (ToOtomo)"
+},
+"Defense_ACC_up4_Otomo_Only_Equip": {
+"nom": "Augmentation de la défense des Pals Niv. 4",
+"rang": 4,
+"desc": "Défense +20% (ToOtomo)"
+},
+"PalExp_Increase_1_Otomo_Only_Equip": {
+"nom": "Gain d'EXP accru des Pals Niv. 1",
+"rang": 1,
+"desc": "PalExp_Increase +30% (ToSelf)"
+},
+"PalExp_Increase_2_Otomo_Only_Equip": {
+"nom": "Gain d'EXP accru des Pals Niv. 2",
+"rang": 2,
+"desc": "PalExp_Increase +40% (ToSelf)"
+},
+"PalExp_Increase_3_Otomo_Only_Equip": {
+"nom": "Gain d'EXP accru des Pals Niv. 3",
+"rang": 3,
+"desc": "PalExp_Increase +50% (ToSelf)"
+},
+"Nushi": {
+"nom": "Trophée des Flots",
+"rang": 4,
+"desc": "Les dégâts de type Eau augmentent de 20 %. ; Les dégâts de type Glace augmentent de 20 %. ; Défense +20 %"
+},
+"SwimSpeed_up_1": {
+"nom": "Nage Fluide",
+"rang": 1,
+"desc": "La vitesse de déplacement augmente de 30 % sur l'eau."
+},
+"SwimSpeed_up_2": {
+"nom": "Coursier Marin",
+"rang": 3,
+"desc": "La vitesse de déplacement augmente de 40 % sur l'eau."
+},
+"SwimSpeed_up_3": {
+"nom": "Roi des Vagues",
+"rang": 4,
+"desc": "La vitesse de déplacement augmente de 50 % sur l'eau."
+},
+"YakushimaProtection_Equip": {
+"nom": "Protection Sainte",
+"rang": -1,
+"desc": "ForYakushimaDefenceRate +30% (ToSelf)"
+},
+"YakushimaDagameBoost_Melee_Equip": {
+"nom": "Pouvoir Saint (Proximité)",
+"rang": -1,
+"desc": "DamageUpIfEquipped_YakushimaMeleeWeapon +20% (ToSelf)"
+},
+"YakushimaDagameBoost_Ranged_Equip": {
+"nom": "Pouvoir Saint (Longue Distance)",
+"rang": -1,
+"desc": "DamageUpIfEquipped_YakushimaRangedWeapon +20% (ToSelf)"
+},
+"YakushimaDagameBoost_Magic_Equip": {
+"nom": "Pouvoir Saint (Magie)",
+"rang": -1,
+"desc": "DamageUpIfEquipped_YakushimaMagicWeapon +20% (ToSelf)"
+},
+"YakushimaDagameBoost_Summon_Equip": {
+"nom": "Pouvoir Saint (Invocation)",
+"rang": -1,
+"desc": "DamageUpIfEquipped_YakushimaSummonWeapon +20% (ToSelf)"
+},
+"GYM_NAME_Meadow": {
+"nom": "Officiel du Syndicat de Rayne",
+"rang": 3,
+"desc": "Attaque +20 % ; Vitesse de déplacement +10 %"
+},
+"GYM_NAME_Forest": {
+"nom": "Membre fondateur de la Ligue pour la protection des Pals",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"GYM_NAME_Desert": {
+"nom": "Cadre de la Milice populaire de Palpagos",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"GYM_NAME_Volcano": {
+"nom": "Chef spirituel de la Confrérie des flammes éternelles",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"GYM_NAME_Snow": {
+"nom": "Commandant de l’Unité de recherche génétique",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"GYM_NAME_Sakurajima": {
+"nom": "Chef du clan des Fleurs lunaires",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"GYM_NAME_Viking": {
+"nom": "Jarl du Paradis déchu",
+"rang": 3,
+"desc": "Attaque +20% (ToSelf)"
+},
+"Salvation": {
+"nom": "Sauveur",
+"rang": 4,
+"desc": "Les dégâts Non Élémentaires augmentent de 30 %. ; Les dégâts de type Plante augmentent de 30 %."
+},
+"OctaviaArmorVampire": {
+"nom": "Afflux Sanguin",
+"rang": 4,
+"desc": "Absorbe 0 % des dégâts infligés pour restaurer ses PV. ; Ne dort pas et continue à travailler la nuit."
+},
+"WorldTree_ATK": {
+"nom": "Lame du Jugement",
+"rang": 5,
+"desc": "Attaque +50 % ; Défense -30 % ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"WorldTree_DEF": {
+"nom": "Rempart Sacré",
+"rang": 5,
+"desc": "Défense +50 % ; Attaque -30 % ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"WorldTree_CraftSpeed": {
+"nom": "Main du Démon",
+"rang": 5,
+"desc": "Vitesse de travail +90% ; Chute des points MEN accélérée +15.0% ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"WorldTree_FullStomach": {
+"nom": "Berceau Divin",
+"rang": 5,
+"desc": "Chute du degré de satiété ralentie +50.0% ; PV -20% ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"WorldTree_Sanity": {
+"nom": "Sage Immortel",
+"rang": 5,
+"desc": "Chute des points MEN ralentie +50.0% ; Vitesse de travail -20% ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"WorldTree_MoveSpeed": {
+"nom": "Traverse-Mondes",
+"rang": 5,
+"desc": "Vitesse de déplacement augmentée +50% ; Chute du degré de satiété accélérée +15.0% ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"WorldTree_ATK_DEF": {
+"nom": "Dieu de la Destruction",
+"rang": 5,
+"desc": "Attaque +40 % ; Défense +20 % ; PV max -50 % ; Permet de récolter les arbres et rochers de l'Arbre-Monde sans les faire disparaître."
+},
+"MiniNushi": {
+"nom": "Caïd",
+"rang": 3,
+"desc": "Les dégâts de type Eau augmentent de 5 %. ; Les dégâts de type Glace augmentent de 5 %. ; Défense +5 %"
+},
+"Deffence_up2_2": {
+"nom": "Poids Lourd",
+"rang": 2,
+"desc": "Défense +20 % ; Immunité aux projections"
+},
+"MutationPal_Babysitter": {
+"nom": "Baby-sitter",
+"rang": 4,
+"desc": "Dans la base, vitesse de production d'œufs des Pals affectés à un Élevage : +30 % ; ; vitesse d'éclosion : +30 %"
+},
+"MutationPal_Mutant": {
+"nom": "Anomalie",
+"rang": 4,
+"desc": "Restauration automatique des PV des Pals et du joueur +50 % ; Défense +25 % ; Immunité aux dégâts de Poison ; Immunité aux dégâts de Brûlure"
+},
+"NightOwl": {
+"nom": "Oiseau de Nuit",
+"rang": -1,
+"desc": "Fait constamment des siestes, sans doute pour récupérer de son activité nocturne."
+},
+"Defuser_ExplosiveSpore_EquipSkill": {
+"nom": "Dégâts explosifs réduits",
+"rang": 1,
+"desc": "Defuser_ExplosiveSpore +1% (ToSelf)"
+},
+"AvoidDurationUp_EquipSkill_2": {
+"nom": "Durée d'invincibilité lors des esquives augmentée",
+"rang": 1,
+"desc": "AvoidDurationUp_EquipSkill +20% (ToSelf)"
+},
+"SelfDeathAddItemDrop_up_1": {
+"nom": "Partageur",
+"rang": 1,
+"desc": "Objets lâchés par ce Pal +15 %"
+},
+"SelfDeathAddItemDrop_up_2": {
+"nom": "Généreux",
+"rang": 3,
+"desc": "Objets lâchés par ce Pal +50 %"
+},
+"SelfDeathAddItemDrop_up_3": {
+"nom": "Grand Prince",
+"rang": 4,
+"desc": "Objets lâchés par ce Pal +100 %"
+},
+"WorkSuitabilityAddRank_MonsterFarm_1": {
+"nom": "Apprenti Éleveur",
+"rang": 3,
+"desc": "Exploitation : Capacité de travail +1"
+},
+"WorkSuitabilityAddRank_MonsterFarm_2": {
+"nom": "Maître Éleveur",
+"rang": 4,
+"desc": "Exploitation : Capacité de travail +2"
+},
+"MutationPal_Immortal": {
+"nom": "Immortel",
+"rang": 4,
+"desc": "Absorbe 5 % des dégâts infligés pour restaurer ses PV. ; Restauration automatique des PV des Pals +100 % ; Attaque +15 %"
+},
+"MutationPal_ExplosionResist": {
+"nom": "Blindage",
+"rang": 4,
+"desc": "Immunité aux dégâts explosifs"
+},
+"WoodDrop_Boost_1": {
+"nom": "Volume d'abattage augmenté niv. 1",
+"rang": 1,
+"desc": "Quantité de bois obtenue légèrement accrue"
+},
+"WoodDrop_Boost_2": {
+"nom": "Volume d'abattage augmenté niv. 2",
+"rang": 1,
+"desc": "Quantité de bois obtenue accrue"
+},
+"WoodDrop_Boost_3": {
+"nom": "Volume d'abattage augmenté niv. 3",
+"rang": 3,
+"desc": "Quantité de bois obtenue fortement accrue"
+},
+"WoodDrop_Boost_4": {
+"nom": "Volume d'abattage augmenté niv. 4",
+"rang": 3,
+"desc": "Quantité de bois obtenue considérablement accrue"
+},
+"WoodDrop_Boost_5": {
+"nom": "Volume d'abattage augmenté niv. 5",
+"rang": 4,
+"desc": "Quantité de bois obtenue de façon drastique"
+},
+"StonDrop_Boost_1": {
+"nom": "Volume d'extraction augmenté niv. 1",
+"rang": 1,
+"desc": "Quantité de pierre/minerai obtenue légèrement accrue"
+},
+"StonDrop_Boost_2": {
+"nom": "Volume d'extraction augmenté niv. 2",
+"rang": 1,
+"desc": "Quantité de pierre/minerai obtenue accrue"
+},
+"StonDrop_Boost_3": {
+"nom": "Volume d'extraction augmenté niv. 3",
+"rang": 3,
+"desc": "Quantité de pierre/minerai obtenue fortement accrue"
+},
+"StonDrop_Boost_4": {
+"nom": "Volume d'extraction augmenté niv. 4",
+"rang": 3,
+"desc": "Quantité de pierre/minerai obtenue considérablement accrue"
+},
+"StonDrop_Boost_5": {
+"nom": "Volume d'extraction augmenté niv. 5",
+"rang": 4,
+"desc": "Quantité de pierre/minerai obtenue de façon drastique"
+},
+"StonWoodDrop_Boost": {
+"nom": "Volume d'abattage et d'extraction augmenté",
+"rang": 3,
+"desc": "Quantité de bois, de pierre et de minerai obtenue considérablement accrue"
+},
+"RideJumpCount_Increase1": {
+"nom": "Légèreté",
+"rang": 4,
+"desc": "Nombre de sauts en monture +1"
+},
+"RideJumpCount_Increase2": {
+"nom": "Marche Céleste",
+"rang": 4,
+"desc": "Nombre de sauts en monture +2"
+},
+"FriendshipPoint_Increase_EquipSkill": {
+"nom": "Augmente les gains de confiance des Pals de l'équipe",
+"rang": -1,
+"desc": "FriendshipPoint_Increase +50% (ToOtomo)"
+},
+"Invalid_ToxicGas_EquipSkill": {
+"nom": "Immunité aux dégâts des gaz toxiques",
+"rang": 1,
+"desc": "InvalidToxicGas +0% (ToSelf)"
+},
+"PlayerSP_DecreaseRate_Passive": {
+"nom": "Guide de l'effort",
+"rang": 3,
+"desc": "Consommation d'endurance du joueur -5.0 %"
+},
+"AutoHPRegeneRate_Passive": {
+"nom": "Ange Médecin",
+"rang": 3,
+"desc": "Régénération passive des PV du joueur +5 %"
+},
+"ReloadSpeedUp_Passive": {
+"nom": "Instructeur de Tir",
+"rang": 3,
+"desc": "Vitesse de rechargement du joueur +4 %"
+}
+}
+}

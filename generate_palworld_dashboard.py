@@ -101,6 +101,46 @@ with open(os.path.join(HERE, "recipes_fr.json"), "r", encoding="utf-8") as _f:
 DISH_NAME_FR = _RECIPES_FR["dishes"]
 INGREDIENT_NAME_FR = _RECIPES_FR["ingredients"]
 
+# Noms FR officiels des especes et des passifs (build_pals_fr.py -> pals_fr.json, source
+# paldb.cc/fr). Lu localement : aucun appel reseau a chaque generation horaire.
+with open(os.path.join(HERE, "pals_fr.json"), "r", encoding="utf-8") as _f:
+    _PALS_FR = json.load(_f)
+PAL_NAME_FR = _PALS_FR["pals"]
+PASSIVE_FR = _PALS_FR["passives"]
+
+# Noms d'elements tels qu'affiches par le jeu en francais (verifie sur paldb.cc/fr)
+ELEMENT_FR = {
+    "Neutral": "Neutre", "Fire": "Feu", "Water": "Eau", "Grass": "Herbe", "Electric": "Électricité",
+    "Ice": "Glace", "Dark": "Ténèbres", "Dragon": "Dragon", "Ground": "Terre",
+}
+
+# Especes absentes de la table FR (variantes recentes) : noms verifies sur paldb.cc
+_PAL_NOMS_EXTRA = {"GhostDragon": "Eidrolon", "PoseidonOrca": "Neptilius"}
+
+
+def pal_nom_fr(codename):
+    """('Frostallion Noct', True) pour 'BOSS_IceHorse_Dark' (True = version Alpha)."""
+    cn = str(codename)
+    alpha = cn.startswith("BOSS_")
+    base = cn[5:] if alpha else cn
+    nom = (
+        PAL_NAME_FR.get(base)
+        or _PAL_NOMS_EXTRA.get(base)
+        or PAL_CARD_DATA.get(base, {}).get("nom")
+        or re.sub(r"(?<=[a-z])(?=[A-Z])", " ", base)
+    )
+    return nom, alpha
+
+
+def passif_fr(pid):
+    """(nom FR, rang, description FR) d'un passif. Rang <0 : defaut ; 1-2 : commun ; 3 : rare
+    (dore) ; >=4 : legendaire (arc-en-ciel). Repli sur le nom anglais si l'id est inconnu."""
+    info = PASSIVE_FR.get(pid)
+    if info:
+        desc = re.sub(r"\s*\(To[A-Za-z]+\)", "", info.get("desc", ""))
+        return info["nom"], info.get("rang", 0), desc
+    return PASSIVE_NAME_DISPLAY.get(pid) or str(pid).replace("_", " "), 0, ""
+
 VARIANT_SUFFIXES = ["_Fire", "_Dark", "_Electric", "_Water", "_Grass", "_Ice"]
 
 # Univers "Palpedia reelle" pour le suivi de complétion : on exclut les PNJ uniques de
@@ -2078,6 +2118,300 @@ def render_html(data):
 
     pal_data_json = json.dumps(PAL_CARD_DATA, ensure_ascii=False).replace("</", "<\\/")
 
+    # ---- ACCUEIL (pense pour la tablette) : uniquement des infos actionnables ----
+    # Volontairement absents : jours ecoules, nombre de bases/raids/camps/donjons, guildes,
+    # coffres de guilde, dernier largage, modules (compteurs sans decision a en tirer).
+    # Ressources dont on veut voir le stock d'un coup d'oeil (item_id du jeu -> libelle).
+    HOME_STOCK_WATCH = [
+        ("ExplosiveBullet", "Roquettes"),
+        ("GunPowder2", "Poudre à canon"),
+        ("StealIngot", "Lingots de Pal Metal"),
+    ]
+
+    def _nice(codename):
+        return pal_nom_fr(codename)[0]
+
+    def _fmt_int(n):
+        return f"{int(n):,}".replace(",", " ")
+
+    def _passifs_courts(passifs, n=2):
+        out = []
+        for p in passifs:
+            pid = str(p).split(" (")[0]
+            if pid == "Legend":
+                continue
+            out.append(passif_fr(pid)[0])
+        return out[:n]
+
+    def _todo(icon, titre, sous, tab=None, tone="info"):
+        tag = "button" if tab else "div"
+        attr = ' onclick="goToTab(\'' + tab + '\')"' if tab else ""
+        arrow = '<span class="hm-arrow">&#8594;</span>' if tab else ""
+        sub_html = '<span class="hm-sub">' + sous + "</span>" if sous else ""
+        return (
+            f'<{tag} class="hm-item {tone}"{attr}><span class="hm-ico">{icon}</span>'
+            f'<span class="hm-txt"><span class="hm-title">{titre}</span>{sub_html}</span>{arrow}</{tag}>'
+        )
+
+    def _hm_card(titre, corps, tab=None, extra_cls=""):
+        lien = (
+            '<button class="hm-more" onclick="goToTab(\'' + tab + '\')">Tout voir &#8594;</button>'
+            if tab else ""
+        )
+        return (
+            f'<section class="hm-card {extra_cls}"><div class="hm-card-head"><h2>{titre}</h2>{lien}</div>'
+            f"{corps}</section>"
+        )
+
+    hm_players = ""
+    for j in data.get("joueurs", []):
+        da = j.get("derniere_connexion_jours")
+        if da is None:
+            etat, cls = "inconnu", "off"
+        elif da < 0.04:
+            etat, cls = "en ligne", "on"
+        elif da < 1:
+            etat, cls = f"vu il y a {da * 24:.0f} h", "off"
+        else:
+            etat, cls = f"vu il y a {da:.0f} j", "off"
+        hm_players += (
+            f'<span class="hm-chip {cls}"><span class="hm-dot"></span>'
+            f'<b>{esc(j["nom"])}</b> niv. {j["niveau"]} &middot; {etat}</span>'
+        )
+
+    hm_todo = ""
+    for a in data.get("alertes_stock", []):
+        hm_todo += _todo(
+            "&#128721;", "Stock bas : " + esc(a["label"]),
+            f'{_fmt_int(a["stock"])} en stock (seuil {_fmt_int(a["seuil"])})', None, "bad",
+        )
+
+    swap_grp = {}
+    for s in bta.get("swaps", []):
+        k = (s["sortir"], s["entrer"], s["entrer_categorie"], s["entrer_etoiles"])
+        swap_grp[k] = swap_grp.get(k, 0) + 1
+    if swap_grp:
+        lignes = []
+        for (sortir, entrer, cat, et), n in list(swap_grp.items())[:3]:
+            pre = f"{n}&times; " if n > 1 else ""
+            lignes.append(f"{pre}{esc(_nice(sortir))} &#8594; <b>{esc(entrer)}</b> ({esc(cat)} {et}&#9733;)")
+        reste = len(swap_grp) - 3
+        sous = " &middot; ".join(lignes) + (f" &middot; +{reste} autre(s)" if reste > 0 else "")
+        hm_todo += _todo(
+            "&#128295;", f"{bta.get('nb_a_ameliorer', 0)} poste(s) de travail à améliorer", sous, "tab-work", "warn"
+        )
+
+    manque_bat = bta.get("categories_batiment_manquant", [])
+    if manque_bat:
+        hm_todo += _todo(
+            "&#127959;&#65039;", "Bâtiment(s) à construire : " + esc(", ".join(manque_bat)),
+            "Des Pals adaptés attendent sans poste.", "tab-work", "warn",
+        )
+
+    combos_hm = data.get("elevage", {}).get("combinaisons", [])
+    if combos_hm:
+        c0 = combos_hm[0]
+        hm_todo += _todo(
+            "&#129370;", "Nouvelle espèce possible : " + esc(c0["nom"]),
+            esc(c0["parentA"]) + " + " + esc(c0["parentB"]), "tab-breeding", "good",
+        )
+
+    prets_hm = sorted(
+        [r for r in data.get("cuisine", {}).get("recettes", []) if r.get("prete")], key=lambda r: -r["san"]
+    )
+    if prets_hm:
+        b0 = prets_hm[0]
+        hm_todo += _todo(
+            "&#127859;", "Plat prêt : " + esc(DISH_NAME_FR.get(b0["nom"], b0["nom"])),
+            esc(b0["effet"] or "aucun effet") + f" &middot; {len(prets_hm)} plat(s) prêt(s)", "tab-cuisine", "good",
+        )
+
+    hm_team = ""
+    for mb in data.get("equipe_terrain", {}).get("membres", []):
+        est_monture = mb.get("role") == "monture"
+        role = "Monture" if est_monture else "Combat"
+        leg = (
+            '<span class="hm-badge leg">&#9733; Légende</span>'
+            if any(str(p).startswith("Legend") for p in mb.get("passifs", [])) else ""
+        )
+        tags = "".join(f'<span class="hm-tag">{esc(x)}</span>' for x in _passifs_courts(mb.get("passifs", [])))
+        tags_html = '<div class="hm-tags">' + tags + "</div>" if tags else ""
+        els = " / ".join(esc(ELEMENT_FR.get(e, e)) for e in mb.get("elements", []))
+        hm_team += (
+            f'<div class="hm-row"><div class="hm-row-main"><b>{esc(mb["nom"])}</b>'
+            f'<span class="hm-badge {"mount" if est_monture else "fight"}">{role}</span>{leg}</div>'
+            f'<div class="hm-row-sub">niv. {mb["level"]} &middot; IV {mb["iv"]:.0f}/300 &middot; {els}</div>'
+            f"{tags_html}</div>"
+        )
+
+    hm_repro = ""
+    for c in sorted(data.get("candidats_reproduction", []), key=lambda c: -c["iv_total"])[:5]:
+        leg = '<span class="hm-badge leg">&#9733; Passif légendaire</span>' if c.get("passifs_legendaires") else ""
+        hm_repro += (
+            f'<div class="hm-row"><div class="hm-row-main"><b>{esc(c["nom"])}</b>{leg}</div>'
+            f'<div class="hm-row-sub">niv. {c["niveau"]} &middot; PV {c["iv_hp"]} / Att {c["iv_atk"]} / '
+            f'Déf {c["iv_def"]} &middot; {esc(c["proprietaire"])}</div></div>'
+        )
+
+    hm_food = ""
+    for r in prets_hm[:4]:
+        hm_food += (
+            f'<div class="hm-row"><div class="hm-row-main"><b>{esc(DISH_NAME_FR.get(r["nom"], r["nom"]))}</b></div>'
+            f'<div class="hm-row-sub">{esc(r["effet"] or "aucun effet")} &middot; +{r["san"]} SAN</div></div>'
+        )
+
+    stock_hm = data.get("stock_ressources", {})
+    hm_stock = "".join(
+        f'<div class="hm-stat"><span class="hm-stat-n">{_fmt_int(stock_hm.get(item_id, 0))}</span>'
+        f'<span class="hm-stat-l">{esc(label)}</span></div>'
+        for item_id, label in HOME_STOCK_WATCH
+    )
+
+    vide = '<p class="muted">Rien à afficher pour le moment.</p>'
+    home_html = (
+        '<div class="hm-stack">'
+        + '<div class="hm-players">' + hm_players + "</div>"
+        + _hm_card(
+            "À faire maintenant",
+            '<div class="hm-list">' + (hm_todo or '<p class="muted">Rien à signaler pour le moment.</p>') + "</div>",
+            None, "hm-todo",
+        )
+        + '<div class="hm-cols">'
+        + _hm_card("Équipe de terrain", hm_team or vide, "tab-pals")
+        + _hm_card("Meilleurs Pals à reproduire", hm_repro or vide, "tab-reproduction")
+        + "</div>"
+        + '<div class="hm-cols">'
+        + _hm_card("Cuisine : prêt à cuisiner", hm_food or vide, "tab-cuisine")
+        + _hm_card("Stocks utiles", '<div class="hm-stats">' + hm_stock + "</div>")
+        + "</div>"
+        + "</div>"
+    )
+
+    # ---- ONGLET PALS : noms/passifs/elements en francais, cartes lisibles au doigt ----
+    def _passif_chip(pid):
+        nom, rang, _desc = passif_fr(pid)
+        cls = "neg" if rang < 0 else ("leg" if rang >= 4 else ("rare" if rang == 3 else "com"))
+        return f'<span class="pv-chip {cls}">{esc(nom)}</span>'
+
+    def _passif_details(pids):
+        lignes = ""
+        for pid in pids:
+            nom, _rang, desc = passif_fr(pid)
+            lignes += "<li><b>" + esc(nom) + "</b>" + (" &mdash; " + esc(desc) if desc else "") + "</li>"
+        if not lignes:
+            return ""
+        return '<details class="pv-details"><summary>Détail des passifs</summary><ul>' + lignes + "</ul></details>"
+
+    def _iv_bar(label, val):
+        val = max(0, min(100, int(val or 0)))
+        cls = "top" if val >= 90 else ("mid" if val >= 60 else "low")
+        return (
+            f'<div class="pv-iv"><span class="pv-iv-l">{label}</span>'
+            f'<span class="pv-iv-track"><span class="pv-iv-fill {cls}" style="width:{val}%"></span></span>'
+            f'<span class="pv-iv-n">{val}</span></div>'
+        )
+
+    def _pal_icon(codename):
+        base = str(codename)[5:] if str(codename).startswith("BOSS_") else str(codename)
+        return f'<img class="pv-ico" src="{esc(pal_icon_url(base))}" loading="lazy" alt="" onerror="palIconError(this)">'
+
+    def _pal_nom_html(codename):
+        nom, alpha = pal_nom_fr(codename)
+        return esc(nom) + (' <span class="hm-badge alpha">Alpha</span>' if alpha else "")
+
+    pv_iv = ""
+    for p in pals.get("top_iv", []):
+        ids = p.get("passifs", [])
+        moyenne = round((int(p["hp"] or 0) + int(p["att"] or 0) + int(p["def"] or 0)) / 3)
+        pv_iv += (
+            '<div class="pv-card"><div class="pv-head">' + _pal_icon(p["espece"])
+            + '<div class="pv-id"><div class="pv-name">' + _pal_nom_html(p["espece"]) + "</div>"
+            + f'<div class="pv-meta">IV moyen {moyenne} %</div></div></div>'
+            + '<div class="pv-ivs">' + _iv_bar("PV", p["hp"]) + _iv_bar("Attaque", p["att"])
+            + _iv_bar("Défense", p["def"]) + "</div>"
+            + '<div class="pv-chips">' + "".join(_passif_chip(x) for x in ids) + "</div>"
+            + _passif_details(ids) + "</div>"
+        )
+
+    def _rank_list(items, fmt):
+        rows = ""
+        for i, it in enumerate(items, 1):
+            rows += (
+                f'<li class="pv-rank"><span class="pv-rank-n">{i}</span>{_pal_icon(it["espece"])}'
+                f'<span class="pv-rank-name">{_pal_nom_html(it["espece"])}</span>'
+                f'<span class="pv-rank-val">{fmt(it)}</span></li>'
+            )
+        return '<ol class="pv-ranklist">' + rows + "</ol>"
+
+    pv_niveaux = _rank_list(pals.get("top_niveaux", []), lambda it: f"niv. {it['niveau']}")
+    pv_confiance = _rank_list(pals.get("top_affection", []), lambda it: _fmt_int(it["affection"]))
+
+    pv_team = ""
+    for mb in data.get("equipe_terrain", {}).get("membres", []):
+        est_monture = mb.get("role") == "monture"
+        ids = [str(x).split(" (")[0] for x in mb.get("passifs", [])]
+        elems = "".join(
+            f'<span class="pv-elem">{esc(ELEMENT_FR.get(e, e))}</span>' for e in mb.get("elements", [])
+        )
+        if est_monture:
+            raison = f"Monture la plus rapide possédée (vitesse {mb['ride_sprint_speed']:.0f})."
+        else:
+            raison = f"Puissance {mb['power']} (mêlée + distance), parmi les plus fortes possédées."
+        skill = translate_partner_skill(mb.get("partner_skill"))
+        role_badge = (
+            '<span class="hm-badge mount">Monture</span>' if est_monture else '<span class="hm-badge fight">Combat</span>'
+        )
+        pv_team += (
+            '<div class="pv-card"><div class="pv-head">' + _pal_icon(mb["codename"])
+            + '<div class="pv-id"><div class="pv-name">' + _pal_nom_html(mb["codename"]) + " " + role_badge + "</div>"
+            + f'<div class="pv-meta">niv. {mb["level"]} &middot; IV {mb["iv"]:.0f}/300</div></div></div>'
+            + '<div class="pv-chips">' + elems + "</div>"
+            + '<p class="pv-text">' + esc(raison) + "</p>"
+            + ('<p class="pv-text muted">' + esc(skill) + "</p>" if skill else "")
+            + '<div class="pv-chips">' + "".join(_passif_chip(x) for x in ids) + "</div>"
+            + _passif_details(ids) + "</div>"
+        )
+
+    non_couverts = [ELEMENT_FR.get(e, e) for e in data.get("equipe_terrain", {}).get("elements_non_couverts", [])]
+    pv_elements_txt = (
+        '<p class="muted" style="font-size:0.85rem; margin-top:14px">&#9888;&#65039; Éléments non couverts par la '
+        "collection : " + esc(", ".join(non_couverts)) + ".</p>"
+        if non_couverts
+        else '<p class="muted" style="font-size:0.85rem; margin-top:14px">&#9989; Tous les éléments du jeu sont couverts par la collection.</p>'
+    )
+
+    pv_owners = "".join(
+        f'<span class="hm-chip on"><b>{esc(nom)}</b> {_fmt_int(nb)} Pals</span>'
+        for nom, nb in pals.get("repartition", {}).items()
+    )
+    pals_tab_html = (
+        '<div class="hm-stack">'
+        + '<div class="hm-stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">'
+        + f'<div class="hm-stat"><span class="hm-stat-n">{_fmt_int(pals["total"])}</span><span class="hm-stat-l">Pals au total</span></div>'
+        + f'<div class="hm-stat"><span class="hm-stat-n">{_fmt_int(pals["especes"])}</span><span class="hm-stat-l">Espèces différentes</span></div>'
+        + "</div>"
+        + '<div class="hm-players">' + pv_owners + "</div>"
+        + _hm_card(
+            "Meilleurs IV et passifs",
+            '<p class="muted" style="margin:0 0 12px">Les 10 Pals de la collection avec les meilleures IV '
+            "(PV, Attaque, Défense) et leurs passifs réels. Touche « Détail des passifs » pour lire l'effet de chacun.</p>"
+            '<div class="pv-grid">' + (pv_iv or vide) + "</div>",
+        )
+        + '<div class="hm-cols">'
+        + _hm_card("Niveaux les plus élevés", pv_niveaux)
+        + _hm_card("Plus grande confiance", pv_confiance)
+        + "</div>"
+        + _hm_card(
+            "Équipe de terrain recommandée",
+            '<p class="muted" style="margin:0 0 12px">À emmener en exploration ou en combat (distinct du travail à la '
+            "base) : stats de combat réelles (attaque, PV, défense), croisées avec le meilleur exemplaire possédé de "
+            "chaque espèce (niveau + IV), plus une monture rapide. Recalculé à chaque génération.</p>"
+            '<div class="pv-grid">' + (pv_team or '<p class="muted">Aucune donnée de combat exploitable pour l\'instant.</p>')
+            + "</div>" + pv_elements_txt,
+        )
+        + "</div>"
+    )
+
     html = f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -2158,9 +2492,143 @@ def render_html(data):
   @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(4px); }} to {{ opacity: 1; transform: translateY(0); }} }}
   @media (prefers-reduced-motion: reduce) {{ .tab-panel.active {{ animation: none; }} html {{ scroll-behavior: auto; }} }}
 
+  /* ---- accueil : cartes d'action lisibles au doigt ---- */
+  .hm-stack {{ display: flex; flex-direction: column; gap: 16px; }}
+  .hm-players {{ display: flex; flex-wrap: wrap; gap: 8px; }}
+  .hm-chip {{
+    display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border);
+    border-radius: 999px; padding: 8px 14px; font-size: 0.9rem; color: var(--text-dim);
+  }}
+  .hm-dot {{ width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }}
+  .hm-chip.on .hm-dot {{ background: var(--green); box-shadow: 0 0 0 3px rgba(78,209,149,.2); }}
+  .hm-card {{
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 20px; box-shadow: var(--shadow); min-width: 0;
+  }}
+  .hm-todo {{ border-left: 4px solid var(--gold); }}
+  .hm-cols {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px; }}
+  .hm-card-head {{ display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }}
+  .hm-card-head h2 {{ margin: 0; font-size: 1.1rem; }}
+  .hm-more {{
+    background: none; border: 1px solid var(--border); color: var(--blue); border-radius: 999px;
+    padding: 8px 14px; min-height: 40px; font: 600 0.85rem var(--font-body); cursor: pointer; white-space: nowrap;
+  }}
+  .hm-list {{ display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }}
+  .hm-item {{
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; min-height: 56px;
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-left: 4px solid var(--blue);
+    border-radius: var(--radius-sm); padding: 12px 16px; color: var(--text);
+    font-family: var(--font-body); font-size: 0.95rem;
+  }}
+  button.hm-item {{ cursor: pointer; }}
+  .hm-item.bad {{ border-left-color: var(--red); }}
+  .hm-item.warn {{ border-left-color: var(--orange); }}
+  .hm-item.good {{ border-left-color: var(--green); }}
+  .hm-ico {{ font-size: 1.4rem; flex-shrink: 0; }}
+  .hm-txt {{ display: flex; flex-direction: column; flex: 1; min-width: 0; }}
+  .hm-title {{ font-weight: 700; }}
+  .hm-sub {{ color: var(--muted); font-size: 0.82rem; margin-top: 2px; }}
+  .hm-arrow {{ color: var(--muted); font-size: 1.2rem; }}
+  .hm-row {{ padding: 11px 0; border-bottom: 1px solid var(--border-soft); }}
+  .hm-row:last-child {{ border-bottom: none; }}
+  .hm-row-main {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 1rem; }}
+  .hm-row-sub {{ color: var(--muted); font-size: 0.82rem; margin-top: 3px; }}
+  .hm-tags {{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }}
+  .hm-tag {{
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-radius: 999px;
+    padding: 2px 9px; font-size: 0.74rem; color: var(--text-dim);
+  }}
+  .hm-badge {{
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    border-radius: 999px; padding: 2px 9px; border: 1px solid var(--border); color: var(--muted);
+  }}
+  .hm-badge.mount {{ color: var(--blue); border-color: var(--blue); }}
+  .hm-badge.fight {{ color: var(--red); border-color: var(--red); }}
+  .hm-badge.leg {{ color: var(--gold); border-color: var(--gold); }}
+  .hm-badge.alpha {{ color: var(--orange); border-color: var(--orange); }}
+  .hm-stats {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }}
+
+  /* ---- onglet Pals ---- */
+  .pv-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }}
+  .pv-card {{
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    padding: 14px 16px; min-width: 0;
+  }}
+  .pv-head {{ display: flex; align-items: center; gap: 12px; }}
+  .pv-ico {{ width: 56px; height: 56px; object-fit: contain; border-radius: 12px; background: var(--bg); flex-shrink: 0; }}
+  .pv-id {{ min-width: 0; }}
+  .pv-name {{
+    font-family: var(--font-display); font-weight: 700; font-size: 1.02rem;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }}
+  .pv-meta {{ color: var(--muted); font-size: 0.82rem; margin-top: 2px; }}
+  .pv-ivs {{ display: grid; gap: 7px; margin: 12px 0 4px; }}
+  .pv-iv {{ display: grid; grid-template-columns: 62px 1fr 34px; align-items: center; gap: 10px; font-size: 0.82rem; }}
+  .pv-iv-l {{ color: var(--muted); }}
+  .pv-iv-track {{ background: var(--bg); border-radius: 999px; height: 8px; overflow: hidden; }}
+  .pv-iv-fill {{ display: block; height: 100%; border-radius: 999px; }}
+  .pv-iv-fill.top {{ background: var(--green); }}
+  .pv-iv-fill.mid {{ background: var(--gold); }}
+  .pv-iv-fill.low {{ background: var(--red); }}
+  .pv-iv-n {{ text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }}
+  .pv-chips {{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }}
+  .pv-chip, .pv-elem {{
+    border-radius: 999px; padding: 4px 11px; font-size: 0.78rem; font-weight: 600;
+    border: 1px solid var(--border); background: var(--card); color: var(--text-dim);
+  }}
+  .pv-elem {{ font-weight: 500; color: var(--text); }}
+  .pv-chip.rare {{ color: var(--gold); border-color: var(--gold); }}
+  .pv-chip.neg {{ color: var(--red); border-color: var(--red); }}
+  .pv-chip.leg {{
+    color: var(--text); border: 1px solid transparent; background-origin: border-box;
+    background-image: linear-gradient(var(--card), var(--card)), linear-gradient(90deg, #e0559b, #9b6bf0, #4aa8f0, #4ed195);
+    background-clip: padding-box, border-box;
+  }}
+  .pv-text {{ font-size: 0.85rem; margin: 10px 0 0; line-height: 1.45; }}
+  .pv-details {{ margin-top: 10px; }}
+  .pv-details summary {{
+    cursor: pointer; color: var(--blue); font-size: 0.85rem; font-weight: 600; min-height: 36px;
+    display: flex; align-items: center;
+  }}
+  .pv-details ul {{ margin: 4px 0 0; padding-left: 18px; font-size: 0.82rem; color: var(--text-dim); }}
+  .pv-ranklist {{ list-style: none; margin: 0; padding: 0; }}
+  .pv-rank {{
+    display: grid; grid-template-columns: 26px 44px 1fr auto; align-items: center; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--border-soft); margin: 0;
+  }}
+  .pv-rank:last-child {{ border-bottom: none; }}
+  .pv-rank .pv-ico {{ width: 40px; height: 40px; border-radius: 10px; }}
+  .pv-rank-n {{ color: var(--muted); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }}
+  .pv-rank-name {{ font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }}
+  .pv-rank-val {{ color: var(--gold); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }}
+  .hm-stat {{
+    background: var(--card-soft); border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
+    padding: 14px; display: flex; flex-direction: column; gap: 2px;
+  }}
+  .hm-stat-n {{ font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; font-variant-numeric: tabular-nums; }}
+  .hm-stat-l {{ color: var(--muted); font-size: 0.8rem; }}
+
+  /* ---- tablette (et petits ecrans) : nav en barre haute tactile, plus de menu lateral ---- */
+  @media (max-width: 1100px) {{
+    html {{ -webkit-text-size-adjust: 100%; }}
+    .layout {{ padding: 0 16px 32px; flex-direction: column; align-items: stretch; gap: 14px; }}
+    .tabs, .page {{ min-width: 0; max-width: 100%; }}
+    .site-header {{ padding: 14px 16px 12px; }}
+    .brand .tagline {{ display: none; }}
+    .tabs {{
+      position: sticky; top: 0; flex-direction: row; width: auto; flex-wrap: nowrap; gap: 6px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      margin: 0 -16px; padding: 8px 16px; border-radius: 0; border-left: none; border-right: none;
+      background: rgba(10,12,17,.94); backdrop-filter: blur(8px);
+    }}
+    .tabs::-webkit-scrollbar {{ display: none; }}
+    .tab-btn {{ width: auto; white-space: nowrap; min-height: 44px; padding: 10px 16px; font-size: 0.92rem; }}
+    .tab-section-label {{ display: none; }}
+  }}
+
   /* ---- mobile ---- */
   @media (max-width: 640px) {{
-    .layout {{ padding: 0 14px 32px; flex-direction: column; gap: 14px; }}
+    .layout {{ padding: 0 14px 32px; flex-direction: column; align-items: stretch; gap: 14px; }}
     .site-header {{ padding: 20px 14px 16px; }}
     .brand-mark {{ width: 42px; height: 42px; font-size: 1.4rem; border-radius: 12px; }}
     .brand h1 {{ font-size: 1.15rem; }}
@@ -2207,7 +2675,7 @@ def render_html(data):
   @media (max-width: 640px) {{ .kanban-board {{ grid-template-columns: 1fr; }} }}
 
   .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }}
-  .grid-2col {{ grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }}
+  .grid-2col {{ grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }}
   .card {{
     background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--blue);
     border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
@@ -2456,20 +2924,20 @@ def render_html(data):
           <p class="tagline">Suivi communautaire en direct de notre monde : bases, Pals, élevage, cuisine et progression des joueurs.</p>
         </div>
       </div>
-      <div class="updated-pill"><span class="dot"></span> Mis a jour {esc(data['genere_le'])}</div>
+      <div class="updated-pill"><span class="dot"></span> Mis à jour {esc(data['genere_le']).replace(' a ', ' à ')}</div>
     </div>
   </header>
 
   <div class="layout">
   <nav class="tabs">
-    <button class="tab-btn active" data-tab="tab-overview" style="--tab-accent: var(--blue)" onclick="showTab(this)">&#127757; Vue d'ensemble</button>
+    <button class="tab-btn active" data-tab="tab-overview" style="--tab-accent: var(--blue)" onclick="showTab(this)">&#127968; Accueil</button>
     <div class="tab-section-label">Pals</div>
     <button class="tab-btn" data-tab="tab-pals" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#128062; Pals</button>
     <button class="tab-btn" data-tab="tab-palpedia" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128220; Palpédia</button>
     <button class="tab-btn" data-tab="tab-breeding" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129370; Élevage</button>
     <button class="tab-btn" data-tab="tab-reproduction" style="--tab-accent: var(--gold)" onclick="showTab(this)">&#129516; Candidats Reproduction</button>
     <div class="tab-section-label">Base</div>
-    <button class="tab-btn" data-tab="tab-work" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128736; Travail a la base</button>
+    <button class="tab-btn" data-tab="tab-work" style="--tab-accent: var(--orange)" onclick="showTab(this)">&#128736; Travail à la base</button>
     <button class="tab-btn" data-tab="tab-cuisine" style="--tab-accent: var(--green)" onclick="showTab(this)">&#127859; Cuisine</button>
     <div class="tab-section-label">Suivi</div>
     <button class="tab-btn" data-tab="tab-players" style="--tab-accent: var(--purple)" onclick="showTab(this)">&#128100; Joueurs</button>
@@ -2481,55 +2949,7 @@ def render_html(data):
   <div class="page">
 
   <div id="tab-overview" class="tab-panel active">
-    <div class="grid grid-2col">
-      <div class="card monde">
-        <h2>&#127757; Monde</h2>
-        <div class="kpi-grid">
-          <div class="kpi"><span class="label">Jours ecoules</span><span class="value">{m['jours']}</span></div>
-          <div class="kpi"><span class="label">Bases</span><span class="value">{m['bases']}</span></div>
-          <div class="kpi"><span class="label">Raids en cours</span><span class="value">{m['raids_actifs']}/{m['raids_total']}</span></div>
-          <div class="kpi"><span class="label">Camps repeuplés (transitoire)</span><span class="value">{m['camps_total'] - m['camps_nettoyes']}/{m['camps_total']}</span></div>
-          <div class="kpi"><span class="label">Repères donjon</span><span class="value">{m['donjons']}</span></div>
-        </div>
-      </div>
-
-      <div class="card basecard" style="grid-column: span 1">
-        <h2>&#127968; Base &amp; Guilde</h2>
-        <div class="kpi-grid">
-          <div class="kpi"><span class="label">Bases</span><span class="value">{b['nb_bases']}</span></div>
-          <div class="kpi"><span class="label">Guildes actives</span><span class="value">{b['guildes']}</span></div>
-          <div class="kpi"><span class="label">Coffres guilde</span><span class="value">{b['coffres_guilde']}</span></div>
-          <div class="kpi"><span class="label">Dernier largage</span><span class="value" style="font-size:0.9rem">{esc(b['dernier_largage'])}...</span></div>
-        </div>
-        <p class="modules">Modules actifs : {esc(', '.join(b['modules']))}</p>
-      </div>
-    </div>
-
-    <div class="quicknav-grid">
-      <div class="quicknav-card" onclick="goToTab('tab-players')">
-        <span class="qn-icon">&#128100;</span>
-        <span class="qn-body"><span class="qn-title">Joueurs</span>
-        <span class="qn-stat">{qn.get('joueurs_actifs', 0)} actifs &middot; dernier vu {esc(qn.get('dernier_vu', '?'))}</span></span>
-        <span class="qn-arrow">&#8594;</span>
-      </div>
-      <div class="quicknav-card" onclick="goToTab('tab-pals')">
-        <span class="qn-icon">&#128062;</span>
-        <span class="qn-body"><span class="qn-title">Pals</span>
-        <span class="qn-stat">{qn.get('pals_total', 0)} pals &middot; {qn.get('pals_especes', 0)} espèces</span></span>
-        <span class="qn-arrow">&#8594;</span>
-      </div>
-      <div class="quicknav-card" onclick="goToTab('tab-work')">
-        <span class="qn-icon">&#128736;</span>
-        <span class="qn-body"><span class="qn-title">Travail a la base</span>
-        <span class="qn-stat">{qn.get('postes_a_optimiser', 0)}/{qn.get('postes_total', 0)} postes a optimiser</span></span>
-        <span class="qn-arrow">&#8594;</span>
-      </div>
-    </div>
-
-    <div class="card tips">
-      <h2>&#128161; Pistes d'amélioration</h2>
-      <ul class="advice-list">{tips_rows or "<li class='muted'>Rien a signaler pour le moment.</li>"}</ul>
-    </div>
+    {home_html}
   </div>
 
   <div id="tab-players" class="tab-panel">
@@ -2539,42 +2959,7 @@ def render_html(data):
   </div>
 
   <div id="tab-pals" class="tab-panel">
-    <div class="grid grid-2col">
-      <div class="card pals">
-        <h2>&#128062; Vue d'ensemble</h2>
-        <div class="kpi-grid">
-          <div class="kpi"><span class="label">Total</span><span class="value">{pals['total']}</span></div>
-          <div class="kpi"><span class="label">Espèces</span><span class="value">{pals['especes']}</span></div>
-        </div>
-        <h3 style="margin-top:18px">Répartition par propriétaire</h3>
-        <ul>{owner_rows}</ul>
-      </div>
-
-      <div class="card" style="border-left-color: var(--purple)">
-        <h2>&#127942; Classements</h2>
-        <div class="cols3">
-          <div><h3>&#127942; Top Niveaux</h3><ul>{top_niveaux}</ul></div>
-          <div><h3>&#10084;&#65039; Top Affection</h3><ul>{top_affection}</ul></div>
-        </div>
-      </div>
-
-      <div class="card" style="border-left-color: var(--gold); grid-column: 1 / -1">
-        <h2>&#128142; Top IV &amp; Passifs</h2>
-        <p class="muted" style="margin-top:-6px">Les 10 Pals possédés avec les meilleures IV (PV/Attaque/Defense), et leurs passifs reels.</p>
-        <ul>{top_iv}</ul>
-      </div>
-
-      <div class="card" style="border-left-color: var(--red); grid-column: 1 / -1">
-        <h2>&#9876;&#65039; Equipe de terrain recommandee</h2>
-        <p class="muted" style="margin-top:-6px">
-          A emmener en exploration/combat (distinct du travail a la base) : stats de combat réelles
-          (attaque, PV, defense) du DataTable, croisees avec le meilleur exemplaire possédé de chaque
-          espèce (niveau + IV), plus une monture rapide. Recalcule a chaque génération.
-        </p>
-        {equipe_rows or "<p class='muted'>Aucune donnée de combat exploitable pour l'instant.</p>"}
-        {elements_txt}
-      </div>
-    </div>
+    {pals_tab_html}
   </div>
 
   <div id="tab-work" class="tab-panel">
@@ -3161,7 +3546,7 @@ def render_html(data):
       <div class="subhead">
       <h3 style="font-size:1rem">&#129516; Chemin 2 -- un second Puffolt "propre" (chaine a 3 etapes)</h3>
       <ol style="padding-left:20px; color:var(--muted); font-size:0.9rem; line-height:1.9">
-        <li><b style="color:var(--text)">Hartail + Moldron &#8594; Azurmane</b></li>
+        <li><b style="color:var(--text)">Hartail + Moldron &#8594; Azurmane</b> <span class="muted" style="font-weight:400">(l'auteur precise partir d'un Hartail avec le trait "Savior")</span></li>
         <li><b style="color:var(--text)">Azurmane + Green Slime &#8594; Smokie</b></li>
         <li><b style="color:var(--text)">Smokie + Gumoss &#8594; Puffolt</b></li>
       </ol>
@@ -3178,7 +3563,16 @@ def render_html(data):
       <h3 style="font-size:1rem">&#129514; Passifs et astuces annexes du thread</h3>
       <ul class="advice-list">
         <li><b>Immortality + Demon God</b> <span class="muted" style="font-weight:400">(build initial de l'auteur)</span>
-          <div class="muted" style="font-size:0.85rem; margin-top:4px">Envisage de remplacer Immortality par <b style="color:var(--text)">God of Destruction</b> (meme passif que le build Tocotoco) -- alternative citee aussi : <b style="color:var(--text)">Twin-Edged Holy Blade</b>.</div>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Envisage de remplacer Immortality par <b style="color:var(--text)">God of Destruction</b> (meme passif que le build Tocotoco) -- alternative citee aussi : <b style="color:var(--text)">Twin-Edged Holy Blade</b>. L'auteur a aussi remplace <b style="color:var(--text)">Demon God</b> par <b style="color:var(--text)">Serenity</b> car le temps de recharge etait trop long.</div>
+        </li>
+        <li><b>Heavily Armored</b> <span class="muted" style="font-weight:400">(le passif qui rend le Pal incassable)</span>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Immunise le Pal aux degats d'explosion : c'est ce qui lui permet de rester debout apres Megaton Implode.</div>
+        </li>
+        <li><b>Ordonner l'attaque</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Le Pal tourne en rond autour de la cible et peut exploser a cote. Vise la cible puis ordonne l'attaque : <b style="color:var(--text)">R3</b> sur console, <b style="color:var(--text)">clic molette</b> sur PC (confirme par deux commentateurs).</div>
+        </li>
+        <li><b>Portee de l'explosion</b>
+          <div class="muted" style="font-size:0.85rem; margin-top:4px">Le rayon de Megaton Implode ne suit pas la taille du Pal : sur un gros Pal (alpha), l'explosion peut ne pas atteindre l'ennemi.</div>
         </li>
         <li><b>Explosive Resistant Undershirt</b> <span class="muted" style="font-weight:400">(alternative a Heavily Armored)</span>
           <div class="muted" style="font-size:0.85rem; margin-top:4px">Cet accessoire protege le joueur ET les pals actifs de l'equipe des degats d'explosion (confirme par deux commentateurs) -- pas besoin forcement d'implanter Heavily Armored si tu l'equipes.</div>
@@ -3836,7 +4230,7 @@ def render_html(data):
     kanbanLoad();
     (function() {{
       try {{
-        var saved = localStorage.getItem('palworld_dash_tab');
+        var saved = null; // on ouvre toujours sur l'accueil (avant : dernier onglet visite)
         if (saved) {{
           var btn = document.querySelector('.tab-btn[data-tab="' + saved + '"]');
           if (btn) showTab(btn);
@@ -4136,6 +4530,12 @@ def translate_partner_skill(text):
         return None
     translated = [t[0].upper() + t[1:] if t else t for t in translated]
     result = ". ".join(translated)
+    # Noms d'elements officiels du jeu en francais (les clauses ci-dessus disaient Foudre/Plante/Sol/Normal)
+    for ancien, nouveau in (
+        ("de type Foudre", "de type Électricité"), ("de type Plante", "de type Herbe"),
+        ("de type Sol", "de type Terre"), ("de type Normal", "de type Neutre"),
+    ):
+        result = result.replace(ancien, nouveau)
     return result if result.endswith(".") else result + "."
 
 
