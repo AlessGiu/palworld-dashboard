@@ -718,6 +718,7 @@ def collect_data():
         meilleurs_iv.append({
             "nom": card.get("nom", cn),
             "codename": cn,
+            "icon": card.get("icon") or pal_icon_url(base_cn),
             "count": len(group),
             "niveau": unwrap(best.get("Level"), 1),
             "iv_hp": int(safe_float(unwrap(best.get("Talent_HP"), 0))),
@@ -728,7 +729,7 @@ def collect_data():
             "proprietaire": owner_name,
             "passifs": [PASSIVE_NAME_DISPLAY.get(p, p) for p in passive_names(best)],
         })
-    meilleurs_iv.sort(key=lambda r: r["rang_combi"])
+    meilleurs_iv.sort(key=lambda r: -r["iv_total"])
 
     # --- CANDIDATS REPRODUCTION (bonne IV ou passif legendaire) -- alerte Discord dediee ---
     # Contrairement a meilleurs_iv (1 seule ligne = la meilleure IV par espece), un individu
@@ -1923,23 +1924,46 @@ def render_html(data):
             return "pill-low"
         return "pill-zero"
 
-    meilleurs_iv_rows = ""
+    def iv_bar(label, value, color_var):
+        pct = max(0, min(100, value))
+        return f"""<div class="repro-iv-row">
+          <span class="repro-iv-label">{label}</span>
+          <div class="repro-bar"><div class="repro-bar-fill" style="width:{pct}%; background:var({color_var})"></div></div>
+          <b class="repro-iv-val">{value}</b>
+        </div>"""
+
+    meilleurs_iv_cards = ""
     all_passifs_seen = set()
     for r in élevage.get("meilleurs_iv", []):
         passifs_list = r.get("passifs", [])
         all_passifs_seen.update(passifs_list)
         passifs_attr = esc("|".join(p.lower() for p in passifs_list))
-        passifs_txt = ", ".join(passifs_list) if passifs_list else "-"
-        meilleurs_iv_rows += f"""<tr data-nom="{esc(r['nom'].lower())}" data-total="{r['iv_total']}" data-passifs="{passifs_attr}">
-          <td>{esc(r['nom'])}<div class="note" style="font-family:var(--mono)">{esc(r['codename'])}</div></td>
-          <td class="qty">{r['count']}</td>
-          <td class="qty">{r['niveau']}</td>
-          <td class="qty">{esc(r['proprietaire'])}</td>
-          <td class="qty">{r['iv_hp']} / {r['iv_atk']} / {r['iv_def']}</td>
-          <td class="qty"><span class="pill {iv_pill_class(r['iv_total'])}">{r['iv_total']}</span></td>
-          <td class="qty">{r['rang_combi']}</td>
-          <td class="note">{esc(passifs_txt)}</td>
-        </tr>"""
+        passif_badges = "".join(
+            f'<span class="repro-badge badge-legendary">&#10024; {esc(p)}</span>' for p in passifs_list
+        )
+        passifs_html = f'<div class="repro-badges">{passif_badges}</div>' if passifs_list else ""
+        meilleurs_iv_cards += f"""<div class="repro-card" data-nom="{esc(r['nom'].lower())}" data-total="{r['iv_total']}" data-passifs="{passifs_attr}">
+          <div class="repro-card-head">
+            <img class="repro-card-icon" src="{r['icon']}" alt="{esc(r['nom'])}" loading="lazy"
+              onerror="this.style.visibility='hidden'">
+            <div>
+              <div class="repro-card-name">{esc(r['nom'])}</div>
+              <div class="note" style="font-family:var(--mono)">{esc(r['codename'])}</div>
+            </div>
+          </div>
+          <div class="repro-badges"><span class="repro-badge badge-iv">Rang combi {r['rang_combi']}</span></div>
+          {passifs_html}
+          <div class="repro-iv">
+            {iv_bar("PV", r['iv_hp'], "--green")}
+            {iv_bar("ATK", r['iv_atk'], "--orange")}
+            {iv_bar("DEF", r['iv_def'], "--blue")}
+          </div>
+          <div class="repro-total">Total <b class="pill {iv_pill_class(r['iv_total'])}">{r['iv_total']}</b> / 300</div>
+          <div class="repro-meta muted">
+            Niveau {r['niveau']} -- {esc(r['proprietaire'])}<br>
+            {r['count']} exemplaire(s) possede(s)
+          </div>
+        </div>"""
 
     passif_filter_options = "".join(
         f'<option value="{esc(p.lower())}">{esc(p)}</option>' for p in sorted(all_passifs_seen)
@@ -2701,17 +2725,6 @@ def render_html(data):
   .stat-table {{ width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem; }}
   .stat-table td {{ padding: 5px 6px; border-bottom: 1px solid var(--border-soft); }}
   .stat-table td:last-child {{ text-align: right; color: var(--gold); font-weight: 700; font-variant-numeric: tabular-nums; }}
-  .table-scroll {{ overflow-x: auto; }}
-  .iv-table {{ width: 100%; border-collapse: collapse; margin-top: 12px; }}
-  .iv-table th {{
-    text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--muted); font-weight: 700; padding: 6px 10px; white-space: nowrap;
-  }}
-  .iv-table th.sortable {{ cursor: pointer; user-select: none; }}
-  .iv-table th.sortable:hover {{ color: var(--text); }}
-  .iv-table td {{ padding: 9px 10px; border-top: 1px solid var(--border-soft); font-size: 0.87rem; vertical-align: top; }}
-  .iv-table td.qty {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
-  .iv-table tr:hover td {{ background: rgba(255,255,255,.02); }}
   .pill {{
     display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.74rem;
     font-weight: 700; white-space: nowrap;
@@ -3039,28 +3052,18 @@ def render_html(data):
           par somme d'IV (PV+Attaque+Défense sur 300). Recalcule a chaque génération -- les Pals sans
           nom sont a repérer par niveau + IV exacts (Lunettes d'Aptitude) dans le Palbox.
         </p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px">
+        <div class="repro-toolbar">
           <input type="text" id="iv-search" class="kanban-input" style="max-width:280px"
             placeholder="&#128269; Rechercher une espèce..." oninput="ivFilterByName(this.value)">
           <select id="iv-passif-filter" class="kanban-input" style="max-width:240px" onchange="ivFilterByPassif(this.value)">
             <option value="">&#129514; Tous les passifs</option>
             {passif_filter_options}
           </select>
+          <button class="filter-btn active" id="iv-sort-btn" onclick="ivSortToggle()">Trier par IV totale &#8595;</button>
         </div>
-        <div class="table-scroll">
-        <table class="iv-table" id="iv-table">
-          <thead>
-          <tr>
-            <th>Espèce</th><th class="qty">Possédés</th><th class="qty">Niveau</th>
-            <th>Propriétaire</th><th class="qty">IV (PV/ATK/DEF)</th>
-            <th class="qty sortable" id="iv-th-total" onclick="ivSortByTotal()">Total /300 &#8645;&#65039;</th>
-            <th class="qty">Rang combi</th><th>Passifs</th>
-          </tr>
-          </thead>
-          <tbody id="iv-tbody">{meilleurs_iv_rows or "<tr><td colspan='8' class='muted'>Aucune espèce en double avec un bon rang combi pour l'instant.</td></tr>"}</tbody>
-        </table>
-        </div>
+        <div class="repro-grid" id="iv-grid">{meilleurs_iv_cards or ""}</div>
         <p class="muted" id="iv-empty-msg" style="display:none">Aucune espèce ne correspond a ces filtres.</p>
+        {"<p class='muted'>Aucune espèce en double avec un bon rang combi pour l'instant.</p>" if not meilleurs_iv_cards else ""}
       </div>
     </div>
   </div>
@@ -3872,46 +3875,40 @@ def render_html(data):
       }});
       cards.forEach(function(card) {{ grid.appendChild(card); }});
     }}
+    var ivSortDesc = true;
     var ivDefaultOrder = null;
-    var ivSortState = 'default';
-    function ivSortByTotal() {{
-      var tbody = document.getElementById('iv-tbody');
-      if (!tbody) return;
-      var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr[data-total]'));
-      if (ivDefaultOrder === null) ivDefaultOrder = rows.slice();
-      var th = document.getElementById('iv-th-total');
-      if (ivSortState === 'desc') {{
-        rows.sort(function(a, b) {{ return parseInt(a.getAttribute('data-total'), 10) - parseInt(b.getAttribute('data-total'), 10); }});
-        ivSortState = 'asc';
-        th.innerHTML = 'Total /300 &#8593;';
-      }} else if (ivSortState === 'asc') {{
-        rows = ivDefaultOrder.slice();
-        ivSortState = 'default';
-        th.innerHTML = 'Total /300 &#8645;&#65039;';
-      }} else {{
-        rows.sort(function(a, b) {{ return parseInt(b.getAttribute('data-total'), 10) - parseInt(a.getAttribute('data-total'), 10); }});
-        ivSortState = 'desc';
-        th.innerHTML = 'Total /300 &#8595;';
-      }}
-      rows.forEach(function(r) {{ tbody.appendChild(r); }});
+    function ivSortToggle() {{
+      var grid = document.getElementById('iv-grid');
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.repro-card[data-total]'));
+      if (ivDefaultOrder === null) ivDefaultOrder = cards.slice();
+      var btn = document.getElementById('iv-sort-btn');
+      ivSortDesc = !ivSortDesc;
+      cards.sort(function(a, b) {{
+        var av = parseInt(a.getAttribute('data-total'), 10);
+        var bv = parseInt(b.getAttribute('data-total'), 10);
+        return ivSortDesc ? (bv - av) : (av - bv);
+      }});
+      if (btn) btn.innerHTML = 'Trier par IV totale ' + (ivSortDesc ? '&#8595;' : '&#8593;');
+      cards.forEach(function(c) {{ grid.appendChild(c); }});
     }}
     var ivNameQuery = '';
     var ivPassifQuery = '';
     function ivApplyFilters() {{
-      var tbody = document.getElementById('iv-tbody');
-      if (!tbody) return;
-      var rows = tbody.querySelectorAll('tr[data-nom]');
+      var grid = document.getElementById('iv-grid');
+      if (!grid) return;
+      var cards = grid.querySelectorAll('.repro-card[data-nom]');
       var shown = 0;
-      rows.forEach(function(r) {{
-        var nameMatch = ivNameQuery === '' || r.getAttribute('data-nom').indexOf(ivNameQuery) !== -1;
-        var passifs = r.getAttribute('data-passifs') || '';
+      cards.forEach(function(c) {{
+        var nameMatch = ivNameQuery === '' || c.getAttribute('data-nom').indexOf(ivNameQuery) !== -1;
+        var passifs = c.getAttribute('data-passifs') || '';
         var passifMatch = ivPassifQuery === '' || ('|' + passifs + '|').indexOf('|' + ivPassifQuery + '|') !== -1;
         var match = nameMatch && passifMatch;
-        r.style.display = match ? '' : 'none';
+        c.style.display = match ? '' : 'none';
         if (match) shown++;
       }});
       var emptyMsg = document.getElementById('iv-empty-msg');
-      if (emptyMsg) emptyMsg.style.display = (shown === 0 && rows.length > 0) ? '' : 'none';
+      if (emptyMsg) emptyMsg.style.display = (shown === 0 && cards.length > 0) ? '' : 'none';
     }}
     function ivFilterByName(query) {{
       ivNameQuery = query.trim().toLowerCase();
